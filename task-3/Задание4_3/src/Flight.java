@@ -2,10 +2,10 @@
  * Created by Light on 20.09.2017.
  */
 public class Flight {
-    public final int IN_TIME =  0;
-    public final int CANCELED = 1;
-    public final int DELAYED =  2;
-    public final String [] STATUS = new String[]{ "IN_TIME", "CANCELED", "DELAYED"};
+    public static final int IN_TIME =  0;
+    public static final int CANCELED = 1;
+    public static final int DELAYED =  2;
+    public static final String [] STATUS = new String[]{ "IN_TIME", "CANCELED", "DELAYED"};
 
     private String name;
     private int place = 100;

@@ -20,7 +20,8 @@ public class Main {
         for (int i = 0; i < 50; i++) {
             passengers[i] = new Passenger();
         }
-        flight1.setPassengers(passengers);
+        flight2.setPassengers(passengers);
+        flight2.setStatus(Flight.CANCELED);
 
         FlightDepartment flightDepartment = new FlightDepartment();
         flightDepartment.setFlights( new Flight[]{flight0,flight1,flight2});
