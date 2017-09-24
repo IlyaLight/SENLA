@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Light on 22.09.2017.
  */
 public class Order {
-    private String[] name;
+    private String[] bookName;
     private float price;
     private Date dataCompletion;
     private String status;
@@ -14,19 +14,19 @@ public class Order {
 
     public String toString(){
         return new StringBuilder(
-                "Name: " + name
+                "Name: " + bookName
                         + ", Data of Completion: " + dataCompletion.toString()
                         + ", Price: " + price
                         + ", Status " + status
         ).toString();
     }
 
-    public String[] getName() {
-        return name;
+    public String[] getBookName() {
+        return bookName;
     }
 
-    public void setName(String[] name) {
-        this.name = name;
+    public void setBookName(String[] bookName) {
+        this.bookName = bookName;
     }
 
     public float getPrice() {
@@ -53,7 +53,7 @@ public class Order {
         this.status = status;
     }
 
-    public boolean isCompleteness() {
+    public boolean isCompleted() {
         return completeness;
     }
 

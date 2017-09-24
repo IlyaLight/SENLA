@@ -16,9 +16,11 @@ public class RequestNumberRequestComparator implements Comparator<String> {
         if (map.get(o1) > map.get(o2)){
             return -1;
         }
-        if (map.get(o1) < map.get(o2)){
+        else if (map.get(o1) < map.get(o2)){
             return 1;
         }
-        return 0;
+        else  {
+         return o1.compareTo(o2);
+        }
     }
 }

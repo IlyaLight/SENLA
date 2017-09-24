@@ -5,23 +5,18 @@ package com.senla.booksshop.Request;
  */
 public class Request {
     private String bookName;
-    private boolean accomplished;
+    private boolean completed;
 
-    public Request(String bookName, boolean accomplished) {
+    public Request(String bookName, boolean completed) {
         this.bookName = bookName;
-        this.accomplished = accomplished;
+        this.completed = completed;
     }
 
     public String toString(){
         return new StringBuilder(
                 "Book Name: " + bookName
-                        + ", Accomplished: " + accomplished
+                        + ", Accomplished: " + completed
         ).toString();
-    }
-
-    @Override
-    public boolean equals(Object request){
-        return this.bookName.equals(((Request)request).bookName);
     }
 
     public String getBookName() {
@@ -32,11 +27,11 @@ public class Request {
         this.bookName = bookName;
     }
 
-    public boolean isAccomplished() {
-        return accomplished;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void setAccomplished(boolean accomplished) {
-        this.accomplished = accomplished;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }
