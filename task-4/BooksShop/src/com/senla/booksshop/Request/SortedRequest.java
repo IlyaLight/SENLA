@@ -10,6 +10,13 @@ import java.util.TreeSet;
  */
 public class SortedRequest {
 
+    public SortedRequest() {
+    }
+
+    public SortedRequest(ArrayList<Request> requestArrayList) {
+        this.requestArrayList = requestArrayList;
+    }
+
     private ArrayList<Request> requestArrayList;
 
     public ArrayList<Request> getRequestArrayList() {

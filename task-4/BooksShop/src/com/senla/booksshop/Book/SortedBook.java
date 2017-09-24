@@ -10,6 +10,13 @@ public class SortedBook {
 
     private ArrayList<Book> bookArrayList;
 
+    public SortedBook() {
+    }
+
+    public SortedBook(ArrayList<Book> bookArrayList) {
+        this.bookArrayList = bookArrayList;
+    }
+
     public ArrayList<Book> getBookArrayList() {
         return bookArrayList;
     }

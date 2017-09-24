@@ -10,6 +10,13 @@ import java.util.TreeSet;
  */
 public class SortedOrder {
 
+    public SortedOrder() {
+    }
+
+    public SortedOrder(ArrayList<Order> orderArrayList) {
+        this.orderArrayList = orderArrayList;
+    }
+
     private ArrayList<Order> orderArrayList;
 
     public ArrayList<Order> getOrderArrayList() {

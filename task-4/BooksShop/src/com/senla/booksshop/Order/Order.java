@@ -10,7 +10,18 @@ public class Order {
     private float price;
     private Date dataCompletion;
     private String status;
-    boolean completeness;
+    boolean completed;
+
+    public Order() {
+    }
+
+    public Order(String[] bookName, float price, Date dataCompletion, String status, boolean completed) {
+        this.bookName = bookName;
+        this.price = price;
+        this.dataCompletion = dataCompletion;
+        this.status = status;
+        this.completed = completed;
+    }
 
     public String toString(){
         return new StringBuilder(
@@ -54,10 +65,10 @@ public class Order {
     }
 
     public boolean isCompleted() {
-        return completeness;
+        return completed;
     }
 
-    public void setCompleteness(boolean completeness) {
-        this.completeness = completeness;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }

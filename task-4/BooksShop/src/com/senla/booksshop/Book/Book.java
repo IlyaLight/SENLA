@@ -9,24 +9,24 @@ public class Book {
     private String name;
     private Date dateIssue;
     private float price;
-    private boolean stockAvailability;
+    private boolean inStock;
 
     public Book() {
     }
 
-    public Book(String name, Date dateOfIssue, float price, boolean stockAvailability) {
+    public Book(String name, Date dateOfIssue, float price, boolean inStock) {
         this.name = name;
         this.dateIssue = dateOfIssue;
         this.price = price;
-        this.stockAvailability = stockAvailability;
+        this.inStock = inStock;
     }
 
     public String toString(){
         return new StringBuilder(
                 "Name: " + name
-                + ", Data of Issue: " + dateIssue.toString()
+                + ", Data Of Issue: " + dateIssue.toString()
                 + ", Price: " + price
-                + ", Stock Availability: " + stockAvailability
+                + ", In Stock: " + inStock
         ).toString();
     }
 
@@ -54,11 +54,11 @@ public class Book {
         this.price = price;
     }
 
-    public boolean isStockAvailability() {
-        return stockAvailability;
+    public boolean isInStock() {
+        return inStock;
     }
 
-    public void setStockAvailability(boolean stockAvailability) {
-        this.stockAvailability = stockAvailability;
+    public void setInStock(boolean inStock) {
+        this.inStock = inStock;
     }
 }

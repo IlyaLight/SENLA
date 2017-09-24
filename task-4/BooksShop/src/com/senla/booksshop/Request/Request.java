@@ -7,6 +7,9 @@ public class Request {
     private String bookName;
     private boolean completed;
 
+    public Request() {
+    }
+
     public Request(String bookName, boolean completed) {
         this.bookName = bookName;
         this.completed = completed;
