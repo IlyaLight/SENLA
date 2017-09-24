@@ -1,8 +1,10 @@
 package com.senla.booksshop.Order;
 
-public class OrderDateCompletionComparator implements Comparable<Order>{
+import java.util.Comparator;
+
+public class OrderDateCompletionComparator implements Comparator<Order> {
     @Override
-    public int compareTo(Order o) {
-        return 0;
+    public int compare(Order o1, Order o2) {
+        return o1.getDataCompletion().compareTo(o2.getDataCompletion());
     }
 }

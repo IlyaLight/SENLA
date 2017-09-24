@@ -1,9 +1,11 @@
 package com.senla.booksshop.Request;
 
 
-public class RequestBookNameComparator implements Comparable<Request> {
+import java.util.Comparator;
+
+public class RequestBookNameComparator implements Comparator<Request> {
     @Override
-    public int compareTo(Request o) {
-        return 0;
+    public int compare(Request o1, Request o2) {
+        return o1.getBookName().compareTo(o2.getBookName());
     }
 }

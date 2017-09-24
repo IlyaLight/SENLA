@@ -7,18 +7,27 @@ import java.util.Date;
  */
 public class Book {
     private String name;
-    private Date dateOfIssue;
-    private float  Price;
-    private int stockAvailability;
+    private Date dateIssue;
+    private float price;
+    private boolean stockAvailability;
 
     public Book() {
     }
 
-    public Book(String name, Date dateOfIssue, float price, int stockAvailability) {
+    public Book(String name, Date dateOfIssue, float price, boolean stockAvailability) {
         this.name = name;
-        this.dateOfIssue = dateOfIssue;
-        Price = price;
+        this.dateIssue = dateOfIssue;
+        this.price = price;
         this.stockAvailability = stockAvailability;
+    }
+
+    public String toString(){
+        return new StringBuilder(
+                "Name: " + name
+                + ", Data of Issue: " + dateIssue.toString()
+                + ", Price: " + price
+                + ", Stock Availability: " + stockAvailability
+        ).toString();
     }
 
     public String getName() {
@@ -29,27 +38,27 @@ public class Book {
         this.name = name;
     }
 
-    public Date getDateOfIssue() {
-        return dateOfIssue;
+    public Date getDateIssue() {
+        return dateIssue;
     }
 
-    public void setDateOfIssue(Date dateOfIssue) {
-        this.dateOfIssue = dateOfIssue;
+    public void setDateIssue(Date dateIssue) {
+        this.dateIssue = dateIssue;
     }
 
     public float getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(float price) {
-        Price = price;
+        this.price = price;
     }
 
-    public int isStockAvailability() {
+    public boolean isStockAvailability() {
         return stockAvailability;
     }
 
-    public void setStockAvailability(int stockAvailability) {
+    public void setStockAvailability(boolean stockAvailability) {
         this.stockAvailability = stockAvailability;
     }
 }
