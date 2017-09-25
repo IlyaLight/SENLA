@@ -2,7 +2,7 @@ package com.senla.booksshop.Book;
 
 import java.util.Comparator;
 
-public class BookNameComparator implements Comparator<Book> {
+class BookNameComparator implements Comparator<Book> {
 
     @Override
     public int compare(Book o1, Book o2) {

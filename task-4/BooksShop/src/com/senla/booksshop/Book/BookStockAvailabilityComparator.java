@@ -2,7 +2,7 @@ package com.senla.booksshop.Book;
 
 import java.util.Comparator;
 
-public class BookStockAvailabilityComparator implements Comparator<Book> {
+class BookStockAvailabilityComparator implements Comparator<Book> {
     @Override
     public int compare(Book o1, Book o2) {
         if (o1.isInStock() == true && o2.isInStock() == false ){

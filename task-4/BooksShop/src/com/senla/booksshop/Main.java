@@ -13,15 +13,15 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Request> requests = new ArrayList<>();
         requests.add(new Request("x", true));
-        requests.add(new Request("a", true));
+        requests.add(new Request("x", true));
         requests.add(new Request("c", true));
         requests.add(new Request("c", true));
         requests.add(new Request("c", true));
-        requests.add(new Request("a", true));
+        requests.add(new Request("a", false));
         requests.add(new Request("b", true));
         requests.add(new Request("b", true));
         requests.add(new Request("b", true));
-        requests.add(new Request("a", true));
+        requests.add(new Request("x", true));
 
 
         SortedRequest sortedDataBase = new SortedRequest();

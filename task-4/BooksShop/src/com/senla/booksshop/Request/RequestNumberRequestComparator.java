@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RequestNumberRequestComparator implements Comparator<String> {
+class RequestNumberRequestComparator implements Comparator<String> {
     Map<String, Integer> map;
 
     public RequestNumberRequestComparator(HashMap<String, Integer> map){
