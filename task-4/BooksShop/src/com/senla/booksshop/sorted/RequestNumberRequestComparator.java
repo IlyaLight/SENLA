@@ -1,4 +1,4 @@
-package com.senla.booksshop.Request;
+package com.senla.booksshop.sorted;
 
 import java.util.Comparator;
 import java.util.HashMap;

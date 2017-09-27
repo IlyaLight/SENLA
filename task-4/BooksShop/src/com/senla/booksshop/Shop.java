@@ -1,9 +1,10 @@
 package com.senla.booksshop;
 
-import com.senla.booksshop.Book.*;
-import com.senla.booksshop.Order.*;
-import com.senla.booksshop.Request.Request;
-import com.senla.booksshop.Request.SortedRequest;
+import com.senla.booksshop.objekt.*;
+import com.senla.booksshop.objekt.Request;
+import com.senla.booksshop.sorted.SortedBook;
+import com.senla.booksshop.sorted.SortedOrder;
+import com.senla.booksshop.sorted.SortedRequest;
 
 import java.util.ArrayList;
 import java.util.Date;

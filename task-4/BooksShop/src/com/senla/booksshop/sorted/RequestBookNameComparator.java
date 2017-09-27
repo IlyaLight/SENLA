@@ -1,5 +1,7 @@
-package com.senla.booksshop.Request;
+package com.senla.booksshop.sorted;
 
+
+import com.senla.booksshop.objekt.Request;
 
 import java.util.Comparator;
 

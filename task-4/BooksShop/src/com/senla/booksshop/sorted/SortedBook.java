@@ -1,4 +1,6 @@
-package com.senla.booksshop.Book;
+package com.senla.booksshop.sorted;
+
+import com.senla.booksshop.objekt.Book;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -32,7 +34,7 @@ public class SortedBook {
     }
 
     public TreeSet<Book> getBooksSortedByPrice() {
-        TreeSet<Book> treeSet = new TreeSet<>(new BookPriceComparator());
+        TreeSet<Book> treeSet = new TreeSet<Book>(new BookPriceComparator());
         treeSet.addAll(bookArrayList);
         return treeSet;
     }

@@ -1,4 +1,6 @@
-package com.senla.booksshop.Order;
+package com.senla.booksshop.sorted;
+
+import com.senla.booksshop.objekt.Order;
 
 import java.util.Comparator;
 

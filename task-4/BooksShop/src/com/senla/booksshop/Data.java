@@ -1,8 +1,8 @@
 package com.senla.booksshop;
 
-import com.senla.booksshop.Book.Book;
-import com.senla.booksshop.Order.Order;
-import com.senla.booksshop.Request.Request;
+import com.senla.booksshop.objekt.Book;
+import com.senla.booksshop.objekt.Order;
+import com.senla.booksshop.objekt.Request;
 
 import java.util.ArrayList;
 

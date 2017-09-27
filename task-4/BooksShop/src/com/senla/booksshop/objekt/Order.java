@@ -1,4 +1,4 @@
-package com.senla.booksshop.Order;
+package com.senla.booksshop.objekt;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Light on 22.09.2017.
  */
 public class Order {
-    private String[] bookName;
+    private String bookName;
     private float price;
     private Date dataCompletion;
     private String status;
@@ -15,7 +15,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String[] bookName, float price, Date dataCompletion, String status, boolean completed) {
+    public Order(String bookName, float price, Date dataCompletion, String status, boolean completed) {
         this.bookName = bookName;
         this.price = price;
         this.dataCompletion = dataCompletion;
@@ -32,11 +32,11 @@ public class Order {
         ).toString();
     }
 
-    public String[] getBookName() {
+    public String getBookName() {
         return bookName;
     }
 
-    public void setBookName(String[] bookName) {
+    public void setBookName(String bookName) {
         this.bookName = bookName;
     }
 

@@ -1,4 +1,4 @@
-package com.senla.booksshop.Book;
+package com.senla.booksshop.objekt;
 
 import java.util.Date;
 

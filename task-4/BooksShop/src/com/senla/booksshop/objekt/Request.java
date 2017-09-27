@@ -1,4 +1,4 @@
-package com.senla.booksshop.Request;
+package com.senla.booksshop.objekt;
 
 /**
  * Created by Light on 22.09.2017.
