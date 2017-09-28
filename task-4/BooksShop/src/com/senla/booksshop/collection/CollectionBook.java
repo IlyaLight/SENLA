@@ -1,6 +1,7 @@
 package com.senla.booksshop.collection;
 
 import com.danco.training.TextFileWorker;
+import com.senla.booksshop.interfaces.TextFileWork;
 import com.senla.booksshop.objekt.Book;
 
 import java.util.ArrayList;
@@ -9,9 +10,9 @@ import java.util.Date;
 /**
  * Created by Light on 27.09.2017.
  */
-public class CollectionBook {
+public class CollectionBook implements TextFileWork {
 
-    private ArrayList<Book> bookList;
+    private ArrayList<Book> bookList = new ArrayList<Book>();
 
     public ArrayList<Book> getBookList() {
         return bookList;
@@ -30,7 +31,7 @@ public class CollectionBook {
         }
     }
 
-    public void writeBookList(final String filePath){
+    public void writeToFile(final String filePath){
         TextFileWorker textFileWorker = new TextFileWorker(filePath);
         ArrayList<String> books = new ArrayList<String>();
         for (Book book : bookList) {

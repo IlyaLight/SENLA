@@ -1,6 +1,7 @@
 package com.senla.booksshop.collection;
 
 import com.danco.training.TextFileWorker;
+import com.senla.booksshop.interfaces.TextFileWork;
 import com.senla.booksshop.objekt.Order;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,9 +9,13 @@ import java.util.Date;
 /**
  * Created by Light on 27.09.2017.
  */
-public class CollectionOrder {
+public class CollectionOrder implements TextFileWork {
 
-    private ArrayList<Order> orderArrayList;
+    private ArrayList<Order> orderArrayList = new ArrayList<Order>();
+
+    public ArrayList<Order> getOrderArrayList() {
+        return orderArrayList;
+    }
 
     public  void readFromFile(String filePath){
         TextFileWorker textFileWorker = new TextFileWorker(filePath);

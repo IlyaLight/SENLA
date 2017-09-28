@@ -1,6 +1,7 @@
 package com.senla.booksshop.collection;
 
 import com.danco.training.TextFileWorker;
+import com.senla.booksshop.interfaces.TextFileWork;
 import com.senla.booksshop.objekt.Request;
 
 import java.util.ArrayList;
@@ -8,9 +9,13 @@ import java.util.ArrayList;
 /**
  * Created by Light on 27.09.2017.
  */
-public class CollectionRequest {
+public class CollectionRequest implements TextFileWork{
 
-    private ArrayList<Request> requestArrayList;
+    private ArrayList<Request> requestArrayList = new ArrayList<Request>();
+
+    public ArrayList<Request> getRequestArrayList() {
+        return requestArrayList;
+    }
 
     public  void readFromFile(String filePath){
         TextFileWorker textFileWorker = new TextFileWorker(filePath);
@@ -28,7 +33,9 @@ public class CollectionRequest {
         ArrayList<String> orders = new ArrayList<String>();
         for (Request order : requestArrayList) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(order.isCompleted());
+            stringBuilder.append(order.getBookName() + " "
+                    + order.isCompleted());
+            orders.add(stringBuilder.toString());
         }
         textFileWorker.writeToFile(orders.toArray(new String[orders.size()]));
     }
