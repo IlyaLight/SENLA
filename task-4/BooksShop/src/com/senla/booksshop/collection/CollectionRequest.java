@@ -17,7 +17,7 @@ public class CollectionRequest implements TextFileWork{
         return requestArrayList;
     }
 
-    public  void readFromFile(String filePath){
+    public  void readFromFile(final String filePath){
         TextFileWorker textFileWorker = new TextFileWorker(filePath);
         String[] strings = textFileWorker.readFromFile();
         requestArrayList = new ArrayList<Request>();
@@ -28,7 +28,7 @@ public class CollectionRequest implements TextFileWork{
         }
     }
 
-    public void writeToFile(String filePath){
+    public void writeToFile(final String filePath){
         TextFileWorker textFileWorker = new TextFileWorker(filePath);
         ArrayList<String> orders = new ArrayList<String>();
         for (Request order : requestArrayList) {

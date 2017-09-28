@@ -17,8 +17,14 @@ public class Main {
 
     public static void main(String[] args) {
 
+        final String  STANDART_PATH = "d:";
+
         System.out.println("Book_Shop");
         System.out.println("args0 = " + args[0]);
+        String path = STANDART_PATH;
+        if (args[0] != null) {
+            path = args[0];
+        }
         //testCreate("d:/");
         CollectionBook collectionBook = new CollectionBook();
         collectionBook.readFromFile(args[0] + "/books.txt");
