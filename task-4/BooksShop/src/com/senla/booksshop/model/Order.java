@@ -1,4 +1,4 @@
-package com.senla.booksshop.objekt;
+package com.senla.booksshop.model;
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ public class Order {
     private Date dataCompletion;
     private String status;
     boolean completed;
+    private final String FORMAT_TO_STRING = "Book Name: %s, Data of Completion: %d, Price: %d, Status: %s";
 
     public Order() {
     }
@@ -24,12 +25,7 @@ public class Order {
     }
 
     public String toString(){
-        return new StringBuilder(
-                "Name: " + bookName
-                        + ", Data of Completion: " + dataCompletion.toString()
-                        + ", Price: " + price
-                        + ", Status " + status
-        ).toString();
+        return String.format(FORMAT_TO_STRING, bookName,  dataCompletion.toString(), price, status );
     }
 
     public String getBookName() {

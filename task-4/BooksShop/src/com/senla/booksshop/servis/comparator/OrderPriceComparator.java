@@ -1,10 +1,10 @@
-package com.senla.booksshop.sorted;
+package com.senla.booksshop.servis.comparator;
 
-import com.senla.booksshop.objekt.Order;
+import com.senla.booksshop.model.Order;
 
 import java.util.Comparator;
 
-class OrderPriceComparator implements Comparator<Order> {
+public class OrderPriceComparator implements Comparator<Order> {
     @Override
     public int compare(Order o1, Order o2) {
         if(o1.getPrice()> o2.getPrice()){

@@ -1,11 +1,14 @@
-package com.senla.booksshop.objekt;
+package com.senla.booksshop.model;
 
 /**
  * Created by Light on 22.09.2017.
  */
 public class Request {
+    private Book book;
     private String bookName;
     private boolean completed;
+    private int quantity;
+    private final String FORMAT_TO_STRING = "Book Name: %s, Completed: %b";
 
     public Request() {
     }
@@ -16,10 +19,15 @@ public class Request {
     }
 
     public String toString(){
-        return new StringBuilder(
-                "Book Name: " + bookName
-                        + ", Accomplished: " + completed
-        ).toString();
+        return String.format(FORMAT_TO_STRING, bookName,  completed );
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getBookName() {
