@@ -1,43 +1,94 @@
 package com.senla.booksshop.model;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Light on 22.09.2017.
  */
 public class Order {
-    private String bookName;
-    private float price;
+
+    private static final String FORMAT_TO_STRING = "id: %d, Data of Completion: %s, Price: %f, Details: %s, Status: %s";
+    private static final int COMPLETION_TIME = 30;
+    public  enum Status {PROCESSED, ASSEMBLED, COMPLETED, CANCELED}
+
+    private Integer id;
+    private List<Book> books;
+    private Float price;
     private Date dataCompletion;
-    private String status;
+    private String details;
+    private Status status;
     boolean completed;
-    private final String FORMAT_TO_STRING = "Book Name: %s, Data of Completion: %d, Price: %d, Status: %s";
+
+
 
     public Order() {
     }
 
-    public Order(String bookName, float price, Date dataCompletion, String status, boolean completed) {
-        this.bookName = bookName;
+    public Order(List<Book> books, Integer id){
+        this.books = books;
+        this.id = id;
+        updatePrice();
+        status = Status.PROCESSED;
+        Calendar from =Calendar.getInstance();
+        from.add(COMPLETION_TIME, 0);
+        dataCompletion = from.getTime();
+
+    }
+
+    public Order(Integer id, float price, Date dataCompletion, String details, Status status, boolean completed) {
+        this.id = id;
         this.price = price;
         this.dataCompletion = dataCompletion;
+        this.details = details;
+
         this.status = status;
         this.completed = completed;
     }
 
     public String toString(){
-        return String.format(FORMAT_TO_STRING, bookName,  dataCompletion.toString(), price, status );
+        return String.format(FORMAT_TO_STRING, id, dataCompletion.toString(), price, details, status.name());
     }
 
-    public String getBookName() {
-        return bookName;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
     }
 
     public float getPrice() {
         return price;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public void setPrice(float price) {
@@ -52,19 +103,18 @@ public class Order {
         this.dataCompletion = dataCompletion;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public boolean isCompleted() {
         return completed;
     }
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    private void updatePrice(){
+        price = (float)0.0;
+        for (Book book : books) {
+            price += book.getPrice();
+        }
     }
 }

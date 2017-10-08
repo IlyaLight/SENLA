@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RequestNumberRequestComparator implements Comparator<Request> {
+public class RequestQuantityComparator implements Comparator<Request> {
 
     @Override
     public int compare(Request o1, Request o2) {

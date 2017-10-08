@@ -10,23 +10,42 @@ public class Book {
     private ArrayList<Order> orderArrayList;
     private Request request;
     private String name;
+    private String description;
     private Date dateIssue;
-    private float price;
+    private Date datePublication;
+    private Float price;
     private int inStock;
-    private final String FORMAT_TO_STRING = "Name: %s, Data Of Issue: %s, Price: %f, In Stock: %d";
+    private final String FORMAT_TO_STRING = "Name: %s, Date of Publication: %s, Data Of Issue: %s, Price: %f, In Stock: %d";
 
     public Book() {
     }
 
-    public Book(String name, Date dateOfIssue, float price, int inStock) {
+    public Book(String name, Date dateOfIssue, Date datePublication, Float price, int inStock) {
         this.name = name;
         this.dateIssue = dateOfIssue;
+        this.datePublication = datePublication;
         this.price = price;
         this.inStock = inStock;
     }
 
+    public Date getDatePublication() {
+        return datePublication;
+    }
+
+    public void setDatePublication(Date datePublication) {
+        this.datePublication = datePublication;
+    }
+
     public String toString(){
-        return String.format(FORMAT_TO_STRING, name,  dateIssue.toString(), price, inStock );
+        return String.format(FORMAT_TO_STRING, name, datePublication.toString(),  dateIssue.toString(), price, inStock );
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
@@ -45,11 +64,11 @@ public class Book {
         this.dateIssue = dateIssue;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

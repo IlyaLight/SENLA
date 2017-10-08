@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by Light on 27.09.2017.
  */
-public class OrderCollection {
+public class OrderStore {
 
     private ArrayList<Order> orderArrayList = new ArrayList<Order>();
 
@@ -19,11 +19,19 @@ public class OrderCollection {
         this.orderArrayList = orderArrayList;
     }
 
-    public void create(){}
+    public void create(){
+        System.out.println("Will be later");
+    }
 
-    public void read(){}
+    public void read(){
+        System.out.println("Will be later");
+    }
 
-    public void update(){}
+    public void update(){
+        System.out.println("Will be later");
+    }
 
-    public void delete(){}
+    public void delete(){
+        System.out.println("Will be later");
+    }
 }

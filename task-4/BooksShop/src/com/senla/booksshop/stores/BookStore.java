@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Light on 27.09.2017.
  */
-public class BookCollection {
+public class BookStore {
 
     private ArrayList<Book> bookArrayList = new ArrayList<Book>();
 
@@ -21,12 +21,20 @@ public class BookCollection {
         this.bookArrayList = bookList;
     }
 
-    public void create(){}
+    public void create(){
+        System.out.println("Will be later");
+    }
 
-    public void read(){}
+    public void read(){
+        System.out.println("Will be later");
+    }
 
-    public void update(){}
+    public void update(){
+        System.out.println("Will be later");
+    }
 
-    public void delete(){}
+    public void delete(){
+        System.out.println("Will be later");
+    }
 
 }

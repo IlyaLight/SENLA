@@ -5,6 +5,10 @@ import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,8 +26,9 @@ public class WorkWithFile {
             String[] book = string.split(" ");
             bookList.add(new Book(book[0],
                     new Date(Long.decode(book[1])),
-                    Float.parseFloat(book[2]),
-                    Integer.parseInt(book[3])));
+                    new Date(Long.decode(book[2])),
+                    Float.parseFloat(book[3]),
+                    Integer.parseInt(book[4])));
         }
         return bookList;
     }
@@ -35,6 +40,7 @@ public class WorkWithFile {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(book.getName() + " ");
             stringBuilder.append(book.getDateIssue().getTime() + " ");
+            stringBuilder.append(book.getDatePublication().getTime() + " ");
             stringBuilder.append(book.getPrice() + " ");
             stringBuilder.append(book.getInStock());
             books.add(stringBuilder.toString());
@@ -48,11 +54,12 @@ public class WorkWithFile {
         ArrayList<Order> orderArrayList = new ArrayList<Order>();
         for (String string : strings) {
             String[] order = string.split(" ");
-            orderArrayList.add(new Order(order[0],
+            orderArrayList.add(new Order(Integer.parseInt(order[0]),
                     Float.parseFloat(order[1]),
                     new Date(Long.decode(order[2])),
                     order[3],
-                    Boolean.parseBoolean(order[4])));
+                    Order.Status.valueOf(order[4]),
+                    Boolean.parseBoolean(order[5])));
         }
         return orderArrayList;
     }
@@ -62,9 +69,10 @@ public class WorkWithFile {
         ArrayList<String> orders = new ArrayList<String>();
         for (Order order : orderArrayList) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(order.getBookName() + " ");
+            stringBuilder.append(order.getId() + " ");
             stringBuilder.append(order.getPrice() + " ");
             stringBuilder.append(order.getDataCompletion().getTime() + " ");
+            stringBuilder.append(order.getDetails() + " ");
             stringBuilder.append(order.getStatus() + " ");
             stringBuilder.append(order.isCompleted());
             orders.add(stringBuilder.toString());
@@ -79,7 +87,7 @@ public class WorkWithFile {
         for (String string : strings) {
             String[] order = string.split(" ");
             requestArrayList.add(new Request(order[0],
-                    Boolean.parseBoolean(order[1])));
+                   Integer.parseInt(order[1])));
         }
         return requestArrayList;
     }
@@ -90,12 +98,21 @@ public class WorkWithFile {
         for (Request order : requestArrayList) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(order.getBookName() + " "
-                    + order.isCompleted());
+                    + order.getQuantity());
             orders.add(stringBuilder.toString());
         }
         textFileWorker.writeToFile(orders.toArray(new String[orders.size()]));
     }
 
-
+    public static void createFiles(String filePath){
+        Path filePathbook = Paths.get(filePath + BOOKS_FILE_NAME);
+        Path filePathOrder = Paths.get(filePath + ORDER_FILE_NAME);
+        Path filePathRequest = Paths.get(filePath + REQUEST_FILE_NAME);
+        try {
+            Files.createFile(filePathbook);
+            Files.createFile(filePathOrder);
+            Files.createFile(filePathRequest);
+        }   catch (IOException x){}
+    }
 
 }

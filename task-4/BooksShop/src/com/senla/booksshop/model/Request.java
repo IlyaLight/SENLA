@@ -6,20 +6,24 @@ package com.senla.booksshop.model;
 public class Request {
     private Book book;
     private String bookName;
-    private boolean completed;
-    private int quantity;
-    private final String FORMAT_TO_STRING = "Book Name: %s, Completed: %b";
+    private Integer quantity;
+    private final String FORMAT_TO_STRING = "Book Name: %s, Quantity: %d";
 
     public Request() {
     }
 
-    public Request(String bookName, boolean completed) {
+    public Request(Book book){
+        bookName = book.getName();
+        quantity = 1;
+    }
+
+    public Request(String bookName, Integer quantity) {
         this.bookName = bookName;
-        this.completed = completed;
+        this.quantity = quantity;
     }
 
     public String toString(){
-        return String.format(FORMAT_TO_STRING, bookName,  completed );
+        return String.format(FORMAT_TO_STRING, bookName, quantity);
     }
 
     public int getQuantity() {
@@ -36,13 +40,5 @@ public class Request {
 
     public void setBookName(String bookName) {
         this.bookName = bookName;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
     }
 }
