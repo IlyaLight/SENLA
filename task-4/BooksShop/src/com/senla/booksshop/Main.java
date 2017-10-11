@@ -12,10 +12,12 @@ import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.utility.Printer;
 import com.senla.booksshop.utility.WorkWithFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.LogManager;
 
 
 public class Main {
@@ -23,6 +25,13 @@ public class Main {
     static final String  STANDART_PATH = "e:/OneDrive/Project/SENLA/task-4/BooksShop/out/artifacts/BooksShop_jar/";
 
     public static void main(String[] args) throws Exception{
+
+        try {
+            LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("/logging.properties"));
+        }catch (IOException e){
+            System.err.println("Could not setup logger configuration: " + e.toString());
+        }
+
 
         System.out.println("Book_Shop");
         String path = STANDART_PATH;
@@ -49,12 +58,12 @@ public class Main {
         Printer.printCollection(controller.getBooksSortedByPrice());
         Printer.printCollection(controller.getBooksSortedByStockAvailability());
 
-        Printer.printCollection(controller.getOrderSortedByDataComplection());
+        Printer.printCollection(controller.getOrderSortedByDataCompletion());
         Printer.printCollection(controller.getOrderSortedByPrice());
         Printer.printCollection(controller.getOrderSortedByStatus());
 
-        Printer.printCollection(controller.getRequstSortedOfquantity());
-        Printer.printCollection(controller.getRequstSortedByBookName());
+        Printer.printCollection(controller.getRequestSortedOfQuantity());
+        Printer.printCollection(controller.getRequestSortedByBookName());
 
         Printer.printCollection(controller.getCompletedOrderSortedByCompletedData(from.getTime(), to.getTime()));
         Printer.printCollection(controller.getCompletedOrderSortedByPrice(from.getTime(), to.getTime()));
@@ -77,11 +86,11 @@ public class Main {
 
         controller.addOrder(bookList , 10);
 
-        controller.assembledAnOrder(controller.getOrderByIp(1));
+        controller.assembledAnOrder(controller.getOrderById(1));
 
-        controller.cancelTheOrder(controller.getOrderByIp(1));
+        controller.cancelTheOrder(controller.getOrderById(1));
 
-        controller.addRequst(controller.findBookByName("x"));
+        controller.addRequest(controller.findBookByName("x"));
 
         controller.writeToFile(path);
     }
@@ -109,13 +118,13 @@ public class Main {
 
         ArrayList<Order> orders = new ArrayList<>();
         calendar.set(2017, Calendar.FEBRUARY, 1);
-        orders.add(new Order(1, (float)50, calendar.getTime(), "transit", Order.Status.КОМПЛЕКТУЕТСЯ, false));
+        orders.add(new Order(1, (float)50, calendar.getTime(), "transit", Order.Status.PROCESSED, false));
         calendar.set(2017, Calendar.APRIL, 1);
-        orders.add(new Order(2, (float)40, calendar.getTime(), "transit", Order.Status.КОМПЛЕКТУЕТСЯ, false));
+        orders.add(new Order(2, (float)40, calendar.getTime(), "transit", Order.Status.PROCESSED, false));
         calendar.set(2017, Calendar.MARCH, 1);
-        orders.add(new Order(3, (float)40, calendar.getTime(), "transit", Order.Status.КОМПЛЕКТУЕТСЯ, false));
+        orders.add(new Order(3, (float)40, calendar.getTime(), "transit", Order.Status.PROCESSED, false));
         calendar.set(2017, Calendar.OCTOBER, 1);
-        orders.add(new Order(4, (float)150, calendar.getTime(), "delivery", Order.Status.КОМПЛЕКТУЕТСЯ, true));
+        orders.add(new Order(4, (float)150, calendar.getTime(), "delivery", Order.Status.PROCESSED, true));
 
         BookStore bookStore = new BookStore();
         controller.setBookStore(bookStore);

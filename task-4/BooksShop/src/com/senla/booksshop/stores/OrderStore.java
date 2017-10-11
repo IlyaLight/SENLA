@@ -2,6 +2,7 @@ package com.senla.booksshop.stores;
 
 import com.senla.booksshop.model.Order;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -9,13 +10,13 @@ import java.util.ArrayList;
  */
 public class OrderStore {
 
-    private ArrayList<Order> orderArrayList = new ArrayList<Order>();
+    private List<Order> orderArrayList = new ArrayList<>();
 
-    public ArrayList<Order> getOrderArrayList() {
+    public List<Order> getOrderArrayList() {
         return orderArrayList;
     }
 
-    public void setOrderArrayList(ArrayList<Order> orderArrayList) {
+    public void setOrderArrayList(List<Order> orderArrayList) {
         this.orderArrayList = orderArrayList;
     }
 
@@ -27,8 +28,8 @@ public class OrderStore {
         System.out.println("Will be later");
     }
 
-    public void update(){
-        System.out.println("Will be later");
+    public void update(Order order){
+        orderArrayList.add(order);
     }
 
     public void delete(){

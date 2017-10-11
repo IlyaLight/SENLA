@@ -2,9 +2,9 @@ package com.senla.booksshop.controller;
 
 import com.senla.booksshop.model.*;
 import com.senla.booksshop.model.Request;
-import com.senla.booksshop.servis.BookServis;
-import com.senla.booksshop.servis.OrderServis;
-import com.senla.booksshop.servis.RequestServis;
+import com.senla.booksshop.service.BookService;
+import com.senla.booksshop.service.OrderService;
+import com.senla.booksshop.service.RequestService;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
@@ -55,83 +55,83 @@ public class Controller implements IController {
 
     @Override
     public List<Book> getBooksSortedByName(){
-        return BookServis.getBooksSortedByName(bookStore.getBookList());
+        return BookService.getBooksSortedByName(bookStore.getBookList());
     }
 
     @Override
     public List<Book> getBooksSortedByDateIssue(){
-        return BookServis.getBooksSortedByDateIssue(bookStore.getBookList());
+        return BookService.getBooksSortedByDateIssue(bookStore.getBookList());
     }
 
     @Override
     public List<Book> getBooksSortedByStockAvailability(){
-        return BookServis.getBooksSortedByStockAvailability(bookStore.getBookList());
+        return BookService.getBooksSortedByStockAvailability(bookStore.getBookList());
     }
 
     @Override
     public List<Book> getBooksSortedByPrice(){
-        return BookServis.getBooksSortedByPrice(bookStore.getBookList());
+        return BookService.getBooksSortedByPrice(bookStore.getBookList());
     }
 
     @Override
     public List<Book> getStaleBooksDate(Date date){
-        return BookServis.getStaleBooksDate(bookStore.getBookList(), date);
+        return BookService.getStaleBooksDate(bookStore.getBookList(), date);
     }
 
     @Override
     public List<Book> getStaleBooksPrice(Date date){
-        return BookServis.getStaleBooksPrice(bookStore.getBookList(), date);
+        return BookService.getStaleBooksPrice(bookStore.getBookList(), date);
     }
 
     @Override
     public List<Order> getOrderSortedByPrice() {
-        return OrderServis.getOrderSortedByPrice(orderStore.getOrderArrayList());
+        return OrderService.getOrderSortedByPrice(orderStore.getOrderArrayList());
     }
 
     @Override
     public List<Order> getOrderSortedByStatus() {
-        return OrderServis.getOrderSortedByStatus(orderStore.getOrderArrayList());
+        return OrderService.getOrderSortedByStatus(orderStore.getOrderArrayList());
     }
 
     @Override
-    public List<Order> getOrderSortedByDataComplection() {
-        return OrderServis.getOrderSortedByDataComplection(orderStore.getOrderArrayList());
+    public List<Order> getOrderSortedByDataCompletion() {
+        return OrderService.getOrderSortedByDataCompletion(orderStore.getOrderArrayList());
     }
 
     @Override
     public List<Order> getCompletedOrder(Date from, Date to) {
-        return OrderServis.getCompletedOrder(orderStore.getOrderArrayList(), from, to);
+        return OrderService.getCompletedOrder(orderStore.getOrderArrayList(), from, to);
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByPrice(Date from, Date to) {
-        return OrderServis.getCompletedOrderSortedByPrice(orderStore.getOrderArrayList(), from, to);
+        return OrderService.getCompletedOrderSortedByPrice(orderStore.getOrderArrayList(), from, to);
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to) {
-        return OrderServis.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(), from, to);
+        return OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(), from, to);
     }
 
     @Override
-    public List<Request> getRequstSortedByBookName(){
-        return RequestServis.getRequstSortedByBookName(requestStore.getRequestArrayList());
+    public List<Request> getRequestSortedByBookName(){
+        return RequestService.getRequestSortedByBookName(requestStore.getRequestArrayList());
     }
 
     @Override
-    public List<Request> getRequstSortedOfquantity(){
-        return RequestServis.getRequstSortedOfquantity(requestStore.getRequestArrayList());
+    public List<Request> getRequestSortedOfQuantity(){
+        return RequestService.getRequestSortedOfquantity(requestStore.getRequestArrayList());
     }
 
     @Override
     public String getBookDescription(String bookName){
-        return BookServis.getBookDescription(bookStore.getBookList(), bookName);
+        return BookService.getBookDescription(bookStore.getBookList(), bookName);
 
     }
 
     @Override
     public String getOrderDetails(Integer ip){
-        return OrderServis.getOrderDetails(orderStore.getOrderArrayList(), ip);
+        return OrderService.getOrderDetails(orderStore.getOrderArrayList(), ip);
 
     }
 
@@ -141,9 +141,11 @@ public class Controller implements IController {
         book.setInStock(quantity);
         if (quantity>0) {
             List<Request> requestList = findRequestByBookName(bookName);
-            for (Request request : requestList) {
-                if (request.getBookName().equals(book.getName())) {
-                    request.setQuantity(0);
+            if (requestList != null) {
+                for (Request request : requestList) {
+                    if (request.getBookName().equals(book.getName())) {
+                        request.setQuantity(0);
+                    }
                 }
             }
         }
@@ -151,7 +153,7 @@ public class Controller implements IController {
 
     @Override
     public float getIncome(Date from, Date to){
-        List<Order> orders = OrderServis.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(),from, to);
+        List<Order> orders = OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(),from, to);
         float income = 0;
         for (Order order : orders) {
             income += order.getPrice();
@@ -161,7 +163,7 @@ public class Controller implements IController {
 
     @Override
     public void addOrder(List<Book> books, Integer id){
-        orderStore.getOrderArrayList().add(new Order(books, id));
+        orderStore.update(new Order(books, id));
     }
 
     @Override
@@ -184,16 +186,16 @@ public class Controller implements IController {
     }
 
     @Override
-    public void addRequst(Book book){
+    public void addRequest(Book book){
         if (book.getInStock() > 0) {
-            boolean newRequst = true;
+            boolean newRequest = true;
             for (Request request : requestStore.getRequestArrayList()) {
                 if (request.getBookName().equals(book.getName())) {
                     request.setQuantity(request.getQuantity() + 1);
-                    newRequst = false;
+                    newRequest = false;
                 }
             }
-            if (newRequst) {
+            if (newRequest) {
                 requestStore.getRequestArrayList().add(new Request(book));
             }
         }
@@ -228,9 +230,9 @@ public class Controller implements IController {
     }
 
     @Override
-    public Order getOrderByIp(Integer ip){
+    public Order getOrderById(Integer id){
         for (Order order : orderStore.getOrderArrayList()) {
-            if (order.getId() == ip){
+            if (order.getId().equals(id)){
                 return order;
             }
         }

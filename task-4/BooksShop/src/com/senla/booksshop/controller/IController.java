@@ -39,7 +39,7 @@ public interface IController {
 
     List<Order> getOrderSortedByStatus();
 
-    List<Order> getOrderSortedByDataComplection();
+    List<Order> getOrderSortedByDataCompletion();
 
     List<Order> getCompletedOrder(Date from, Date to);
 
@@ -47,9 +47,9 @@ public interface IController {
 
     List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to);
 
-    List<Request> getRequstSortedByBookName();
+    List<Request> getRequestSortedByBookName();
 
-    List<Request> getRequstSortedOfquantity();
+    List<Request> getRequestSortedOfQuantity();
 
     String getBookDescription(String bookName);
 
@@ -65,7 +65,7 @@ public interface IController {
 
     void cancelTheOrder(Order order);
 
-    void addRequst(Book book);
+    void addRequest(Book book);
 
     void readFromFile(String filePath);
 
@@ -73,5 +73,5 @@ public interface IController {
 
     Book findBookByName(String name);
 
-    Order getOrderByIp(Integer ip);
+    Order getOrderById(Integer ip);
 }

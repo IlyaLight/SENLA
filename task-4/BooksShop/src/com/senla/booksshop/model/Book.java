@@ -15,7 +15,7 @@ public class Book {
     private Date datePublication;
     private Float price;
     private int inStock;
-    private final String FORMAT_TO_STRING = "Name: %s, Date of Publication: %s, Data Of Issue: %s, Price: %f, In Stock: %d";
+    private static final String FORMAT_TO_STRING = "Name: %s, Date of Publication: %s, Data Of Issue: %s, Price: %f, In Stock: %d";
 
     public Book() {
     }

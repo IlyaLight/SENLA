@@ -4,6 +4,7 @@ import com.senla.booksshop.model.Book;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -11,13 +12,13 @@ import java.util.ArrayList;
  */
 public class BookStore {
 
-    private ArrayList<Book> bookArrayList = new ArrayList<Book>();
+    private List<Book> bookArrayList = new ArrayList<>();
 
-    public ArrayList<Book> getBookList() {
+    public List<Book> getBookList() {
         return bookArrayList;
     }
 
-    public void setBookList(ArrayList<Book> bookList) {
+    public void setBookList(List<Book> bookList) {
         this.bookArrayList = bookList;
     }
 

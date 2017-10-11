@@ -19,7 +19,7 @@ public class Order {
     private Date dataCompletion;
     private String details;
     private Status status;
-    boolean completed;
+    private boolean completed;
 
 
 
