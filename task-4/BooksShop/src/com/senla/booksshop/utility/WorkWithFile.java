@@ -60,7 +60,7 @@ public class WorkWithFile {
     }
 
     public static List<Order> readOrdersFromFile(final String filePath){
-        try {
+//        try {
             TextFileWorker textFileWorker = new TextFileWorker(filePath + ORDER_FILE_NAME);
             String[] strings = textFileWorker.readFromFile();
             List<Order> orderArrayList = new ArrayList<Order>();
@@ -74,11 +74,11 @@ public class WorkWithFile {
                         Boolean.parseBoolean(order[5])));
             }
             return orderArrayList;
-        }catch (IllegalArgumentException e){
-            IllegalArgumentException exception = new IllegalArgumentException(filePath + ORDER_FILE_NAME + "  not found");
-            log.log(Level.INFO, "IllegalArgumentException: ", exception);
-            throw exception;
-        }
+//        }catch (IllegalArgumentException e){
+//            IllegalArgumentException exception = new IllegalArgumentException(filePath + ORDER_FILE_NAME + "  not found");
+//            log.log(Level.INFO, "IllegalArgumentException: ", exception);
+//            throw exception;
+//        }
 
     }
 
@@ -136,7 +136,7 @@ public class WorkWithFile {
             Files.createFile(filePathBook);
             Files.createFile(filePathOrder);
             Files.createFile(filePathRequest);
-        }   catch (IOException x){}
+        }   catch (IOException x){x.printStackTrace();}
     }
 
 }

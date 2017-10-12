@@ -1,7 +1,6 @@
 package ui.senla.com;
 
 public class MenuItem {
-    private MenuController controller;
     private String title;
     private Menu nextMenu;
     private IAction action;
@@ -12,20 +11,12 @@ public class MenuItem {
         this.nextMenu = nextMenu;
     }
 
-    public MenuItem(MenuController controller, Menu nextMenu, String title, IAction action) {
-        this.controller = controller;
+    public MenuItem(Menu nextMenu, String title, IAction action) {
         this.title = title;
         this.nextMenu = nextMenu;
         this.action = action;
     }
 
-    public MenuController getController() {
-        return controller;
-    }
-
-    public void setController(MenuController controller) {
-        this.controller = controller;
-    }
 
     public String getTitle() {
         return title;
@@ -52,6 +43,6 @@ public class MenuItem {
     }
 
     public void action(){
-        action.action(controller);
+        action.action();
     }
 }

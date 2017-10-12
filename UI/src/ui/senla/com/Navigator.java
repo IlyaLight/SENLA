@@ -2,6 +2,8 @@ package ui.senla.com;
 
 public class Navigator {
     private static final String MENU_ITEMS = "\t%d - %s\n";
+    private static final String LINE = "------------------------";
+    private static final String INDENT = "\n\n\n\n";
 
     private Menu menu;
     private int index;
@@ -33,10 +35,14 @@ public class Navigator {
         }
         menu = item.getNextMenu();
         //если null то ошибка!
+        System.out.println(INDENT);
+        System.out.println(LINE);
         System.out.println(menu.getNmae());
         if (menu.getContent() != null) {
+            System.out.println(LINE);
             System.out.println(menu.getContent());
         }
+        System.out.println();
         int i = 0;
         for(MenuItem m : menu.getItems()){
             System.out.format(MENU_ITEMS, i, m.getTitle());

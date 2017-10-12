@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MenuController
 {
-    IController shopController = new Controller();
+    private IController shopController = new Controller();
     private MenuBuilder menuBuilder = new MenuBuilder(this, shopController);
     private Navigator navigator = new Navigator();
     private boolean stopRun = false;
@@ -18,7 +18,8 @@ public class MenuController
         try {
             shopController.readFromFile("");
         }catch (IllegalArgumentException e){
-            e.printStackTrace();
+            System.out.println("could not read data from file");
+            stopRun();
         }
         navigator.setMenu(menuBuilder.buildMenu());
         Scanner scanner = new Scanner(System.in);

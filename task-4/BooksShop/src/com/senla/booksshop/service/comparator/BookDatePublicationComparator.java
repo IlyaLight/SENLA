@@ -7,6 +7,10 @@ import java.util.Comparator;
 public class BookDatePublicationComparator implements Comparator<Book> {
     @Override
     public int compare(Book o1, Book o2) {
+        if(o1 == null || o2 == null)
+        {
+            return NullCompareFoComparators.compare(o1,o2);
+        }
         return o1.getDatePublication().compareTo(o2.getDatePublication());
     }
 }

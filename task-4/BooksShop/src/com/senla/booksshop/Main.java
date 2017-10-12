@@ -22,7 +22,7 @@ import java.util.logging.LogManager;
 
 public class Main {
 
-    static final String  STANDART_PATH = "e:/OneDrive/Project/SENLA/task-4/BooksShop/out/artifacts/BooksShop_jar/";
+    static final String  STANDART_PATH = "";
 
     public static void main(String[] args) throws Exception{
 
@@ -40,6 +40,7 @@ public class Main {
             path = args[0];
         }
 
+        //WorkWithFile.createFiles(path);
         //testCreate(path);
         testReadWritetoFile(path);
     }
@@ -96,7 +97,6 @@ public class Main {
     }
 
     public static void testCreate(String path){
-        WorkWithFile.createFiles(path);
         Calendar calendar =Calendar.getInstance();
         IController controller = new Controller();
 
@@ -127,10 +127,13 @@ public class Main {
         orders.add(new Order(4, (float)150, calendar.getTime(), "delivery", Order.Status.PROCESSED, true));
 
         BookStore bookStore = new BookStore();
+        bookStore.setBookList(books);
         controller.setBookStore(bookStore);
         OrderStore orderStore = new OrderStore();
+        orderStore.setOrderArrayList(orders);
         controller.setOrderStore(orderStore);
         RequestStore requestStore = new RequestStore();
+        requestStore.setRequestArrayList(requests);
         controller.setRequestStore(requestStore);
 
         controller.writeToFile(path);

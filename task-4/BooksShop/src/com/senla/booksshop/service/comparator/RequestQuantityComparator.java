@@ -8,6 +8,10 @@ public class RequestQuantityComparator implements Comparator<Request> {
 
     @Override
     public int compare(Request o1, Request o2) {
+        if(o1 == null || o2 == null)
+        {
+            return NullCompareFoComparators.compare(o1,o2);
+        }
         if (o1.getQuantity() > o1.getQuantity()){
             return 1;
         }
