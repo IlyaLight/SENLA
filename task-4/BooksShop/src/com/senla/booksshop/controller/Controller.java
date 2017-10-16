@@ -1,5 +1,6 @@
 package com.senla.booksshop.controller;
 
+import com.senla.booksshop.exception.ObjectAvailabilityException;
 import com.senla.booksshop.model.*;
 import com.senla.booksshop.model.Request;
 import com.senla.booksshop.service.BookService;
@@ -14,14 +15,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Light on 22.09.2017.
- */
 public class Controller implements IController {
 
-    private BookStore bookStore;
-    private OrderStore orderStore;
-    private RequestStore requestStore;
+    private BookStore bookStore = new BookStore();
+    private OrderStore orderStore = new OrderStore();
+    private RequestStore requestStore = new RequestStore();
 
     @Override
     public BookStore getBookStore() {
@@ -124,20 +122,24 @@ public class Controller implements IController {
     }
 
     @Override
-    public String getBookDescription(String bookName){
-        return BookService.getBookDescription(bookStore.getBookList(), bookName);
+    public String getBookDescription(String bookName) throws ObjectAvailabilityException {
+        Book book = GetBookByName(bookName);
+        return book.getDescription();
 
     }
 
     @Override
-    public String getOrderDetails(Integer ip){
-        return OrderService.getOrderDetails(orderStore.getOrderArrayList(), ip);
+    public String getOrderDetails(Integer id) throws ObjectAvailabilityException {
+        String s = OrderService.getOrderDetails(orderStore.getOrderArrayList(), id);
+        if (s == null){
+            throw new ObjectAvailabilityException();
+        }else return s;
 
     }
 
     @Override
-    public void setBookAsQuantity(String bookName, int quantity){
-        Book book = findBookByName(bookName);
+    public void setBookQuantity(String bookName, int quantity) throws ObjectAvailabilityException {
+        Book book = GetBookByName(bookName);
         book.setInStock(quantity);
         if (quantity>0) {
             List<Request> requestList = findRequestByBookName(bookName);
@@ -167,7 +169,7 @@ public class Controller implements IController {
     }
 
     @Override
-    public void assembledAnOrder(Order order){
+    public void assembleOrder(Order order){
 //        boolean i = true;
 //        for (Book book : order.getBooks()) {
 //            if (book.getInStock() == 0){
@@ -219,24 +221,24 @@ public class Controller implements IController {
     }
 
     @Override
-    public Book findBookByName(String name){
+    public Book GetBookByName(String name) throws ObjectAvailabilityException{
         List<Book> books = bookStore.getBookList();
         for (Book book : books) {
             if (book.getName().equals(name)){
                 return book;
             }
         }
-        return null;
+        throw new ObjectAvailabilityException();
     }
 
     @Override
-    public Order getOrderById(Integer id){
+    public Order getOrderById(Integer id) throws ObjectAvailabilityException {
         for (Order order : orderStore.getOrderArrayList()) {
             if (order.getId().equals(id)){
                 return order;
             }
         }
-        return null;
+        throw new ObjectAvailabilityException();
     }
 
     private List<Request> findRequestByBookName(String name){

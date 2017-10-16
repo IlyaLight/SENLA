@@ -1,13 +1,12 @@
-package ui.senla.com;
+package com.senla.ui;
 
 import java.util.List;
-import java.util.Scanner;
 
 public interface IMenu {
 
-    String getNmae();
+    String getNamae();
 
-    void setNmae(String nmae);
+    void setNamae(String namae);
 
     String getContent();
 

@@ -24,7 +24,6 @@ public class WorkWithFile {
     private static final String REQUEST_FILE_NAME = "requests.txt";
 
     public static List<Book> readBooksFromFile(final String filePath){
-        try {
             TextFileWorker textFileWorker = new TextFileWorker(filePath + BOOKS_FILE_NAME);
             String[] strings = textFileWorker.readFromFile();
             List<Book> bookList = new ArrayList<>();
@@ -37,11 +36,6 @@ public class WorkWithFile {
                         Integer.parseInt(book[4])));
             }
             return bookList;
-        }catch (IllegalArgumentException e){
-            IllegalArgumentException exception = new IllegalArgumentException(filePath + BOOKS_FILE_NAME + "  not found");
-            log.log(Level.INFO, "IllegalArgumentException: ", exception);
-            throw exception;
-        }
     }
 
     public static void writeBooksToFile(final String filePath, List<Book> bookList){
@@ -60,7 +54,6 @@ public class WorkWithFile {
     }
 
     public static List<Order> readOrdersFromFile(final String filePath){
-//        try {
             TextFileWorker textFileWorker = new TextFileWorker(filePath + ORDER_FILE_NAME);
             String[] strings = textFileWorker.readFromFile();
             List<Order> orderArrayList = new ArrayList<Order>();
@@ -74,12 +67,6 @@ public class WorkWithFile {
                         Boolean.parseBoolean(order[5])));
             }
             return orderArrayList;
-//        }catch (IllegalArgumentException e){
-//            IllegalArgumentException exception = new IllegalArgumentException(filePath + ORDER_FILE_NAME + "  not found");
-//            log.log(Level.INFO, "IllegalArgumentException: ", exception);
-//            throw exception;
-//        }
-
     }
 
     public static void writeOrdersToFile(final String filePath, List<Order> orderArrayList){
@@ -99,7 +86,6 @@ public class WorkWithFile {
     }
 
     public static ArrayList<Request> readRequestFromFile(final String filePath){
-        try {
             TextFileWorker textFileWorker = new TextFileWorker(filePath + REQUEST_FILE_NAME);
         String[] strings = textFileWorker.readFromFile();
         ArrayList<Request> requestArrayList = new ArrayList<Request>();
@@ -109,11 +95,6 @@ public class WorkWithFile {
                    Integer.parseInt(order[1])));
         }
         return requestArrayList;
-        }catch (IllegalArgumentException e){
-            IllegalArgumentException exception = new IllegalArgumentException(filePath + REQUEST_FILE_NAME + "  not found");
-            log.log(Level.INFO, "IllegalArgumentException: ", exception);
-            throw exception;
-        }
     }
 
     public static void writeRequestsToFile(final String filePath, List<Request> requestArrayList){

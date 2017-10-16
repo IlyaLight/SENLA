@@ -4,7 +4,6 @@ import com.senla.booksshop.model.Book;
 import com.senla.booksshop.service.comparator.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -79,6 +78,6 @@ public class BookService {
                 return book.getDescription();
             }
         }
-        return "not found";
+        return null;
     }
 }

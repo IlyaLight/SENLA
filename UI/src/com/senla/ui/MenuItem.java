@@ -1,4 +1,6 @@
-package ui.senla.com;
+package com.senla.ui;
+
+import com.senla.ui.action.IAction;
 
 public class MenuItem {
     private String title;
@@ -7,7 +9,7 @@ public class MenuItem {
 
 
     public MenuItem(Menu nextMenu) {
-        this.title = nextMenu.getNmae();
+        this.title = nextMenu.getNamae();
         this.nextMenu = nextMenu;
     }
 
@@ -42,7 +44,7 @@ public class MenuItem {
         this.action = action;
     }
 
-    public void action(){
-        action.action();
+    public void action(MenuController menuController){
+        action.action(menuController);
     }
 }

@@ -10,7 +10,6 @@ import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.utility.Printer;
-import com.senla.booksshop.utility.WorkWithFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -76,22 +75,22 @@ public class Main {
         Printer.printCollection(controller.getStaleBooksDate(from.getTime()));
         Printer.printCollection(controller.getStaleBooksPrice(from.getTime()));
 
-        System.out.println(controller.getOrderDetails(1));
-        System.out.println(controller.getBookDescription("x"));
+//        System.out.println(controller.getOrderDetails(1));
+//        System.out.println(controller.getBookDescription("x"));
 
-        controller.setBookAsQuantity("x", 10);
+//        controller.setBookQuantity("x", 10);
 
         List<Book> bookList = new ArrayList<>();
-        bookList.add( controller.findBookByName("x"));
-        bookList.add( controller.findBookByName("c"));
+//        bookList.add( controller.GetBookByName("x"));
+//        bookList.add( controller.GetBookByName("c"));
 
         controller.addOrder(bookList , 10);
 
-        controller.assembledAnOrder(controller.getOrderById(1));
+//        controller.assembleOrder(controller.getOrderById(1));
 
-        controller.cancelTheOrder(controller.getOrderById(1));
+//        controller.cancelTheOrder(controller.getOrderById(1));
 
-        controller.addRequest(controller.findBookByName("x"));
+//        controller.addRequest(controller.GetBookByName("x"));
 
         controller.writeToFile(path);
     }

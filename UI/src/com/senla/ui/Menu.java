@@ -1,32 +1,31 @@
-package ui.senla.com;
+package com.senla.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Light on 05.10.2017.
  */
 public class  Menu implements IMenu {
 
-    private String nmae;
+    private String namae;
     private String Content;
     private List<MenuItem> items = new ArrayList<>();
 
     public Menu(){}
 
-    public Menu(String nmae) {
-        this.nmae = nmae;
+    public Menu(String namae) {
+        this.namae = namae;
     }
 
     @Override
-    public String getNmae() {
-        return nmae;
+    public String getNamae() {
+        return namae;
     }
 
     @Override
-    public void setNmae(String nmae) {
-        this.nmae = nmae;
+    public void setNamae(String namae) {
+        this.namae = namae;
     }
 
     @Override

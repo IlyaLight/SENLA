@@ -1,5 +1,6 @@
 package com.senla.booksshop.controller;
 
+import com.senla.booksshop.exception.ObjectAvailabilityException;
 import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
@@ -51,17 +52,17 @@ public interface IController {
 
     List<Request> getRequestSortedOfQuantity();
 
-    String getBookDescription(String bookName);
+    String getBookDescription(String bookName) throws ObjectAvailabilityException;
 
-    String getOrderDetails(Integer ip);
+    String getOrderDetails(Integer ip) throws ObjectAvailabilityException;
 
-    void setBookAsQuantity(String bookName, int quantity);
+    void setBookQuantity(String bookName, int quantity) throws ObjectAvailabilityException;
 
     float getIncome(Date from, Date to);
 
     void addOrder(List<Book> books, Integer id);
 
-    void assembledAnOrder(Order order);
+    void assembleOrder(Order order);
 
     void cancelTheOrder(Order order);
 
@@ -71,7 +72,7 @@ public interface IController {
 
     void writeToFile(String filePath);
 
-    Book findBookByName(String name);
+    Book GetBookByName(String name) throws ObjectAvailabilityException;
 
-    Order getOrderById(Integer ip);
+    Order getOrderById(Integer ip) throws ObjectAvailabilityException;
 }
