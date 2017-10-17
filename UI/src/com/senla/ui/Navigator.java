@@ -1,14 +1,15 @@
 package com.senla.ui;
 
+import com.senla.ui.controller.MenuController;
 import com.senla.ui.utility.Console;
 
 public class Navigator {
     private static final String MENU_ITEMS = "\t%d - %s\n";
-    private static final String LINE = "------------------------";
-    private static final String INDENT = "\n\n\n\n";
+    private static final String LINE = "-----------------------------";
+    private static final String INDENT = "\n\n";
     private static final String WRONG_VALUE_ENTERED = "wrong value entered";
     private static final String ENTER_EXIT_TO_EXIT_THE_PROGRAM = "enter \"exit\" to exit the program";
-    private static final String EXTI = "exti";
+    private static final String EXIT = "exit";
 
     private Menu menu;
     private int index;
@@ -18,26 +19,27 @@ public class Navigator {
     }
 
     public boolean navigate() {
+        Console.out(INDENT);
         String in = Console.inString(ENTER_EXIT_TO_EXIT_THE_PROGRAM);
-        int inint = 0;
-         if (in.equals(EXTI)){
+        int inInt = 0;
+         if (in.equals(EXIT)){
             return false;
         }else {
              boolean getIndex = false;
-             while (getIndex == false) {
+             while (!getIndex) {
                  try {
-                     inint = Integer.parseInt(in);
+                     inInt = Integer.parseInt(in);
                  } catch (NumberFormatException e) {
                      Console.out(WRONG_VALUE_ENTERED);
                  }
-                 if (inint < 0 || inint > menu.getItems().size()) {
+                 if (inInt < 0 || inInt > menu.getItems().size()) {
                      Console.out(WRONG_VALUE_ENTERED);
                  }else {
                      getIndex = true;
                  }
              }
         }
-        index = inint;
+        index = inInt;
         return true;
     }
 
@@ -45,11 +47,12 @@ public class Navigator {
         menu = menu.getItems().get(index).getNextMenu();
         Console.out(INDENT);
         Console.out(LINE);
-        Console.out(menu.getNamae());
+        Console.out(menu.getName());
         if (menu.getContent() != null) {
             Console.out(LINE);
             Console.out(menu.getContent());
         }
+        Console.out(LINE);
         int i = 0;
         for(MenuItem m : menu.getItems()){
             System.out.format(MENU_ITEMS, i, m.getTitle());
@@ -66,7 +69,14 @@ public class Navigator {
 
     public void action(MenuController menuController) {
         if (isAction()) {
+            Console.out(INDENT);
+            Console.out(LINE);
+            Console.out(menu.getItems().get(index).getTitle());
+            Console.out(LINE);
             menu.getItems().get(index).action(menuController);
+            Console.out(LINE);
+            Console.out("\n");
+            Console.inString("press \"Enter\" to continue");
         }
     }
 }

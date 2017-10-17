@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface IMenu {
 
-    String getNamae();
+    String getName();
 
-    void setNamae(String namae);
+    void setName(String name);
 
     String getContent();
 

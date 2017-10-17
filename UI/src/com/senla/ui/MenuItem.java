@@ -1,6 +1,7 @@
 package com.senla.ui;
 
 import com.senla.ui.action.IAction;
+import com.senla.ui.controller.MenuController;
 
 public class MenuItem {
     private String title;
@@ -9,7 +10,7 @@ public class MenuItem {
 
 
     public MenuItem(Menu nextMenu) {
-        this.title = nextMenu.getNamae();
+        this.title = nextMenu.getName();
         this.nextMenu = nextMenu;
     }
 

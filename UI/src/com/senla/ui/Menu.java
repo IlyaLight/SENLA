@@ -8,34 +8,34 @@ import java.util.List;
  */
 public class  Menu implements IMenu {
 
-    private String namae;
-    private String Content;
+    private String name;
+    private String content;
     private List<MenuItem> items = new ArrayList<>();
 
     public Menu(){}
 
-    public Menu(String namae) {
-        this.namae = namae;
+    public Menu(String name) {
+        this.name = name;
     }
 
     @Override
-    public String getNamae() {
-        return namae;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public void setNamae(String namae) {
-        this.namae = namae;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String getContent() {
-        return Content;
+        return content;
     }
 
     @Override
     public void setContent(String content) {
-        this.Content = content;
+        this.content = content;
     }
 
     @Override

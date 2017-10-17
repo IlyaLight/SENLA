@@ -1,6 +1,7 @@
 package com.senla.ui;
 
 import com.senla.booksshop.controller.Controller;
+import com.senla.ui.controller.UIController;
 
 import java.io.IOException;
 import java.util.logging.LogManager;
@@ -15,7 +16,7 @@ public class Main {
         }catch (IOException e){
             System.err.println("Could not setup logger configuration: " + e.toString());
         }
-        MenuController menuController = new MenuController(new Controller(),"");
-        menuController.run();
+        UIController uiController = new UIController(new Controller(),"");
+        uiController.run();
     }
 }

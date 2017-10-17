@@ -1,6 +1,6 @@
 package com.senla.ui.action;
 
-import com.senla.ui.MenuController;
+import com.senla.ui.controller.MenuController;
 
 @FunctionalInterface
 public interface IAction {
