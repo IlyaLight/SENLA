@@ -1,5 +1,6 @@
 package com.senla.booksshop.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * Created by Light on 22.09.2017.
  */
-public class Order implements Cloneable {
+public class Order implements Cloneable, Serializable {
 
     private static final String FORMAT_TO_STRING = "id: %d, Data of Completion: %s, Price: %f, Details: %s, Status: %s";
     private static final int COMPLETION_TIME = 30;

@@ -1,13 +1,15 @@
 package com.senla.booksshop.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Light on 22.09.2017.
  */
-public class Request {
+public class Request implements Serializable {
     private Book book;
     private String bookName;
     private Integer quantity;
-    private final String FORMAT_TO_STRING = "Book Name: %s, Quantity: %d";
+    private static final String FORMAT_TO_STRING = "Book Name: %s, Quantity: %d";
 
     public Request() {
     }

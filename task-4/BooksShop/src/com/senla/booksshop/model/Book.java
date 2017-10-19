@@ -1,12 +1,13 @@
 package com.senla.booksshop.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by Light on 22.09.2017.
  */
-public class Book {
+public class Book implements Serializable {
     private ArrayList<Order> orderArrayList;
     private Request request;
     private String name;

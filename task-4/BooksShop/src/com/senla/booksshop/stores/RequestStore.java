@@ -2,13 +2,14 @@ package com.senla.booksshop.stores;
 
 import com.senla.booksshop.model.Request;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 /**
  * Created by Light on 27.09.2017.
  */
-public class RequestStore {
+public class RequestStore implements Serializable {
 
     private ArrayList<Request> requestArrayList = new ArrayList<Request>();
 

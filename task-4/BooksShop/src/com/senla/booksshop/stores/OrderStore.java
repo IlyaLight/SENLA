@@ -1,6 +1,8 @@
 package com.senla.booksshop.stores;
 
 import com.senla.booksshop.model.Order;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
 /**
  * Created by Light on 27.09.2017.
  */
-public class OrderStore {
+public class OrderStore implements Serializable {
 
     private List<Order> orderArrayList = new ArrayList<>();
 
