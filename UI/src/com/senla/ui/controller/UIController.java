@@ -2,7 +2,7 @@ package com.senla.ui.controller;
 
 
 import com.senla.booksshop.controller.IController;
-import com.senla.ui.MenuBuilder;
+import com.senla.ui.menu.MenuBuilder;
 import com.senla.ui.Navigator;
 
 public class UIController implements IUIController {
@@ -14,6 +14,7 @@ public class UIController implements IUIController {
     public UIController(IController shopController, String filePath) {
         menuController = new MenuController(shopController);
         shopController.readFromFile(filePath);
+        shopController.readPropertiesFromFile(filePath);
         navigator.setMenu(menuBuilder.buildMenu());
     }
 

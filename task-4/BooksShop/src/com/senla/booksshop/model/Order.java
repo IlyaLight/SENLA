@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Light on 22.09.2017.
  */
-public class Order {
+public class Order implements Cloneable {
 
     private static final String FORMAT_TO_STRING = "id: %d, Data of Completion: %s, Price: %f, Details: %s, Status: %s";
     private static final int COMPLETION_TIME = 30;
@@ -24,6 +24,13 @@ public class Order {
 
 
     public Order() {
+    }
+
+    @Override
+    public Order clone() throws CloneNotSupportedException {
+        Order clone = (Order)super.clone();
+        clone.books = books;
+        return clone;
     }
 
     public Order(List<Book> books, Integer id){

@@ -1,0 +1,12 @@
+окт 16, 2017 5:04:14 PM com.senla.ui.MenuController getBookDescription
+SEVERE: Exception: 
+com.senla.booksshop.exception.ObjectAvailabilityException
+	at com.senla.booksshop.controller.Controller.GetBookByName(Controller.java:231)
+	at com.senla.booksshop.controller.Controller.getBookDescription(Controller.java:126)
+	at com.senla.ui.MenuController.getBookDescription(MenuController.java:124)
+	at com.senla.ui.action.GetBookDescription.action(GetBookDescription.java:8)
+	at com.senla.ui.menu.MenuItem.action(MenuItem.java:48)
+	at com.senla.ui.Navigator.action(Navigator.java:69)
+	at com.senla.ui.MenuController.run(MenuController.java:47)
+	at com.senla.ui.Main.main(Main.java:19)
+

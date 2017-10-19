@@ -1,10 +1,10 @@
-package com.senla.ui;
+package com.senla.ui.menu;
 
 import com.senla.ui.action.*;
 
 public class MenuBuilder {
 
-    private static final String CONTENT_HOME_MENU = "\t     SENLA\n\tcourses on java\n\t  Book shop";
+    private static final String CONTENT_HOME_MENU = "|\t     SENLA\n|\tcourses on java\n|\t  Book shop";
     private static final String SHOW_BOOKS_SORTED_BY_NAME = "Show Books Sorted By Name";
     private static final String SHOW_BOOKS_SORTED_BY_STOCK_AVAILABILITY = "Show Books Sorted By Stock Availability";
     private static final String SHOW_BOOKS_SORTED_BY_DATE_ISSUE = "Show Books Sorted By Date Issue";

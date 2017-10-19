@@ -22,7 +22,7 @@ public class MenuController implements IMenuController {
     private static final String INCOME_FOR_A_PERIOD_OF_TIME = "Income for a period of time";
     private static final String FROM = "from";
     private static final String TO = "to";
-    private static final String EXCEPTION = "Exception: ";
+        private static final String EXCEPTION = "Exception: ";
     private static final String ORDER_WITH_THE_SAME_ID_ARE_NOT_FOUND = "order with the same id are not found";
     private static final String ADD_ANOTHER_BOOK = "add another book?";
 
@@ -61,8 +61,7 @@ public class MenuController implements IMenuController {
 
     @Override
     public void getStaleBooksDate(){
-        Console.out(INCOME_FOR_A_PERIOD_OF_TIME);
-        Console.outCollection(shopController.getStaleBooksDate(Console.getDate(FROM)));
+        Console.outCollection(shopController.getStaleBooksDate());
     }
 
     @Override

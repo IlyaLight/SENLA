@@ -7,11 +7,16 @@ import com.senla.booksshop.model.Request;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
+import com.senla.booksshop.utility.PropertiesHolder;
 
 import java.util.Date;
 import java.util.List;
 
 public interface IController {
+    PropertiesHolder getPropertiesHolder();
+
+    void setPropertiesHolder(PropertiesHolder propertiesHolder);
+
     BookStore getBookStore();
 
     void setBookStore(BookStore bookStore);
@@ -32,7 +37,7 @@ public interface IController {
 
     List<Book> getBooksSortedByPrice();
 
-    List<Book> getStaleBooksDate(Date date);
+    List<Book> getStaleBooksDate();
 
     List<Book> getStaleBooksPrice(Date date);
 
@@ -68,6 +73,8 @@ public interface IController {
 
     void addRequest(Book book);
 
+    List<Request> findRequestByBookName(String name);
+
     void readFromFile(String filePath);
 
     void writeToFile(String filePath);
@@ -75,4 +82,6 @@ public interface IController {
     Book GetBookByName(String name) throws ObjectAvailabilityException;
 
     Order getOrderById(Integer ip) throws ObjectAvailabilityException;
+
+    void readPropertiesFromFile(String filePath);
 }

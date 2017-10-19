@@ -1,6 +1,8 @@
 package com.senla.ui;
 
 import com.senla.ui.controller.MenuController;
+import com.senla.ui.menu.Menu;
+import com.senla.ui.menu.MenuItem;
 import com.senla.ui.utility.Console;
 
 public class Navigator {

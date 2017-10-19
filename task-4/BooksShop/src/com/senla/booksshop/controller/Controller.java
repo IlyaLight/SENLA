@@ -1,7 +1,8 @@
 package com.senla.booksshop.controller;
 
 import com.senla.booksshop.exception.ObjectAvailabilityException;
-import com.senla.booksshop.model.*;
+import com.senla.booksshop.model.Book;
+import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
 import com.senla.booksshop.service.BookService;
 import com.senla.booksshop.service.OrderService;
@@ -9,9 +10,12 @@ import com.senla.booksshop.service.RequestService;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
+import com.senla.booksshop.utility.PropertiesHolder;
+import com.senla.booksshop.utility.PropertiesUtil;
 import com.senla.booksshop.utility.WorkWithFile;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +24,17 @@ public class Controller implements IController {
     private BookStore bookStore = new BookStore();
     private OrderStore orderStore = new OrderStore();
     private RequestStore requestStore = new RequestStore();
+    private PropertiesHolder propertiesHolder = new PropertiesHolder();
+
+    @Override
+    public PropertiesHolder getPropertiesHolder() {
+        return propertiesHolder;
+    }
+
+    @Override
+    public void setPropertiesHolder(PropertiesHolder propertiesHolder) {
+        this.propertiesHolder = propertiesHolder;
+    }
 
     @Override
     public BookStore getBookStore() {
@@ -52,32 +67,35 @@ public class Controller implements IController {
     }
 
     @Override
-    public List<Book> getBooksSortedByName(){
+    public List<Book> getBooksSortedByName() {
         return BookService.getBooksSortedByName(bookStore.getBookList());
     }
 
     @Override
-    public List<Book> getBooksSortedByDateIssue(){
+    public List<Book> getBooksSortedByDateIssue() {
         return BookService.getBooksSortedByDateIssue(bookStore.getBookList());
     }
 
     @Override
-    public List<Book> getBooksSortedByStockAvailability(){
+    public List<Book> getBooksSortedByStockAvailability() {
         return BookService.getBooksSortedByStockAvailability(bookStore.getBookList());
     }
 
     @Override
-    public List<Book> getBooksSortedByPrice(){
+    public List<Book> getBooksSortedByPrice() {
         return BookService.getBooksSortedByPrice(bookStore.getBookList());
     }
 
     @Override
-    public List<Book> getStaleBooksDate(Date date){
-        return BookService.getStaleBooksDate(bookStore.getBookList(), date);
+    public List<Book> getStaleBooksDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.MONTH, propertiesHolder.getStaleTime());
+        return BookService.getStaleBooksDate(bookStore.getBookList(), calendar.getTime());
     }
 
     @Override
-    public List<Book> getStaleBooksPrice(Date date){
+    public List<Book> getStaleBooksPrice(Date date) {
         return BookService.getStaleBooksPrice(bookStore.getBookList(), date);
     }
 
@@ -112,12 +130,12 @@ public class Controller implements IController {
     }
 
     @Override
-    public List<Request> getRequestSortedByBookName(){
+    public List<Request> getRequestSortedByBookName() {
         return RequestService.getRequestSortedByBookName(requestStore.getRequestArrayList());
     }
 
     @Override
-    public List<Request> getRequestSortedOfQuantity(){
+    public List<Request> getRequestSortedOfQuantity() {
         return RequestService.getRequestSortedOfquantity(requestStore.getRequestArrayList());
     }
 
@@ -131,9 +149,9 @@ public class Controller implements IController {
     @Override
     public String getOrderDetails(Integer id) throws ObjectAvailabilityException {
         String s = OrderService.getOrderDetails(orderStore.getOrderArrayList(), id);
-        if (s == null){
+        if (s == null) {
             throw new ObjectAvailabilityException();
-        }else return s;
+        } else return s;
 
     }
 
@@ -141,7 +159,7 @@ public class Controller implements IController {
     public void setBookQuantity(String bookName, int quantity) throws ObjectAvailabilityException {
         Book book = GetBookByName(bookName);
         book.setInStock(quantity);
-        if (quantity>0) {
+        if (quantity > 0 | propertiesHolder.isAutomaticallyExecuteRequest()) {
             List<Request> requestList = findRequestByBookName(bookName);
             if (requestList != null) {
                 for (Request request : requestList) {
@@ -154,8 +172,8 @@ public class Controller implements IController {
     }
 
     @Override
-    public float getIncome(Date from, Date to){
-        List<Order> orders = OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(),from, to);
+    public float getIncome(Date from, Date to) {
+        List<Order> orders = OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(), from, to);
         float income = 0;
         for (Order order : orders) {
             income += order.getPrice();
@@ -164,12 +182,12 @@ public class Controller implements IController {
     }
 
     @Override
-    public void addOrder(List<Book> books, Integer id){
+    public void addOrder(List<Book> books, Integer id) {
         orderStore.update(new Order(books, id));
     }
 
     @Override
-    public void assembleOrder(Order order){
+    public void assembleOrder(Order order) {
 //        boolean i = true;
 //        for (Book book : order.getBooks()) {
 //            if (book.getInStock() == 0){
@@ -183,12 +201,12 @@ public class Controller implements IController {
     }
 
     @Override
-    public void cancelTheOrder(Order order){
+    public void cancelTheOrder(Order order) {
         order.setStatus(Order.Status.CANCELED);
     }
 
     @Override
-    public void addRequest(Book book){
+    public void addRequest(Book book) {
         if (book.getInStock() > 0) {
             boolean newRequest = true;
             for (Request request : requestStore.getRequestArrayList()) {
@@ -204,27 +222,10 @@ public class Controller implements IController {
     }
 
     @Override
-    public void readFromFile(final String filePath){
-        bookStore = new BookStore();
-        bookStore.setBookList(WorkWithFile.readBooksFromFile(filePath));
-        orderStore = new OrderStore();
-        orderStore.setOrderArrayList(WorkWithFile.readOrdersFromFile(filePath));
-        requestStore = new RequestStore();
-        requestStore.setRequestArrayList(WorkWithFile.readRequestFromFile(filePath));
-    }
-
-    @Override
-    public void writeToFile(final String filePath){
-        WorkWithFile.writeBooksToFile(filePath, bookStore.getBookList());
-        WorkWithFile.writeOrdersToFile(filePath, orderStore.getOrderArrayList());
-        WorkWithFile.writeRequestsToFile(filePath, requestStore.getRequestArrayList());
-    }
-
-    @Override
-    public Book GetBookByName(String name) throws ObjectAvailabilityException{
+    public Book GetBookByName(String name) throws ObjectAvailabilityException {
         List<Book> books = bookStore.getBookList();
         for (Book book : books) {
-            if (book.getName().equals(name)){
+            if (book.getName().equals(name)) {
                 return book;
             }
         }
@@ -234,24 +235,46 @@ public class Controller implements IController {
     @Override
     public Order getOrderById(Integer id) throws ObjectAvailabilityException {
         for (Order order : orderStore.getOrderArrayList()) {
-            if (order.getId().equals(id)){
+            if (order.getId().equals(id)) {
                 return order;
             }
         }
         throw new ObjectAvailabilityException();
     }
 
-    private List<Request> findRequestByBookName(String name){
+    @Override
+    public List<Request> findRequestByBookName(String name) {
         List<Request> requests = new ArrayList<>();
         for (Request request : requestStore.getRequestArrayList()) {
-            if (request.getBookName().equals(name)){
+            if (request.getBookName().equals(name)) {
                 requests.add(request);
             }
         }
-        if (requests.size() == 0){
+        if (requests.size() == 0) {
             return null;
         }
         return requests;
     }
-}
 
+    @Override
+    public void readFromFile(final String filePath) {
+        bookStore = new BookStore();
+        bookStore.setBookList(WorkWithFile.readBooksFromFile(filePath));
+        orderStore = new OrderStore();
+        orderStore.setOrderArrayList(WorkWithFile.readOrdersFromFile(filePath));
+        requestStore = new RequestStore();
+        requestStore.setRequestArrayList(WorkWithFile.readRequestFromFile(filePath));
+    }
+
+    @Override
+    public void writeToFile(final String filePath) {
+        WorkWithFile.writeBooksToFile(filePath, bookStore.getBookList());
+        WorkWithFile.writeOrdersToFile(filePath, orderStore.getOrderArrayList());
+        WorkWithFile.writeRequestsToFile(filePath, requestStore.getRequestArrayList());
+    }
+
+    @Override
+    public void readPropertiesFromFile(String filePath){
+        propertiesHolder = PropertiesUtil.getPropertiesHolder(filePath);
+    }
+}

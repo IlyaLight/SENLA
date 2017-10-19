@@ -1,4 +1,4 @@
-package com.senla.ui;
+package com.senla.ui.menu;
 
 import java.util.ArrayList;
 import java.util.List;

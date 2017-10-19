@@ -1,4 +1,4 @@
-package com.senla.ui;
+package com.senla.ui.menu;
 
 import com.senla.ui.action.IAction;
 import com.senla.ui.controller.MenuController;
