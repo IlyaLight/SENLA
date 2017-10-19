@@ -20,19 +20,19 @@ public class SerializableUtil {
 
     private static Logger log = Logger.getLogger(WorkWithFile.class.getName());
 
-    public static void exportBook(String path){
-        exportObject(Model.BOOKS, path);
+    public static void exportBook(BookStore bookStore, String path){
+        exportObject(Model.BOOKS,bookStore, path);
     }
 
-    public static void exportOrder(String path){
-        exportObject(Model.ORDER, path);
+    public static void exportOrder(OrderStore orderStore, String path){
+        exportObject(Model.ORDER,orderStore, path);
     }
 
-    public static void exportRequest(String path){
-        exportObject(Model.REQUEST, path);
+    public static void exportRequest(RequestStore requestStore, String path){
+        exportObject(Model.REQUEST,requestStore, path);
     }
 
-    private static void exportObject(Model model, String path){
+    private static void exportObject(Model model,Object object, String path){
         FileOutputStream fos;
         try {
             if (model == Model.BOOKS) {
@@ -45,8 +45,8 @@ public class SerializableUtil {
                 throw new IOException();
             }
             ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(object);
             oos.flush();
-            oos.close();
         } catch (IOException e){
         log.log(Level.SEVERE, EXCEPTION, e);
         throw new RuntimeException(e);
@@ -71,7 +71,6 @@ public class SerializableUtil {
             FileInputStream fis = new FileInputStream("temp.out");
             ObjectInputStream oin = new ObjectInputStream(fis);
             Object object = oin.readObject();
-            oin.close();
             return object;
         } catch (IOException | ClassNotFoundException e){
             log.log(Level.SEVERE, EXCEPTION, e);

@@ -4,6 +4,15 @@ public class PropertiesHolder {
 
     private int staleTime;
     private boolean automaticallyExecuteRequest;
+    private String serializablePath;
+
+    public String getSerializablePath() {
+        return serializablePath;
+    }
+
+    public void setSerializablePath(String serializablePath) {
+        this.serializablePath = serializablePath;
+    }
 
     public int getStaleTime() {
         return staleTime;

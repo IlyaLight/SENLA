@@ -83,5 +83,9 @@ public interface IController {
 
     Order getOrderById(Integer ip) throws ObjectAvailabilityException;
 
+    void exportStores();
+
+    void importStores();
+
     void readPropertiesFromFile(String filePath);
 }

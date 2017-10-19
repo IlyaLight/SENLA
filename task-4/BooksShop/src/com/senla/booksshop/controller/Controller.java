@@ -12,6 +12,7 @@ import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
 import com.senla.booksshop.utility.PropertiesHolder;
 import com.senla.booksshop.utility.PropertiesUtil;
+import com.senla.booksshop.utility.SerializableUtil;
 import com.senla.booksshop.utility.WorkWithFile;
 
 import java.util.ArrayList;
@@ -271,6 +272,22 @@ public class Controller implements IController {
         WorkWithFile.writeBooksToFile(filePath, bookStore.getBookList());
         WorkWithFile.writeOrdersToFile(filePath, orderStore.getOrderArrayList());
         WorkWithFile.writeRequestsToFile(filePath, requestStore.getRequestArrayList());
+    }
+
+    @Override
+    public void exportStores() {
+        String filePath = propertiesHolder.getSerializablePath();
+        SerializableUtil.exportBook(bookStore, filePath);
+        SerializableUtil.exportRequest(requestStore, filePath);
+        SerializableUtil.exportOrder(orderStore, filePath);
+    }
+
+    @Override
+    public void importStores() {
+        String filePath = propertiesHolder.getSerializablePath();
+        bookStore=SerializableUtil.importBooks(filePath);
+        orderStore=SerializableUtil.importOrder(filePath);
+        requestStore=SerializableUtil.importRequest(filePath);
     }
 
     @Override

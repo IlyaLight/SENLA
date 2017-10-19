@@ -8,6 +8,7 @@ public class PropertiesUtil {
     private static final String FILE = "config.properties";
     private static final String REQUEST_AUTOMATICALLY_EXECUTE = "request.automaticallyExecute";
     private static final String BOOK_STALE_TIME = "book.staleTime";
+    private static final String SERIALIZABLE_PATH = "SerializablePath";
 
     public static PropertiesHolder getPropertiesHolder(String filePah){
         FileInputStream file;
@@ -21,6 +22,7 @@ public class PropertiesUtil {
         PropertiesHolder propertiesHolder = new PropertiesHolder();
         propertiesHolder.setAutomaticallyExecuteRequest(Boolean.getBoolean(properties.getProperty(REQUEST_AUTOMATICALLY_EXECUTE)));
         propertiesHolder.setStaleTime(Integer.getInteger(properties.getProperty(BOOK_STALE_TIME)));
+        propertiesHolder.setSerializablePath(properties.getProperty(SERIALIZABLE_PATH));
         return propertiesHolder;
     }
 
