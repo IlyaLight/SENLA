@@ -3,15 +3,23 @@ package com.senla.booksshop;
 
 import com.senla.booksshop.controller.Controller;
 import com.senla.booksshop.controller.IController;
-import com.senla.booksshop.stores.OrderStore;
-import com.senla.booksshop.stores.RequestStore;
 import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
 import com.senla.booksshop.stores.BookStore;
+import com.senla.booksshop.stores.OrderStore;
+import com.senla.booksshop.stores.RequestStore;
+import com.senla.booksshop.utility.CsvUtil;
 import com.senla.booksshop.utility.Printer;
+import org.supercsv.cellprocessor.FmtDate;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.constraint.NotNull;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,13 +32,11 @@ public class Main {
     static final String  STANDART_PATH = "";
 
     public static void main(String[] args) throws Exception{
-
         try {
-            LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("/logging.properties"));
+            LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
         }catch (IOException e){
-            System.err.println("Could not setup logger configuration: " + e.toString());
+             e.printStackTrace();
         }
-
 
         System.out.println("Book_Shop");
         String path = STANDART_PATH;
@@ -41,7 +47,45 @@ public class Main {
 
         //WorkWithFile.createFiles(path);
         //testCreate(path);
-        testReadWritetoFile(path);
+        //testReadWritetoFile(path);
+        //writeCsvTest();
+        IController controller = new Controller();
+        controller.readFromFile(path);
+
+        //CsvUtil.exportBook(controller.getBookStore(), "");
+        BookStore bookStore = CsvUtil.importBooks("");
+        CsvUtil.exportBook(bookStore, "");
+
+        //CsvUtil.exportOrder(controller.getOrderStore(),"");
+        OrderStore orderStore = CsvUtil.importOrder("");
+        CsvUtil.exportOrder(orderStore,"");
+
+        CsvUtil.exportRequest(controller.getRequestStore(),"");
+        RequestStore requestStore = CsvUtil.importRequest("");
+        CsvUtil.exportRequest(requestStore,"");
+
+    }
+
+    public static void writeCsvTest(){
+        CellProcessor[] processors = new CellProcessor[] {
+                new NotNull(), // name
+                new FmtDate("dd/MM/yyyy"), // dateIssue
+                new FmtDate("dd/MM/yyyy"), // datePublication
+                new NotNull(), // price
+                new Optional(), // inStock
+        };
+
+        Calendar calendar =Calendar.getInstance();
+        Book book = new Book("x", new Date(), calendar.getTime(), (float)151.12, 1);
+
+        //ICsvBeanWriter beanWriter = null;
+        try (ICsvBeanWriter beanWriter = new CsvBeanWriter(new FileWriter("books.csv"), CsvPreference.STANDARD_PREFERENCE)){
+            final String[] header = new String[] {"name","datePublication","dateIssue","price","inStock"};
+            beanWriter.writeHeader(header);
+            beanWriter.write(book, header, processors);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public static void testReadWritetoFile(String path){
@@ -72,7 +116,7 @@ public class Main {
 
         Printer.printCollection(controller.getCompletedOrder(from.getTime(), to.getTime()));
 
-        Printer.printCollection(controller.getStaleBooksDate(from.getTime()));
+//        Printer.printCollection(controller.getStaleBooksDate(from.getTime()));
         Printer.printCollection(controller.getStaleBooksPrice(from.getTime()));
 
 //        System.out.println(controller.getOrderDetails(1));
@@ -129,7 +173,7 @@ public class Main {
         bookStore.setBookList(books);
         controller.setBookStore(bookStore);
         OrderStore orderStore = new OrderStore();
-        orderStore.setOrderArrayList(orders);
+        orderStore.setOrderList(orders);
         controller.setOrderStore(orderStore);
         RequestStore requestStore = new RequestStore();
         requestStore.setRequestArrayList(requests);

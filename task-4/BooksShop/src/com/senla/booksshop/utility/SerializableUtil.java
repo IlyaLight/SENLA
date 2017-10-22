@@ -18,7 +18,7 @@ public class SerializableUtil {
     private static final String REQUEST_FILE_NAME = "requests.out";
     private static final String EXCEPTION = "Exception: ";
 
-    private static Logger log = Logger.getLogger(WorkWithFile.class.getName());
+    private static final Logger log = Logger.getLogger(WorkWithFile.class.getName());
 
     public static void exportBook(BookStore bookStore, String path){
         exportObject(Model.BOOKS,bookStore, path);

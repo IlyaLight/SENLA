@@ -4,6 +4,7 @@ import com.senla.booksshop.model.Request;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -11,14 +12,21 @@ import java.util.ArrayList;
  */
 public class RequestStore implements Serializable {
 
-    private ArrayList<Request> requestArrayList = new ArrayList<Request>();
+    private List<Request> requestList = new ArrayList<Request>();
 
-    public ArrayList<Request> getRequestArrayList() {
-        return requestArrayList;
+    public RequestStore() {
+    }
+
+    public RequestStore(List<Request> requests) {
+        this.requestList = requests;
+    }
+
+    public List<Request> getRequestList() {
+        return requestList;
     }
 
     public void setRequestArrayList(ArrayList<Request> requestArrayList) {
-        this.requestArrayList = requestArrayList;
+        this.requestList = requestArrayList;
     }
 
     public void create(){

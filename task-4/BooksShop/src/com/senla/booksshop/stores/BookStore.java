@@ -18,6 +18,13 @@ public class BookStore implements Serializable {
         return bookArrayList;
     }
 
+    public BookStore(List<Book> bookArrayList) {
+        this.bookArrayList = bookArrayList;
+    }
+
+    public BookStore() {
+    }
+
     public void setBookList(List<Book> bookList) {
         this.bookArrayList = bookList;
     }

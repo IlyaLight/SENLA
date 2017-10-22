@@ -8,7 +8,7 @@ public class PropertiesUtil {
     private static final String FILE = "config.properties";
     private static final String REQUEST_AUTOMATICALLY_EXECUTE = "request.automaticallyExecute";
     private static final String BOOK_STALE_TIME = "book.staleTime";
-    private static final String SERIALIZABLE_PATH = "SerializablePath";
+    private static final String SERIALIZABLE_PATH = "Serializable.Path";
 
     public static PropertiesHolder getPropertiesHolder(String filePah){
         FileInputStream file;

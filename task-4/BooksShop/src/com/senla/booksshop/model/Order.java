@@ -27,6 +27,8 @@ public class Order implements Cloneable, Serializable {
     public Order() {
     }
 
+
+
     @Override
     public Order clone() throws CloneNotSupportedException {
         Order clone = (Order)super.clone();
@@ -85,6 +87,10 @@ public class Order implements Cloneable, Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price.floatValue();
     }
 
     public float getPrice() {

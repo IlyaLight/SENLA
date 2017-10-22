@@ -8,12 +8,13 @@ import java.util.Date;
  * Created by Light on 22.09.2017.
  */
 public class Book implements Serializable {
+    private Integer id;
     private ArrayList<Order> orderArrayList;
     private Request request;
     private String name;
-    private String description;
-    private Date dateIssue;
     private Date datePublication;
+    private Date dateIssue;
+    private String description;
     private Float price;
     private int inStock;
     private static final String FORMAT_TO_STRING = "Name: %s, Date of Publication: %s, Data Of Issue: %s, Price: %f, In Stock: %d";
@@ -29,6 +30,14 @@ public class Book implements Serializable {
         this.inStock = inStock;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Date getDatePublication() {
         return datePublication;
     }
@@ -37,6 +46,7 @@ public class Book implements Serializable {
         this.datePublication = datePublication;
     }
 
+    @Override
     public String toString(){
         return String.format(FORMAT_TO_STRING, name, datePublication.toString(),  dateIssue.toString(), price, inStock );
     }
@@ -73,6 +83,10 @@ public class Book implements Serializable {
         this.price = price;
     }
 
+    public void setPrice(Double price) {
+        this.price = price.floatValue();
+    }
+
     public int getInStock() {
         return inStock;
     }
@@ -80,4 +94,5 @@ public class Book implements Serializable {
     public void setInStock(int inStock) {
         this.inStock = inStock;
     }
+
 }

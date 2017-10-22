@@ -102,42 +102,42 @@ public class Controller implements IController {
 
     @Override
     public List<Order> getOrderSortedByPrice() {
-        return OrderService.getOrderSortedByPrice(orderStore.getOrderArrayList());
+        return OrderService.getOrderSortedByPrice(orderStore.getOrderList());
     }
 
     @Override
     public List<Order> getOrderSortedByStatus() {
-        return OrderService.getOrderSortedByStatus(orderStore.getOrderArrayList());
+        return OrderService.getOrderSortedByStatus(orderStore.getOrderList());
     }
 
     @Override
     public List<Order> getOrderSortedByDataCompletion() {
-        return OrderService.getOrderSortedByDataCompletion(orderStore.getOrderArrayList());
+        return OrderService.getOrderSortedByDataCompletion(orderStore.getOrderList());
     }
 
     @Override
     public List<Order> getCompletedOrder(Date from, Date to) {
-        return OrderService.getCompletedOrder(orderStore.getOrderArrayList(), from, to);
+        return OrderService.getCompletedOrder(orderStore.getOrderList(), from, to);
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByPrice(Date from, Date to) {
-        return OrderService.getCompletedOrderSortedByPrice(orderStore.getOrderArrayList(), from, to);
+        return OrderService.getCompletedOrderSortedByPrice(orderStore.getOrderList(), from, to);
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to) {
-        return OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(), from, to);
+        return OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderList(), from, to);
     }
 
     @Override
     public List<Request> getRequestSortedByBookName() {
-        return RequestService.getRequestSortedByBookName(requestStore.getRequestArrayList());
+        return RequestService.getRequestSortedByBookName(requestStore.getRequestList());
     }
 
     @Override
     public List<Request> getRequestSortedOfQuantity() {
-        return RequestService.getRequestSortedOfquantity(requestStore.getRequestArrayList());
+        return RequestService.getRequestSortedOfquantity(requestStore.getRequestList());
     }
 
     @Override
@@ -149,7 +149,7 @@ public class Controller implements IController {
 
     @Override
     public String getOrderDetails(Integer id) throws ObjectAvailabilityException {
-        String s = OrderService.getOrderDetails(orderStore.getOrderArrayList(), id);
+        String s = OrderService.getOrderDetails(orderStore.getOrderList(), id);
         if (s == null) {
             throw new ObjectAvailabilityException();
         } else return s;
@@ -174,7 +174,7 @@ public class Controller implements IController {
 
     @Override
     public float getIncome(Date from, Date to) {
-        List<Order> orders = OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderArrayList(), from, to);
+        List<Order> orders = OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderList(), from, to);
         float income = 0;
         for (Order order : orders) {
             income += order.getPrice();
@@ -210,14 +210,14 @@ public class Controller implements IController {
     public void addRequest(Book book) {
         if (book.getInStock() > 0) {
             boolean newRequest = true;
-            for (Request request : requestStore.getRequestArrayList()) {
+            for (Request request : requestStore.getRequestList()) {
                 if (request.getBookName().equals(book.getName())) {
                     request.setQuantity(request.getQuantity() + 1);
                     newRequest = false;
                 }
             }
             if (newRequest) {
-                requestStore.getRequestArrayList().add(new Request(book));
+                requestStore.getRequestList().add(new Request(book));
             }
         }
     }
@@ -235,7 +235,7 @@ public class Controller implements IController {
 
     @Override
     public Order getOrderById(Integer id) throws ObjectAvailabilityException {
-        for (Order order : orderStore.getOrderArrayList()) {
+        for (Order order : orderStore.getOrderList()) {
             if (order.getId().equals(id)) {
                 return order;
             }
@@ -246,7 +246,7 @@ public class Controller implements IController {
     @Override
     public List<Request> findRequestByBookName(String name) {
         List<Request> requests = new ArrayList<>();
-        for (Request request : requestStore.getRequestArrayList()) {
+        for (Request request : requestStore.getRequestList()) {
             if (request.getBookName().equals(name)) {
                 requests.add(request);
             }
@@ -262,7 +262,7 @@ public class Controller implements IController {
         bookStore = new BookStore();
         bookStore.setBookList(WorkWithFile.readBooksFromFile(filePath));
         orderStore = new OrderStore();
-        orderStore.setOrderArrayList(WorkWithFile.readOrdersFromFile(filePath));
+        orderStore.setOrderList(WorkWithFile.readOrdersFromFile(filePath));
         requestStore = new RequestStore();
         requestStore.setRequestArrayList(WorkWithFile.readRequestFromFile(filePath));
     }
@@ -270,8 +270,8 @@ public class Controller implements IController {
     @Override
     public void writeToFile(final String filePath) {
         WorkWithFile.writeBooksToFile(filePath, bookStore.getBookList());
-        WorkWithFile.writeOrdersToFile(filePath, orderStore.getOrderArrayList());
-        WorkWithFile.writeRequestsToFile(filePath, requestStore.getRequestArrayList());
+        WorkWithFile.writeOrdersToFile(filePath, orderStore.getOrderList());
+        WorkWithFile.writeRequestsToFile(filePath, requestStore.getRequestList());
     }
 
     @Override

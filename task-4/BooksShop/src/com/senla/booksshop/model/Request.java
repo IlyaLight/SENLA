@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by Light on 22.09.2017.
  */
 public class Request implements Serializable {
+    private Integer id;
     private Book book;
     private String bookName;
     private Integer quantity;
@@ -22,6 +23,14 @@ public class Request implements Serializable {
     public Request(String bookName, Integer quantity) {
         this.bookName = bookName;
         this.quantity = quantity;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String toString(){

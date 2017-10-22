@@ -12,14 +12,21 @@ import java.util.List;
  */
 public class OrderStore implements Serializable {
 
-    private List<Order> orderArrayList = new ArrayList<>();
+    private List<Order> orderList = new ArrayList<>();
 
-    public List<Order> getOrderArrayList() {
-        return orderArrayList;
+    public OrderStore() {
     }
 
-    public void setOrderArrayList(List<Order> orderArrayList) {
-        this.orderArrayList = orderArrayList;
+    public OrderStore(List<Order> orders) {
+        this.orderList = orders;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 
     public void create(){
@@ -31,7 +38,7 @@ public class OrderStore implements Serializable {
     }
 
     public void update(Order order){
-        orderArrayList.add(order);
+        orderList.add(order);
     }
 
     public void delete(){

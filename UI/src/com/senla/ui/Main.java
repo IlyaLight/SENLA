@@ -12,7 +12,7 @@ public class Main {
 	// write your code here
         //WorkWithFile.createFiles("");
         try {
-            LogManager.getLogManager().readConfiguration(com.senla.ui.Main.class.getResourceAsStream("/logging.properties"));
+            LogManager.getLogManager().readConfiguration(com.senla.ui.Main.class.getResourceAsStream("logging.properties"));
         }catch (IOException e){
             System.err.println("Could not setup logger configuration: " + e.toString());
         }
