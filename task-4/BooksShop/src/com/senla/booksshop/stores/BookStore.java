@@ -12,21 +12,21 @@ import java.util.List;
  */
 public class BookStore implements Serializable {
 
-    private List<Book> bookArrayList = new ArrayList<>();
+    private List<Book> bookList = new ArrayList<>();
 
-    public List<Book> getBookList() {
-        return bookArrayList;
-    }
-
-    public BookStore(List<Book> bookArrayList) {
-        this.bookArrayList = bookArrayList;
+    public BookStore(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
     public BookStore() {
     }
 
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
     public void setBookList(List<Book> bookList) {
-        this.bookArrayList = bookList;
+        this.bookList = bookList;
     }
 
     public void create(){

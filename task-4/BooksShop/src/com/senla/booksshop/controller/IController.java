@@ -7,7 +7,7 @@ import com.senla.booksshop.model.Request;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
-import com.senla.booksshop.utility.PropertiesHolder;
+import com.senla.properties.PropertiesHolder;
 
 import java.util.Date;
 import java.util.List;
@@ -82,6 +82,10 @@ public interface IController {
     Book GetBookByName(String name) throws ObjectAvailabilityException;
 
     Order getOrderById(Integer ip) throws ObjectAvailabilityException;
+
+    void writeSerializable();
+
+    void readSerializable();
 
     void exportStores();
 

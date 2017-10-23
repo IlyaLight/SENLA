@@ -29,19 +29,19 @@ public class OrderStore implements Serializable {
         this.orderList = orderList;
     }
 
-    public void create(){
-        System.out.println("Will be later");
+    public void create(Order order){
+        orderList.add(order);
     }
 
-    public void read(){
+    public void read(int id){
         System.out.println("Will be later");
     }
 
     public void update(Order order){
-        orderList.add(order);
+
     }
 
-    public void delete(){
+    public void delete(int id){
         System.out.println("Will be later");
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Light on 22.09.2017.
  */
-public class Order implements Cloneable, Serializable {
+public class Order implements Cloneable, Serializable, IModel {
 
     private static final String FORMAT_TO_STRING = "id: %d, Data of Completion: %s, Price: %f, Details: %s, Status: %s";
     private static final int COMPLETION_TIME = 30;
@@ -61,11 +61,11 @@ public class Order implements Cloneable, Serializable {
         return String.format(FORMAT_TO_STRING, id, dataCompletion.toString(), price, details, status.name());
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

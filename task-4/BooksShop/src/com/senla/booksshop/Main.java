@@ -52,17 +52,17 @@ public class Main {
         IController controller = new Controller();
         controller.readFromFile(path);
 
-        //CsvUtil.exportBook(controller.getBookStore(), "");
+        //CsvUtil.exportBooks(controller.getBookStore(), "");
         BookStore bookStore = CsvUtil.importBooks("");
-        CsvUtil.exportBook(bookStore, "");
+        CsvUtil.exportBooks(bookStore, "");
 
-        //CsvUtil.exportOrder(controller.getOrderStore(),"");
+        //CsvUtil.exportOrders(controller.getOrderStore(),"");
         OrderStore orderStore = CsvUtil.importOrder("");
-        CsvUtil.exportOrder(orderStore,"");
+        CsvUtil.exportOrders(orderStore,"");
 
-        CsvUtil.exportRequest(controller.getRequestStore(),"");
+        CsvUtil.exportRequests(controller.getRequestStore(),"");
         RequestStore requestStore = CsvUtil.importRequest("");
-        CsvUtil.exportRequest(requestStore,"");
+        CsvUtil.exportRequests(requestStore,"");
 
     }
 

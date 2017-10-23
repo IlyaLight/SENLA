@@ -1,17 +1,17 @@
-package com.senla.booksshop.utility;
+package com.senla.properties;
 
 public class PropertiesHolder {
 
     private int staleTime;
     private boolean automaticallyExecuteRequest;
-    private String serializablePath;
+    private String csvPath;
 
-    public String getSerializablePath() {
-        return serializablePath;
+    public String getCsvPath() {
+        return csvPath;
     }
 
-    public void setSerializablePath(String serializablePath) {
-        this.serializablePath = serializablePath;
+    public void setCsvPath(String serializablePath) {
+        this.csvPath = serializablePath;
     }
 
     public int getStaleTime() {

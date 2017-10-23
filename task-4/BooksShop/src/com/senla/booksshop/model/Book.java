@@ -7,8 +7,8 @@ import java.util.Date;
 /**
  * Created by Light on 22.09.2017.
  */
-public class Book implements Serializable {
-    private Integer id;
+public class Book implements Serializable, IModel {
+    private int id;
     private ArrayList<Order> orderArrayList;
     private Request request;
     private String name;
@@ -30,11 +30,11 @@ public class Book implements Serializable {
         this.inStock = inStock;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

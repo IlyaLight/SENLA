@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Light on 22.09.2017.
  */
-public class Request implements Serializable {
+public class Request implements Serializable, IModel {
     private Integer id;
     private Book book;
     private String bookName;
@@ -25,11 +25,11 @@ public class Request implements Serializable {
         this.quantity = quantity;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

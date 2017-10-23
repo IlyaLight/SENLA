@@ -20,19 +20,19 @@ public class SerializableUtil {
 
     private static final Logger log = Logger.getLogger(WorkWithFile.class.getName());
 
-    public static void exportBook(BookStore bookStore, String path){
-        exportObject(Model.BOOKS,bookStore, path);
+    public static void writeBook(BookStore bookStore, String path){
+        writeObject(Model.BOOKS,bookStore, path);
     }
 
-    public static void exportOrder(OrderStore orderStore, String path){
-        exportObject(Model.ORDER,orderStore, path);
+    public static void writeOrder(OrderStore orderStore, String path){
+        writeObject(Model.ORDER,orderStore, path);
     }
 
-    public static void exportRequest(RequestStore requestStore, String path){
-        exportObject(Model.REQUEST,requestStore, path);
+    public static void writeRequest(RequestStore requestStore, String path){
+        writeObject(Model.REQUEST,requestStore, path);
     }
 
-    private static void exportObject(Model model,Object object, String path){
+    private static void writeObject(Model model, Object object, String path){
         FileOutputStream fos;
         try {
             if (model == Model.BOOKS) {
@@ -54,19 +54,19 @@ public class SerializableUtil {
     }
 
 
-    public static BookStore importBooks(String path){
-        return (BookStore)importObject(path);
+    public static BookStore readtBooks(String path){
+        return (BookStore) readObject(path);
     }
 
-    public static RequestStore importRequest(String path){
-        return (RequestStore)importObject(path);
+    public static RequestStore readRequest(String path){
+        return (RequestStore) readObject(path);
     }
 
-    public static OrderStore importOrder(String path){
-        return (OrderStore)importObject(path);
+    public static OrderStore readOrder(String path){
+        return (OrderStore) readObject(path);
     }
 
-    private static Object importObject(String path){
+    private static Object readObject(String path){
         try {
             FileInputStream fis = new FileInputStream("temp.out");
             ObjectInputStream oin = new ObjectInputStream(fis);

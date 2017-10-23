@@ -80,4 +80,13 @@ public class BookService {
         }
         return null;
     }
+
+    public static Book getBookById(List<Book> bookList, int id){
+        for (Book book : bookList) {
+            if (book.getId() == id){
+                return book;
+            }
+        }
+        return null;
+    }
 }

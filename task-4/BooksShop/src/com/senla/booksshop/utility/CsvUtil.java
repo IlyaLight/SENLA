@@ -3,9 +3,6 @@ package com.senla.booksshop.utility;
 import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
-import com.senla.booksshop.stores.BookStore;
-import com.senla.booksshop.stores.OrderStore;
-import com.senla.booksshop.stores.RequestStore;
 import org.supercsv.cellprocessor.*;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -37,11 +34,15 @@ public class CsvUtil {
     private static final String[] ordersHeader = new String[] {"id","price","dataCompletion","details","status","completed"};
     private static final String[] requestsHeader = new String[] {"id","bookName","quantity"};
 
+    private static final String DATE_FORMAT = "dd/MM/yyyy";
+    private static final String TRUE_VALUE = "Y";
+    private static final String FALSE_VALUE = "N";
+
     private static final CellProcessor[] bookProcessorsExp = new CellProcessor[]{
             new NotNull(),  //id
             new NotNull(),  //name
-            new FmtDate("dd/MM/yyyy"), // dateIssue
-            new FmtDate("dd/MM/yyyy"), // datePublication
+            new FmtDate(DATE_FORMAT), // dateIssue
+            new FmtDate(DATE_FORMAT), // datePublication
             new NotNull(),  //price
             new Optional(), //inStock
     };
@@ -49,8 +50,8 @@ public class CsvUtil {
     private static final CellProcessor[] bookProcessorsImp = new CellProcessor[] {
             new ParseInt(),  //id
             new NotNull(),  //name
-            new ParseDate("dd/MM/yyyy"), // dateIssue
-            new ParseDate("dd/MM/yyyy"), // datePublication
+            new ParseDate(DATE_FORMAT), // dateIssue
+            new ParseDate(DATE_FORMAT), // datePublication
             new ParseDouble(),  //price
             new ParseInt(), //inStock
     };
@@ -58,19 +59,19 @@ public class CsvUtil {
     private static final CellProcessor[] orderProcessorsExp = new CellProcessor[] {
             new NotNull(),  //id
             new NotNull(),  //price
-            new Optional(new FmtDate("dd/MM/yyyy")), // dataCompletion
+            new Optional(new FmtDate(DATE_FORMAT)), // dataCompletion
             new Optional(),  //details
             new NotNull(), // status
-            new FmtBool("Y", "N"), //completed
+            new FmtBool(TRUE_VALUE, FALSE_VALUE), //completed
     };
 
     private static final CellProcessor[] orderProcessorsImp = new CellProcessor[] {
             new ParseInt(),     //id
             new ParseDouble(),  //price
-            new Optional(new ParseDate("dd/MM/yyyy")), // dataCompletion
+            new Optional(new ParseDate(DATE_FORMAT)), // dataCompletion
             new Optional(),     //details
             new ParseEnum(Order.Status.class), // status
-            new ParseBool("Y", "N"), //completed
+            new ParseBool(TRUE_VALUE, FALSE_VALUE), //completed
     };
 
     private static final CellProcessor[] requestProcessorsExp = new CellProcessor[] {
@@ -85,16 +86,16 @@ public class CsvUtil {
             new ParseInt(),  //quantity
     };
 
-    public static void exportBook(BookStore bookStore, String path){
-        exportObject(bookStore.getBookList(), bookProcessorsExp, bookHeader,path + BOOKS_FILE_NAME);
+    public static void exportBooks(List<Book> bookList, String path){
+        exportObject(bookList, bookProcessorsExp, bookHeader,path + BOOKS_FILE_NAME);
     }
 
-    public static void exportOrder(OrderStore orderStore, String path){
-        exportObject(orderStore.getOrderList(), orderProcessorsExp, ordersHeader, path + ORDER_FILE_NAME);
+    public static void exportOrders(List<Order> orderList, String path){
+        exportObject(orderList, orderProcessorsExp, ordersHeader, path + ORDER_FILE_NAME);
     }
 
-    public static void exportRequest(RequestStore requestStore, String path){
-        exportObject(requestStore.getRequestList(), requestProcessorsExp, requestsHeader, path + REQUEST_FILE_NAME);
+    public static void exportRequests(List<Request> requestList, String path){
+        exportObject(requestList, requestProcessorsExp, requestsHeader, path + REQUEST_FILE_NAME);
     }
 
     private static <E> void exportObject( List<E> list, CellProcessor[] processor, String[] header, String path){
@@ -104,39 +105,35 @@ public class CsvUtil {
                 beanWriter.write(e, header, processor);
             }
         }catch (IOException e){
-           new RuntimeException(e);
            log.log(Level.SEVERE, EXCEPTION, e);
+           throw new RuntimeException(e);
         }
     }
 
-    public static BookStore importBooks(String path){
-        BookStore bookStore = new BookStore(importObjectList( Book.class, bookProcessorsImp, path + BOOKS_FILE_NAME));
-        return bookStore;
+    public static List<Book> importBooks(String path){
+        return importObjectList( Book.class, bookProcessorsImp, path + BOOKS_FILE_NAME);
     }
 
-    public static OrderStore importOrder(String path){
-        OrderStore orderStore = new OrderStore(importObjectList(Order.class, orderProcessorsImp, path + ORDER_FILE_NAME));
-        return orderStore;
+    public static List<Order> importOrder(String path){
+        return importObjectList(Order.class, orderProcessorsImp, path + ORDER_FILE_NAME);
     }
 
-    public static RequestStore importRequest(String path){
-        RequestStore requestStore = new RequestStore(importObjectList(Request.class, requestProcessorsImp, path + REQUEST_FILE_NAME));
-        return requestStore;
+    public static List<Request> importRequest(String path){
+        return  importObjectList(Request.class, requestProcessorsImp, path + REQUEST_FILE_NAME);
     }
 
-    private static <T> List<T> importObjectList(Class<T> tClass, CellProcessor[] processor, String path){
-        try (ICsvBeanReader beanReader = new CsvBeanReader(new FileReader(path), CsvPreference.STANDARD_PREFERENCE)){
+    private static <T> List<T> importObjectList(Class<T> tClass, CellProcessor[] processor, String path) {
+        try (ICsvBeanReader beanReader = new CsvBeanReader(new FileReader(path), CsvPreference.STANDARD_PREFERENCE)) {
             String[] header = beanReader.getHeader(true);
             List<T> tList = new ArrayList<>();
             T t;
-            while ((t = beanReader.read(tClass,header,processor)) != null){
+            while ((t = beanReader.read(tClass, header, processor)) != null) {
                 tList.add(t);
             }
             return tList;
-        }catch (IOException e){
-            new RuntimeException(e);
+        } catch (IOException e) {
             log.log(Level.SEVERE, EXCEPTION, e);
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }

@@ -2,6 +2,7 @@ package com.senla.booksshop.controller;
 
 import com.senla.booksshop.exception.ObjectAvailabilityException;
 import com.senla.booksshop.model.Book;
+import com.senla.booksshop.model.IModel;
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
 import com.senla.booksshop.service.BookService;
@@ -10,10 +11,11 @@ import com.senla.booksshop.service.RequestService;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
-import com.senla.booksshop.utility.PropertiesHolder;
-import com.senla.booksshop.utility.PropertiesUtil;
+import com.senla.booksshop.utility.CsvUtil;
 import com.senla.booksshop.utility.SerializableUtil;
 import com.senla.booksshop.utility.WorkWithFile;
+import com.senla.properties.PropertiesHolder;
+import com.senla.properties.PropertiesUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -184,7 +186,7 @@ public class Controller implements IController {
 
     @Override
     public void addOrder(List<Book> books, Integer id) {
-        orderStore.update(new Order(books, id));
+        orderStore.create(new Order(books, id));
     }
 
     @Override
@@ -236,7 +238,7 @@ public class Controller implements IController {
     @Override
     public Order getOrderById(Integer id) throws ObjectAvailabilityException {
         for (Order order : orderStore.getOrderList()) {
-            if (order.getId().equals(id)) {
+            if (order.getId() == id) {
                 return order;
             }
         }
@@ -275,23 +277,52 @@ public class Controller implements IController {
     }
 
     @Override
+    public void writeSerializable() {
+        String filePath = propertiesHolder.getCsvPath();
+        SerializableUtil.writeBook(bookStore, filePath);
+        SerializableUtil.writeRequest(requestStore, filePath);
+        SerializableUtil.writeOrder(orderStore, filePath);
+    }
+
+    @Override
+    public void readSerializable() {
+        String filePath = propertiesHolder.getCsvPath();
+        bookStore = SerializableUtil.readtBooks(filePath);
+        orderStore = SerializableUtil.readOrder(filePath);
+        requestStore = SerializableUtil.readRequest(filePath);
+    }
+
+    @Override
     public void exportStores() {
-        String filePath = propertiesHolder.getSerializablePath();
-        SerializableUtil.exportBook(bookStore, filePath);
-        SerializableUtil.exportRequest(requestStore, filePath);
-        SerializableUtil.exportOrder(orderStore, filePath);
+        String filePath = propertiesHolder.getCsvPath();
+        CsvUtil.exportBooks(bookStore.getBookList(), filePath);
+        CsvUtil.exportRequests(requestStore.getRequestList(), filePath);
+        CsvUtil.exportOrders(orderStore.getOrderList(), filePath);
     }
 
     @Override
     public void importStores() {
-        String filePath = propertiesHolder.getSerializablePath();
-        bookStore=SerializableUtil.importBooks(filePath);
-        orderStore=SerializableUtil.importOrder(filePath);
-        requestStore=SerializableUtil.importRequest(filePath);
+        String filePath = propertiesHolder.getCsvPath();
+        updateListById(bookStore.getBookList(), CsvUtil.importBooks(filePath));
+        updateListById(orderStore.getOrderList(), CsvUtil.importOrder(filePath));
+        updateListById(requestStore.getRequestList(),CsvUtil.importRequest(filePath));
+
+    }
+
+    private <T extends IModel> void updateListById(List<T> setList, List<T> impList) {
+        for (IModel o1 : setList) {
+            for (IModel o2 : impList) {
+                if (o1.getId() == o2.getId()) {
+                    o1 = o2;
+                }
+            }
+        }
     }
 
     @Override
-    public void readPropertiesFromFile(String filePath){
+    public void readPropertiesFromFile(String filePath) {
         propertiesHolder = PropertiesUtil.getPropertiesHolder(filePath);
     }
 }
+
+
