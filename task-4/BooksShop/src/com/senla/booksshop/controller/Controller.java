@@ -314,7 +314,10 @@ public class Controller implements IController {
             for (IModel o2 : impList) {
                 if (o1.getId() == o2.getId()) {
                     o1 = o2;
+                }else{
+                    setList.add((T)o2);
                 }
+
             }
         }
     }

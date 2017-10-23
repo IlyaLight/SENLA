@@ -3,6 +3,7 @@ package com.senla.ui;
 import com.senla.booksshop.controller.Controller;
 import com.senla.ui.controller.UIController;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.LogManager;
 
@@ -12,7 +13,7 @@ public class Main {
 	// write your code here
         //WorkWithFile.createFiles("");
         try {
-            LogManager.getLogManager().readConfiguration(com.senla.ui.Main.class.getResourceAsStream("logging.properties"));
+            LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
         }catch (IOException e){
             System.err.println("Could not setup logger configuration: " + e.toString());
         }
