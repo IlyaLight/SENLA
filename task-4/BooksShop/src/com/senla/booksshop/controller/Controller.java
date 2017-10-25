@@ -118,6 +118,20 @@ public class Controller implements IController {
     }
 
     @Override
+    public Order getCloneOrderById(int id) throws ObjectAvailabilityException{
+        Order order = OrderService.getOrderById(orderStore.getOrderList(), id);
+        if (order == null){
+            throw new ObjectAvailabilityException();
+        }else {
+            try {
+                return order.clone();
+            } catch (CloneNotSupportedException e) {
+               throw  new RuntimeException(e);
+            }
+        }
+    }
+
+    @Override
     public List<Order> getCompletedOrder(Date from, Date to) {
         return OrderService.getCompletedOrder(orderStore.getOrderList(), from, to);
     }

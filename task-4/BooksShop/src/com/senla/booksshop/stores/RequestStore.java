@@ -1,6 +1,7 @@
 package com.senla.booksshop.stores;
 
 import com.senla.booksshop.model.Request;
+import com.senla.booksshop.utility.IdUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,8 +30,9 @@ public class RequestStore implements Serializable {
         this.requestList = requestArrayList;
     }
 
-    public void create(){
-        System.out.println("Will be later");
+    public void create(Request request){
+        request.setId(IdUtil.getId(requestList));
+        requestList.add(request);
     }
 
     public void read(){

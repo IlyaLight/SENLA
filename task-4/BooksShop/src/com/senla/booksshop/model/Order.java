@@ -1,6 +1,7 @@
 package com.senla.booksshop.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +33,8 @@ public class Order implements Cloneable, Serializable, IModel {
     @Override
     public Order clone() throws CloneNotSupportedException {
         Order clone = (Order)super.clone();
-        clone.books = books;
+        clone.books = new ArrayList<>(books);
+        clone.setId(0);
         return clone;
     }
 

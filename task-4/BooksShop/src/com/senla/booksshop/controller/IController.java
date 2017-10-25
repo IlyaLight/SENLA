@@ -47,6 +47,8 @@ public interface IController {
 
     List<Order> getOrderSortedByDataCompletion();
 
+    Order getCloneOrderById(int id) throws ObjectAvailabilityException;
+
     List<Order> getCompletedOrder(Date from, Date to);
 
     List<Order> getCompletedOrderSortedByPrice(Date from, Date to);

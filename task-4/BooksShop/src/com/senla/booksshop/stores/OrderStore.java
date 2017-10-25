@@ -1,6 +1,7 @@
 package com.senla.booksshop.stores;
 
 import com.senla.booksshop.model.Order;
+import com.senla.booksshop.utility.IdUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class OrderStore implements Serializable {
     }
 
     public void create(Order order){
+        order.setId(IdUtil.getId(orderList));
         orderList.add(order);
     }
 
@@ -38,7 +40,7 @@ public class OrderStore implements Serializable {
     }
 
     public void update(Order order){
-
+        System.out.println("Will be later");
     }
 
     public void delete(int id){

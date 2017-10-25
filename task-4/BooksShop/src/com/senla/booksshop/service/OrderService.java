@@ -15,6 +15,7 @@ public class OrderService {
     private static final OrderPriceComparator orderPriceComparator = new OrderPriceComparator();
     private static final OrderStatusComparator orderStatusComparator = new OrderStatusComparator();
     private static final OrderDateCompletionComparator orderDateCompletionComparator = new OrderDateCompletionComparator();
+    private static final String WITHOUT_DETAILS = "without details";
 
     public static List<Order> getOrderSortedByPrice(List<Order> orderArrayList) {
         List<Order> orderList = new ArrayList<>(orderArrayList);
@@ -55,11 +56,22 @@ public class OrderService {
     }
 
     public static String getOrderDetails(List<Order> orderList, Integer id){
+        Order order = getOrderById( orderList, id);
+       if (order == null){
+           return null;
+       }else if(order.getDetails() == null){
+           return WITHOUT_DETAILS;
+       }else {
+           return order.getDetails();
+       }
+    }
+
+    public static Order getOrderById(List<Order> orderList, int id) {
         for (Order order : orderList) {
             if (order.getId() == id){
-                return order.getDetails();
+                return order;
             }
         }
-        return "not found";
+        return null;
     }
 }
