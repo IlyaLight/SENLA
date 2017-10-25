@@ -9,7 +9,6 @@ import com.senla.booksshop.model.Request;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
-import com.senla.booksshop.utility.CsvUtil;
 import com.senla.booksshop.utility.Printer;
 import org.supercsv.cellprocessor.FmtDate;
 import org.supercsv.cellprocessor.Optional;
@@ -19,7 +18,9 @@ import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,20 +50,6 @@ public class Main {
         //testCreate(path);
         //testReadWritetoFile(path);
         //writeCsvTest();
-        IController controller = new Controller();
-        controller.readFromFile(path);
-
-        //CsvUtil.exportBooks(controller.getBookStore(), "");
-        BookStore bookStore = CsvUtil.importBooks("");
-        CsvUtil.exportBooks(bookStore, "");
-
-        //CsvUtil.exportOrders(controller.getOrderStore(),"");
-        OrderStore orderStore = CsvUtil.importOrder("");
-        CsvUtil.exportOrders(orderStore,"");
-
-        CsvUtil.exportRequests(controller.getRequestStore(),"");
-        RequestStore requestStore = CsvUtil.importRequest("");
-        CsvUtil.exportRequests(requestStore,"");
 
     }
 
@@ -90,7 +77,7 @@ public class Main {
 
     public static void testReadWritetoFile(String path){
         IController controller = new Controller();
-        controller.readFromFile(path);
+        controller.readFromFileAllStore(path);
 
         Calendar from =Calendar.getInstance();
         Calendar to =Calendar.getInstance();

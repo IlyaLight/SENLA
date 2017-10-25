@@ -210,7 +210,6 @@ public class Controller implements IController {
 
     @Override
     public void addRequest(Book book) {
-        if (book.getInStock() > 0) {
             boolean newRequest = true;
             for (Request request : requestStore.getRequestList()) {
                 if (request.getBookName().equals(book.getName())) {
@@ -221,7 +220,6 @@ public class Controller implements IController {
             if (newRequest) {
                 requestStore.getRequestList().add(new Request(book));
             }
-        }
     }
 
     @Override
@@ -260,7 +258,7 @@ public class Controller implements IController {
     }
 
     @Override
-    public void readFromFile(final String filePath) {
+    public void readFromFileAllStore(final String filePath) {
         bookStore = new BookStore();
         bookStore.setBookList(WorkWithFile.readBooksFromFile(filePath));
         orderStore = new OrderStore();
@@ -287,35 +285,75 @@ public class Controller implements IController {
     @Override
     public void readSerializable() {
         String filePath = propertiesHolder.getCsvPath();
-        bookStore = SerializableUtil.readtBooks(filePath);
+        BookStore b =SerializableUtil.readBooks(filePath);
+        bookStore = b;
         orderStore = SerializableUtil.readOrder(filePath);
         requestStore = SerializableUtil.readRequest(filePath);
     }
 
     @Override
-    public void exportStores() {
+    public void exportAllStores() {
+        exportBookStore();
+        exportOrderStore();
+        exportRequestStore();
+    }
+
+    @Override
+    public void exportBookStore() {
         String filePath = propertiesHolder.getCsvPath();
         CsvUtil.exportBooks(bookStore.getBookList(), filePath);
+    }
+
+    @Override
+    public void exportOrderStore() {
+        String filePath = propertiesHolder.getCsvPath();
         CsvUtil.exportRequests(requestStore.getRequestList(), filePath);
+    }
+
+    @Override
+    public void exportRequestStore() {
+        String filePath = propertiesHolder.getCsvPath();
         CsvUtil.exportOrders(orderStore.getOrderList(), filePath);
     }
 
     @Override
-    public void importStores() {
+    public void importAllStores() {
+        importBookStore();
+        importOrderStore();
+        importRequestStore();
+    }
+
+    @Override
+    public void importBookStore() {
         String filePath = propertiesHolder.getCsvPath();
         updateListById(bookStore.getBookList(), CsvUtil.importBooks(filePath));
-        updateListById(orderStore.getOrderList(), CsvUtil.importOrder(filePath));
-        updateListById(requestStore.getRequestList(),CsvUtil.importRequest(filePath));
+    }
 
+    @Override
+    public void importOrderStore() {
+        String filePath = propertiesHolder.getCsvPath();
+        updateListById(orderStore.getOrderList(), CsvUtil.importOrder(filePath));
+    }
+
+    @Override
+    public void importRequestStore() {
+        String filePath = propertiesHolder.getCsvPath();
+        updateListById(requestStore.getRequestList(),CsvUtil.importRequest(filePath));
     }
 
     private <T extends IModel> void updateListById(List<T> setList, List<T> impList) {
-        for (IModel o1 : setList) {
-            for (IModel o2 : impList) {
-                if (o1.getId() == o2.getId()) {
-                    o1 = o2;
+        if (setList.size()>0) {
+            for (T o1 : setList) {
+                for (T o2 : impList) {
+                    if (o1.getId() == o2.getId()) {
+                        o1 = o2;
+                    } else {
+                        setList.add(o2);
+                    }
                 }
             }
+        }else {
+            setList.addAll(impList);
         }
     }
 

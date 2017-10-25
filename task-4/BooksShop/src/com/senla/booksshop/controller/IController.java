@@ -75,7 +75,7 @@ public interface IController {
 
     List<Request> findRequestByBookName(String name);
 
-    void readFromFile(String filePath);
+    void readFromFileAllStore(String filePath);
 
     void writeToFile(String filePath);
 
@@ -87,9 +87,21 @@ public interface IController {
 
     void readSerializable();
 
-    void exportStores();
+    void exportAllStores();
 
-    void importStores();
+    void exportBookStore();
+
+    void exportOrderStore();
+
+    void exportRequestStore();
+
+    void importAllStores();
+
+    void importBookStore();
+
+    void importOrderStore();
+
+    void importRequestStore();
 
     void readPropertiesFromFile(String filePath);
 }

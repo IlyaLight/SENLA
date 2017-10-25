@@ -26,6 +26,14 @@ public class MenuBuilder {
     private static final String SHOW_REQUEST_SORTED_OF_QUANTITY = "Show Request Sorted Of Quantity";
     private static final String ADD_REQUEST = "Add Request";
     private static final String INCOME_FOR_A_PERIOD_OF_TIME = "Income for a period of time";
+    private static final String IMPORT_ORDERS = "Import Orders";
+    private static final String EXPORT_ORDERS = "Export Orders";
+    private static final String IMPORT_BOOKS = "Import Books";
+    private static final String EXPORT_BOOKS = "Export Books";
+    private static final String IMPORT_REQUESTS = "Import Requests";
+    private static final String EXPORT_REQUESTS = "Export Requests";
+    private static final String EXPORT_ALL_DATA = "Export all data";
+    private static final String IMPORT_ALL_DATA_ = "Import all data ";
 
     private Menu rootMenu = new Menu();
 
@@ -56,6 +64,8 @@ public class MenuBuilder {
         orderMenu.addItem(new MenuItem(orderMenu, ADD_ORDER, new AddOrder()));
         orderMenu.addItem(new MenuItem(orderMenu, ASSEMBLE_ORDER, new AssembleOrder()));
         orderMenu.addItem(new MenuItem(orderMenu, CANCEL_THE_ORDER, new CancelTheOrder()));
+        orderMenu.addItem(new MenuItem(orderMenu, IMPORT_ORDERS, new ImportOrderStore()));
+        orderMenu.addItem(new MenuItem(orderMenu, EXPORT_ORDERS, new ExportOrderStore()));
 
         bookMenu.addItem(new MenuItem(homeMenu));
         bookMenu.addItem(new MenuItem(bookMenu, SHOW_BOOKS_SORTED_BY_NAME, new GetBooksSortedByName()));
@@ -66,14 +76,20 @@ public class MenuBuilder {
         bookMenu.addItem(new MenuItem(bookMenu, SHOW_STALE_BOOKS_PRICE, new GetStaleBooksPrice()));
         bookMenu.addItem(new MenuItem(bookMenu, SHOW_BOOK_DESCRIPTION, new GetBookDescription()));
         bookMenu.addItem(new MenuItem(bookMenu, SHOW_BOOK_AS_QUANTITY, new SetBookQuantity()));
+        bookMenu.addItem(new MenuItem(bookMenu, IMPORT_BOOKS, new ImportBookStore()));
+        bookMenu.addItem(new MenuItem(bookMenu, EXPORT_BOOKS, new ExportBookStore()));
 
         requestMenu.addItem(new MenuItem((homeMenu)));
         requestMenu.addItem(new MenuItem(requestMenu, SHOW_REQUEST_SORTED_BY_BOOK_NAME, new GetRequestSortedByBookName()));
         requestMenu.addItem(new MenuItem(requestMenu, SHOW_REQUEST_SORTED_OF_QUANTITY, new GetRequestSortedOfQuantity()));
         requestMenu.addItem(new MenuItem(requestMenu, ADD_REQUEST, new AddRequest()));
+        requestMenu.addItem(new MenuItem(requestMenu, IMPORT_REQUESTS, new ImportRequestStore()));
+        requestMenu.addItem(new MenuItem(requestMenu, EXPORT_REQUESTS, new ExportRequestStore()));
 
         shopMenu.addItem(new MenuItem(homeMenu));
         shopMenu.addItem(new MenuItem(shopMenu, INCOME_FOR_A_PERIOD_OF_TIME, new GetIncome()));
+        shopMenu.addItem(new MenuItem(shopMenu, EXPORT_ALL_DATA, new ExportAllStores()));
+        shopMenu.addItem(new MenuItem(shopMenu, IMPORT_ALL_DATA_, new ImportAllStores()));
 
         return rootMenu;
     }

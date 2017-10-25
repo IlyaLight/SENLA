@@ -54,9 +54,9 @@ public class OrderService {
         return  completedOrders;
     }
 
-    public static String getOrderDetails(List<Order> orderList, Integer ip){
+    public static String getOrderDetails(List<Order> orderList, Integer id){
         for (Order order : orderList) {
-            if (order.getId().equals(ip)){
+            if (order.getId() == id){
                 return order.getDetails();
             }
         }

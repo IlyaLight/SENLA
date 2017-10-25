@@ -2,7 +2,7 @@
 INFO: IllegalArgumentException: 
 java.lang.IllegalArgumentException: orders.txt  not found
 	at com.senla.booksshop.utility.WorkWithFile.readOrdersFromFile(WorkWithFile.java:78)
-	at com.senla.booksshop.controller.Controller.readFromFile(Controller.java:209)
+	at readFromFileAllStore(Controller.java:209)
 	at com.senla.booksshop.Main.testReadWritetoFile(Main.java:49)
 	at com.senla.booksshop.Main.main(Main.java:44)
 

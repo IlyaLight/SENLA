@@ -13,62 +13,52 @@ public class SerializableUtil {
 
     private enum Model{BOOKS, ORDER, REQUEST}
 
-    private static final String BOOKS_FILE_NAME = "books.out";
-    private static final String ORDER_FILE_NAME = "orders.out";
-    private static final String REQUEST_FILE_NAME = "requests.out";
+    private static final String BOOKS_FILE_NAME = "booksSerializable.txt";
+    private static final String ORDER_FILE_NAME = "ordersSerializable.txt";
+    private static final String REQUEST_FILE_NAME = "requestsSerializable.txt";
     private static final String EXCEPTION = "Exception: ";
 
     private static final Logger log = Logger.getLogger(WorkWithFile.class.getName());
 
     public static void writeBook(BookStore bookStore, String path){
-        writeObject(Model.BOOKS,bookStore, path);
+        writeObject(bookStore, path + BOOKS_FILE_NAME);
     }
 
     public static void writeOrder(OrderStore orderStore, String path){
-        writeObject(Model.ORDER,orderStore, path);
+        writeObject(orderStore, path + ORDER_FILE_NAME);
     }
 
     public static void writeRequest(RequestStore requestStore, String path){
-        writeObject(Model.REQUEST,requestStore, path);
+        writeObject(requestStore, path + REQUEST_FILE_NAME);
     }
 
-    private static void writeObject(Model model, Object object, String path){
-        FileOutputStream fos;
-        try {
-            if (model == Model.BOOKS) {
-                fos = new FileOutputStream(path + BOOKS_FILE_NAME);
-            }else if (model == Model.REQUEST){
-                fos = new FileOutputStream(path + REQUEST_FILE_NAME);
-            } else if (model == Model.ORDER){
-                fos = new FileOutputStream(path + ORDER_FILE_NAME);
-            } else {
-                throw new IOException();
-            }
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(object);
+    private static <T> void writeObject(T t, String path){
+        try (FileOutputStream fos = new FileOutputStream(path);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)){
+            oos.writeObject(t);
             oos.flush();
         } catch (IOException e){
-        log.log(Level.SEVERE, EXCEPTION, e);
-        throw new RuntimeException(e);
+            log.log(Level.SEVERE, EXCEPTION, e);
+            throw new RuntimeException(e);
         }
     }
 
 
-    public static BookStore readtBooks(String path){
-        return (BookStore) readObject(path);
+    public static BookStore readBooks(String path){
+        return (BookStore) readObject(path + BOOKS_FILE_NAME);
     }
 
     public static RequestStore readRequest(String path){
-        return (RequestStore) readObject(path);
+        return (RequestStore) readObject(path + REQUEST_FILE_NAME);
     }
 
     public static OrderStore readOrder(String path){
-        return (OrderStore) readObject(path);
+        return (OrderStore) readObject(path + ORDER_FILE_NAME);
     }
 
     private static Object readObject(String path){
         try {
-            FileInputStream fis = new FileInputStream("temp.out");
+            FileInputStream fis = new FileInputStream(path);
             ObjectInputStream oin = new ObjectInputStream(fis);
             Object object = oin.readObject();
             return object;

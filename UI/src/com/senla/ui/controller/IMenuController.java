@@ -44,4 +44,20 @@ public interface IMenuController {
     void cancelTheOrder();
 
     void addRequest();
+
+    void exportAllStores();
+
+    void exportBookStore();
+
+    void exportOrderStore();
+
+    void exportRequestStore();
+
+    void importAllStores();
+
+    void importBookStore();
+
+    void importOrderStore();
+
+    void importRequestStore();
 }

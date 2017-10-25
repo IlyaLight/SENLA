@@ -199,4 +199,44 @@ public class MenuController implements IMenuController {
 
     }
 
+    @Override
+    public void exportAllStores() {
+        shopController.exportAllStores();
+    }
+
+    @Override
+    public void exportBookStore(){
+        shopController.exportBookStore();
+    }
+
+    @Override
+    public void exportOrderStore(){
+        shopController.exportOrderStore();
+    }
+
+    @Override
+    public void exportRequestStore(){
+        shopController.exportRequestStore();
+    }
+
+    @Override
+    public void importAllStores(){
+        shopController.importAllStores();
+    }
+
+    @Override
+    public void importBookStore(){
+        shopController.importBookStore();
+    }
+
+    @Override
+    public void importOrderStore(){
+        shopController.importOrderStore();
+    }
+
+    @Override
+    public void importRequestStore() {
+        shopController.importRequestStore();
+    }
+
 }
