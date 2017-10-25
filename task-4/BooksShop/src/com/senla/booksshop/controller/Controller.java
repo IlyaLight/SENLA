@@ -342,7 +342,6 @@ public class Controller implements IController {
     }
 
     private <T extends IModel> void updateListById(List<T> setList, List<T> impList) {
-<<<<<<< HEAD
         if (setList.size()>0) {
             for (T o1 : setList) {
                 for (T o2 : impList) {
@@ -351,14 +350,6 @@ public class Controller implements IController {
                     } else {
                         setList.add(o2);
                     }
-=======
-        for (IModel o1 : setList) {
-            for (IModel o2 : impList) {
-                if (o1.getId() == o2.getId()) {
-                    o1 = o2;
-                }else{
-                    setList.add((T)o2);
->>>>>>> 0f403587dbf9ddbd42974f829634ef720c6f2893
                 }
 
             }
