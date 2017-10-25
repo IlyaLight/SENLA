@@ -47,6 +47,8 @@ public interface IController {
 
     List<Order> getOrderSortedByDataCompletion();
 
+    List<Order> getOrderSortedById();
+
     Order getCloneOrderById(int id) throws ObjectAvailabilityException;
 
     List<Order> getCompletedOrder(Date from, Date to);
@@ -67,7 +69,7 @@ public interface IController {
 
     float getIncome(Date from, Date to);
 
-    void addOrder(List<Book> books, Integer id);
+    void addOrder(Order order);
 
     void assembleOrder(Order order);
 

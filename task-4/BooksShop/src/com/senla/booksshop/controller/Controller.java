@@ -118,6 +118,11 @@ public class Controller implements IController {
     }
 
     @Override
+    public List<Order> getOrderSortedById() {
+        return OrderService.getOrderSortedById(orderStore.getOrderList());
+    }
+
+    @Override
     public Order getCloneOrderById(int id) throws ObjectAvailabilityException{
         Order order = OrderService.getOrderById(orderStore.getOrderList(), id);
         if (order == null){
@@ -199,8 +204,8 @@ public class Controller implements IController {
     }
 
     @Override
-    public void addOrder(List<Book> books, Integer id) {
-        orderStore.create(new Order(books, id));
+    public void addOrder(Order order) {
+        orderStore.create(order);
     }
 
     @Override

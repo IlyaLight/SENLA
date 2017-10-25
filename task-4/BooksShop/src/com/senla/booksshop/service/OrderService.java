@@ -2,6 +2,7 @@ package com.senla.booksshop.service;
 
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.service.comparator.OrderDateCompletionComparator;
+import com.senla.booksshop.service.comparator.OrderIdComparator;
 import com.senla.booksshop.service.comparator.OrderPriceComparator;
 import com.senla.booksshop.service.comparator.OrderStatusComparator;
 
@@ -15,6 +16,7 @@ public class OrderService {
     private static final OrderPriceComparator orderPriceComparator = new OrderPriceComparator();
     private static final OrderStatusComparator orderStatusComparator = new OrderStatusComparator();
     private static final OrderDateCompletionComparator orderDateCompletionComparator = new OrderDateCompletionComparator();
+    private static final OrderIdComparator orderIdComparator = new OrderIdComparator();
     private static final String WITHOUT_DETAILS = "without details";
 
     public static List<Order> getOrderSortedByPrice(List<Order> orderArrayList) {
@@ -73,5 +75,11 @@ public class OrderService {
             }
         }
         return null;
+    }
+
+    public static List<Order> getOrderSortedById(List<Order> orderArrayList) {
+        List<Order> orderList = new ArrayList<>(orderArrayList);
+        orderList.sort(orderIdComparator);
+        return orderList;
     }
 }

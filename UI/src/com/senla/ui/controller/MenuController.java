@@ -25,6 +25,7 @@ public class MenuController implements IMenuController {
     private static final String EXCEPTION = "Exception: ";
     private static final String ORDER_WITH_THE_SAME_ID_ARE_NOT_FOUND = "order with the same id are not found";
     private static final String ADD_ANOTHER_BOOK = "add another book?";
+    private static final String LINE = "-----------------------------";
 
     private IController shopController;
     private static Logger log = Logger.getLogger(WorkWithFile.class.getName());
@@ -159,8 +160,9 @@ public class MenuController implements IMenuController {
             }
            repeat =Console.confirmation(ADD_ANOTHER_BOOK);
         }
-        int id = Console.getInt(ENTER_ID);
-        shopController.addOrder(books, id);
+        Order order = new Order();
+        order.setBooks(books);
+        shopController.addOrder(order);
     }
 
     @Override
@@ -239,4 +241,19 @@ public class MenuController implements IMenuController {
         shopController.importRequestStore();
     }
 
+    public void cloneOrder() {
+        Console.out("Orders");
+        Console.out(LINE);
+        Console.outCollection(shopController.getOrderSortedById());
+        try {
+            Order clonOrder = shopController.getCloneOrderById(Console.getInt("Enter the order Id for cloning"));
+            if (Console.confirmation("want to change order parameters")){
+
+            }
+            shopController.addOrder(clonOrder);
+        }catch (ObjectAvailabilityException e){
+            log.log(Level.SEVERE, EXCEPTION , e);
+            Console.out(ORDER_WITH_THE_SAME_ID_ARE_NOT_FOUND);
+        }
+    }
 }

@@ -64,7 +64,7 @@ public class MenuBuilder {
         orderMenu.addItem(new MenuItem(orderMenu, ADD_ORDER, new AddOrder()));
         orderMenu.addItem(new MenuItem(orderMenu, ASSEMBLE_ORDER, new AssembleOrder()));
         orderMenu.addItem(new MenuItem(orderMenu, CANCEL_THE_ORDER, new CancelTheOrder()));
-        orderMenu.addItem(new MenuItem(orderMenu, "Clone Order", new CancelTheOrder()));
+        orderMenu.addItem(new MenuItem(orderMenu, "Clone Order", new CloneOrder()));
         orderMenu.addItem(new MenuItem(orderMenu, IMPORT_ORDERS, new ImportOrderStore()));
         orderMenu.addItem(new MenuItem(orderMenu, EXPORT_ORDERS, new ExportOrderStore()));
 
