@@ -26,6 +26,12 @@ public class MenuController implements IMenuController {
     private static final String ORDER_WITH_THE_SAME_ID_ARE_NOT_FOUND = "order with the same id are not found";
     private static final String ADD_ANOTHER_BOOK = "add another book?";
     private static final String LINE = "-----------------------------";
+    public static final String ORDERS = "Orders";
+    public static final String ENTER_THE_ORDER_ID_FOR_CLONING = "Enter the order Id for cloning";
+    public static final String WANT_TO_CHANGE_ORDER_PARAMETERS = "want to change order parameters?";
+    public static final String ORDER_BOOKS_LIST = "Order books list";
+    public static final String WANT_TO_ADD_BOOK = "want to add book";
+    public static final String WANT_TO_DELETE_BOOK = "want to delete book";
 
     private IController shopController;
     private static Logger log = Logger.getLogger(WorkWithFile.class.getName());
@@ -242,13 +248,35 @@ public class MenuController implements IMenuController {
     }
 
     public void cloneOrder() {
-        Console.out("Orders");
+        Console.out(ORDERS);
         Console.out(LINE);
         Console.outCollection(shopController.getOrderSortedById());
         try {
-            Order clonOrder = shopController.getCloneOrderById(Console.getInt("Enter the order Id for cloning"));
-            if (Console.confirmation("want to change order parameters")){
-
+            Order clonOrder = shopController.getCloneOrderById(Console.getInt(ENTER_THE_ORDER_ID_FOR_CLONING));
+            if (Console.confirmation(WANT_TO_CHANGE_ORDER_PARAMETERS)){
+                List<Book> books = clonOrder.getBooks();
+                Console.out(ORDER_BOOKS_LIST);
+                Console.outCollection(books);
+                while (Console.confirmation(WANT_TO_ADD_BOOK)){
+                    try {
+                        books.add(shopController.GetBookByName(Console.inString(ENTER_BOOK_NAME)));
+                    }catch (ObjectAvailabilityException e){
+                    log.log(Level.SEVERE, EXCEPTION, e);
+                    Console.out(BOOKS_WITH_THE_SAME_NAME_ARE_NOT_FOUND);
+                }}
+                Console.outCollection(books);
+                while (Console.confirmation(WANT_TO_DELETE_BOOK)){
+                    try {
+                        String bookName = Console.inString(ENTER_BOOK_NAME);
+                        Book book = shopController.GetBookByName(bookName);
+                        if( !books.remove(book)){
+                            Console.out(BOOKS_WITH_THE_SAME_NAME_ARE_NOT_FOUND);
+                        }
+                    }catch (ObjectAvailabilityException e){
+                        log.log(Level.SEVERE, EXCEPTION, e);
+                        Console.out(BOOKS_WITH_THE_SAME_NAME_ARE_NOT_FOUND);
+                    }}
+                clonOrder.setBooks(books);
             }
             shopController.addOrder(clonOrder);
         }catch (ObjectAvailabilityException e){
