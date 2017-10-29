@@ -11,9 +11,7 @@ public class Main {
             System.out.println(a.getIntTest());
             System.out.println(a.getStringTest());
             System.out.println(a.getNoAnnotation());
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

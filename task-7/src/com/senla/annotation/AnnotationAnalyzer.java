@@ -21,29 +21,11 @@ public class AnnotationAnalyzer {
 
     private static final Logger log = Logger.getLogger(AnnotationAnalyzer.class.getName());
 
-    private static final String STANDART_CONFIG_FILE = "config.properties";
+    private static final String DEFAULT_CONFIG_FILE = "config.properties";
     private static final String EXCEPTION = "Exception:";
     private static final Map<String, Properties> propertiesFilesMap = new  HashMap<>();
     private static final Map<String, Object> propertiesMap = new HashMap<>();
 
-    public static void parseTest(Class<?> clazz){
-        System.out.println("\n\n---parseTest---");
-        Field[] fildes = clazz.getFields();
-        ConfigProperty anno;
-        for (Field filde : fildes) {
-            anno = filde.getAnnotation(ConfigProperty.class);
-            System.out.println("fild:" + filde.getName());
-            System.out.println("tipe:" + filde.getType().getName());
-            if (anno != null) {
-                System.out.println(anno.configName());
-                System.out.println(anno.propertyName());
-                System.out.println(anno.type());
-            }else {
-                System.out.println("no annotation");
-            }
-            System.out.println("---------------");
-        }
-    }
 
     public static Object getExemplar(Class<?> clazz) throws IllegalAccessException, InstantiationException, PropertyNotFoundException {
         Object exemplar = clazz.newInstance();
@@ -54,7 +36,7 @@ public class AnnotationAnalyzer {
             if (anno != null) {
                 String configName = anno.configName();
                 if (Objects.equals(configName, ConfigProperty.DEFAULT)) {
-                    configName = STANDART_CONFIG_FILE;
+                    configName = DEFAULT_CONFIG_FILE;
                 }
                 String propertyName = anno.propertyName();
                 if (Objects.equals(propertyName, ConfigProperty.DEFAULT)) {
@@ -85,9 +67,9 @@ public class AnnotationAnalyzer {
             Object value;
             switch (fieldType){
                 case INT:
-                    value = new Integer(propertiesFilesMap.get(configName).getProperty(propertyName));
+                    value = propertiesFilesMap.get(configName).getProperty(propertyName);
                     testValue(value, propertyName);
-                    propertiesMap.put(propertyName, new Integer(propertiesFilesMap.get(configName).getProperty(propertyName)));
+                    propertiesMap.put(propertyName, Integer.getInteger(value.toString()));
                     break;
                 case STRING:
                     value = propertiesFilesMap.get(configName).getProperty(propertyName);
