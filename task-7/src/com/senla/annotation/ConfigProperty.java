@@ -9,10 +9,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ConfigProperty {
 
-    enum  Type {INT, DEFAULT, STRING
+    String DEFAULT = "default";
+
+    enum  Type {INT, STRING,
     }
 
-    String configName() default "null";
-    String propertyName() default "null";;
-    Type type() default Type.DEFAULT;
+    String configName() default DEFAULT;
+    String propertyName() default DEFAULT;
+    Type type() default Type.STRING;
 }
