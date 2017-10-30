@@ -33,8 +33,7 @@ public class SerializableUtil {
     }
 
     private static <T> void writeObject(T t, String path){
-        try (FileOutputStream fos = new FileOutputStream(path);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)){
+        try (ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream(path))){
             oos.writeObject(t);
             oos.flush();
         } catch (IOException e){
@@ -57,9 +56,7 @@ public class SerializableUtil {
     }
 
     private static Object readObject(String path){
-        try {
-            FileInputStream fis = new FileInputStream(path);
-            ObjectInputStream oin = new ObjectInputStream(fis);
+        try (ObjectInputStream oin = new ObjectInputStream(new FileInputStream(path))){
             Object object = oin.readObject();
             return object;
         } catch (IOException | ClassNotFoundException e){

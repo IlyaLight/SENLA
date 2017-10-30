@@ -304,8 +304,7 @@ public class Controller implements IController {
     @Override
     public void readSerializable() {
         String filePath = propertiesHolder.getCsvPath();
-        BookStore b =SerializableUtil.readBooks(filePath);
-        bookStore = b;
+        bookStore = SerializableUtil.readBooks(filePath);
         orderStore = SerializableUtil.readOrder(filePath);
         requestStore = SerializableUtil.readRequest(filePath);
     }

@@ -13,6 +13,8 @@ public class Order implements Cloneable, Serializable, IModel {
 
     private static final String FORMAT_TO_STRING = "id: %d, Data of Completion: %s, Price: %f, Details: %s, Status: %s";
     private static final int COMPLETION_TIME = 30;
+    private static final long serialVersionUID = 2555776194629921025L;
+
     public  enum Status {PROCESSED, ASSEMBLED, COMPLETED, CANCELED}
 
     private Integer id;
@@ -28,12 +30,10 @@ public class Order implements Cloneable, Serializable, IModel {
     public Order() {
     }
 
-
-
     @Override
     public Order clone() throws CloneNotSupportedException {
         Order clone = (Order)super.clone();
-        clone.books = new ArrayList<>(books);
+        clone.setBooks(new ArrayList<>(this.getBooks()));
         clone.setId(0);
         return clone;
     }

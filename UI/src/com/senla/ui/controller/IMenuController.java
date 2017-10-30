@@ -1,6 +1,12 @@
 package com.senla.ui.controller;
 
+import com.senla.booksshop.controller.IController;
+
 public interface IMenuController {
+    IController getShopController();
+
+    void setShopController(IController shopController);
+
     void getIncome();
 
     void getBooksSortedByName();

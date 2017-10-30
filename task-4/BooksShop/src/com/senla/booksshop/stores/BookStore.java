@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class BookStore implements Serializable {
 
+    private static final long serialVersionUID = -6727105669857102873L;
     private List<Book> bookList = new ArrayList<>();
 
     public BookStore(List<Book> bookList) {

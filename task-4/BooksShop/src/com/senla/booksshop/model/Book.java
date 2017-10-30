@@ -8,6 +8,7 @@ import java.util.Date;
  * Created by Light on 22.09.2017.
  */
 public class Book implements Serializable, IModel {
+    private static final long serialVersionUID = 8605912397965468121L;
     private int id;
     private ArrayList<Order> orderArrayList;
     private Request request;

@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class RequestStore implements Serializable {
 
+    private static final long serialVersionUID = -6608314536820676274L;
     private List<Request> requestList = new ArrayList<Request>();
 
     public RequestStore() {

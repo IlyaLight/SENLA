@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class OrderStore implements Serializable {
 
+    private static final long serialVersionUID = 655110329357559954L;
     private List<Order> orderList = new ArrayList<>();
 
     public OrderStore() {

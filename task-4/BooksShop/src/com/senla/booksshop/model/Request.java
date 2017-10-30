@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by Light on 22.09.2017.
  */
 public class Request implements Serializable, IModel {
+    private static final long serialVersionUID = 5137060325723194962L;
     private Integer id;
     private Book book;
     private String bookName;
