@@ -69,18 +69,17 @@ public class AnnotationAnalyzer {
             propertiesFilesMap.put(configName, properties);
         }
         if (!propertiesMap.containsKey(propertyName)){
-            Object value;
+            Object value = propertiesFilesMap.get(configName).getProperty(propertyName);
+            testValue(value, propertyName);
             switch (fieldType){
                 case INT:
-                    value = propertiesFilesMap.get(configName).getProperty(propertyName);
-                    testValue(value, propertyName);
                     propertiesMap.put(propertyName, Integer.getInteger(value.toString()));
                     break;
                 case STRING:
-                    value = propertiesFilesMap.get(configName).getProperty(propertyName);
-                    testValue(value, propertyName);
                     propertiesMap.put(propertyName, value);
                     break;
+                case BOOLEAN:
+                    propertiesMap.put(propertyName, Boolean.getBoolean(value.toString()));
             }
         }
         return propertiesMap.get(propertyName);

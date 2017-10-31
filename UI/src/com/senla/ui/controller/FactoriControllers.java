@@ -1,7 +1,6 @@
 package com.senla.ui.controller;
 
 import com.senla.booksshop.controller.Controller;
-import com.senla.booksshop.utility.WorkWithFile;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,7 +8,7 @@ import java.util.logging.Logger;
 public final class FactoriControllers {
 
     public static final String COULD_T_FIND_OR_INSTANCE_AN_IMPLEMENTATION = "Could't find or instance an implementation...";
-    private static Logger log = Logger.getLogger(WorkWithFile.class.getName());
+    private static Logger log = Logger.getLogger(FactoriControllers.class.getName());
 
     public static IMenuController getIMenuController(Class<? extends IMenuController> clazz) throws IllegalAccessException, InstantiationException {
         IMenuController controller;

@@ -14,6 +14,7 @@ import com.senla.booksshop.stores.RequestStore;
 import com.senla.booksshop.utility.CsvUtil;
 import com.senla.booksshop.utility.SerializableUtil;
 import com.senla.booksshop.utility.WorkWithFile;
+import com.senla.properties.IPropertiesHolder;
 import com.senla.properties.PropertiesHolder;
 import com.senla.properties.PropertiesUtil;
 
@@ -27,15 +28,15 @@ public class Controller implements IController {
     private BookStore bookStore = new BookStore();
     private OrderStore orderStore = new OrderStore();
     private RequestStore requestStore = new RequestStore();
-    private PropertiesHolder propertiesHolder = new PropertiesHolder();
+    private IPropertiesHolder propertiesHolder = new PropertiesHolder();
 
     @Override
-    public PropertiesHolder getPropertiesHolder() {
+    public IPropertiesHolder getPropertiesHolder() {
         return propertiesHolder;
     }
 
     @Override
-    public void setPropertiesHolder(PropertiesHolder propertiesHolder) {
+    public void setPropertiesHolder(IPropertiesHolder propertiesHolder) {
         this.propertiesHolder = propertiesHolder;
     }
 

@@ -7,15 +7,15 @@ import com.senla.booksshop.model.Request;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
-import com.senla.properties.PropertiesHolder;
+import com.senla.properties.IPropertiesHolder;
 
 import java.util.Date;
 import java.util.List;
 
 public interface IController {
-    PropertiesHolder getPropertiesHolder();
+    IPropertiesHolder getPropertiesHolder();
 
-    void setPropertiesHolder(PropertiesHolder propertiesHolder);
+    void setPropertiesHolder(IPropertiesHolder propertiesHolder);
 
     BookStore getBookStore();
 
