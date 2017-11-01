@@ -11,7 +11,7 @@ public @interface ConfigProperty {
 
     String DEFAULT = "default";
 
-    enum  Type {INT, STRING,
+    enum  Type {INT, STRING, BOOLEAN
     }
 
     String configName() default DEFAULT;

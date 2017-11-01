@@ -1,0 +1,8 @@
+окт 12, 2017 1:57:37 AM com.senla.booksshop.utility.WorkWithFile readOrdersFromFile
+INFO: IllegalArgumentException: 
+java.lang.IllegalArgumentException: orders.txt  not found
+	at com.senla.booksshop.utility.WorkWithFile.readOrdersFromFile(WorkWithFile.java:78)
+	at readFromFileAllStore(Controller.java:209)
+	at com.senla.booksshop.Main.testReadWritetoFile(Main.java:49)
+	at com.senla.booksshop.Main.main(Main.java:44)
+
