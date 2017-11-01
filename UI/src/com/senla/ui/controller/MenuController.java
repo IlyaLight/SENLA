@@ -1,7 +1,7 @@
 package com.senla.ui.controller;
 
 
-import com.senla.annotation.Injection;
+import com.senla.dependencyinjection.annotation.Injection;
 import com.senla.booksshop.controller.IController;
 import com.senla.booksshop.exception.ObjectAvailabilityException;
 import com.senla.booksshop.model.Book;
@@ -37,6 +37,9 @@ public class MenuController implements IMenuController {
     @Injection
     private IController shopController;
     private static Logger log = Logger.getLogger(WorkWithFile.class.getName());
+
+    public MenuController() {
+    }
 
     public MenuController(IController shopController) {
         this.shopController = shopController;
@@ -259,6 +262,7 @@ public class MenuController implements IMenuController {
         shopController.importRequestStore();
     }
 
+    @Override
     public void cloneOrder() {
         Console.out(ORDERS);
         Console.out(LINE);

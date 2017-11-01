@@ -1,7 +1,7 @@
 package com.senla.ui;
 
-import com.senla.annotation.DIFactoriControllers;
-import com.senla.ui.controller.UIController;
+import com.senla.dependencyinjection.DIFactoriControllers;
+import com.senla.ui.controller.IUIController;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Main {
             System.err.println("Could not setup logger configuration: " + e.toString());
         }
 
-        UIController uiController = (UIController)DIFactoriControllers.getController(UIController.class);
+        IUIController uiController = (IUIController)DIFactoriControllers.getController(IUIController.class);
         uiController.run();
     }
 }

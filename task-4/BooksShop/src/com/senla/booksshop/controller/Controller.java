@@ -1,5 +1,6 @@
 package com.senla.booksshop.controller;
 
+
 import com.senla.booksshop.exception.ObjectAvailabilityException;
 import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.IModel;
@@ -12,11 +13,10 @@ import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.stores.OrderStore;
 import com.senla.booksshop.stores.RequestStore;
 import com.senla.booksshop.utility.CsvUtil;
+import com.senla.booksshop.utility.PropertiesHolder;
 import com.senla.booksshop.utility.SerializableUtil;
 import com.senla.booksshop.utility.WorkWithFile;
-import com.senla.properties.IPropertiesHolder;
-import com.senla.properties.PropertiesHolder;
-import com.senla.properties.PropertiesUtil;
+import com.senla.dependencyinjection.annotation.ContainsConfigProperty;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,15 +28,17 @@ public class Controller implements IController {
     private BookStore bookStore = new BookStore();
     private OrderStore orderStore = new OrderStore();
     private RequestStore requestStore = new RequestStore();
-    private IPropertiesHolder propertiesHolder = new PropertiesHolder();
+    @ContainsConfigProperty
+    private PropertiesHolder propertiesHolder;
+
 
     @Override
-    public IPropertiesHolder getPropertiesHolder() {
+    public PropertiesHolder getPropertiesHolder() {
         return propertiesHolder;
     }
 
     @Override
-    public void setPropertiesHolder(IPropertiesHolder propertiesHolder) {
+    public void setPropertiesHolder(PropertiesHolder propertiesHolder) {
         this.propertiesHolder = propertiesHolder;
     }
 
@@ -377,10 +379,6 @@ public class Controller implements IController {
         }
     }
 
-    @Override
-    public void readPropertiesFromFile(String filePath) {
-        propertiesHolder = PropertiesUtil.getPropertiesHolder(filePath);
-    }
 }
 
 

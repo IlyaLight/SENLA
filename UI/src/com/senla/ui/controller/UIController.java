@@ -1,9 +1,9 @@
 package com.senla.ui.controller;
 
 
-import com.senla.annotation.Injection;
+import com.senla.dependencyinjection.annotation.Injection;
 import com.senla.booksshop.controller.IController;
-import com.senla.ui.Navigator;
+import com.senla.ui.menu.Navigator;
 import com.senla.ui.menu.MenuBuilder;
 
 public class UIController implements IUIController {
@@ -20,15 +20,47 @@ public class UIController implements IUIController {
     public UIController() {
     }
 
-    public UIController(IController shopController, String filePath) {
+    public UIController(IController shopController) {
         this.shopController = shopController;
-        menuController = new MenuController(shopController);
 
+    }
+
+    public MenuBuilder getMenuBuilder() {
+        return menuBuilder;
+    }
+
+    public void setMenuBuilder(MenuBuilder menuBuilder) {
+        this.menuBuilder = menuBuilder;
+    }
+
+    public Navigator getNavigator() {
+        return navigator;
+    }
+
+    public void setNavigator(Navigator navigator) {
+        this.navigator = navigator;
+    }
+
+    public IMenuController getMenuController() {
+        return menuController;
+    }
+
+    public void setMenuController(IMenuController menuController) {
+        this.menuController = menuController;
+    }
+
+    public IController getShopController() {
+        return shopController;
+    }
+
+    public void setShopController(IController shopController) {
+        this.shopController = shopController;
     }
 
     @Override
     public void run(){
         boolean run = true;
+        menuController.setShopController(shopController);
         shopController.readSerializable();
         navigator.setMenu(menuBuilder.buildMenu());
         while (run){

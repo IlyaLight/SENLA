@@ -1,13 +1,14 @@
-окт 25, 2017 4:16:18 AM com.senla.booksshop.utility.SerializableUtil readObject
-SEVERE: Exception: 
-java.io.FileNotFoundException: temp.out (Не удается найти указанный файл)
-	at java.io.FileInputStream.open0(Native Method)
-	at java.io.FileInputStream.open(FileInputStream.java:195)
-	at java.io.FileInputStream.<init>(FileInputStream.java:138)
-	at java.io.FileInputStream.<init>(FileInputStream.java:93)
-	at com.senla.booksshop.utility.SerializableUtil.readObject(SerializableUtil.java:71)
-	at readBooks(SerializableUtil.java:58)
-	at com.senla.booksshop.controller.Controller.readSerializable(Controller.java:290)
-	at com.senla.ui.controller.UIController.<init>(UIController.java:17)
-	at com.senla.ui.Main.main(Main.java:20)
+ноя 01, 2017 11:46:42 PM com.senla.dependencyinjection.DIFactoriControllers getController
+SEVERE: Exception:
+com.senla.properties.PropertyNotFoundException: PropertiesHolder.automaticallyExecuteRequest
+	at com.senla.properties.PropertiesUtil.getProperties(PropertiesUtil.java:31)
+	at com.senla.dependencyinjection.annotation.AnnotationAnalyzer.getFieldValue(AnnotationAnalyzer.java:74)
+	at com.senla.dependencyinjection.annotation.AnnotationAnalyzer.checkObject(AnnotationAnalyzer.java:53)
+	at com.senla.dependencyinjection.annotation.AnnotationAnalyzer.checkObject(AnnotationAnalyzer.java:58)
+	at com.senla.dependencyinjection.DIFactoriControllers.getController(DIFactoriControllers.java:27)
+	at com.senla.dependencyinjection.annotation.AnnotationAnalyzer.checkObject(AnnotationAnalyzer.java:39)
+	at com.senla.dependencyinjection.DIFactoriControllers.getController(DIFactoriControllers.java:27)
+	at com.senla.dependencyinjection.annotation.AnnotationAnalyzer.checkObject(AnnotationAnalyzer.java:39)
+	at com.senla.dependencyinjection.DIFactoriControllers.getController(DIFactoriControllers.java:27)
+	at com.senla.ui.Main.main(Main.java:21)
 
