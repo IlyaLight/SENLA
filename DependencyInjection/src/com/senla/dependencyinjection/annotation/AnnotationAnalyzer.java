@@ -49,7 +49,7 @@ public class AnnotationAnalyzer {
                 if (Objects.equals(propertyName, ConfigProperty.DEFAULT)) {
                     propertyName = clazz.getSimpleName() + "." + field.getName();
                 }
-                ConfigProperty.Type fieldType = configProperty.type();
+                Class fieldType = configProperty.type();
                 setField(field, object, getFieldValue(configName, propertyName, fieldType));
             }
             ContainsConfigProperty containsConfigProperty = field.getAnnotation(ContainsConfigProperty.class);
@@ -68,7 +68,7 @@ public class AnnotationAnalyzer {
         field.setAccessible(fieldAccessible);
     }
 
-    private static Object getFieldValue(String configName, String propertyName, ConfigProperty.Type fieldType) throws PropertyNotFoundException{
+    private static Object getFieldValue(String configName, String propertyName, Class fieldType) throws PropertyNotFoundException{
 
         if (!propertiesMap.containsKey(propertyName)){
             Object value = PropertiesUtil.getProperties(configName, propertyName);
@@ -77,17 +77,13 @@ public class AnnotationAnalyzer {
                 log.log(Level.SEVERE, EXCEPTION, e);
                 throw (PropertyNotFoundException) e;
             }
-            switch (fieldType){
-                case INT:
-                    propertiesMap.put(propertyName, Integer.parseInt(value.toString()));
-                    break;
-                case STRING:
-                    propertiesMap.put(propertyName, value);
-                    break;
-                case BOOLEAN:
-                    propertiesMap.put(propertyName, Boolean.parseBoolean(value.toString()));
+            if (fieldType == int.class || fieldType == Integer.class) {
+                propertiesMap.put(propertyName, Integer.parseInt(value.toString()));
+            }if (fieldType == String.class) {
+                propertiesMap.put(propertyName, value);
+            }if (fieldType == boolean.class || fieldType == Boolean.class)
+                propertiesMap.put(propertyName, Boolean.parseBoolean(value.toString()));
             }
-        }
         return propertiesMap.get(propertyName);
     }
 

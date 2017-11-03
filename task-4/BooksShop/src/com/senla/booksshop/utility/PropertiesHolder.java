@@ -5,13 +5,13 @@ import com.senla.dependencyinjection.annotation.ConfigProperty;
 
 public class PropertiesHolder
 {
-    @ConfigProperty(type = ConfigProperty.Type.INT)
+    @ConfigProperty(type = int.class)
     private int staleTime;
 
-    @ConfigProperty(type = ConfigProperty.Type.BOOLEAN)
+    @ConfigProperty(type = boolean.class)
     private boolean automaticallyExecuteRequest;
 
-    @ConfigProperty(type = ConfigProperty.Type.STRING)
+    @ConfigProperty(type = String.class)
     private String csvPath;
 
     public String getCsvPath() {

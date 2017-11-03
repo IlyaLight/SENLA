@@ -4,10 +4,10 @@ import com.senla.dependencyinjection.annotation.ConfigProperty;
 
 public class C {
 
-    @ConfigProperty(type = ConfigProperty.Type.INT)
+    @ConfigProperty(type = int.class)
     int anInt;
 
-    @ConfigProperty(type = ConfigProperty.Type.STRING)
+    @ConfigProperty(type = String.class)
     String anSting;
 
     public int getAnInt() {
