@@ -9,14 +9,13 @@ import com.senla.booksshop.model.Request;
 import com.senla.booksshop.service.BookService;
 import com.senla.booksshop.service.OrderService;
 import com.senla.booksshop.service.RequestService;
-import com.senla.booksshop.stores.BookStore;
-import com.senla.booksshop.stores.OrderStore;
-import com.senla.booksshop.stores.RequestStore;
+import com.senla.booksshop.stores.*;
 import com.senla.booksshop.utility.CsvUtil;
 import com.senla.booksshop.utility.PropertiesHolder;
 import com.senla.booksshop.utility.SerializableUtil;
 import com.senla.booksshop.utility.WorkWithFile;
 import com.senla.dependencyinjection.annotation.ContainsConfigProperty;
+import com.senla.dependencyinjection.annotation.Injection;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,9 +24,12 @@ import java.util.List;
 
 public class Controller implements IController {
 
-    private BookStore bookStore = new BookStore();
-    private OrderStore orderStore = new OrderStore();
-    private RequestStore requestStore = new RequestStore();
+    @Injection
+    private IBookStore IBookStore = new BookStore();
+    @Injection
+    private IOrderStore IOrderStore = new OrderStore();
+    @Injection
+    private IRequestStore IRequestStore = new RequestStore();
     @ContainsConfigProperty
     private PropertiesHolder propertiesHolder;
 
@@ -43,53 +45,53 @@ public class Controller implements IController {
     }
 
     @Override
-    public BookStore getBookStore() {
-        return bookStore;
+    public IBookStore getBookStore() {
+        return IBookStore;
     }
 
     @Override
-    public void setBookStore(BookStore bookStore) {
-        this.bookStore = bookStore;
+    public void setBookStore(IBookStore IBookStore) {
+        this.IBookStore = IBookStore;
     }
 
     @Override
-    public OrderStore getOrderStore() {
-        return orderStore;
+    public IOrderStore getOrderStore() {
+        return IOrderStore;
     }
 
     @Override
-    public void setOrderStore(OrderStore orderStore) {
-        this.orderStore = orderStore;
+    public void setOrderStore(IOrderStore IOrderStore) {
+        this.IOrderStore = IOrderStore;
     }
 
     @Override
-    public RequestStore getRequestStore() {
-        return requestStore;
+    public IRequestStore getRequestStore() {
+        return IRequestStore;
     }
 
     @Override
-    public void setRequestStore(RequestStore requestStore) {
-        this.requestStore = requestStore;
+    public void setRequestStore(IRequestStore IRequestStore) {
+        this.IRequestStore = IRequestStore;
     }
 
     @Override
     public List<Book> getBooksSortedByName() {
-        return BookService.getBooksSortedByName(bookStore.getBookList());
+        return BookService.getBooksSortedByName(IBookStore.getBookList());
     }
 
     @Override
     public List<Book> getBooksSortedByDateIssue() {
-        return BookService.getBooksSortedByDateIssue(bookStore.getBookList());
+        return BookService.getBooksSortedByDateIssue(IBookStore.getBookList());
     }
 
     @Override
     public List<Book> getBooksSortedByStockAvailability() {
-        return BookService.getBooksSortedByStockAvailability(bookStore.getBookList());
+        return BookService.getBooksSortedByStockAvailability(IBookStore.getBookList());
     }
 
     @Override
     public List<Book> getBooksSortedByPrice() {
-        return BookService.getBooksSortedByPrice(bookStore.getBookList());
+        return BookService.getBooksSortedByPrice(IBookStore.getBookList());
     }
 
     @Override
@@ -97,37 +99,37 @@ public class Controller implements IController {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.MONTH, propertiesHolder.getStaleTime());
-        return BookService.getStaleBooksDate(bookStore.getBookList(), calendar.getTime());
+        return BookService.getStaleBooksDate(IBookStore.getBookList(), calendar.getTime());
     }
 
     @Override
     public List<Book> getStaleBooksPrice(Date date) {
-        return BookService.getStaleBooksPrice(bookStore.getBookList(), date);
+        return BookService.getStaleBooksPrice(IBookStore.getBookList(), date);
     }
 
     @Override
     public List<Order> getOrderSortedByPrice() {
-        return OrderService.getOrderSortedByPrice(orderStore.getOrderList());
+        return OrderService.getOrderSortedByPrice(IOrderStore.getOrderList());
     }
 
     @Override
     public List<Order> getOrderSortedByStatus() {
-        return OrderService.getOrderSortedByStatus(orderStore.getOrderList());
+        return OrderService.getOrderSortedByStatus(IOrderStore.getOrderList());
     }
 
     @Override
     public List<Order> getOrderSortedByDataCompletion() {
-        return OrderService.getOrderSortedByDataCompletion(orderStore.getOrderList());
+        return OrderService.getOrderSortedByDataCompletion(IOrderStore.getOrderList());
     }
 
     @Override
     public List<Order> getOrderSortedById() {
-        return OrderService.getOrderSortedById(orderStore.getOrderList());
+        return OrderService.getOrderSortedById(IOrderStore.getOrderList());
     }
 
     @Override
     public Order getCloneOrderById(int id) throws ObjectAvailabilityException{
-        Order order = OrderService.getOrderById(orderStore.getOrderList(), id);
+        Order order = OrderService.getOrderById(IOrderStore.getOrderList(), id);
         if (order == null){
             throw new ObjectAvailabilityException();
         }else {
@@ -141,27 +143,27 @@ public class Controller implements IController {
 
     @Override
     public List<Order> getCompletedOrder(Date from, Date to) {
-        return OrderService.getCompletedOrder(orderStore.getOrderList(), from, to);
+        return OrderService.getCompletedOrder(IOrderStore.getOrderList(), from, to);
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByPrice(Date from, Date to) {
-        return OrderService.getCompletedOrderSortedByPrice(orderStore.getOrderList(), from, to);
+        return OrderService.getCompletedOrderSortedByPrice(IOrderStore.getOrderList(), from, to);
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to) {
-        return OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderList(), from, to);
+        return OrderService.getCompletedOrderSortedByCompletedData(IOrderStore.getOrderList(), from, to);
     }
 
     @Override
     public List<Request> getRequestSortedByBookName() {
-        return RequestService.getRequestSortedByBookName(requestStore.getRequestList());
+        return RequestService.getRequestSortedByBookName(IRequestStore.getRequestList());
     }
 
     @Override
     public List<Request> getRequestSortedOfQuantity() {
-        return RequestService.getRequestSortedOfquantity(requestStore.getRequestList());
+        return RequestService.getRequestSortedOfquantity(IRequestStore.getRequestList());
     }
 
     @Override
@@ -173,7 +175,7 @@ public class Controller implements IController {
 
     @Override
     public String getOrderDetails(Integer id) throws ObjectAvailabilityException {
-        String s = OrderService.getOrderDetails(orderStore.getOrderList(), id);
+        String s = OrderService.getOrderDetails(IOrderStore.getOrderList(), id);
         if (s == null) {
             throw new ObjectAvailabilityException();
         } else return s;
@@ -198,7 +200,7 @@ public class Controller implements IController {
 
     @Override
     public float getIncome(Date from, Date to) {
-        List<Order> orders = OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderList(), from, to);
+        List<Order> orders = OrderService.getCompletedOrderSortedByCompletedData(IOrderStore.getOrderList(), from, to);
         float income = 0;
         for (Order order : orders) {
             income += order.getPrice();
@@ -208,7 +210,7 @@ public class Controller implements IController {
 
     @Override
     public void addOrder(Order order) {
-        orderStore.create(order);
+        IOrderStore.create(order);
     }
 
     @Override
@@ -233,20 +235,20 @@ public class Controller implements IController {
     @Override
     public void addRequest(Book book) {
             boolean newRequest = true;
-            for (Request request : requestStore.getRequestList()) {
+            for (Request request : IRequestStore.getRequestList()) {
                 if (request.getBookName().equals(book.getName())) {
                     request.setQuantity(request.getQuantity() + 1);
                     newRequest = false;
                 }
             }
             if (newRequest) {
-                requestStore.getRequestList().add(new Request(book));
+                IRequestStore.getRequestList().add(new Request(book));
             }
     }
 
     @Override
     public Book GetBookByName(String name) throws ObjectAvailabilityException {
-        List<Book> books = bookStore.getBookList();
+        List<Book> books = IBookStore.getBookList();
         for (Book book : books) {
             if (book.getName().equals(name)) {
                 return book;
@@ -257,7 +259,7 @@ public class Controller implements IController {
 
     @Override
     public Order getOrderById(Integer id) throws ObjectAvailabilityException {
-        for (Order order : orderStore.getOrderList()) {
+        for (Order order : IOrderStore.getOrderList()) {
             if (order.getId() == id) {
                 return order;
             }
@@ -268,7 +270,7 @@ public class Controller implements IController {
     @Override
     public List<Request> findRequestByBookName(String name) {
         List<Request> requests = new ArrayList<>();
-        for (Request request : requestStore.getRequestList()) {
+        for (Request request : IRequestStore.getRequestList()) {
             if (request.getBookName().equals(name)) {
                 requests.add(request);
             }
@@ -281,35 +283,35 @@ public class Controller implements IController {
 
     @Override
     public void readFromFileAllStore(final String filePath) {
-        bookStore = new BookStore();
-        bookStore.setBookList(WorkWithFile.readBooksFromFile(filePath));
-        orderStore = new OrderStore();
-        orderStore.setOrderList(WorkWithFile.readOrdersFromFile(filePath));
-        requestStore = new RequestStore();
-        requestStore.setRequestArrayList(WorkWithFile.readRequestFromFile(filePath));
+        IBookStore = new BookStore();
+        IBookStore.setBookList(WorkWithFile.readBooksFromFile(filePath));
+        IOrderStore = new OrderStore();
+        IOrderStore.setOrderList(WorkWithFile.readOrdersFromFile(filePath));
+        IRequestStore = new RequestStore();
+        IRequestStore.setRequestArrayList(WorkWithFile.readRequestFromFile(filePath));
     }
 
     @Override
     public void writeToFile(final String filePath) {
-        WorkWithFile.writeBooksToFile(filePath, bookStore.getBookList());
-        WorkWithFile.writeOrdersToFile(filePath, orderStore.getOrderList());
-        WorkWithFile.writeRequestsToFile(filePath, requestStore.getRequestList());
+        WorkWithFile.writeBooksToFile(filePath, IBookStore.getBookList());
+        WorkWithFile.writeOrdersToFile(filePath, IOrderStore.getOrderList());
+        WorkWithFile.writeRequestsToFile(filePath, IRequestStore.getRequestList());
     }
 
     @Override
     public void writeSerializable() {
         String filePath = propertiesHolder.getCsvPath();
-        SerializableUtil.writeBook(bookStore, filePath);
-        SerializableUtil.writeRequest(requestStore, filePath);
-        SerializableUtil.writeOrder(orderStore, filePath);
+        SerializableUtil.writeBook(IBookStore, filePath);
+        SerializableUtil.writeRequest(IRequestStore, filePath);
+        SerializableUtil.writeOrder(IOrderStore, filePath);
     }
 
     @Override
     public void readSerializable() {
         String filePath = propertiesHolder.getCsvPath();
-        bookStore = SerializableUtil.readBooks(filePath);
-        orderStore = SerializableUtil.readOrder(filePath);
-        requestStore = SerializableUtil.readRequest(filePath);
+        IBookStore = SerializableUtil.readBooks(filePath);
+        IOrderStore = SerializableUtil.readOrder(filePath);
+        IRequestStore = SerializableUtil.readRequest(filePath);
     }
 
     @Override
@@ -322,19 +324,19 @@ public class Controller implements IController {
     @Override
     public void exportBookStore() {
         String filePath = propertiesHolder.getCsvPath();
-        CsvUtil.exportBooks(bookStore.getBookList(), filePath);
+        CsvUtil.exportBooks(IBookStore.getBookList(), filePath);
     }
 
     @Override
     public void exportOrderStore() {
         String filePath = propertiesHolder.getCsvPath();
-        CsvUtil.exportRequests(requestStore.getRequestList(), filePath);
+        CsvUtil.exportRequests(IRequestStore.getRequestList(), filePath);
     }
 
     @Override
     public void exportRequestStore() {
         String filePath = propertiesHolder.getCsvPath();
-        CsvUtil.exportOrders(orderStore.getOrderList(), filePath);
+        CsvUtil.exportOrders(IOrderStore.getOrderList(), filePath);
     }
 
     @Override
@@ -347,19 +349,19 @@ public class Controller implements IController {
     @Override
     public void importBookStore() {
         String filePath = propertiesHolder.getCsvPath();
-        updateListById(bookStore.getBookList(), CsvUtil.importBooks(filePath));
+        updateListById(IBookStore.getBookList(), CsvUtil.importBooks(filePath));
     }
 
     @Override
     public void importOrderStore() {
         String filePath = propertiesHolder.getCsvPath();
-        updateListById(orderStore.getOrderList(), CsvUtil.importOrder(filePath));
+        updateListById(IOrderStore.getOrderList(), CsvUtil.importOrder(filePath));
     }
 
     @Override
     public void importRequestStore() {
         String filePath = propertiesHolder.getCsvPath();
-        updateListById(requestStore.getRequestList(),CsvUtil.importRequest(filePath));
+        updateListById(IRequestStore.getRequestList(),CsvUtil.importRequest(filePath));
     }
 
     private <T extends IModel> void updateListById(List<T> setList, List<T> impList) {

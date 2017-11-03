@@ -41,7 +41,7 @@ public class UIController implements IUIController {
         this.navigator = navigator;
     }
 
-    public IMenuController getMenuController() {
+    public Object getMenuController() {
         return menuController;
     }
 

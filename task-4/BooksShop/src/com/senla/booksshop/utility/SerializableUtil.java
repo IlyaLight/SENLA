@@ -1,8 +1,8 @@
 package com.senla.booksshop.utility;
 
-import com.senla.booksshop.stores.BookStore;
-import com.senla.booksshop.stores.OrderStore;
-import com.senla.booksshop.stores.RequestStore;
+import com.senla.booksshop.stores.IBookStore;
+import com.senla.booksshop.stores.IOrderStore;
+import com.senla.booksshop.stores.IRequestStore;
 
 import java.io.*;
 import java.util.logging.Level;
@@ -20,16 +20,16 @@ public class SerializableUtil {
 
     private static final Logger log = Logger.getLogger(WorkWithFile.class.getName());
 
-    public static void writeBook(BookStore bookStore, String path){
-        writeObject(bookStore, path + BOOKS_FILE_NAME);
+    public static void writeBook(IBookStore IBookStore, String path){
+        writeObject(IBookStore, path + BOOKS_FILE_NAME);
     }
 
-    public static void writeOrder(OrderStore orderStore, String path){
-        writeObject(orderStore, path + ORDER_FILE_NAME);
+    public static void writeOrder(IOrderStore IOrderStore, String path){
+        writeObject(IOrderStore, path + ORDER_FILE_NAME);
     }
 
-    public static void writeRequest(RequestStore requestStore, String path){
-        writeObject(requestStore, path + REQUEST_FILE_NAME);
+    public static void writeRequest(IRequestStore IRequestStore, String path){
+        writeObject(IRequestStore, path + REQUEST_FILE_NAME);
     }
 
     private static <T> void writeObject(T t, String path){
@@ -43,16 +43,16 @@ public class SerializableUtil {
     }
 
 
-    public static BookStore readBooks(String path){
-        return (BookStore) readObject(path + BOOKS_FILE_NAME);
+    public static IBookStore readBooks(String path){
+        return (IBookStore) readObject(path + BOOKS_FILE_NAME);
     }
 
-    public static RequestStore readRequest(String path){
-        return (RequestStore) readObject(path + REQUEST_FILE_NAME);
+    public static IRequestStore readRequest(String path){
+        return (IRequestStore) readObject(path + REQUEST_FILE_NAME);
     }
 
-    public static OrderStore readOrder(String path){
-        return (OrderStore) readObject(path + ORDER_FILE_NAME);
+    public static IOrderStore readOrder(String path){
+        return (IOrderStore) readObject(path + ORDER_FILE_NAME);
     }
 
     private static Object readObject(String path){
