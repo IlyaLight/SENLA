@@ -4,30 +4,30 @@ import com.senla.booksshop.exception.ObjectAvailabilityException;
 import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
-import com.senla.booksshop.stores.BookStore;
-import com.senla.booksshop.stores.OrderStore;
-import com.senla.booksshop.stores.RequestStore;
-import com.senla.properties.IPropertiesHolder;
+import com.senla.booksshop.stores.IBookStore;
+import com.senla.booksshop.stores.IOrderStore;
+import com.senla.booksshop.stores.IRequestStore;
+import com.senla.booksshop.utility.PropertiesHolder;
 
 import java.util.Date;
 import java.util.List;
 
 public interface IController {
-    IPropertiesHolder getPropertiesHolder();
+    PropertiesHolder getPropertiesHolder();
 
-    void setPropertiesHolder(IPropertiesHolder propertiesHolder);
+    void setPropertiesHolder(PropertiesHolder propertiesHolder);
 
-    BookStore getBookStore();
+    IBookStore getBookStore();
 
-    void setBookStore(BookStore bookStore);
+    void setBookStore(IBookStore IBookStore);
 
-    OrderStore getOrderStore();
+    IOrderStore getOrderStore();
 
-    void setOrderStore(OrderStore orderStore);
+    void setOrderStore(IOrderStore IOrderStore);
 
-    RequestStore getRequestStore();
+    IRequestStore getRequestStore();
 
-    void setRequestStore(RequestStore requestStore);
+    void setRequestStore(IRequestStore IRequestStore);
 
     List<Book> getBooksSortedByName();
 
@@ -107,5 +107,4 @@ public interface IController {
 
     void importRequestStore();
 
-    void readPropertiesFromFile(String filePath);
 }

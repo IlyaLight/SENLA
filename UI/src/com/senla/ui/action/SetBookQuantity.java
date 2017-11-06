@@ -1,10 +1,10 @@
 package com.senla.ui.action;
 
-import com.senla.ui.controller.MenuController;
+import com.senla.ui.controller.IMenuController;
 
 public class SetBookQuantity implements IAction {
     @Override
-    public void action(MenuController menuController) {
-        menuController.setBookQuantity();
+    public void action(IMenuController IMenuController) {
+        IMenuController.setBookQuantity();
     }
 }

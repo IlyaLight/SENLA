@@ -1,13 +1,19 @@
-окт 25, 2017 4:21:04 AM com.senla.booksshop.utility.SerializableUtil readObject
+ноя 03, 2017 4:59:59 PM com.senla.booksshop.utility.SerializableUtil readObject
 SEVERE: Exception: 
-java.io.FileNotFoundException: 
-	at java.io.FileInputStream.open0(Native Method)
-	at java.io.FileInputStream.open(FileInputStream.java:195)
-	at java.io.FileInputStream.<init>(FileInputStream.java:138)
-	at java.io.FileInputStream.<init>(FileInputStream.java:93)
-	at com.senla.booksshop.utility.SerializableUtil.readObject(SerializableUtil.java:71)
-	at readBooks(SerializableUtil.java:58)
-	at com.senla.booksshop.controller.Controller.readSerializable(Controller.java:290)
-	at com.senla.ui.controller.UIController.<init>(UIController.java:18)
-	at com.senla.ui.Main.main(Main.java:20)
+java.io.WriteAbortedException: writing aborted; java.io.NotSerializableException: com.senla.booksshop.stores.RequestStore
+	at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1539)
+	at java.io.ObjectInputStream.readObject(ObjectInputStream.java:422)
+	at com.senla.booksshop.utility.SerializableUtil.readObject(SerializableUtil.java:60)
+	at com.senla.booksshop.utility.SerializableUtil.readRequest(SerializableUtil.java:51)
+	at com.senla.booksshop.controller.Controller.readSerializable(Controller.java:314)
+	at com.senla.ui.controller.UIController.run(UIController.java:64)
+	at com.senla.ui.Main.main(Main.java:22)
+Caused by: java.io.NotSerializableException: com.senla.booksshop.stores.RequestStore
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1184)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)
+	at com.senla.booksshop.utility.SerializableUtil.writeObject(SerializableUtil.java:37)
+	at com.senla.booksshop.utility.SerializableUtil.writeRequest(SerializableUtil.java:32)
+	at com.senla.booksshop.controller.Controller.writeSerializable(Controller.java:305)
+	at com.senla.ui.controller.UIController.run(UIController.java:71)
+	... 1 more
 

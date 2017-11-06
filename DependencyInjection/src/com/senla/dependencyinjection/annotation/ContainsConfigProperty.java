@@ -1,4 +1,4 @@
-package com.senla.annotation;
+package com.senla.dependencyinjection.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

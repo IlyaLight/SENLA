@@ -6,9 +6,7 @@ import com.senla.booksshop.controller.IController;
 import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.Order;
 import com.senla.booksshop.model.Request;
-import com.senla.booksshop.stores.BookStore;
-import com.senla.booksshop.stores.OrderStore;
-import com.senla.booksshop.stores.RequestStore;
+import com.senla.booksshop.stores.*;
 import com.senla.booksshop.utility.Printer;
 import org.supercsv.cellprocessor.FmtDate;
 import org.supercsv.cellprocessor.Optional;
@@ -115,7 +113,7 @@ public class Main {
 //        bookList.add( controller.GetBookByName("x"));
 //        bookList.add( controller.GetBookByName("c"));
 
-        controller.addOrder(bookList , 10);
+//        controller.addOrder(bookList , 10);
 
 //        controller.assembleOrder(controller.getOrderById(1));
 
@@ -156,15 +154,15 @@ public class Main {
         calendar.set(2017, Calendar.OCTOBER, 1);
         orders.add(new Order(4, (float)150, calendar.getTime(), "delivery", Order.Status.PROCESSED, true));
 
-        BookStore bookStore = new BookStore();
-        bookStore.setBookList(books);
-        controller.setBookStore(bookStore);
-        OrderStore orderStore = new OrderStore();
-        orderStore.setOrderList(orders);
-        controller.setOrderStore(orderStore);
-        RequestStore requestStore = new RequestStore();
-        requestStore.setRequestArrayList(requests);
-        controller.setRequestStore(requestStore);
+        IBookStore IBookStore = new BookStore();
+        IBookStore.setBookList(books);
+        controller.setBookStore(IBookStore);
+        IOrderStore IOrderStore = new OrderStore();
+        IOrderStore.setOrderList(orders);
+        controller.setOrderStore(IOrderStore);
+        IRequestStore IRequestStore = new RequestStore();
+        IRequestStore.setRequestArrayList(requests);
+        controller.setRequestStore(IRequestStore);
 
         controller.writeToFile(path);
 

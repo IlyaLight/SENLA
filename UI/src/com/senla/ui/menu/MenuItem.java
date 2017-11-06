@@ -1,7 +1,7 @@
 package com.senla.ui.menu;
 
 import com.senla.ui.action.IAction;
-import com.senla.ui.controller.MenuController;
+import com.senla.ui.controller.IMenuController;
 
 public class MenuItem {
     private String title;
@@ -45,7 +45,7 @@ public class MenuItem {
         this.action = action;
     }
 
-    public void action(MenuController menuController){
+    public void action(IMenuController menuController){
         action.action(menuController);
     }
 }

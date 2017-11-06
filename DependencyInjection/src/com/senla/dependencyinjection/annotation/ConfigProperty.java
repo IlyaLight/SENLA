@@ -1,4 +1,4 @@
-package com.senla.annotation;
+package com.senla.dependencyinjection.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,10 +11,7 @@ public @interface ConfigProperty {
 
     String DEFAULT = "default";
 
-    enum  Type {INT, STRING, BOOLEAN
-    }
-
     String configName() default DEFAULT;
     String propertyName() default DEFAULT;
-    Type type() default Type.STRING;
+    Class type() default String.class;
 }

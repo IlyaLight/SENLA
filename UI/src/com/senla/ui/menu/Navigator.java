@@ -1,5 +1,6 @@
-package com.senla.ui;
+package com.senla.ui.menu;
 
+import com.senla.ui.controller.IMenuController;
 import com.senla.ui.controller.MenuController;
 import com.senla.ui.menu.Menu;
 import com.senla.ui.menu.MenuItem;
@@ -69,7 +70,7 @@ public class Navigator {
         return true;
     }
 
-    public void action(MenuController menuController) {
+    public void action(IMenuController menuController) {
         if (isAction()) {
             Console.out(INDENT);
             Console.out(LINE);

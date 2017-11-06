@@ -1,8 +1,8 @@
 package com.senla.ui.action;
 
-import com.senla.ui.controller.MenuController;
+import com.senla.ui.controller.IMenuController;
 
 @FunctionalInterface
 public interface IAction {
-    void action(MenuController menuController);
+    void action(IMenuController menuController);
 }

@@ -66,4 +66,6 @@ public interface IMenuController {
     void importOrderStore();
 
     void importRequestStore();
+
+    void cloneOrder();
 }

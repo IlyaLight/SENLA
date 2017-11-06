@@ -1,4 +1,4 @@
-package com.senla.annotation;
+package com.senla.properties;
 
 public class PropertyNotFoundException extends Exception{
     public PropertyNotFoundException() {
