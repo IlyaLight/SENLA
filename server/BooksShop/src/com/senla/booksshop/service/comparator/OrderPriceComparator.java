@@ -11,13 +11,7 @@ public class OrderPriceComparator implements Comparator<Order> {
         {
             return NullCompareFoComparators.compare(o1,o2);
         }
-        if(o1.getPrice()> o2.getPrice()){
-            return 1;
-        }
-        if(o1.getPrice()< o2.getPrice()){
-            return -1;
-        }
-        return 0;
+        return Float.compare(o1.getPrice(), o2.getPrice());
 
     }
 }

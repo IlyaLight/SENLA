@@ -15,7 +15,7 @@ public class PropertiesUtil {
     private static final Logger log = Logger.getLogger(PropertiesUtil.class.getName());
 
 
-    public static Object getProperties(String filePah, String propertyName) throws PropertyNotFoundException {
+    public static String getProperties(String filePah, String propertyName) throws PropertyNotFoundException {
         if (!propertiesFilesMap.containsKey(filePah)){
             Properties properties = new Properties();
             try (FileInputStream file = new FileInputStream(filePah)){
@@ -31,7 +31,7 @@ public class PropertiesUtil {
             Exception e = new PropertyNotFoundException(propertyName);
             throw (PropertyNotFoundException) e;
         }
-        return properties;
+        return properties.toString();
     }
 
 

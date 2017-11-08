@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Console {
 
-    public static final Scanner scaner = new Scanner(System.in);
+    public static final Scanner scanner = new Scanner(System.in);
     public static final String DATE_FORMAT = "yyyy, mm, dd";
     public static final String WRONG_DATA = "wrong data";
     public static final String GET_DATE = "enter the date \"%s\" in the format: ";
@@ -23,7 +23,7 @@ public class Console {
         boolean wrong = true;
         while (wrong) {
             try {
-                date = sdf.parse(scaner.nextLine());
+                date = sdf.parse(scanner.nextLine());
                 wrong = false;
             }catch(Exception e) {
                 System.out.println(WRONG_DATA);
@@ -36,8 +36,8 @@ public class Console {
         int i = 0;
         boolean wrong = true;
         while (wrong) {
-            if (scaner.hasNextInt()) {
-                i = scaner.nextInt();
+            if (scanner.hasNextInt()) {
+                i = scanner.nextInt();
                 wrong = false;
             } else {
                 System.out.println(NOT_INTEGER);
@@ -71,12 +71,12 @@ public class Console {
     }
 
     public static String inString(){
-        return scaner.nextLine();
+        return scanner.nextLine();
     }
 
     public static String inString(String s){
         System.out.println(s);
-        return scaner.nextLine();
+        return scanner.nextLine();
     }
 
     static public void outCollection(Collection collection){
@@ -88,7 +88,7 @@ public class Console {
     static public boolean confirmation(String s){
         System.out.println(s);
         System.out.println("y/n");
-        String in = scaner.nextLine();
+        String in = scanner.nextLine();
         while (true) {
             if (in.equals("y")) {
                 return true;
