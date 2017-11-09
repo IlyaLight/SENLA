@@ -20,7 +20,7 @@ public final class DIFactoriControllers {
     public static Object getController(Class interfaceClass){
         try {
             if(!diMap.containsKey(interfaceClass)) {
-                Object instance = PropertiesUtil.getProperties(FILE_PATH, interfaceClass.getName());
+                Object instance = Class.forName(PropertiesUtil.getProperties(FILE_PATH, interfaceClass.getName()));
                 diMap.put(interfaceClass, instance);
                 AnnotationAnalyzer.checkObject(instance);
             }
