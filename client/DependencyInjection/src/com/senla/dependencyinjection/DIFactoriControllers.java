@@ -15,17 +15,16 @@ public final class DIFactoriControllers {
     private static final String FILE_PATH = "DIFactori.properties";
 
     private static final String EXCEPTION = "Exception:";
-    public static final String COULD_T_FIND_OR_INSTANCE_AN_IMPLEMENTATION = "Could't find or instance an implementation...";
     private static Logger log = Logger.getLogger(DIFactoriControllers.class.getName());
 
-    public static Object getController(Class interfaceClass){
+    public static Object getImplementation(Class interfaceClass){
         try {
             if(!diMap.containsKey(interfaceClass)) {
-                diMap.put(interfaceClass, PropertiesUtil.getProperties(FILE_PATH, interfaceClass.getName()));
+                Object instance = Class.forName(PropertiesUtil.getProperties(FILE_PATH, interfaceClass.getName())).newInstance();
+                diMap.put(interfaceClass, instance);
+                AnnotationAnalyzer.checkObject(instance);
             }
-            Object instance = Class.forName(diMap.get(interfaceClass).toString()).newInstance();
-            AnnotationAnalyzer.checkObject(instance);
-            return instance;
+            return diMap.get(interfaceClass);
         } catch (Exception e) {
             log.log(Level.SEVERE, EXCEPTION, e);
             throw new Error(e);

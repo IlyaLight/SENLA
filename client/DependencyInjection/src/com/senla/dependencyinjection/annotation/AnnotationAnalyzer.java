@@ -30,13 +30,13 @@ public class AnnotationAnalyzer {
     private static final Map<String, Object> propertiesMap = new HashMap<>();
 
 
-    public static void checkObject(Object object) throws PropertyNotFoundException, IllegalAccessException, InstantiationException {
-        Class clazz = object.getClass();
+    public static void checkObject(Object inputObject) throws PropertyNotFoundException, IllegalAccessException, InstantiationException {
+        Class clazz = inputObject.getClass();
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             Injection injection = field.getAnnotation(Injection.class);
             if (injection != null){
-                setField(field, object, DIFactoriControllers.getController(field.getType()));    //recursion
+                setField(field, inputObject, DIFactoriControllers.getImplementation(field.getType()));    //recursion
             }
 
             ConfigProperty configProperty = field.getAnnotation(ConfigProperty.class);
@@ -50,13 +50,13 @@ public class AnnotationAnalyzer {
                     propertyName = clazz.getSimpleName() + "." + field.getName();
                 }
                 Class fieldType = configProperty.type();
-                setField(field, object, getFieldValue(configName, propertyName, fieldType));
+                setField(field, inputObject, getFieldValue(configName, propertyName, fieldType));
             }
             ContainsConfigProperty containsConfigProperty = field.getAnnotation(ContainsConfigProperty.class);
             if (containsConfigProperty != null){
                 Object o = field.getType().newInstance();
                 checkObject(o);  //recursion
-                setField(field,object, o);
+                setField(field,inputObject, o);
             }
         }
     }

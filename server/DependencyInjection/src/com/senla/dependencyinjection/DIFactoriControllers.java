@@ -17,10 +17,10 @@ public final class DIFactoriControllers {
     private static final String EXCEPTION = "Exception:";
     private static Logger log = Logger.getLogger(DIFactoriControllers.class.getName());
 
-    public static Object getController(Class interfaceClass){
+    public static Object getImplementation(Class interfaceClass){
         try {
             if(!diMap.containsKey(interfaceClass)) {
-                Object instance = Class.forName(PropertiesUtil.getProperties(FILE_PATH, interfaceClass.getName()));
+                Object instance = Class.forName(PropertiesUtil.getProperties(FILE_PATH, interfaceClass.getName())).newInstance();
                 diMap.put(interfaceClass, instance);
                 AnnotationAnalyzer.checkObject(instance);
             }

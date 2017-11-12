@@ -1,6 +1,7 @@
 package com.senla.ui.controller;
 
-import com.senla.booksshop.controller.IController;
+
+import com.senla.client.IController;
 
 public interface IMenuController {
     IController getShopController();

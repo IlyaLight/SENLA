@@ -1,10 +1,10 @@
 package com.senla.ui.controller;
 
 
+import com.senla.client.IController;
 import com.senla.dependencyinjection.annotation.Injection;
-import com.senla.booksshop.controller.IController;
-import com.senla.ui.menu.Navigator;
 import com.senla.ui.menu.MenuBuilder;
+import com.senla.ui.menu.Navigator;
 
 public class UIController implements IUIController {
 

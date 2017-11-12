@@ -1,12 +1,11 @@
 package com.senla.ui.controller;
 
 
+import com.senla.client.IController;
+import com.senla.client.exception.ObjectAvailabilityException;
+import com.senla.client.model.Book;
+import com.senla.client.model.Order;
 import com.senla.dependencyinjection.annotation.Injection;
-import com.senla.booksshop.controller.IController;
-import com.senla.booksshop.exception.ObjectAvailabilityException;
-import com.senla.booksshop.model.Book;
-import com.senla.booksshop.model.Order;
-import com.senla.booksshop.utility.WorkWithFile;
 import com.senla.ui.utility.Console;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class MenuController implements IMenuController {
 
     @Injection
     private IController shopController;
-    private static Logger log = Logger.getLogger(WorkWithFile.class.getName());
+    private static Logger log = Logger.getLogger(MenuController.class.getName());
 
     public MenuController() {
     }

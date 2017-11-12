@@ -36,7 +36,7 @@ public class AnnotationAnalyzer {
         for (Field field : fields) {
             Injection injection = field.getAnnotation(Injection.class);
             if (injection != null){
-                setField(field, inputObject, DIFactoriControllers.getController(field.getType()));    //recursion
+                setField(field, inputObject, DIFactoriControllers.getImplementation(field.getType()));    //recursion
             }
 
             ConfigProperty configProperty = field.getAnnotation(ConfigProperty.class);

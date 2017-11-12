@@ -18,9 +18,9 @@ public class ClientNIO {
     private ByteBuffer buffer = ByteBuffer.allocate(16);
 
     private void run() throws IOException{
+        Selector selector = Selector.open();
         SocketChannel channel = SocketChannel.open();
         channel.configureBlocking( false );
-        Selector selector = Selector.open();
         channel.register(selector, SelectionKey.OP_CONNECT);
         channel.connect(new InetSocketAddress(ADDRESS, PORT));
         BlockingQueue<String> queue = new ArrayBlockingQueue<String>(2);

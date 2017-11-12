@@ -18,7 +18,7 @@ public class Main {
             System.err.println("Could not setup logger configuration: " + e.toString());
         }
 
-        IUIController uiController = (IUIController)DIFactoriControllers.getController(IUIController.class);
+        IUIController uiController = (IUIController)DIFactoriControllers.getImplementation(IUIController.class);
         uiController.run();
     }
 }
