@@ -4,6 +4,7 @@ package com.senla.ui.controller;
 import com.senla.client.IController;
 
 public interface IMenuController {
+
     IController getShopController();
 
     void setShopController(IController shopController);

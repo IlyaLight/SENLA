@@ -1,4 +1,4 @@
-package com.senla.client.model;
+package com.senla.booksshop.model;
 
 import java.io.Serializable;
 

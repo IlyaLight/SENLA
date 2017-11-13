@@ -45,8 +45,8 @@ public class MonoThreadClientHandler implements Runnable {
             int length = command.getParams().length;
             paramType = new Class[length];
             while (length > 0) {
-                paramType[length] = command.getParams()[length].getClass();
                 length--;
+                paramType[length] = command.getParams()[length].getClass();
             }
         }
         Class clazz = controller.getClass();

@@ -1,12 +1,14 @@
 package com.senla.client;
 
+import com.senla.booksshop.model.Book;
+import com.senla.booksshop.model.Order;
+import com.senla.booksshop.model.Request;
 import com.senla.client.exception.ObjectAvailabilityException;
-import com.senla.client.model.Book;
-import com.senla.client.model.Order;
-import com.senla.client.model.Request;
+import com.senla.server.Response;
 
 import java.util.Date;
 import java.util.List;
+
 
 public class Controller implements IController {
 
@@ -14,196 +16,201 @@ public class Controller implements IController {
 
     @Override
     public List<Book> getBooksSortedByName() {
-        return null;
+       return (List<Book>) writeCommand().getResut();
     }
 
     @Override
     public List<Book> getBooksSortedByDateIssue() {
-        return null;
+        return (List<Book>) writeCommand().getResut();
     }
 
     @Override
     public List<Book> getBooksSortedByStockAvailability() {
-        return null;
+        return (List<Book>) writeCommand().getResut();
     }
 
     @Override
     public List<Book> getBooksSortedByPrice() {
-        return null;
+        return (List<Book>) writeCommand().getResut();
     }
 
     @Override
     public List<Book> getStaleBooksDate() {
-        return null;
+        return (List<Book>) writeCommand().getResut();
     }
 
     @Override
     public List<Book> getStaleBooksPrice(Date date) {
-        return null;
+        return (List<Book>) writeCommand(date).getResut();
     }
 
     @Override
     public List<Order> getOrderSortedByPrice() {
-        return null;
+        return (List<Order>) writeCommand().getResut();
     }
 
     @Override
     public List<Order> getOrderSortedByStatus() {
-        return null;
+        return (List<Order>) writeCommand().getResut();
     }
 
     @Override
     public List<Order> getOrderSortedByDataCompletion() {
-        return null;
+        return (List<Order>) writeCommand().getResut();
     }
 
     @Override
     public List<Order> getOrderSortedById() {
-        return null;
+        return (List<Order>) writeCommand().getResut();
     }
 
     @Override
     public Order getCloneOrderById(int id) throws ObjectAvailabilityException {
-        return null;
+        return (List<Order>) writeCommand(id).getResut();
     }
 
     @Override
     public List<Order> getCompletedOrder(Date from, Date to) {
-        return null;
+        return (List<Order>) writeCommand(from, to).getResut();
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByPrice(Date from, Date to) {
-        return null;
+        return (List<Order>) writeCommand(from, to).getResut();
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to) {
-        return null;
+        return (List<Order>) writeCommand(from, to).getResut();
     }
 
     @Override
     public List<Request> getRequestSortedByBookName() {
-        return null;
+        return (List<Request>) writeCommand().getResut();
     }
 
     @Override
     public List<Request> getRequestSortedOfQuantity() {
-        return null;
+        return (List<Request>) writeCommand().getResut();
     }
 
     @Override
     public String getBookDescription(String bookName) throws ObjectAvailabilityException {
-        return null;
+        return (String) writeCommand(bookName).getResut();
     }
 
     @Override
     public String getOrderDetails(Integer ip) throws ObjectAvailabilityException {
-        return null;
+        return (String) writeCommand(ip).getResut();
     }
 
     @Override
     public void setBookQuantity(String bookName, int quantity) throws ObjectAvailabilityException {
-
+        writeCommand(bookName, quantity).getResut();
     }
 
     @Override
     public float getIncome(Date from, Date to) {
-        return 0;
+        return (float) writeCommand(from, to).getResut();
     }
 
     @Override
     public void addOrder(Order order) {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand(order).getResut();
     }
 
     @Override
     public void assembleOrder(Order order) {
-
+        writeCommand(order).getResut();
     }
+
 
     @Override
     public void cancelTheOrder(Order order) {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand(order).getResut();
     }
 
     @Override
     public void addRequest(Book book) {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand(book).getResut();
     }
 
     @Override
     public List<Request> findRequestByBookName(String name) {
-        return null;
+        return (List<Request>) writeCommand(name).getResut();
     }
 
     @Override
     public void readFromFileAllStore(String filePath) {
-
+        writeCommand(filePath).getResut();
     }
 
     @Override
     public void writeToFile(String filePath) {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand(filePath).getResut();
     }
 
     @Override
     public Book GetBookByName(String name) throws ObjectAvailabilityException {
-        return null;
+        return (Book) writeCommand(name).getResut();
     }
 
     @Override
     public Order getOrderById(Integer ip) throws ObjectAvailabilityException {
-        return null;
+        return (Order) writeCommand(ip).getResut();
     }
 
     @Override
     public void writeSerializable() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+            writeCommand();
     }
 
     @Override
     public void readSerializable() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void exportAllStores() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[0].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void exportBookStore() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void exportOrderStore() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void exportRequestStore() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void importAllStores() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void importBookStore() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void importOrderStore() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
     }
 
     @Override
     public void importRequestStore() {
-        client.writeCommand(new com.senla.server.Command(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        writeCommand();
+    }
+
+    private Response writeCommand(Object ... params){
+        return client.writeCommand( new com.senla.server.Command(Thread.currentThread().getStackTrace()[2].getMethodName(), params));
     }
 }

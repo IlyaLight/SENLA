@@ -1,9 +1,10 @@
 package com.senla.client;
 
+import com.senla.booksshop.model.Book;
+import com.senla.booksshop.model.Order;
+import com.senla.booksshop.model.Request;
 import com.senla.client.exception.ObjectAvailabilityException;
-import com.senla.client.model.Book;
-import com.senla.client.model.Order;
-import com.senla.client.model.Request;
+
 import java.util.Date;
 import java.util.List;
 
