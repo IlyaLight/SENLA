@@ -7,11 +7,19 @@ import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MonoThreadClientHandler implements Runnable {
 
+    public static final String DISCONNECTED = "Client disconnected";
+    public static final String CLOSING_CONNECTIONS_CHANNELS_DONE = "Closing connections & channels - DONE.";
+    private static final String EXCEPTION = "Exception: ";
+    public static final String STOP_CLIENT = "stopClient";
     private static Socket client;
     private static IController controller;
+
+    private static Logger log = Logger.getLogger(MonoThreadClientHandler.class.getName());
 
     public MonoThreadClientHandler(Socket client, IController controller){
         MonoThreadClientHandler.client = client;
@@ -25,16 +33,23 @@ public class MonoThreadClientHandler implements Runnable {
         try {
             ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
             ObjectInputStream in = new ObjectInputStream(client.getInputStream());
-            while (!client.isClosed()){
+            while (true){
                 Command command = (Command)in.readObject();
+                if (command.getMethodName().equals(STOP_CLIENT)){
+                    out.writeObject(new Response(STOP_CLIENT));
+                    break;
+                }
                 out.writeObject (executeCommand(command));
             }
-            System.out.println("Client disconnected");
+            System.out.println(DISCONNECTED);
+            log.info(DISCONNECTED);
             in.close();
             out.close();
             client.close();
-            System.out.println("Closing connections & channels - DONE.");
+            System.out.println(CLOSING_CONNECTIONS_CHANNELS_DONE);
+            log.info(CLOSING_CONNECTIONS_CHANNELS_DONE);
         }catch (IOException | ClassNotFoundException e) {
+            log.log(Level.SEVERE, EXCEPTION, e);
             throw new RuntimeException(e);
         }
     }
@@ -57,9 +72,11 @@ public class MonoThreadClientHandler implements Runnable {
             } catch (InvocationTargetException e){
                 return new Response(e);
             } catch (IllegalAccessException e){
+                log.log(Level.SEVERE, EXCEPTION, e);
                 throw new RuntimeException(e);
             }
         } catch (NoSuchMethodException e) {
+            log.log(Level.SEVERE, EXCEPTION, e);
             throw new RuntimeException(e);
         }
     }

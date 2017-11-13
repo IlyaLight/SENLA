@@ -2,23 +2,24 @@ package com.senla.client;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Client {
+
     private static final int PORT = 9090;
     private static final String ADDRESS = "localhost";
+    private static final String EXCEPTION = "Exception: ";
+    public static final String CONNECTED = "Client connected to socket";
 
+    private  Socket socket;
     private  ObjectOutputStream out;
     private  ObjectInputStream in;
 
+    private static Logger log = Logger.getLogger(Client.class.getName());
+
     public Client() {
-        try {
-            Socket socket = new Socket(ADDRESS, PORT);
-            out = new ObjectOutputStream(socket.getOutputStream());
-            in = new ObjectInputStream(socket.getInputStream());
-            System.out.println("Client connected to socket");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        connect();
     }
 
     public  com.senla.server.Response writeCommand (com.senla.server.Command o) {
@@ -27,8 +28,30 @@ public class Client {
             out.flush();
             return  (com.senla.server.Response)in.readObject();
         } catch (IOException | ClassNotFoundException e) {
+            log.log(Level.SEVERE, EXCEPTION, e);
             throw new RuntimeException(e);
         }
     }
 
+    public void connect(){
+        try {
+            this.socket = new Socket(ADDRESS, PORT);
+            out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream(socket.getInputStream());
+            log.info(CONNECTED);
+            System.out.println(CONNECTED);
+        } catch (Exception e) {
+            log.log(Level.SEVERE, EXCEPTION, e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void stop() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            log.log(Level.SEVERE, EXCEPTION, e);
+            throw new RuntimeException(e);
+        }
+    }
 }

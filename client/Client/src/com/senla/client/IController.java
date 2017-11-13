@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface IController {
 
+    void stopClient();
+
     List<Book> getBooksSortedByName();
 
     List<Book> getBooksSortedByDateIssue();

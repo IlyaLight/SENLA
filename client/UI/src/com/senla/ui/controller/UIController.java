@@ -69,6 +69,7 @@ public class UIController implements IUIController {
             run = navigator.navigate();
         }
         shopController.writeSerializable();
+        shopController.stopClient();
     }
 
 

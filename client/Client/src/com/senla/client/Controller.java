@@ -14,150 +14,186 @@ public class Controller implements IController {
 
     private Client client = new Client();
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    @Override
+    public void stopClient(){
+        writeCommand();
+    }
+
     @Override
     public List<Book> getBooksSortedByName() {
-       return (List<Book>) writeCommand().getResut();
+       return (List<Book>) writeCommand().getResult();
     }
 
     @Override
     public List<Book> getBooksSortedByDateIssue() {
-        return (List<Book>) writeCommand().getResut();
+        return (List<Book>) writeCommand().getResult();
     }
 
     @Override
     public List<Book> getBooksSortedByStockAvailability() {
-        return (List<Book>) writeCommand().getResut();
+        return (List<Book>) writeCommand().getResult();
     }
 
     @Override
     public List<Book> getBooksSortedByPrice() {
-        return (List<Book>) writeCommand().getResut();
+        return (List<Book>) writeCommand().getResult();
     }
 
     @Override
     public List<Book> getStaleBooksDate() {
-        return (List<Book>) writeCommand().getResut();
+        return (List<Book>) writeCommand().getResult();
     }
 
     @Override
     public List<Book> getStaleBooksPrice(Date date) {
-        return (List<Book>) writeCommand(date).getResut();
+        return (List<Book>) writeCommand(date).getResult();
     }
 
     @Override
     public List<Order> getOrderSortedByPrice() {
-        return (List<Order>) writeCommand().getResut();
+        return (List<Order>) writeCommand().getResult();
     }
 
     @Override
     public List<Order> getOrderSortedByStatus() {
-        return (List<Order>) writeCommand().getResut();
+        return (List<Order>) writeCommand().getResult();
     }
 
     @Override
     public List<Order> getOrderSortedByDataCompletion() {
-        return (List<Order>) writeCommand().getResut();
+        return (List<Order>) writeCommand().getResult();
     }
 
     @Override
     public List<Order> getOrderSortedById() {
-        return (List<Order>) writeCommand().getResut();
+        return (List<Order>) writeCommand().getResult();
     }
 
     @Override
     public Order getCloneOrderById(int id) throws ObjectAvailabilityException {
-        return (List<Order>) writeCommand(id).getResut();
+        Response response = writeCommand(id);
+        if (response.getException() != null){
+            throw new ObjectAvailabilityException();
+        }
+        return (Order) response.getResult();
     }
 
     @Override
     public List<Order> getCompletedOrder(Date from, Date to) {
-        return (List<Order>) writeCommand(from, to).getResut();
+        return (List<Order>) writeCommand(from, to).getResult();
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByPrice(Date from, Date to) {
-        return (List<Order>) writeCommand(from, to).getResut();
+        return (List<Order>) writeCommand(from, to).getResult();
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to) {
-        return (List<Order>) writeCommand(from, to).getResut();
+        return (List<Order>) writeCommand(from, to).getResult();
     }
 
     @Override
     public List<Request> getRequestSortedByBookName() {
-        return (List<Request>) writeCommand().getResut();
+        return (List<Request>) writeCommand().getResult();
     }
 
     @Override
     public List<Request> getRequestSortedOfQuantity() {
-        return (List<Request>) writeCommand().getResut();
+        return (List<Request>) writeCommand().getResult();
     }
 
     @Override
     public String getBookDescription(String bookName) throws ObjectAvailabilityException {
-        return (String) writeCommand(bookName).getResut();
+        Response response = writeCommand(bookName);
+        if (response.getException() != null){
+            throw new ObjectAvailabilityException();
+        }
+        return (String) response.getResult();
     }
 
     @Override
     public String getOrderDetails(Integer ip) throws ObjectAvailabilityException {
-        return (String) writeCommand(ip).getResut();
+        Response response = writeCommand(ip);
+        if (response.getException() != null){
+            throw new ObjectAvailabilityException();
+        }
+        return (String) response.getResult();
     }
 
     @Override
     public void setBookQuantity(String bookName, int quantity) throws ObjectAvailabilityException {
-        writeCommand(bookName, quantity).getResut();
+        Response response = writeCommand(bookName, quantity);
+        if (response.getException() != null){
+            throw new ObjectAvailabilityException();
+        }
     }
 
     @Override
     public float getIncome(Date from, Date to) {
-        return (float) writeCommand(from, to).getResut();
+        return (float) writeCommand(from, to).getResult();
     }
 
     @Override
     public void addOrder(Order order) {
-        writeCommand(order).getResut();
+        writeCommand(order).getResult();
     }
 
     @Override
     public void assembleOrder(Order order) {
-        writeCommand(order).getResut();
+        writeCommand(order).getResult();
     }
 
 
     @Override
     public void cancelTheOrder(Order order) {
-        writeCommand(order).getResut();
+        writeCommand(order).getResult();
     }
 
     @Override
     public void addRequest(Book book) {
-        writeCommand(book).getResut();
+        writeCommand(book).getResult();
     }
 
     @Override
     public List<Request> findRequestByBookName(String name) {
-        return (List<Request>) writeCommand(name).getResut();
+        return (List<Request>) writeCommand(name).getResult();
     }
 
     @Override
     public void readFromFileAllStore(String filePath) {
-        writeCommand(filePath).getResut();
+        writeCommand(filePath).getResult();
     }
 
     @Override
     public void writeToFile(String filePath) {
-        writeCommand(filePath).getResut();
+        writeCommand(filePath).getResult();
     }
 
     @Override
     public Book GetBookByName(String name) throws ObjectAvailabilityException {
-        return (Book) writeCommand(name).getResut();
+        Response response = writeCommand(name);
+        if (response.getException() != null){
+            throw new ObjectAvailabilityException();
+        }
+        return (Book) response.getResult();
     }
 
     @Override
     public Order getOrderById(Integer ip) throws ObjectAvailabilityException {
-        return (Order) writeCommand(ip).getResut();
+        Response response = writeCommand(ip);
+        if (response.getException() != null){
+            throw new ObjectAvailabilityException();
+        }
+        return (Order) response.getResult();
     }
 
     @Override

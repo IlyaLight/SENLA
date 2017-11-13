@@ -5,26 +5,26 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Response implements Serializable{
 
-    private Object resut;
+    private Object result;
     private InvocationTargetException exception;
 
     public Response() {
     }
 
-    public Response(Object resut) {
-        this.resut = resut;
+    public Response(Object result) {
+        this.result = result;
     }
 
     public Response( InvocationTargetException exception) {
         this.exception = exception;
     }
 
-    public Object getResut() {
-        return resut;
+    public Object getResult() {
+        return result;
     }
 
-    public void setResut(Object resut) {
-        this.resut = resut;
+    public void setResult(Object result) {
+        this.result = result;
     }
 
     public InvocationTargetException getException() {
