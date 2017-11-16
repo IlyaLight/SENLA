@@ -1,6 +1,6 @@
 package com.senla.booksshop.service.comparator;
 
-import com.senla.booksshop.model.Order;
+import com.senla.api.model.Order;
 
 import java.util.Comparator;
 

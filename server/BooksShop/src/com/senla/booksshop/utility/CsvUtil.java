@@ -1,8 +1,8 @@
 package com.senla.booksshop.utility;
 
-import com.senla.booksshop.model.Book;
-import com.senla.booksshop.model.Order;
-import com.senla.booksshop.model.Request;
+import com.senla.api.model.Book;
+import com.senla.api.model.Order;
+import com.senla.api.model.Request;
 import org.supercsv.cellprocessor.*;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;

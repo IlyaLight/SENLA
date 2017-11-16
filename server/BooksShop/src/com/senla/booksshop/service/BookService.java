@@ -1,6 +1,6 @@
 package com.senla.booksshop.service;
 
-import com.senla.booksshop.model.Book;
+import com.senla.api.model.Book;
 import com.senla.booksshop.service.comparator.*;
 
 import java.util.ArrayList;

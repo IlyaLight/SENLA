@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 public class Server {
 
     private static final int PORT = 9090;
-        private static final String EXCEPTION = "Exception: ";
+    private static final String EXCEPTION = "Exception: ";
     public static final String NEW_CLIENT = "new client";
     public static final String MAIN_SERVER_INITIATE_EXITING = "Main Server initiate exiting...";
 

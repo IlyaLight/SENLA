@@ -1,6 +1,6 @@
 package com.senla.booksshop.service;
 
-import com.senla.booksshop.model.Order;
+import com.senla.api.model.Order;
 import com.senla.booksshop.service.comparator.OrderDateCompletionComparator;
 import com.senla.booksshop.service.comparator.OrderIdComparator;
 import com.senla.booksshop.service.comparator.OrderPriceComparator;

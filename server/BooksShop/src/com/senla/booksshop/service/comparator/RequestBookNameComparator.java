@@ -1,7 +1,7 @@
 package com.senla.booksshop.service.comparator;
 
 
-import com.senla.booksshop.model.Request;
+import com.senla.api.model.Request;
 
 import java.util.Comparator;
 

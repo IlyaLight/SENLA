@@ -1,9 +1,9 @@
-package com.senla.client;
+package com.senla.api;
 
-import com.senla.booksshop.model.Book;
-import com.senla.booksshop.model.Order;
-import com.senla.booksshop.model.Request;
-import com.senla.client.exception.ObjectAvailabilityException;
+import com.senla.api.model.Book;
+import com.senla.api.model.Order;
+import com.senla.api.model.Request;
+import com.senla.api.exception.ObjectAvailabilityException;
 
 import java.util.Date;
 import java.util.List;

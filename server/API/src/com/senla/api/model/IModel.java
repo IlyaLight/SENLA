@@ -1,4 +1,4 @@
-package com.senla.booksshop.model;
+package com.senla.api.model;
 
 public interface IModel {
      int getId();

@@ -1,6 +1,11 @@
 package com.senla.client;
 
-import java.io.*;
+import com.senla.api.Command;
+import com.senla.api.Response;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,11 +27,11 @@ public class Client {
         connect();
     }
 
-    public  com.senla.server.Response writeCommand (com.senla.server.Command o) {
+    public Response writeCommand (Command command) {
         try {
-            out.writeObject(o);
+            out.writeObject(command);
             out.flush();
-            return  (com.senla.server.Response)in.readObject();
+            return  (Response)in.readObject();
         } catch (IOException | ClassNotFoundException e) {
             log.log(Level.SEVERE, EXCEPTION, e);
             throw new RuntimeException(e);

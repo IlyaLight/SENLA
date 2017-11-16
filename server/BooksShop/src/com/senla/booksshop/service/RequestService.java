@@ -1,6 +1,6 @@
 package com.senla.booksshop.service;
 
-import com.senla.booksshop.model.Request;
+import com.senla.api.model.Request;
 import com.senla.booksshop.service.comparator.RequestBookNameComparator;
 import com.senla.booksshop.service.comparator.RequestQuantityComparator;
 

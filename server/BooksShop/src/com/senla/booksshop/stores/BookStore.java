@@ -1,6 +1,6 @@
 package com.senla.booksshop.stores;
 
-import com.senla.booksshop.model.Book;
+import com.senla.api.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;

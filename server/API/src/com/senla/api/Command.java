@@ -1,4 +1,4 @@
-package com.senla.server;
+package com.senla.api;
 
 import java.io.Serializable;
 

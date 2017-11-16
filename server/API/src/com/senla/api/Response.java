@@ -1,12 +1,14 @@
-package com.senla.server;
+package com.senla.api;
 
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
 
 public class Response implements Serializable{
 
     private Object result;
-    private InvocationTargetException exception;
+
+
+    private boolean exception;
+
 
     public Response() {
     }
@@ -15,7 +17,8 @@ public class Response implements Serializable{
         this.result = result;
     }
 
-    public Response( InvocationTargetException exception) {
+    public Response(Object result , boolean exception) {
+        this.result = result;
         this.exception = exception;
     }
 
@@ -27,11 +30,11 @@ public class Response implements Serializable{
         this.result = result;
     }
 
-    public InvocationTargetException getException() {
+    public boolean isException() {
         return exception;
     }
 
-    public void setException(InvocationTargetException exception) {
+    public void setException(boolean exception) {
         this.exception = exception;
     }
 }

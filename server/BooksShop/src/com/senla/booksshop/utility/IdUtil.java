@@ -1,6 +1,6 @@
 package com.senla.booksshop.utility;
 
-import com.senla.booksshop.model.IModel;
+import com.senla.api.model.IModel;
 
 import java.util.ArrayList;
 import java.util.List;

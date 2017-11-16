@@ -1,33 +1,14 @@
-package com.senla.booksshop.controller;
+package com.senla.api;
 
-import com.senla.booksshop.exception.ObjectAvailabilityException;
-import com.senla.booksshop.model.Book;
-import com.senla.booksshop.model.Order;
-import com.senla.booksshop.model.Request;
-import com.senla.booksshop.stores.IBookStore;
-import com.senla.booksshop.stores.IOrderStore;
-import com.senla.booksshop.stores.IRequestStore;
-import com.senla.booksshop.utility.PropertiesHolder;
+import com.senla.api.exception.ObjectAvailabilityException;
+import com.senla.api.model.Book;
+import com.senla.api.model.Order;
+import com.senla.api.model.Request;
 
 import java.util.Date;
 import java.util.List;
 
 public interface IController {
-    PropertiesHolder getPropertiesHolder();
-
-    void setPropertiesHolder(PropertiesHolder propertiesHolder);
-
-    IBookStore getBookStore();
-
-    void setBookStore(IBookStore IBookStore);
-
-    IOrderStore getOrderStore();
-
-    void setOrderStore(IOrderStore IOrderStore);
-
-    IRequestStore getRequestStore();
-
-    void setRequestStore(IRequestStore IRequestStore);
 
     List<Book> getBooksSortedByName();
 

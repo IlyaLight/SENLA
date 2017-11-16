@@ -2,7 +2,7 @@ package com.senla.ui.controller;
 
 
 import com.senla.client.IController;
-import com.senla.client.exception.ObjectAvailabilityException;
+import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.booksshop.model.Book;
 import com.senla.booksshop.model.Order;
 import com.senla.dependencyinjection.annotation.Injection;

@@ -1,4 +1,4 @@
-package com.senla.booksshop.exception;
+package com.senla.api.exception;
 
 public class ObjectAvailabilityException extends Exception {
 

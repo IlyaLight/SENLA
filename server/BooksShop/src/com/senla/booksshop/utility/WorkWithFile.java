@@ -1,9 +1,9 @@
 package com.senla.booksshop.utility;
 
 import com.danco.training.TextFileWorker;
-import com.senla.booksshop.model.Book;
-import com.senla.booksshop.model.Order;
-import com.senla.booksshop.model.Request;
+import com.senla.api.model.Book;
+import com.senla.api.model.Order;
+import com.senla.api.model.Request;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class WorkWithFile {
