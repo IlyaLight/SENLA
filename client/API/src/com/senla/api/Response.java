@@ -38,4 +38,3 @@ public class Response implements Serializable{
         this.exception = exception;
     }
 }
-}
