@@ -24,9 +24,10 @@ where color='Y';
 select model from pc 
 where cd='12x' or cd='24x';
 
--- 6
+-- 6 Укажите производителя и скорость для тех лаптопов, которые 
+-- имеют hd объемом не менее 10
 select maker, speed 
-from pc 
+ from pc 
 left join product 
 using(model) 
 where hd>10;
@@ -79,9 +80,9 @@ from pc
 group by speed;
 
 -- 15 найдите размеры жеских дисков, совподающих у двух и более PC. Вывести hd
-SELECT hd, count(*)
- FROM pc
-GROUP BY hd
+select hd, count(*)
+ from pc
+group by hd
 HAVING count(*) > 1
 ORDER BY count(*);
 
