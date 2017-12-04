@@ -64,12 +64,27 @@ order by price desc;
 select avg(speed)
 from pc;
 
--- 12
+-- 12 найти среднюю скорость лаптопов, цена которох выще 1000
 select avg(speed)
 from ( select*from laptop where price > 1000)as t;
 
--- 13
+-- 13 найти среднюю скорость ПК, выпущенных производителем А
 select avg(speed)
-from pc, product
+ from pc, product
 where maker = 'A' and product.model = pc.model;
 
+-- 14 для каждого значения скорости найти среднюю стоимость
+select avg(price)
+from pc
+group by speed;
+
+-- 15 найдите размеры жеских дисков, совподающих у двух и более PC. Вывести hd
+SELECT hd, count(*)
+ FROM pc
+GROUP BY hd
+HAVING count(*) > 1
+ORDER BY count(*);
+
+-- 16 найти пары моделей pc, имеющих одинаковые скорость и ram, В результате каждую 
+-- пару указывается только один раз, т.е. (i,j), но не (j,i). Порядок вывода: модель 
+-- с большим номера, модель с меньшим номером, скорость и ram
