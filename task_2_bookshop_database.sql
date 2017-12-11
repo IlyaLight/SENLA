@@ -6,7 +6,7 @@ create table books(
 	id int not null auto_increment,
 	name varchar(100) not null,
 	datePublication date,
-	dateIssueb date,
+	dateIssue date,
 	price decimal(15,2),
 	inStock int,
 	primary key(id)
