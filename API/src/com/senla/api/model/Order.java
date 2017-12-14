@@ -19,15 +19,22 @@ public class Order implements Cloneable, Serializable, IModel {
 
     private Integer id;
     private List<Book> books;
+    private List<Integer> bookIds;
     private Float price;
     private Date dataCompletion;
     private String details;
     private Status status;
     private boolean completed;
 
-
-
     public Order() {
+    }
+
+    public List<Integer> getBookIds() {
+        return bookIds;
+    }
+
+    public void setBookIds(List<Integer> bookIds) {
+        this.bookIds = bookIds;
     }
 
     @Override
@@ -63,7 +70,7 @@ public class Order implements Cloneable, Serializable, IModel {
         return String.format(FORMAT_TO_STRING, id, dataCompletion.toString(), price, details, status.name());
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

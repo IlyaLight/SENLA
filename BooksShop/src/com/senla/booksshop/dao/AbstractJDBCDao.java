@@ -1,20 +1,19 @@
 package com.senla.booksshop.dao;
 
 import com.senla.api.model.IModel;
+import com.senla.api.model.Order;
+import com.senla.booksshop.utility.JdbcMySqlUtil;
 
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable> implements GenericDao<T, PK> {
 
-    private Connection connection;
-
-    public AbstractJDBCDao(Connection connection){
-        this.connection = connection;
-    }
+    private static final String PERSIST_SQL_LAST_ID = "WHERE id = last_insert_id();";
 
     public abstract String getSelectQuery();
 
@@ -31,33 +30,23 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
     protected abstract void prepareStatementForUpdate(PreparedStatement statement, T object) throws PersistException;
 
     @Override
-    public T persist(T object) throws PersistException {
+    public int persist(T object) throws PersistException {
         if (object.getId() != null) {
             throw new PersistException("Object is already persist.");
         }
-        T persistInstance;
         String sql = getCreateQuery();
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = JdbcMySqlUtil.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             prepareStatementForInsert(statement, object);
             int count = statement.executeUpdate();
             if (count != 1) {
                 throw new PersistException("On persist modify more then 1 record: " + count);
             }
+            ResultSet keys = statement.getGeneratedKeys();
+            keys.next();
+            return keys.getInt(1);
         } catch (Exception e) {
             throw new PersistException(e);
         }
-        sql = getSelectQuery() + "WHERE id = last_insert_id();";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            ResultSet rs = statement.executeQuery();
-            List<T> list = parseResultSet(rs);
-            if ((list == null) || (list.size() != 1)) {
-                throw new PersistException("Exception on findByPK new persist data.");
-            }
-            persistInstance = list.iterator().next();
-        } catch (Exception e) {
-            throw new PersistException(e);
-        }
-        return persistInstance;
     }
 
     @Override
@@ -65,7 +54,7 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
         List<T> list;
         String sql = getSelectQuery();
         sql += "WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)){
+        try (PreparedStatement statement = JdbcMySqlUtil.getConnection().prepareStatement(sql)){
             statement.setInt(1, key);
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
@@ -84,7 +73,7 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
     @Override
     public void update(T object) throws PersistException {
         String sql = getUpdateQuery();
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = JdbcMySqlUtil.getConnection().prepareStatement(sql)) {
             prepareStatementForUpdate(statement, object);
             int count = statement.executeUpdate();
             if (count != 1) {
@@ -98,7 +87,7 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
     @Override
     public void delete(T object) throws PersistException {
         String sql = getDeleteQuery();
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = JdbcMySqlUtil.getConnection().prepareStatement(sql)) {
             try {
                 statement.setObject(1, object.getId());
             } catch (Exception e) {
@@ -118,7 +107,7 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
     public List<T> getAll() throws PersistException {
         List<T> list;
         String sql = getSelectQuery();
-        try (PreparedStatement statement = connection.prepareStatement(sql)){
+        try (PreparedStatement statement = JdbcMySqlUtil.getConnection().prepareStatement(sql)){
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
@@ -126,4 +115,9 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
         }
         return list;
     }
+
+//    private Integer getLastId(){
+//        JdbcMySqlUtil.getConnection().
+//        String sql = LAST_ID
+//    }
 }

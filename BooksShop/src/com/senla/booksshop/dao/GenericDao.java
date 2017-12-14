@@ -10,7 +10,7 @@ public interface GenericDao<T, PK extends Serializable> {
 
     public T create() throws PersistException;
 
-    public T persist(T t) throws PersistException;
+    public int persist(T t) throws PersistException;
 
     public T getByPK(int key) throws PersistException;
 

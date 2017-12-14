@@ -2,7 +2,6 @@ package com.senla.server;
 
 import com.senla.api.IController;
 import com.senla.dependencyinjection.DIFactoriControllers;
-import java.sql.Connection;
 
 import java.io.IOException;
 

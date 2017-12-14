@@ -22,10 +22,8 @@ public class Main {
 
 
 	// write your code here
-        try {
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);){
            //Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("executed");
             LOGGER.info("connected to database" + URL + "executed");
         } catch (SQLException e) {
             e.printStackTrace();

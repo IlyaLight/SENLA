@@ -10,11 +10,7 @@ public class Request implements Serializable, IModel {
     private Integer id;
     private Book book;
     private String bookName;
-    private Integer quantity;
-    private static final String FORMAT_TO_STRING = "Book Name: %s, Quantity: %d";
-
-    public Request() {
-    }
+    private Integer bookId;
 
     public Request(Book book){
         bookName = book.getName();
@@ -26,7 +22,22 @@ public class Request implements Serializable, IModel {
         this.quantity = quantity;
     }
 
-    public int getId() {
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
+
+    private Integer quantity;
+    private static final String FORMAT_TO_STRING = "Book Name: %s, Quantity: %d";
+
+    public Request() {
+    }
+
+
+    public Integer getId() {
         return id;
     }
 

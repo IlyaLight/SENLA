@@ -2,40 +2,38 @@ DROP DATABASE bookshop;
 CREATE DATABASE bookshop;
 use bookshop;
 
-create table books(
+create table book(
 	id int not null auto_increment,
 	name varchar(100) not null,
-	datePublication date,
-	dateIssue date,
+	date_publication date,
+	date_issue date,
 	price decimal(15,2),
 	inStock int,
 	primary key(id)
 );
 
-create table requests(
+create table request(
     id int not null auto_increment,
-    bookId int not null,
+    book_id int not null,
     quantity int not null,
     primary key(id),
-    foreign key(bookId) references books(id)
+    foreign key(book_id) references book(id)
 );
 
 create table orders(
     id int not null auto_increment,
-    orders_book_list  int not null,
     price decimal(15,2),
-    dataCompletion date,
+    data_completion date,
     details varchar(100),
     status varchar(100),
     completed char(1),
     primary key(id)
 );
 
-create table orders_book_list(
-	id int not null auto_increment,
-	orderId int not null,
-	bookId int not null,
-	primary key(id),
-	foreign key(bookId) references books(id),
-	foreign key(orderId) references orders(id)
+create table order_book_list(
+	orders_id int not null,
+	book_id int not null,
+	primary key(orders_id, book_id),
+	foreign key(book_id) references book(id),
+	foreign key(orders_id) references orders(id)
 );

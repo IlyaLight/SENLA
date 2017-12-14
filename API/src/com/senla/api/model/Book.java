@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Book implements Serializable, IModel {
     private static final long serialVersionUID = 8605912397965468121L;
-    private int id;
+    private Integer id;
     private ArrayList<Order> orderArrayList;
     private Request request;
     private String name;
@@ -31,7 +31,7 @@ public class Book implements Serializable, IModel {
         this.inStock = inStock;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
