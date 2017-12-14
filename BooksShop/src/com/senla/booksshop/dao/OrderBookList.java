@@ -1,9 +1,22 @@
 package com.senla.booksshop.dao;
 
-public class OrderBookList {
+import com.senla.api.model.IModel;
 
+public class OrderBookList implements IModel {
+
+    private Integer id;
     private Integer ordersId;
     private Integer bookId;
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Integer getOrdersId() {
         return ordersId;

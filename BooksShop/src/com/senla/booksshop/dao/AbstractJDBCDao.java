@@ -14,6 +14,7 @@ import java.util.List;
 public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable> implements GenericDao<T, PK> {
 
     private static final String PERSIST_SQL_LAST_ID = "WHERE id = last_insert_id();";
+    private static final String WHERE_ID             = "WHERE id = ?";
 
     public abstract String getSelectQuery();
 
@@ -53,7 +54,7 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
     public T getByPK(int key) throws PersistException{
         List<T> list;
         String sql = getSelectQuery();
-        sql += "WHERE id = ?";
+        sql += WHERE_ID;
         try (PreparedStatement statement = JdbcMySqlUtil.getConnection().prepareStatement(sql)){
             statement.setInt(1, key);
             ResultSet rs = statement.executeQuery();
@@ -105,8 +106,13 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
 
     @Override
     public List<T> getAll() throws PersistException {
+        return get(";");
+    }
+
+    @Override
+    public List<T> get(String options) throws PersistException {
         List<T> list;
-        String sql = getSelectQuery();
+        String sql = getSelectQuery() + options;
         try (PreparedStatement statement = JdbcMySqlUtil.getConnection().prepareStatement(sql)){
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
@@ -116,8 +122,4 @@ public abstract class AbstractJDBCDao<T extends IModel, PK  extends Serializable
         return list;
     }
 
-//    private Integer getLastId(){
-//        JdbcMySqlUtil.getConnection().
-//        String sql = LAST_ID
-//    }
 }

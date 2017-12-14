@@ -31,9 +31,10 @@ create table orders(
 );
 
 create table order_book_list(
+	id int not null auto_increment,
 	orders_id int not null,
 	book_id int not null,
-	primary key(orders_id, book_id),
+	primary key(id),
 	foreign key(book_id) references book(id),
 	foreign key(orders_id) references orders(id)
 );
