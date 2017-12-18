@@ -1,9 +1,6 @@
 package com.senla.booksshop.dao;
 
-import com.senla.api.model.IModel;
-
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 public interface GenericDao<T, PK extends Serializable> {

@@ -1,9 +1,10 @@
 package com.senla.booksshop.service;
 
 import com.senla.api.model.Book;
-import com.senla.booksshop.service.comparator.*;
+import com.senla.booksshop.stores.IBookStore;
+import com.senla.dependencyinjection.annotation.Injection;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,80 +14,63 @@ import java.util.List;
  */
 public class BookService {
 
-    private static final BookNameComparator BOOK_NAME_COMPARATOR = new BookNameComparator();
-    private static final BookPriceComparator BOOK_PRICE_COMPARATOR = new BookPriceComparator();
-    private static final BookDateIssueComparator BOOK_DATE_ISSUE_COMPARATOR = new BookDateIssueComparator();
-    private static final BookStockAvailabilityComparator BOOK_STOCK_AVAILABILITY_COMPARATOR =
-            new BookStockAvailabilityComparator();
-    private static final BookDatePublicationComparator BOOK_DATE_PUBLICATION_COMPARATOR =
-            new BookDatePublicationComparator();
+    private static final String BY_NAME_ASC = " ORDER BY name ASC;";
+    private static final String BY_PRICE_ASC = " ORDER BY price ASC;";
+    private static final String BY_DATE_ISSUE_ASC = " ORDER BY date_issue ASC;";
+    private static final String ORDER_BY_IN_STOCK_ASC = " ORDER BY in_stock ASC;";
+    private static final String ORDER_BY_DATE_PUBLICATION_ASC = " ORDER BY date_publication ASC;";
+    private static final String WHERE_DATE_ISSUE = " WHERE date_issue > ";
+    private static final String ORDER_BY_DATE_PUBLICATION_ASC1 = " ORDER BY date_publication ASC;";
+    private static final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC;";
+    public static final String WHERE_DATE_PUBLICATION = " WHERE date_publication > ";
+    private static final String ERROR = "Error:";
 
+    private static final SimpleDateFormat dateFormat = new  SimpleDateFormat("'yyyy-MM-dd'");
 
-    public static List<Book> getBooksSortedByName(List<Book> bookArrayList) {
-        List<Book> books = new ArrayList<>(bookArrayList);
-        books.sort(BOOK_NAME_COMPARATOR);
-        return books;
+    @Injection
+    private IBookStore bookStore;
+
+    public List<Book> getBooksSortedByName() {
+        return bookStore.getBooks(BY_NAME_ASC);
     }
 
-    public static List<Book> getBooksSortedByPrice(List<Book> bookArrayList) {
-        List<Book> books = new ArrayList<>(bookArrayList);
-        books.sort(BOOK_PRICE_COMPARATOR);
-        return books;
+    public List<Book> getBooksSortedByPrice() {
+        return bookStore.getBooks(BY_PRICE_ASC);
     }
 
-    public static List<Book> getBooksSortedByDateIssue(List<Book> bookArrayList) {
-        List<Book> books = new ArrayList<>(bookArrayList);
-        books.sort(BOOK_DATE_ISSUE_COMPARATOR);
-        return books;
+    public  List<Book> getBooksSortedByDateIssue() {
+        return bookStore.getBooks(BY_DATE_ISSUE_ASC);
     }
 
-    public static List<Book> getBooksSortedByStockAvailability(List<Book> bookArrayList) {
-        List<Book> books = new ArrayList<>(bookArrayList);
-        books.sort(BOOK_STOCK_AVAILABILITY_COMPARATOR);
-        return books;
+    public  List<Book> getBooksSortedByStockAvailability() {
+        return bookStore.getBooks(ORDER_BY_IN_STOCK_ASC);
     }
 
-    public static List<Book> getBookSortedByDatePublication(List<Book> bookArrayList){
-        List<Book> books = new ArrayList<>(bookArrayList);
-        books.sort(BOOK_DATE_PUBLICATION_COMPARATOR);
-        return books;
+    public  List<Book> getBookSortedByDatePublication(){
+        return bookStore.getBooks(ORDER_BY_DATE_PUBLICATION_ASC);
     }
 
-    public static List<Book> getStaleBooksDate(List<Book> bookArrayList, Date date){
-        List<Book> books = booksReceivedLaterThan(bookArrayList, date);
-        return getBookSortedByDatePublication(books);
+    public  List<Book> getStaleBooksDate(Date date){
+        return bookStore.getBooks(WHERE_DATE_ISSUE + dateFormat.format(date) + ORDER_BY_DATE_PUBLICATION_ASC1);
     }
 
-    public static List<Book> getStaleBooksPrice(List<Book> bookArrayList, Date date){
-        List<Book> books = booksReceivedLaterThan(bookArrayList, date);
-        return getBooksSortedByPrice(books);
+    public List<Book> getStaleBooksPrice(Date date){
+        return bookStore.getBooks(WHERE_DATE_ISSUE + dateFormat.format(date) + ORDER_BY_PRICE_ASC);
     }
 
-    private static List<Book> booksReceivedLaterThan(List<Book> bookArrayList, Date date){
-        List<Book> books = new ArrayList<>(bookArrayList);
-        for (Book book : bookArrayList){
-            if (book.getDatePublication().getTime() <= date.getTime()){
-                books.add(book);
-            }
+    private List<Book> booksReceivedLaterThan(Date date){
+        return bookStore.getBooks(WHERE_DATE_PUBLICATION + dateFormat.format(date) + BY_NAME_ASC);
+    }
+
+    public String getBookDescription(int bookId){
+        Book book = bookStore.read(bookId);
+        if (book == null){
+            return null;
         }
-        return books;
+        return book.getDescription();
     }
 
-    public static String getBookDescription(List<Book> bookList, String nameBook){
-        for (Book book : bookList) {
-            if (book.getName().equals(nameBook)){
-                return book.getDescription();
-            }
-        }
-        return null;
-    }
-
-    public static Book getBookById(List<Book> bookList, int id){
-        for (Book book : bookList) {
-            if (book.getId() == id){
-                return book;
-            }
-        }
-        return null;
+    public Book getBookById(int bookId){
+        return bookStore.read(bookId);
     }
 }

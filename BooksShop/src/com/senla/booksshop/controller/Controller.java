@@ -25,73 +25,47 @@ import java.util.List;
 
 public class Controller implements IController {
 
+
     @Injection
-    private IBookStore bookStore = new BookStore();
+    IBookStore bookStore;
     @Injection
-    private IOrderStore orderStore = new OrderStore();
+    IOrderStore orderStore;
     @Injection
-    private IRequestStore requestStore = new RequestStore();
+    IRequestStore requestStore;
+    @ContainsConfigProperty
+    private BookService bookService;
+    @ContainsConfigProperty
+    private OrderService orderService;
+    @ContainsConfigProperty
+    private RequestService requestService;
     @ContainsConfigProperty
     private PropertiesHolder propertiesHolder;
 
-
-    public PropertiesHolder getPropertiesHolder() {
-        return propertiesHolder;
-    }
-
-    public void setPropertiesHolder(PropertiesHolder propertiesHolder) {
-        this.propertiesHolder = propertiesHolder;
-    }
-
-    public IBookStore getBookStore() {
-        return bookStore;
-    }
-
-    public void setBookStore(IBookStore IBookStore) {
-        this.bookStore = IBookStore;
-    }
-
-    public IOrderStore getOrderStore() {
-        return orderStore;
-    }
-
-    public void setOrderStore(IOrderStore IOrderStore) {
-        this.orderStore = IOrderStore;
-    }
-
-    public IRequestStore getRequestStore() {
-        return requestStore;
-    }
-
-    public void setRequestStore(IRequestStore IRequestStore) {
-        this.requestStore = IRequestStore;
-    }
-
     @Override
     public List<Book> getBooksSortedByName() {
-        synchronized (bookStore) {
-            return BookService.getBooksSortedByName(bookStore.getBookList());
+        synchronized (bookService) {
+            return bookService.getBooksSortedByName();
         }
         }
 
     @Override
     public List<Book> getBooksSortedByDateIssue() {
-        synchronized (bookStore) {
-            return BookService.getBooksSortedByDateIssue(bookStore.getBookList());
+        synchronized (bookService) {
+            return bookService.getBooksSortedByDateIssue();
         }
     }
 
     @Override
     public List<Book> getBooksSortedByStockAvailability() {
-        synchronized (bookStore) {
-            return BookService.getBooksSortedByStockAvailability(bookStore.getBookList());
+        synchronized (bookService) {
+            return bookService.getBooksSortedByStockAvailability();
         }
     }
 
     @Override
     public List<Book> getBooksSortedByPrice() {
-        synchronized (bookStore) {
-            return BookService.getBooksSortedByPrice(bookStore.getBookList());
+        synchronized (bookService) {
+            return bookService.getBooksSortedByPrice();
         }
     }
 
@@ -100,51 +74,51 @@ public class Controller implements IController {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.MONTH, propertiesHolder.getStaleTime());
-        synchronized (bookStore) {
-            return BookService.getStaleBooksDate(bookStore.getBookList(), calendar.getTime());
+        synchronized (bookService) {
+            return bookService.getStaleBooksDate(calendar.getTime());
         }
     }
 
     @Override
     public List<Book> getStaleBooksPrice(Date date) {
-        synchronized (bookStore) {
-            return BookService.getStaleBooksPrice(bookStore.getBookList(), date);
+        synchronized (bookService) {
+            return bookService.getStaleBooksPrice(date);
         }
     }
 
     @Override
     public List<Order> getOrderSortedByPrice() {
-        synchronized (orderStore) {
-            return OrderService.getOrderSortedByPrice(orderStore.getOrderList());
+        synchronized (orderService) {
+            return orderService.getOrderSortedByPrice();
         }
     }
 
     @Override
     public List<Order> getOrderSortedByStatus() {
-        synchronized (orderStore) {
-            return OrderService.getOrderSortedByStatus(orderStore.getOrderList());
+        synchronized (orderService) {
+            return orderService.getOrderSortedByStatus();
         }
     }
 
     @Override
     public List<Order> getOrderSortedByDataCompletion() {
-        synchronized (orderStore) {
-            return OrderService.getOrderSortedByDataCompletion(orderStore.getOrderList());
+        synchronized (orderService) {
+            return orderService.getOrderSortedByDataCompletion();
         }
     }
 
     @Override
     public List<Order> getOrderSortedById() {
-        synchronized (orderStore) {
-            return OrderService.getOrderSortedById(orderStore.getOrderList());
+        synchronized (orderService) {
+            return orderService.getOrderSortedById();
         }
     }
 
     @Override
     public Order getCloneOrderById(int id) throws ObjectAvailabilityException{
         Order order;
-        synchronized (orderStore) {
-             order = OrderService.getOrderById(orderStore.getOrderList(), id);
+        synchronized (orderService) {
+             order = orderService.getOrderById(id);
         }
         if (order == null){
             throw new ObjectAvailabilityException();
@@ -159,53 +133,53 @@ public class Controller implements IController {
 
     @Override
     public List<Order> getCompletedOrder(Date from, Date to) {
-        synchronized (orderStore) {
-            return OrderService.getCompletedOrder(orderStore.getOrderList(), from, to);
+        synchronized (orderService) {
+            return orderService.getCompletedOrder(from, to);
         }
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByPrice(Date from, Date to) {
-        synchronized (orderStore) {
-            return OrderService.getCompletedOrderSortedByPrice(orderStore.getOrderList(), from, to);
+        synchronized (orderService) {
+            return orderService.getCompletedOrderSortedByPrice(from, to);
         }
     }
 
     @Override
     public List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to) {
-        synchronized (orderStore) {
-            return OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderList(), from, to);
+        synchronized (orderService) {
+            return orderService.getCompletedOrderSortedByCompletedData(from, to);
         }
     }
 
     @Override
     public List<Request> getRequestSortedByBookName() {
-        synchronized (requestStore) {
-            return RequestService.getRequestSortedByBookName(requestStore.getRequestList());
+        synchronized (requestService) {
+            return requestService.getRequestSortedByBookName();
         }
     }
 
     @Override
     public List<Request> getRequestSortedOfQuantity() {
-        synchronized (requestStore) {
-            return RequestService.getRequestSortedOfquantity(requestStore.getRequestList());
+        synchronized (requestService) {
+            return requestService.getRequestSortedOfQuantity();
         }
     }
 
     @Override
     public String getBookDescription(String bookName) throws ObjectAvailabilityException {
-        synchronized (bookStore) {
+        synchronized (bookService) {
             Book book = GetBookByName(bookName);
             return book.getDescription();
         }
 
     }
 
-    @Override //поправить
+    @Override
     public String getOrderDetails(Integer id) throws ObjectAvailabilityException {
         String s;
-        synchronized (orderStore) {
-            s = OrderService.getOrderDetails(orderStore.getOrderList(), id);
+        synchronized (orderService) {
+            s = orderService.getOrderDetails(id);
         }
         if (s == null) {
             throw new ObjectAvailabilityException();
@@ -216,7 +190,7 @@ public class Controller implements IController {
     @Override
     public void setBookQuantity(String bookName, int quantity) throws ObjectAvailabilityException {
         Book book = GetBookByName(bookName);
-        synchronized (bookStore) {
+        synchronized (bookService) {
             book.setInStock(quantity);
             if (quantity > 0 | propertiesHolder.isAutomaticallyExecuteRequest()) {
                 List<Request> requestList = findRequestByBookName(bookName);
@@ -234,8 +208,8 @@ public class Controller implements IController {
     @Override
     public float getIncome(Date from, Date to) {
         List<Order> orders;
-        synchronized (orderStore) {
-            orders = new ArrayList<>(OrderService.getCompletedOrderSortedByCompletedData(orderStore.getOrderList(), from, to));
+        synchronized (orderService) {
+            orders = new ArrayList<>(orderService.getCompletedOrderSortedByCompletedData(from, to));
         }
         float income = 0;
         for (Order order : orders) {
@@ -246,7 +220,7 @@ public class Controller implements IController {
 
     @Override
     public void addOrder(Order order) {
-        synchronized (orderStore) {
+        synchronized (orderService) {
             orderStore.create(order);
         }
     }
@@ -262,14 +236,14 @@ public class Controller implements IController {
 //        if (i){
 //            order.setStatus(Order.Status.ASSEMBLED);
 //        }
-        synchronized (orderStore) {
+        synchronized (orderService) {
             order.setStatus(Order.Status.ASSEMBLED);
         }
     }
 
     @Override
     public void cancelTheOrder(Order order) {
-        synchronized (orderStore) {
+        synchronized (orderService) {
             order.setStatus(Order.Status.CANCELED);
         }
     }
@@ -277,7 +251,7 @@ public class Controller implements IController {
     @Override
     public void addRequest(Book book) {
             boolean newRequest = true;
-        synchronized (requestStore) {
+        synchronized (requestService) {
             for (Request request : requestStore.getRequestList()) {
                 if (request.getBookName().equals(book.getName())) {
                     request.setQuantity(request.getQuantity() + 1);

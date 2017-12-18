@@ -1,11 +1,9 @@
 package com.senla.booksshop.dao;
 
 import com.senla.api.model.IModel;
-import com.senla.api.model.Order;
 import com.senla.booksshop.utility.JdbcMySqlUtil;
 
 import java.io.Serializable;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;

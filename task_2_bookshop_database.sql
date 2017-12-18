@@ -8,7 +8,7 @@ create table book(
 	date_publication date,
 	date_issue date,
 	price decimal(15,2),
-	inStock int,
+	in_stock int,
 	primary key(id)
 );
 

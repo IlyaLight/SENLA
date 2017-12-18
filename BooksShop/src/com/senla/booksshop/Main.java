@@ -4,6 +4,7 @@ package com.senla.booksshop;
 
 import com.senla.api.model.Book;
 import com.senla.booksshop.dao.MySqlBookDao;
+import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.utility.JdbcMySqlUtil;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.ConsoleAppender;
@@ -26,6 +27,7 @@ public class Main {
         String pattern = prop.getProperty("log4j.appender.stdout.layout.conversionPattern");
         BasicConfigurator.configure(new ConsoleAppender(new PatternLayout(pattern)));
 
+        BookStore bookStore = new BookStore();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2017, Calendar.FEBRUARY, 1);
@@ -37,7 +39,8 @@ public class Main {
         book.setDatePublication(calendar.getTime());
         book.setPrice((float)90);
         book.setInStock(2);
-        mySqlBookDao.persist(book);
+
+        bookStore.create(mySqlBookDao, book);
 
         JdbcMySqlUtil.closeConnection();
     }

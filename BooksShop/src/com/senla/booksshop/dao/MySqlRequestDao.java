@@ -10,7 +10,7 @@ import java.util.List;
 public class MySqlRequestDao extends AbstractJDBCDao<Request,Integer> {
 
     private static final String TABLE        = "request";
-    private static final String SELECT_QUERY = "SELECT id, book_id, quantity FROM " + TABLE + " ";
+    private static final String SELECT_QUERY = "SELECT tab.id, book_id, quantity FROM " + TABLE + " tab ";
     private static final String CREATE_QUERY = "INSERT INTO " + TABLE + " (book_id, quantity) VALUES (?,?);";
     private static final String UPDATE_QUERY = "UPDATE " + TABLE + " SET book_id = ?, quantity = ?;";
     private static final String DELETE_QUERY = "DELETE FROM " + TABLE + " WHERE id= ?;";

@@ -5,7 +5,11 @@ import com.senla.booksshop.service.comparator.OrderDateCompletionComparator;
 import com.senla.booksshop.service.comparator.OrderIdComparator;
 import com.senla.booksshop.service.comparator.OrderPriceComparator;
 import com.senla.booksshop.service.comparator.OrderStatusComparator;
+import com.senla.booksshop.stores.IOrderStore;
+import com.senla.booksshop.stores.IRequestStore;
+import com.senla.dependencyinjection.annotation.Injection;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -13,52 +17,39 @@ import java.util.*;
  */
 public class OrderService {
 
-    private static final OrderPriceComparator orderPriceComparator = new OrderPriceComparator();
-    private static final OrderStatusComparator orderStatusComparator = new OrderStatusComparator();
-    private static final OrderDateCompletionComparator orderDateCompletionComparator = new OrderDateCompletionComparator();
-    private static final OrderIdComparator orderIdComparator = new OrderIdComparator();
     private static final String WITHOUT_DETAILS = "without details";
 
-    public static List<Order> getOrderSortedByPrice(List<Order> orderArrayList) {
-        List<Order> orderList = new ArrayList<>(orderArrayList);
-       orderList.sort(orderPriceComparator);
-       return orderList;
+    private static final SimpleDateFormat dateFormat = new  SimpleDateFormat("'yyyy-MM-dd'");
+
+    @Injection
+    private IOrderStore requestOrder;
+
+    public  List<Order> getOrderSortedByPrice() {
+        return requestOrder.getOrders(" ORDER BY price ASC ;");
     }
 
-    public static List<Order> getOrderSortedByStatus(List<Order> orderArrayList) {
-        List<Order> orderList = new ArrayList<>(orderArrayList);
-        orderList.sort(orderStatusComparator);
-        return orderList;
+    public  List<Order> getOrderSortedByStatus() {
+        return requestOrder.getOrders(" ORDER BY status ASC ;");
     }
 
-    public static List<Order> getOrderSortedByDataCompletion(List<Order> orderArrayList) {
-        List<Order> orderList = new ArrayList<>(orderArrayList);
-        orderList.sort(orderDateCompletionComparator);
-        return orderList;
+    public  List<Order> getOrderSortedByDataCompletion() {
+        return requestOrder.getOrders(" ORDER BY data_completion ASC ;");
     }
 
-    public static List<Order> getCompletedOrderSortedByCompletedData(List<Order> orderArrayList, Date from, Date to){
-        return getOrderSortedByPrice(getCompletedOrder(orderArrayList, from, to));
+    public  List<Order> getCompletedOrderSortedByCompletedData( Date from, Date to){
+        return requestOrder.getOrders(" WHERE date_issue > " +dateFormat.format(from)+ " AND date_issue < "  +dateFormat.format(to)+  " AND completed = TRUE ORDER BY data_completion ASC ;");
     }
 
-    public static List<Order> getCompletedOrderSortedByPrice(List<Order> orderArrayList, Date from, Date to){
-        return getOrderSortedByPrice(getCompletedOrder(orderArrayList, from, to));
+    public  List<Order> getCompletedOrderSortedByPrice(Date from, Date to){
+        return requestOrder.getOrders(" WHERE date_issue > " +dateFormat.format(from)+ " AND date_issue < "  +dateFormat.format(to)+  " AND completed = TRUE ORDER BY price ASC ;");
     }
 
-    public static List<Order> getCompletedOrder(List<Order> orderArrayList, Date from, Date to){
-        ArrayList<Order> completedOrders = new ArrayList<>();
-        for (Order order : orderArrayList) {
-            if (order.isCompleted()
-                    && order.getDataCompletion().compareTo(from) >= 0
-                    && order.getDataCompletion().compareTo(to) <= 0){
-                completedOrders.add(order);
-            }
-        }
-        return  completedOrders;
+    public  List<Order> getCompletedOrder(Date from, Date to){
+        return requestOrder.getOrders(" WHERE date_issue > " +dateFormat.format(from)+ " AND date_issue < "  +dateFormat.format(to)+ " AND completed = TRUE ORDER BY data_completion ASC ;");
     }
 
-    public static String getOrderDetails(List<Order> orderList, Integer id){
-        Order order = getOrderById( orderList, id);
+    public  String getOrderDetails(Integer id){
+        Order order = requestOrder.read(id);
        if (order == null){
            return null;
        }else if(order.getDetails() == null){
@@ -68,18 +59,11 @@ public class OrderService {
        }
     }
 
-    public static Order getOrderById(List<Order> orderList, int id) {
-        for (Order order : orderList) {
-            if (order.getId() == id){
-                return order;
-            }
-        }
-        return null;
+    public  Order getOrderById(int id) {
+        return requestOrder.read(id);
     }
 
-    public static List<Order> getOrderSortedById(List<Order> orderArrayList) {
-        List<Order> orderList = new ArrayList<>(orderArrayList);
-        orderList.sort(orderIdComparator);
-        return orderList;
+    public List<Order> getOrderSortedById() {
+        return requestOrder.getOrders(" ORDER BY id ASC ;");
     }
 }

@@ -3,6 +3,7 @@ package com.senla.booksshop.dao;
 import com.senla.api.model.Book;
 
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.LinkedList;

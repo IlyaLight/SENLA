@@ -3,7 +3,16 @@ package com.senla.booksshop.service;
 import com.senla.api.model.Request;
 import com.senla.booksshop.service.comparator.RequestBookNameComparator;
 import com.senla.booksshop.service.comparator.RequestQuantityComparator;
+import com.senla.booksshop.stores.BookStore;
+import com.senla.booksshop.stores.IBookStore;
+import com.senla.booksshop.stores.IRequestStore;
+import com.senla.booksshop.utility.JdbcMySqlUtil;
+import com.senla.dependencyinjection.annotation.Injection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -11,19 +20,33 @@ import java.util.*;
  */
 public class RequestService {
 
-    private static final RequestBookNameComparator REQUEST_BOOK_NAME_COMPARATOR = new RequestBookNameComparator();
-    private static final RequestQuantityComparator REQUEST_QUANTITY_COMPARATOR =
-            new RequestQuantityComparator();
+    private static final String ERROR = "Error:";
 
-    public static List<Request> getRequestSortedByBookName(List<Request> requestArrayList) {
-        List<Request> requests = new ArrayList<>(requestArrayList);
-        requests.sort(REQUEST_BOOK_NAME_COMPARATOR);
-        return requests;
+    private static final String BY_QUANTITY_ASC = "ORDER BY quantity ASC";
+    private static final String INNER_JOIN_BOOK_ON_REQUEST_BOOK_ID_BOOK_ID = "INNER JOIN book ON request.book_id = book.id ORDER BY book.name";
+
+    @Injection
+    private IRequestStore requestStore;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RequestService.class);
+
+    public List<Request> getRequestSortedByBookName() {
+            Connection connection = JdbcMySqlUtil.getConnection();
+        try {
+
+            connection.setAutoCommit(false);
+            List<Request> requests = requestStore.getRequsts(INNER_JOIN_BOOK_ON_REQUEST_BOOK_ID_BOOK_ID);
+            connection.commit();
+            connection.setAutoCommit(true);
+            return requests;
+
+        } catch (SQLException e) {
+            LOGGER.error(ERROR, e);
+            throw new RuntimeException(e);
+        }
     }
 
-    public static List<Request> getRequestSortedOfquantity(List<Request> requestArrayList) {
-        List<Request> requests = new ArrayList<>(requestArrayList);
-        requests.sort(REQUEST_QUANTITY_COMPARATOR);
-        return requests;
+    public List<Request> getRequestSortedOfQuantity() {
+        return requestStore.getRequsts(BY_QUANTITY_ASC);
     }
 }

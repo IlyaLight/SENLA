@@ -1,6 +1,7 @@
 package com.senla.booksshop.stores;
 
 import com.senla.api.model.Request;
+import com.senla.booksshop.dao.PersistException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,9 +14,11 @@ public interface IRequestStore extends Serializable {
 
     void create(Request request);
 
-    void read();
+    void read(Integer id);
 
-    void update();
+    void update(Request request);
 
-    void delete();
+    void delete(Request request);
+
+    List<Request> getRequsts(String options);
 }

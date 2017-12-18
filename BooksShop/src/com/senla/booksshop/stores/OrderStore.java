@@ -1,7 +1,12 @@
 package com.senla.booksshop.stores;
 
 import com.senla.api.model.Order;
-import com.senla.booksshop.utility.IdUtil;
+import com.senla.booksshop.dao.DaoFactory;
+import com.senla.booksshop.dao.GenericDao;
+import com.senla.booksshop.dao.PersistException;
+import com.senla.dependencyinjection.annotation.Injection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +17,16 @@ import java.util.List;
  */
 public class OrderStore implements IOrderStore {
 
+    private static final String ERROR = "Error:";
+
     private static final long serialVersionUID = 655110329357559954L;
     private List<Order> orderList = new ArrayList<>();
+    @Injection
+    private DaoFactory daoFactory;
+    private GenericDao genericDao = daoFactory.getDao(this.getClass());
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderStore.class);
+
 
     public OrderStore() {
     }
@@ -34,22 +47,51 @@ public class OrderStore implements IOrderStore {
 
     @Override
     public void create(Order order){
-        order.setId(IdUtil.getId(orderList));
-        orderList.add(order);
+        try {
+            genericDao.persist(order);
+        } catch (PersistException e) {
+            LOGGER.error(ERROR, e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void read(int id){
-        System.out.println("Will be later");
+    public Order read(int id){
+        try {
+            return (Order)genericDao.getByPK(id);
+        } catch (PersistException e) {
+            LOGGER.error(ERROR, e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void update(Order order){
-        System.out.println("Will be later");
+        try {
+            genericDao.update(order);
+        } catch (PersistException e) {
+            LOGGER.error(ERROR, e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void delete(int id){
-        System.out.println("Will be later");
+    public void delete(Order order){
+        try {
+            genericDao.delete(order);
+        } catch (PersistException e) {
+            LOGGER.error(ERROR, e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Order> getOrders(String options){
+        try {
+            return genericDao.get(options);
+        } catch (PersistException e) {
+            LOGGER.error(ERROR, e);
+            throw new RuntimeException(e);
+        }
     }
 }

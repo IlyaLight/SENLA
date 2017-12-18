@@ -1,7 +1,9 @@
 package com.senla.booksshop.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MySqlOrderBookListDao extends AbstractJDBCDao<OrderBookList, Integer> {
@@ -11,6 +13,7 @@ public class MySqlOrderBookListDao extends AbstractJDBCDao<OrderBookList, Intege
     private static final String CREATE_QUERY    = "INSERT INTO " + TABLE + " (order_id, book_id) VALUES (?,?);";
     private static final String UPDATE_QUERY    = "UPDATE " + TABLE + " SET book_id = ?, quantity = ?;";
     private static final String DELETE_QUERY    = "DELETE FROM " + TABLE + " WHERE id = ?;";
+
     @Override
     public String getSelectQuery() {
         return SELECT_QUERY;
@@ -33,12 +36,29 @@ public class MySqlOrderBookListDao extends AbstractJDBCDao<OrderBookList, Intege
 
     @Override
     protected List<OrderBookList> parseResultSet(ResultSet rs) throws PersistException {
-        return null;
+        LinkedList<OrderBookList> result = new LinkedList<>();
+        try {
+            while (rs.next()){
+                OrderBookList orderBookList = new OrderBookList();
+                orderBookList.setId(rs.getInt("id"));
+                orderBookList.setBookId(rs.getInt("book_id"));
+                orderBookList.setOrdersId(rs.getInt("order_id"));
+                result.add(orderBookList);
+            }
+        } catch (Exception e) {
+            throw new PersistException(e);
+        }
+        return result;
     }
 
     @Override
-    protected void prepareStatementForInsert(PreparedStatement statement, OrderBookList object) throws PersistException {
-
+    protected void prepareStatementForInsert(PreparedStatement statement, OrderBookList orderBookList) throws PersistException {
+        try {
+            statement.setInt(1, orderBookList.getOrdersId());
+            statement.setInt(2, orderBookList.getBookId());
+        } catch (Exception e) {
+            throw new PersistException(e);
+        }
     }
 
     @Override
