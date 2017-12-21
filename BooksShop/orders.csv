@@ -1,6 +1,0 @@
-id,price,dataCompletion,details,status,completed
-1,50.0,01/02/2017,transit,CANCELED,N
-2,40.0,01/04/2017,transit,PROCESSED,N
-3,40.0,01/03/2017,transit,PROCESSED,N
-4,150.0,01/10/2017,delivery,PROCESSED,Y
-10,191.62,12/10/2017,null,PROCESSED,N

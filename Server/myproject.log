@@ -1,1 +1,0 @@
-10:37:10,719  INFO main JdbcMySqlUtil:getConnection:27 - connected to databasejdbc:mysql://localhost:3306/bookshop?useSSL=falseexecuted
