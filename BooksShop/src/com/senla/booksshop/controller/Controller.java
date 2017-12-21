@@ -7,17 +7,18 @@ import com.senla.api.model.Book;
 import com.senla.api.model.IModel;
 import com.senla.api.model.Order;
 import com.senla.api.model.Request;
+import com.senla.booksshop.dao.realization.MySqlBookDao;
 import com.senla.booksshop.service.BookService;
 import com.senla.booksshop.service.OrderService;
 import com.senla.booksshop.service.RequestService;
 import com.senla.booksshop.stores.*;
-import com.senla.booksshop.utility.CsvUtil;
-import com.senla.booksshop.utility.PropertiesHolder;
-import com.senla.booksshop.utility.SerializableUtil;
-import com.senla.booksshop.utility.WorkWithFile;
+import com.senla.booksshop.utility.*;
 import com.senla.dependencyinjection.annotation.ContainsConfigProperty;
 import com.senla.dependencyinjection.annotation.Injection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,6 +41,8 @@ public class Controller implements IController {
     private RequestService requestService;
     @ContainsConfigProperty
     private PropertiesHolder propertiesHolder;
+
+    private static final Logger LOGGER          = LoggerFactory.getLogger(Controller.class);
 
     @Override
     public List<Book> getBooksSortedByName() {
@@ -154,9 +157,29 @@ public class Controller implements IController {
 
     @Override
     public List<Request> getRequestSortedByBookName() {
+        List<Request> requests = new ArrayList<>();
+        List<Book> books = new ArrayList<>();
         synchronized (requestService) {
-            return requestService.getRequestSortedByBookName();
+            try {
+                JdbcMySqlUtil.getConnection().setAutoCommit(false);
+                requests = requestService.getAll();
+                books = bookService.getBooksSortedByName();
+                JdbcMySqlUtil.getConnection().commit();
+                JdbcMySqlUtil.getConnection().setAutoCommit(true);
+            } catch (SQLException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+            List<Request> sortedRequests = new ArrayList<>();
+            for (Book book : books) {
+                for (Request request : requests) {
+                    if (book.getId() == request.getBookId()){
+                        sortedRequests.add(request);
+                    }
+                }
+            }
+
         }
+        return requests;
     }
 
     @Override

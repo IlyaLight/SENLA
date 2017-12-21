@@ -1,4 +1,4 @@
-package com.senla.booksshop.dao;
+package com.senla.booksshop.dao.realization;
 
 import com.senla.api.model.IModel;
 

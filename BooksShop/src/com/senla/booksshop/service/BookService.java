@@ -1,6 +1,8 @@
 package com.senla.booksshop.service;
 
 import com.senla.api.model.Book;
+import com.senla.booksshop.dao.api.IBookDao;
+import com.senla.booksshop.dao.realization.MySqlBookDao;
 import com.senla.booksshop.stores.IBookStore;
 import com.senla.dependencyinjection.annotation.Injection;
 
@@ -15,10 +17,7 @@ import java.util.List;
 public class BookService {
 
     private static final String BY_NAME_ASC = " ORDER BY name ASC;";
-    private static final String BY_PRICE_ASC = " ORDER BY price ASC;";
-    private static final String BY_DATE_ISSUE_ASC = " ORDER BY date_issue ASC;";
-    private static final String ORDER_BY_IN_STOCK_ASC = " ORDER BY in_stock ASC;";
-    private static final String ORDER_BY_DATE_PUBLICATION_ASC = " ORDER BY date_publication ASC;";
+
     private static final String WHERE_DATE_ISSUE = " WHERE date_issue > ";
     private static final String ORDER_BY_DATE_PUBLICATION_ASC1 = " ORDER BY date_publication ASC;";
     private static final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC;";
@@ -29,37 +28,39 @@ public class BookService {
 
     @Injection
     private IBookStore bookStore;
+    @Injection
+    private IBookDao bookDao;
 
     public List<Book> getBooksSortedByName() {
-        return bookStore.getBooks(BY_NAME_ASC);
+        return bookDao.getAll(MySqlBookDao.NAME);
     }
 
     public List<Book> getBooksSortedByPrice() {
-        return bookStore.getBooks(BY_PRICE_ASC);
+        return bookDao.getAll(MySqlBookDao.PRICE);
     }
 
     public  List<Book> getBooksSortedByDateIssue() {
-        return bookStore.getBooks(BY_DATE_ISSUE_ASC);
-    }
+        return bookDao.getAll(MySqlBookDao.DATE_ISSUE);
+}
 
     public  List<Book> getBooksSortedByStockAvailability() {
-        return bookStore.getBooks(ORDER_BY_IN_STOCK_ASC);
+        return bookDao.getAll(MySqlBookDao.IN_STOCK);
     }
 
     public  List<Book> getBookSortedByDatePublication(){
-        return bookStore.getBooks(ORDER_BY_DATE_PUBLICATION_ASC);
+        return bookDao.getAll(MySqlBookDao.DATE_PUBLICATION);
     }
 
     public  List<Book> getStaleBooksDate(Date date){
-        return bookStore.getBooks(WHERE_DATE_ISSUE + dateFormat.format(date) + ORDER_BY_DATE_PUBLICATION_ASC1);
+        return bookDao.getStaleBooks(date, MySqlBookDao.DATE_ISSUE);
     }
 
     public List<Book> getStaleBooksPrice(Date date){
-        return bookStore.getBooks(WHERE_DATE_ISSUE + dateFormat.format(date) + ORDER_BY_PRICE_ASC);
+        return bookDao.getStaleBooks(date, MySqlBookDao.PRICE);
     }
 
     private List<Book> booksReceivedLaterThan(Date date){
-        return bookStore.getBooks(WHERE_DATE_PUBLICATION + dateFormat.format(date) + BY_NAME_ASC);
+        return bookDao.booksReceivedLaterThan(date, MySqlBookDao.NAME);
     }
 
     public String getBookDescription(int bookId){

@@ -2,7 +2,9 @@ package com.senla.booksshop.stores;
 
 import com.senla.api.model.Book;
 import com.senla.booksshop.dao.*;
-import com.senla.booksshop.utility.JdbcMySqlUtil;
+import com.senla.booksshop.dao.api.IBookDao;
+import com.senla.booksshop.dao.api.IDaoFactory;
+import com.senla.booksshop.dao.api.IGenericDao;
 import com.senla.dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +23,7 @@ public class BookStore implements IBookStore {
     private static final long serialVersionUID = -6727105669857102873L;
     private List<Book> bookList = new ArrayList<>();
     @Injection
-    private DaoFactory daoFactory;
-    private GenericDao genericDao = daoFactory.getDao(this.getClass());
+    private IBookDao bookDao;
 
     public BookStore(List<Book> bookList) {
         this.bookList = bookList;
@@ -45,52 +46,24 @@ public class BookStore implements IBookStore {
 
     @Override
     public void create(Book book) {
-        try {
-            genericDao.persist(book);
-        } catch (PersistException e) {
-            LOGGER.error(ERROR, e);
-            throw new RuntimeException(e);
-        }
+        bookDao.create(book);
     }
 
     @Override
     public Book read(Integer id) {
-        try {
-            return (Book)genericDao.getByPK(id);
-        } catch (PersistException e) {
-            LOGGER.error(ERROR, e);
-            throw new RuntimeException(e);
-        }
+            return (Book) bookDao.getByPK(id);
     }
 
     @Override
     public void update(Book book) {
-        try {
-            genericDao.update(book);
-        } catch (PersistException e) {
-            LOGGER.error(ERROR, e);
-            throw new RuntimeException(e);
-        }
+        bookDao.update(book);
     }
 
     @Override
     public void delete(Book book)  {
-        try {
-            genericDao.delete(book);
-        } catch (PersistException e) {
-            LOGGER.error(ERROR, e);
-            throw new RuntimeException(e);
-        }
+        bookDao.delete(book);
     }
 
-    @Override
-    public List<Book> getBooks(String options) {
-        try {
-            return genericDao.get(options);
-        } catch (PersistException e) {
-            LOGGER.error(ERROR, e);
-            throw new RuntimeException(e);
-        }
-    }
+
 
 }

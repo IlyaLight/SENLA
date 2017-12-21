@@ -1,12 +1,9 @@
 package com.senla.booksshop.service;
 
 import com.senla.api.model.Order;
-import com.senla.booksshop.service.comparator.OrderDateCompletionComparator;
-import com.senla.booksshop.service.comparator.OrderIdComparator;
-import com.senla.booksshop.service.comparator.OrderPriceComparator;
-import com.senla.booksshop.service.comparator.OrderStatusComparator;
+import com.senla.booksshop.dao.api.IOrderDao;
+import com.senla.booksshop.dao.realization.MySqlOrderDao;
 import com.senla.booksshop.stores.IOrderStore;
-import com.senla.booksshop.stores.IRequestStore;
 import com.senla.dependencyinjection.annotation.Injection;
 
 import java.text.SimpleDateFormat;
@@ -23,29 +20,31 @@ public class OrderService {
 
     @Injection
     private IOrderStore requestOrder;
+    @Injection
+    private IOrderDao orderDao;
 
     public  List<Order> getOrderSortedByPrice() {
-        return requestOrder.getOrders(" ORDER BY price ASC ;");
+        return orderDao.getAll(MySqlOrderDao.PRICE);
     }
 
     public  List<Order> getOrderSortedByStatus() {
-        return requestOrder.getOrders(" ORDER BY status ASC ;");
+        return orderDao.getAll(MySqlOrderDao.STATUS);
     }
 
     public  List<Order> getOrderSortedByDataCompletion() {
-        return requestOrder.getOrders(" ORDER BY data_completion ASC ;");
+        return orderDao.getAll(MySqlOrderDao.DATA_COMPLETION);
     }
 
     public  List<Order> getCompletedOrderSortedByCompletedData( Date from, Date to){
-        return requestOrder.getOrders(" WHERE date_issue > " +dateFormat.format(from)+ " AND date_issue < "  +dateFormat.format(to)+  " AND completed = TRUE ORDER BY data_completion ASC ;");
+        return orderDao .getCompletedOrder(from, to, MySqlOrderDao.DATA_COMPLETION);
     }
 
     public  List<Order> getCompletedOrderSortedByPrice(Date from, Date to){
-        return requestOrder.getOrders(" WHERE date_issue > " +dateFormat.format(from)+ " AND date_issue < "  +dateFormat.format(to)+  " AND completed = TRUE ORDER BY price ASC ;");
+        return orderDao .getCompletedOrder(from, to, MySqlOrderDao.PRICE);
     }
 
     public  List<Order> getCompletedOrder(Date from, Date to){
-        return requestOrder.getOrders(" WHERE date_issue > " +dateFormat.format(from)+ " AND date_issue < "  +dateFormat.format(to)+ " AND completed = TRUE ORDER BY data_completion ASC ;");
+        return orderDao .getCompletedOrder(from, to, MySqlOrderDao.ID);
     }
 
     public  String getOrderDetails(Integer id){
@@ -64,6 +63,6 @@ public class OrderService {
     }
 
     public List<Order> getOrderSortedById() {
-        return requestOrder.getOrders(" ORDER BY id ASC ;");
+        return orderDao.getAll(MySqlOrderDao.ID);
     }
 }

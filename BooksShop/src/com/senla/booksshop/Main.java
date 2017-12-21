@@ -3,7 +3,7 @@ package com.senla.booksshop;
 
 
 import com.senla.api.model.Book;
-import com.senla.booksshop.dao.MySqlBookDao;
+import com.senla.booksshop.dao.realization.MySqlBookDao;
 import com.senla.booksshop.stores.BookStore;
 import com.senla.booksshop.utility.JdbcMySqlUtil;
 import org.apache.log4j.BasicConfigurator;
@@ -12,7 +12,6 @@ import org.apache.log4j.PatternLayout;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.sql.Connection;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;

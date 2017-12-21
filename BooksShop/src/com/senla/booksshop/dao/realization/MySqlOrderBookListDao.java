@@ -1,6 +1,8 @@
-package com.senla.booksshop.dao;
+package com.senla.booksshop.dao.realization;
 
-import java.sql.Connection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.LinkedList;
@@ -8,11 +10,18 @@ import java.util.List;
 
 public class MySqlOrderBookListDao extends AbstractJDBCDao<OrderBookList, Integer> {
 
-    private static final String TABLE           = "order_book_list";
+    public static final String ID               = "id";
+    public static final String BOOK_ID          = "book_id";
+    public static final String ORDER_ID         = "order_id";
+    public static final String TABLE            = "order_book_list";
+
     private static final String SELECT_QUERY    = "SELECT id, order_id, book_id, quantity FROM " + TABLE + " ";
     private static final String CREATE_QUERY    = "INSERT INTO " + TABLE + " (order_id, book_id) VALUES (?,?);";
     private static final String UPDATE_QUERY    = "UPDATE " + TABLE + " SET book_id = ?, quantity = ?;";
     private static final String DELETE_QUERY    = "DELETE FROM " + TABLE + " WHERE id = ?;";
+
+    private static final String ERROR           = "SQL Error:";
+    private static final Logger LOGGER          = LoggerFactory.getLogger(MySqlOrderBookListDao.class);
 
     @Override
     public String getSelectQuery() {
@@ -35,39 +44,35 @@ public class MySqlOrderBookListDao extends AbstractJDBCDao<OrderBookList, Intege
     }
 
     @Override
-    protected List<OrderBookList> parseResultSet(ResultSet rs) throws PersistException {
+    protected List<OrderBookList> parseResultSet(ResultSet rs) {
         LinkedList<OrderBookList> result = new LinkedList<>();
         try {
             while (rs.next()){
                 OrderBookList orderBookList = new OrderBookList();
-                orderBookList.setId(rs.getInt("id"));
-                orderBookList.setBookId(rs.getInt("book_id"));
-                orderBookList.setOrdersId(rs.getInt("order_id"));
+                orderBookList.setId(rs.getInt(ID));
+                orderBookList.setBookId(rs.getInt(BOOK_ID));
+                orderBookList.setOrdersId(rs.getInt(ORDER_ID));
                 result.add(orderBookList);
             }
         } catch (Exception e) {
-            throw new PersistException(e);
+            LOGGER.error(ERROR, e);
         }
         return result;
     }
 
     @Override
-    protected void prepareStatementForInsert(PreparedStatement statement, OrderBookList orderBookList) throws PersistException {
+    protected void prepareStatementForInsert(PreparedStatement statement, OrderBookList orderBookList)  {
         try {
             statement.setInt(1, orderBookList.getOrdersId());
             statement.setInt(2, orderBookList.getBookId());
         } catch (Exception e) {
-            throw new PersistException(e);
+            LOGGER.error(ERROR, e);
         }
     }
 
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement statement, OrderBookList object) throws PersistException {
+    protected void prepareStatementForUpdate(PreparedStatement statement, OrderBookList object)  {
 
     }
 
-    @Override
-    public OrderBookList create() throws PersistException {
-        return null;
-    }
 }
