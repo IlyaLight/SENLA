@@ -172,7 +172,7 @@ public class Controller implements IController {
             List<Request> sortedRequests = new ArrayList<>();
             for (Book book : books) {
                 for (Request request : requests) {
-                    if (book.getId() == request.getBookId()){
+                    if (book.getId().equals(request.getBookId())){
                         sortedRequests.add(request);
                     }
                 }
