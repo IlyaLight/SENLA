@@ -39,7 +39,7 @@ public class Main {
         book.setPrice((float)90);
         book.setInStock(2);
 
-        bookStore.create(mySqlBookDao, book);
+        bookStore.create(book);
 
         JdbcMySqlUtil.closeConnection();
     }

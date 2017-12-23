@@ -60,10 +60,6 @@ public interface IController {
 
     List<Request> findRequestByBookName(String name);
 
-    void readFromFileAllStore(String filePath);
-
-    void writeToFile(String filePath);
-
     Book GetBookByName(String name) throws ObjectAvailabilityException;
 
     Order getOrderById(Integer ip) throws ObjectAvailabilityException;

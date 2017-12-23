@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Command implements Serializable {
     private String methodName;
     private Object[] params;
-    
+
     public Command() {
     }
 

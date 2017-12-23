@@ -8,6 +8,7 @@ import com.senla.api.model.Order;
 import com.senla.api.model.Request;
 import com.senla.dependencyinjection.annotation.Injection;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -173,12 +174,12 @@ public class Controller implements IClientController {
         return (List<Request>) writeCommand("findRequestByBookName", name).getResult();
     }
 
-    @Override
+
     public void readFromFileAllStore(String filePath) {
         writeCommand("readFromFileAllStore", filePath).getResult();
     }
 
-    @Override
+
     public void writeToFile(String filePath) {
         writeCommand("writeToFile", filePath).getResult();
     }

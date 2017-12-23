@@ -1,0 +1,4 @@
+com\senla\server\Main.class
+com\senla\server\MonoThreadClientHandler.class
+com\senla\server\Server.class
+com\senla\server\ExecuteCommandUtil.class

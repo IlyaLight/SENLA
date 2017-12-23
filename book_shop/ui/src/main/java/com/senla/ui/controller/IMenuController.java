@@ -1,7 +1,7 @@
 package com.senla.ui.controller;
 
 
-;import com.senla.client.IClientController;
+import com.senla.client.IClientController;
 
 public interface IMenuController {
 

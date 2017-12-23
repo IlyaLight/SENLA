@@ -330,23 +330,6 @@ public class Controller implements IController {
     }
 
     @Override
-    synchronized public void  readFromFileAllStore(final String filePath) {
-        bookStore = new BookStore();
-        bookStore.setBookList(WorkWithFile.readBooksFromFile(filePath));
-        orderStore = new OrderStore();
-        orderStore.setOrderList(WorkWithFile.readOrdersFromFile(filePath));
-        requestStore = new RequestStore();
-        requestStore.setRequestArrayList(WorkWithFile.readRequestFromFile(filePath));
-    }
-
-    @Override
-    synchronized public void writeToFile(final String filePath) {
-        WorkWithFile.writeBooksToFile(filePath, bookStore.getBookList());
-        WorkWithFile.writeOrdersToFile(filePath, orderStore.getOrderList());
-        WorkWithFile.writeRequestsToFile(filePath, requestStore.getRequestList());
-    }
-
-    @Override
     synchronized public void writeSerializable() {
         String filePath = propertiesHolder.getCsvPath();
         SerializableUtil.writeBook(bookStore, filePath);

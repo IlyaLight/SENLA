@@ -18,7 +18,7 @@ public class SerializableUtil {
     private static final String REQUEST_FILE_NAME = "requestsSerializable.txt";
     private static final String EXCEPTION = "Exception: ";
 
-    private static final Logger log = Logger.getLogger(WorkWithFile.class.getName());
+    private static final Logger log = Logger.getLogger(SerializableUtil.class.getName());
 
     public static void writeBook(IBookStore IBookStore, String path){
         writeObject(IBookStore, path + BOOKS_FILE_NAME);

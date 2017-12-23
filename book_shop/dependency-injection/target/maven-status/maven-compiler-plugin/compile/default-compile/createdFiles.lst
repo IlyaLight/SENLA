@@ -1,0 +1,7 @@
+com\senla\dependencyinjection\annotation\AnnotationAnalyzer.class
+com\senla\dependencyinjection\DIFactoriControllers.class
+com\senla\dependencyinjection\Main.class
+com\senla\dependencyinjection\annotation\ConfigProperty.class
+com\senla\dependencyinjection\annotation\AnnotationAnalyzer$SingletonHolder.class
+com\senla\dependencyinjection\annotation\Injection.class
+com\senla\dependencyinjection\annotation\ContainsConfigProperty.class
