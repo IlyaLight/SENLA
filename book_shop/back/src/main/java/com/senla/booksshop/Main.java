@@ -3,14 +3,13 @@ package com.senla.booksshop;
 
 
 import com.senla.api.model.Book;
-import com.senla.booksshop.utility.JPAUtil;
+import com.senla.booksshop.utility.JpaUtil;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.PatternLayout;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Calendar;
@@ -28,7 +27,7 @@ public class Main {
         BasicConfigurator.configure(new ConsoleAppender(new PatternLayout(pattern)));
 
 
-        EntityManagerFactory sessionFactory  = JPAUtil.getEntityManagerFactory();
+        EntityManagerFactory sessionFactory  = JpaUtil.getEntityManagerFactory();
         EntityManager entityManager = sessionFactory.createEntityManager();
 
         Calendar calendar = Calendar.getInstance();
@@ -45,6 +44,8 @@ public class Main {
         entityManager.persist( book );
         entityManager.getTransaction().commit();
         entityManager.close();
+
+        JpaUtil.shutdown();
 
 
     }
