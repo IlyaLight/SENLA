@@ -158,7 +158,7 @@ public class Controller implements IController {
     @Override
     public List<Request> getRequestSortedByBookName() {
         List<Request> requests = new ArrayList<>();
-        List<Book> books = new ArrayList<>();
+       /* List<Book> books = new ArrayList<>();
         synchronized (requestService) {
             try {
                 JdbcMySqlUtil.getConnection().setAutoCommit(false);
@@ -178,7 +178,7 @@ public class Controller implements IController {
                 }
             }
 
-        }
+        }*/
         return requests;
     }
 
@@ -212,7 +212,7 @@ public class Controller implements IController {
 
     @Override
     public void setBookQuantity(String bookName, int quantity) throws ObjectAvailabilityException {
-        Book book = GetBookByName(bookName);
+      /*  Book book = GetBookByName(bookName);
         synchronized (bookService) {
             book.setInStock(quantity);
             if (quantity > 0 | propertiesHolder.isAutomaticallyExecuteRequest()) {
@@ -225,7 +225,7 @@ public class Controller implements IController {
                     }
                 }
             }
-        }
+        }*/
     }
 
     @Override
@@ -273,7 +273,7 @@ public class Controller implements IController {
 
     @Override
     public void addRequest(Book book) {
-            boolean newRequest = true;
+          /*  boolean newRequest = true;
         synchronized (requestService) {
             for (Request request : requestStore.getRequestList()) {
                 if (request.getBookName().equals(book.getName())) {
@@ -284,7 +284,7 @@ public class Controller implements IController {
             if (newRequest) {
                 requestStore.getRequestList().add(new Request(book));
             }
-        }
+        }*/
     }
 
     @Override
@@ -316,7 +316,7 @@ public class Controller implements IController {
     @Override
     public List<Request> findRequestByBookName(String name) {
         List<Request> requests = new ArrayList<>();
-        synchronized (requestStore) {
+       /* synchronized (requestStore) {
             for (Request request : requestStore.getRequestList()) {
                 if (request.getBookName().equals(name)) {
                     requests.add(request);
@@ -325,7 +325,7 @@ public class Controller implements IController {
         }
         if (requests.size() == 0) {
             return null;
-        }
+        }*/
         return requests;
     }
 

@@ -52,7 +52,6 @@ public class MySqlRequestDao extends AbstractJDBCDao<Request,Integer> implements
             while (rs.next()) {
                 Request request = new Request();
                 request.setId(rs.getInt(ID));
-                request.setBookId(rs.getInt(BOOK_ID));
                 request.setQuantity(rs.getInt(QUANTITY));
                 result.add(request);
             }
@@ -65,8 +64,7 @@ public class MySqlRequestDao extends AbstractJDBCDao<Request,Integer> implements
     @Override
     protected void prepareStatementForInsert(PreparedStatement statement, Request request)  {
         try {
-            statement.setInt(1, request.getBookId());
-            statement.setInt(2, request.getQuantity());
+            statement.setInt(1, request.getQuantity());
         } catch (Exception e) {
             LOGGER.error(ERROR, e);
         }

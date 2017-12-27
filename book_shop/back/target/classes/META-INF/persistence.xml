@@ -8,7 +8,7 @@
     <class>com.senla.api.model.Book</class>
     <class>com.senla.api.model.Order</class>
     <class>com.senla.api.model.Request</class>
-
+    
 <properties>
     <property name="javax.persistence.jdbc.driver"      value="com.mysql.cj.jdbc.Driver" />
     <property name="javax.persistence.jdbc.url"         value="jdbc:mysql://localhost:3306/bookshop?useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />

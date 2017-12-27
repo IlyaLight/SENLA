@@ -3,13 +3,14 @@ package com.senla.booksshop;
 
 
 import com.senla.api.model.Book;
-import com.senla.booksshop.dao.realization.MySqlBookDao;
-import com.senla.booksshop.stores.BookStore;
-import com.senla.booksshop.utility.JdbcMySqlUtil;
+import com.senla.booksshop.utility.JPAUtil;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.PatternLayout;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Calendar;
@@ -26,12 +27,13 @@ public class Main {
         String pattern = prop.getProperty("log4j.appender.stdout.layout.conversionPattern");
         BasicConfigurator.configure(new ConsoleAppender(new PatternLayout(pattern)));
 
-        BookStore bookStore = new BookStore();
+
+        EntityManagerFactory sessionFactory  = JPAUtil.getEntityManagerFactory();
+        EntityManager entityManager = sessionFactory.createEntityManager();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2017, Calendar.FEBRUARY, 1);
 
-        MySqlBookDao mySqlBookDao = new MySqlBookDao();
         Book book = new Book();
         book.setName("x");
         book.setDateIssue(new Date());
@@ -39,9 +41,12 @@ public class Main {
         book.setPrice((float)90);
         book.setInStock(2);
 
-        bookStore.create(book);
+        entityManager.getTransaction().begin();
+        entityManager.persist( book );
+        entityManager.getTransaction().commit();
+        entityManager.close();
 
-        JdbcMySqlUtil.closeConnection();
+
     }
 
 

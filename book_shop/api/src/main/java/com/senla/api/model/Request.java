@@ -12,8 +12,10 @@ public class Request implements Serializable, IModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
+
     @Column(name = "quantity")
     private Integer quantity;
     private static final String FORMAT_TO_STRING = "Book Name: %s, Quantity: %d";
@@ -21,13 +23,25 @@ public class Request implements Serializable, IModel {
     public Request() {
     }
 
-
+    @Override
     public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String toString(){

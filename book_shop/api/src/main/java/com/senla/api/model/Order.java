@@ -24,17 +24,24 @@ public class Order implements Cloneable, Serializable, IModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "order_book_list", joinColumns = @JoinColumn(name = "orders_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> books;
+
     @Column(name = "price")
     private Float price;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_completion")
     private Date dataCompletion;
+
     @Column(name = "details", length = 100)
     private String details;
+
     @Column(name = "status")
     private Status status;
+
     @Column(name = "completed")
     private boolean completed;
 
@@ -79,7 +86,7 @@ public class Order implements Cloneable, Serializable, IModel {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

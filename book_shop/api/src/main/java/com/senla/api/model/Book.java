@@ -14,24 +14,36 @@ import java.util.List;
  */
 @Entity(name = "book")
 public class Book implements Serializable, IModel {
+
     private static final long serialVersionUID = 8605912397965468121L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @ManyToMany(mappedBy = "books")
     private List<Order> orderArrayList;
+
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     private List<Request> requests;
+
     @Column(name = "name", length = 100)
     private String name;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_publication")
     private Date datePublication;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_issue")
     private Date dateIssue;
+
     @Column(name = "description", length = 100)
     private String description;
+
     @Column(name = "price")
     private Float price;
+
     @Column(name = "in_stock")
     private int inStock;
     private static final String FORMAT_TO_STRING = "Name: %s, Date of Publication: %s, Data Of Issue: %s, Price: %f, In Stock: %d";
@@ -51,7 +63,7 @@ public class Book implements Serializable, IModel {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
