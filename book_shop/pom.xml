@@ -23,7 +23,7 @@
     </modules>
 
     <properties>
-        <hibernate-version>5.0.1.Final</hibernate-version>
+        <hibernate-version>5.2.12.Final</hibernate-version>
         <log4j-version>1.7.25</log4j-version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -65,6 +65,13 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate-version}</version>
+        </dependency>
+
+        <!--MysQL-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
         </dependency>
 
     </dependencies>

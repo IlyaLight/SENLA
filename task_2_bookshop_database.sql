@@ -7,6 +7,7 @@ create table book(
 	name varchar(100) not null,
 	date_publication date,
 	date_issue date,
+	description varchar(255),
 	price decimal(15,2),
 	in_stock int,
 	primary key(id)
@@ -26,7 +27,7 @@ create table orders(
     data_completion date,
     details varchar(100),
     status varchar(100),
-    completed bool(1),
+    completed char(1),
     primary key(id)
 );
 

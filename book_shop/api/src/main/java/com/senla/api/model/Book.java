@@ -1,22 +1,38 @@
 package com.senla.api.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Light on 22.09.2017.
  */
+@Entity(name = "book")
 public class Book implements Serializable, IModel {
     private static final long serialVersionUID = 8605912397965468121L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private ArrayList<Order> orderArrayList;
-    private Request request;
+    @ManyToMany(mappedBy = "books")
+    private List<Order> orderArrayList;
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    private List<Request> requests;
+    @Column(name = "name", length = 100)
     private String name;
+    @Column(name = "date_publication")
     private Date datePublication;
+    @Column(name = "date_issue")
     private Date dateIssue;
+    @Column(name = "description", length = 100)
     private String description;
+    @Column(name = "price")
     private Float price;
+    @Column(name = "in_stock")
     private int inStock;
     private static final String FORMAT_TO_STRING = "Name: %s, Date of Publication: %s, Data Of Issue: %s, Price: %f, In Stock: %d";
 

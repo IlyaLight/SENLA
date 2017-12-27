@@ -1,5 +1,8 @@
 package com.senla.api.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,6 +12,7 @@ import java.util.List;
 /**
  * Created by Light on 22.09.2017.
  */
+@Entity(name = "orders")
 public class Order implements Cloneable, Serializable, IModel {
 
     private static final String FORMAT_TO_STRING = "id: %d, Data of Completion: %s, Price: %f, Details: %s, Status: %s";
@@ -17,25 +21,26 @@ public class Order implements Cloneable, Serializable, IModel {
 
     public  enum Status {PROCESSED, ASSEMBLED, COMPLETED, CANCELED}
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "order_book_list", joinColumns = @JoinColumn(name = "orders_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> books;
-    private List<Integer> bookIds;
+    @Column(name = "price")
     private Float price;
+    @Column(name = "data_completion")
     private Date dataCompletion;
+    @Column(name = "details", length = 100)
     private String details;
+    @Column(name = "status")
     private Status status;
+    @Column(name = "completed")
     private boolean completed;
 
     public Order() {
     }
 
-    public List<Integer> getBookIds() {
-        return bookIds;
-    }
-
-    public void setBookIds(List<Integer> bookIds) {
-        this.bookIds = bookIds;
-    }
 
     @Override
     public Order clone() throws CloneNotSupportedException {
