@@ -24,7 +24,7 @@
 
     <properties>
         <hibernate-version>5.2.12.Final</hibernate-version>
-        <log4j-version>1.7.25</log4j-version>
+        <log4j-version>1.7.5</log4j-version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>

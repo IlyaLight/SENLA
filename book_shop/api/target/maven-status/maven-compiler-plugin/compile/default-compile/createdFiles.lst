@@ -1,9 +1,0 @@
-com\senla\api\exception\ObjectAvailabilityException.class
-com\senla\api\model\Request.class
-com\senla\api\model\Order$Status.class
-com\senla\api\IController.class
-com\senla\api\model\IModel.class
-com\senla\api\model\Book.class
-com\senla\api\Command.class
-com\senla\api\model\Order.class
-com\senla\api\Response.class
