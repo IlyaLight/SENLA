@@ -12,7 +12,8 @@ import java.util.List;
 /**
  * Created by Light on 22.09.2017.
  */
-@Entity(name = "orders")
+@Entity
+@Table(name = "orders")
 public class Order implements Cloneable, Serializable, IModel {
 
     private static final String FORMAT_TO_STRING = "id: %d, Data of Completion: %s, Price: %f, Details: %s, Status: %s";

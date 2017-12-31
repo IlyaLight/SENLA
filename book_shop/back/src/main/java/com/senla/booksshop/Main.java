@@ -3,7 +3,9 @@ package com.senla.booksshop;
 
 
 import com.senla.api.model.Book;
-import com.senla.booksshop.utility.JpaUtil;
+import com.senla.booksshop.dao.api.IBookDao;
+import com.senla.booksshop.dao.realization.HibernateBookDao;
+import com.senla.booksshop.utility.HibernateUtil;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.PatternLayout;
@@ -14,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 
@@ -27,7 +30,7 @@ public class Main {
         BasicConfigurator.configure(new ConsoleAppender(new PatternLayout(pattern)));
 
 
-        EntityManagerFactory sessionFactory  = JpaUtil.getEntityManagerFactory();
+        EntityManagerFactory sessionFactory  = HibernateUtil.getEntityManagerFactory();
         EntityManager entityManager = sessionFactory.createEntityManager();
 
         Calendar calendar = Calendar.getInstance();
@@ -40,12 +43,21 @@ public class Main {
         book.setPrice((float)90);
         book.setInStock(2);
 
-        entityManager.getTransaction().begin();
+     /*   entityManager.getTransaction().begin();
         entityManager.persist( book );
         entityManager.getTransaction().commit();
-        entityManager.close();
+        entityManager.close();*/
 
-        JpaUtil.shutdown();
+        IBookDao bookDao = new  HibernateBookDao();
+        List<Book> books = bookDao.getAll();
+        System.out.println("book name");
+        System.out.println(books.get(0).getName());
+        System.out.println("количество");
+        System.out.println(books);
+
+        bookDao.delete(books.get(0));
+
+        HibernateUtil.shutdown();
 
 
     }

@@ -18,15 +18,6 @@ import java.util.List;
 
 public class MySqlBookDao extends AbstractJDBCDao<Book, Integer> implements IBookDao{
 
-
-    public static final String ID               = "id";
-    public static final String NAME             = "name";
-    public static final String DATE_PUBLICATION = "date_publication";
-    public static final String DATE_ISSUE       = "date_issue";
-    public static final String PRICE            = "price";
-    public static final String IN_STOCK         = "in_stock";
-    public static final String TABLE            = "book";
-
     private static final String SELECT_QUERY    = "SELECT id, name, date_publication, date_issue, price, inStock FROM " + TABLE + " ";
     private static final String CREATE_QUERY    = "INSERT INTO " + TABLE + " (name, date_publication, date_issue, price, inStock) VALUES (?,?,?,?,?);";
     private static final String UPDATE_QUERY    = "UPDATE " + TABLE + " SET name = ?, date_publication = ?, date_issue = ?, price = ?, inStock = ? WHERE id = ?;";

@@ -12,7 +12,8 @@ import java.util.List;
 /**
  * Created by Light on 22.09.2017.
  */
-@Entity(name = "book")
+@Entity
+@Table(name = "book")
 public class Book implements Serializable, IModel {
 
     private static final long serialVersionUID = 8605912397965468121L;
