@@ -4,7 +4,7 @@ package com.senla.booksshop;
 
 import com.senla.api.model.Book;
 import com.senla.booksshop.dao.api.IBookDao;
-import com.senla.booksshop.dao.realization.HibernateBookDao;
+import com.senla.booksshop.dao.realization.hibernate.HibernateBookDao;
 import com.senla.booksshop.utility.HibernateUtil;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.ConsoleAppender;
@@ -16,7 +16,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 
 
@@ -49,13 +48,11 @@ public class Main {
         entityManager.close();*/
 
         IBookDao bookDao = new  HibernateBookDao();
-        List<Book> books = bookDao.getAll();
+        book = bookDao.getByPK(10);
         System.out.println("book name");
-        System.out.println(books.get(0).getName());
-        System.out.println("количество");
-        System.out.println(books);
+        System.out.println(book.getName());
 
-        bookDao.delete(books.get(0));
+
 
         HibernateUtil.shutdown();
 

@@ -1,4 +1,4 @@
-package com.senla.booksshop.dao.realization;
+package com.senla.booksshop.dao.realization.hibernate;
 
 import com.senla.api.model.IModel;
 import com.senla.booksshop.dao.api.IGenericDao;
@@ -14,38 +14,43 @@ import java.util.List;
 public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements IGenericDao<T, PK> {
 
     private static final String ORDER_BY = " order by ";
+    private static final String WHERE_ID_PARAM_ID = " where id = :paramId ";
+
 
     public abstract String getSelectQuery();
 
-    public abstract String getCreateQuery();
-
-    public abstract String getUpdateQuery();
-
-    public abstract String getDeleteQuery();
-
     @Override
     public void create(T object) {
-
+        EntityManager em = HibernateUtil.getEm();
+        em.getTransaction().begin();
+        em.persist(object);
+        em.getTransaction().commit();
     }
 
     @Override
     public T getByPK(int key) {
-        return null;
+        return (T)HibernateUtil.getEm().createQuery(getSelectQuery() + WHERE_ID_PARAM_ID)
+                .setParameter("paramId", key)
+                .getSingleResult();
     }
 
     @Override
     public void update(T object) {
-
+        EntityManager em = HibernateUtil.getEm();
+        em.getTransaction().begin();
+        em.merge(object);
+        em.getTransaction().commit();
     }
 
     @Override
     public void delete(T object) {
-        EntityManager entityManager = HibernateUtil.getEm();
-        entityManager.getTransaction().begin();
-        entityManager.createQuery(getDeleteQuery())
-            .setParameter("paramId", object.getId())
-            .executeUpdate();
-        entityManager.getTransaction().commit();
+        EntityManager em = HibernateUtil.getEm();
+        em.getTransaction().begin();
+//        em.createQuery(getDeleteQuery())
+//            .setParameter("paramId", object.getId())
+//            .executeUpdate();
+        em.remove(em.contains(object)? object : em.merge(object));
+        em.getTransaction().commit();
     }
 
     @Override

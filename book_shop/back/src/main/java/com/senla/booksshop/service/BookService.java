@@ -2,7 +2,7 @@ package com.senla.booksshop.service;
 
 import com.senla.api.model.Book;
 import com.senla.booksshop.dao.api.IBookDao;
-import com.senla.booksshop.dao.realization.MySqlBookDao;
+import com.senla.booksshop.dao.realization.jdbc.MySqlBookDao;
 import com.senla.booksshop.stores.IBookStore;
 import com.senla.dependencyinjection.annotation.Injection;
 

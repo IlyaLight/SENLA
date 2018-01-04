@@ -1,4 +1,4 @@
-package com.senla.booksshop.dao.realization;
+package com.senla.booksshop.dao.realization.jdbc;
 
 import com.senla.api.model.Order;
 import com.senla.booksshop.dao.api.IOrderDao;
@@ -16,18 +16,13 @@ import java.util.List;
 
 public class MySqlOrderDao extends AbstractJDBCDao<Order, Integer> implements IOrderDao{
 
-    public static final String ID               = "id";
-    public static final String PRICE            = "price";
-    public static final String DATA_COMPLETION  = "data_completion";
-    public static final String DETAILS          = "details";
-    public static final String STATUS           = "status";
-    public static final String COMPLETED        = "completed";
-    public static final String TABLE            = "orders";
+
 
     private static final String SELECT_QUERY    = "SELECT id, book_id, quantity FROM " + TABLE + " ";
     private static final String CREATE_QUERY    = "INSERT INTO " + TABLE + " (book_id, quantity) VALUES (?,?);";
     private static final String UPDATE_QUERY    = "UPDATE " + TABLE + " SET book_id = ?, quantity = ?;";
     private static final String DELETE_QUERY    = "DELETE FROM " + TABLE + " WHERE id = ?;";
+
     private static final String COMPLETED_ORDER = SELECT_QUERY + "WHERE date_issue > ? AND date_issue < ? AND completed = TRUE ORDER BY ? ASC ;";
 
     private static final String ERROR           = "SQL Error:";

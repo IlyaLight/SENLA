@@ -1,4 +1,4 @@
-package com.senla.booksshop.dao.realization;
+package com.senla.booksshop.dao.realization.jdbc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.senla.booksshop.dao.realization;
+package com.senla.booksshop.dao.realization.jdbc;
 
 import com.senla.api.model.Request;
 import com.senla.booksshop.dao.api.IRequestDao;

@@ -7,7 +7,6 @@ import com.senla.api.model.Book;
 import com.senla.api.model.IModel;
 import com.senla.api.model.Order;
 import com.senla.api.model.Request;
-import com.senla.booksshop.dao.realization.MySqlBookDao;
 import com.senla.booksshop.service.BookService;
 import com.senla.booksshop.service.OrderService;
 import com.senla.booksshop.service.RequestService;
@@ -18,7 +17,6 @@ import com.senla.dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
