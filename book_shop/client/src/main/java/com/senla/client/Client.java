@@ -1,54 +1,72 @@
 package com.senla.client;
 
+import com.google.gson.Gson;
 import com.senla.api.Command;
 import com.senla.api.Response;
+import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Client implements IClient {
 
-    private static final int PORT = 9090;
-    private static final String ADDRESS = "localhost";
-    private static final String EXCEPTION = "Exception: ";
-    public static final String CONNECTED = "Client connected to socket";
+    private static final int    PORT            = 9090;
+    private static final String ADDRESS         = "localhost";
+    private static final String EXCEPTION       = "Exception: ";
+    private static final String CONNECTED       = "Client connected to socket";
 
-    private  Socket socket;
-    private  ObjectOutputStream out;
-    private  ObjectInputStream in;
+    private static volatile Client instance;
 
-    private static Logger log = Logger.getLogger(Client.class.getName());
+    private static final org.slf4j.Logger LOGGER  = LoggerFactory.getLogger(Client.class);
+    private static final Gson GSON = new Gson();
+
+    private Socket socket;
+    private DataOutputStream out;
+    private DataInputStream in;
+
 
     public Client() {
         connect();
     }
 
+    public static Client getInstance() {
+        Client localInstance = instance;
+        if (localInstance == null) {
+            synchronized (Client.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new Client();
+                    instance.connect();
+                }
+            }
+        }
+        return localInstance;
+    }
+
     @Override
     public Response writeCommand (Command command) {
+        String jsonString;
         try {
-            out.writeObject(command);
+            jsonString = GSON.toJson(command);
+            out.writeUTF(jsonString);
             out.flush();
-            return  (Response)in.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            log.log(Level.SEVERE, EXCEPTION, e);
+            jsonString = in.readUTF();
+            return  (Response)GSON.fromJson(jsonString, Response.class);
+        } catch (IOException e) {
+            LOGGER.error(EXCEPTION, e);
             throw new RuntimeException(e);
         }
     }
 
-    @Override
-    public void connect(){
+
+    private void connect(){
         try {
             this.socket = new Socket(ADDRESS, PORT);
-            out = new ObjectOutputStream(socket.getOutputStream());
-            in = new ObjectInputStream(socket.getInputStream());
-            log.info(CONNECTED);
-            System.out.println(CONNECTED);
+            out = new DataOutputStream(socket.getOutputStream());
+            in = new DataInputStream(socket.getInputStream());
+            LOGGER.info(CONNECTED);
         } catch (Exception e) {
-            log.log(Level.SEVERE, EXCEPTION, e);
+            LOGGER.error(EXCEPTION, e);
             throw new RuntimeException(e);
         }
     }
@@ -58,7 +76,7 @@ public class Client implements IClient {
         try {
             socket.close();
         } catch (IOException e) {
-            log.log(Level.SEVERE, EXCEPTION, e);
+            LOGGER.error(EXCEPTION, e);
             throw new RuntimeException(e);
         }
     }

@@ -18,7 +18,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.bookshop.senla</groupId>
+            <groupId>com.client.senla</groupId>
             <artifactId>client</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

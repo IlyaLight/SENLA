@@ -15,6 +15,22 @@ import java.util.List;
 
 public class Controller implements IClientController {
 
+    private static volatile Controller instance;
+
+    public static Controller getInstance() {
+        Controller localInstance = instance;
+        if (localInstance == null) {
+            synchronized (Client.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new Controller();
+                    instance.client = Client.getInstance();
+                }
+            }
+        }
+        return localInstance;
+    }
+
     @Injection
     private IClient client;
 

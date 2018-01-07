@@ -5,13 +5,12 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>ShowBooks</servlet-name>
-        <servlet-class>app.servlets.ShowBooksServlet</servlet-class>
+        <servlet-name>booklists</servlet-name>
+        <servlet-class>app.servlets.ShowBooks</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ShowBooks</servlet-name>
-        <url-pattern>/showBooks</url-pattern>
+        <servlet-name>booklists</servlet-name>
+        <url-pattern>/show-books</url-pattern>
     </servlet-mapping>
-
 </web-app>

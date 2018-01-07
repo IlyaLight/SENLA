@@ -1,4 +1,5 @@
 package com.senla.server;
+/*сервер для каждого нового подключения создает отдельный поток*/
 
 import com.senla.api.IController;
 
@@ -22,8 +23,7 @@ public class Server {
             log.info(MAIN_SERVER_INITIATE_EXITING);
             while(!server.isClosed()){
                 Socket client = server.accept();
-                new Thread(new MonoThreadClientHandler(client, controller)).start();
-                System.out.println(NEW_CLIENT);
+                new Thread(new MonoThreadClientHandler(client, controller)).start();    //new thread
                 log.info(NEW_CLIENT);
             }
         } catch (IOException e) {

@@ -1,4 +1,7 @@
 package com.senla.server;
+/*класс для парсинга команд и ответов между клиентом и сервером
+по средству экземпляров классов Command и Response
+*/
 
 import com.senla.api.Command;
 import com.senla.api.IController;
@@ -29,7 +32,7 @@ public class ExecuteCommandUtil {
         try {
             Method method = clazz.getMethod(command.getMethodName(), paramType);
             try {
-                return new Response(method.invoke(controller, command.getParams()));
+                return new Response(method.invoke(controller, command.getParams())); //выполняем команду и возвращаема ответ
             } catch (InvocationTargetException e){
                 return new Response(e, true);
             } catch (IllegalAccessException e){

@@ -1,5 +1,6 @@
 package com.senla.server;
 
+import com.google.gson.Gson;
 import com.senla.api.Command;
 import com.senla.api.IController;
 import com.senla.api.Response;
@@ -26,26 +27,32 @@ public class MonoThreadClientHandler implements Runnable {
 
     }
 
+    //запускается в отдельном потоке
     @Override
     public void run() {
+        final Gson GSON = new Gson();
 
         try {
-            ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
-            ObjectInputStream in = new ObjectInputStream(client.getInputStream());
+            DataOutputStream out = new DataOutputStream(client.getOutputStream());
+            DataInputStream   in = new DataInputStream (client.getInputStream());
+            String jsonString;
             while (true){
-                Command command = (Command)in.readObject();
+                jsonString = in.readUTF();   //ждем команды от клиента
+                Command command = (Command)GSON.fromJson(jsonString, Command.class);
                 if (command.getMethodName().equals(STOP_CLIENT)){
-                    out.writeObject(new Response(STOP_CLIENT));
+                    jsonString = GSON.toJson(new Response(STOP_CLIENT));
+                    out.writeUTF(jsonString);
                     break;
                 }
-                out.writeObject (ExecuteCommandUtil.execute(command, controller));
+                jsonString = GSON.toJson(ExecuteCommandUtil.execute(command, controller));
+                out.writeUTF(jsonString);
             }
             log.info(DISCONNECTED);
             in.close();
             out.close();
             client.close();
             log.info(CLOSING_CONNECTIONS_CHANNELS_DONE);
-        }catch (IOException | ClassNotFoundException e) {
+        }catch (IOException e) {
             log.log(Level.SEVERE, EXCEPTION, e);
             throw new RuntimeException(e);
         }

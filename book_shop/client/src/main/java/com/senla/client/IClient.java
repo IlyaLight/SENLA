@@ -6,7 +6,7 @@ import com.senla.api.Response;
 public interface IClient {
     Response writeCommand(Command command);
 
-    void connect();
+    //void connect();
 
     void stop();
 }
