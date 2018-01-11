@@ -11,10 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
+
 public class ShowBooks extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+
         Controller controller = Controller.getInstance();
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/ShowBooks.jsp");
         requestDispatcher.forward(req, resp);

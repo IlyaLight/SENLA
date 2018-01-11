@@ -7,7 +7,7 @@
     <groupId>com.web.senla</groupId>
     <artifactId>web</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <!--<packaging>jar</packaging>-->
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.bookshop.senla</groupId>
@@ -34,13 +34,15 @@
         <dependency>
             <groupId>com.api.senla</groupId>
             <artifactId>api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.client.senla</groupId>
             <artifactId>client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 

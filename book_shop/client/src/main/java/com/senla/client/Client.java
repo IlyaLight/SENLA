@@ -12,7 +12,7 @@ public class Client implements IClient {
 
     private static final int    PORT            = 9090;
     private static final String ADDRESS         = "localhost";
-    private static final String EXCEPTION       = "Exception: ";
+    private static final String EXCEPTION       = "Client Exception: ";
     private static final String CONNECTED       = "Client connected to socket";
 
     private static volatile Client instance;

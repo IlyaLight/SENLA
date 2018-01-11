@@ -25,6 +25,7 @@ public class Controller implements IClientController {
                 if (localInstance == null) {
                     instance = localInstance = new Controller();
                     instance.client = Client.getInstance();
+
                 }
             }
         }

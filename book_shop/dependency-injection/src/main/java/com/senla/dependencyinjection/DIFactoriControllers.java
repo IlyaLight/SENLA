@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public final class DIFactoriControllers {
 
     private static Map<Class, Object> diMap = new HashMap<>();
-    private static final String FILE_PATH = ".properties";
+    private static final String FILE_PATH = "DIFactori.properties";
 
     private static final String EXCEPTION = "Exception:";
     private static Logger log = Logger.getLogger(DIFactoriControllers.class.getName());

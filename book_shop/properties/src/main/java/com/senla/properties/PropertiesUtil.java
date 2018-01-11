@@ -1,5 +1,7 @@
 package com.senla.properties;
 
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,10 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PropertiesUtil {
-    private static final String EXCEPTION = "Exception:";
+    private static final String EXCEPTION = "PropertiesUtil Exception при работе с файлом:";
     private static final Map<String, Properties> propertiesFilesMap = new HashMap<>();
 
-    private static final Logger log = Logger.getLogger(PropertiesUtil.class.getName());
+    private static final org.slf4j.Logger LOGGER  = LoggerFactory.getLogger(PropertiesUtil.class);
 
 
     public static String getProperties(String filePah, String propertyName) throws PropertyNotFoundException {
@@ -21,7 +23,7 @@ public class PropertiesUtil {
             try (FileInputStream file = new FileInputStream(filePah)){
                 properties.load(file);
             }catch (IOException e){
-                log.log(Level.SEVERE, EXCEPTION, e);
+                LOGGER.error(EXCEPTION + filePah, e);
                 throw new RuntimeException(e);
             }
             propertiesFilesMap.put(filePah, properties);
