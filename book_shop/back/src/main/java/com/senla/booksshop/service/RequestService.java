@@ -4,7 +4,7 @@ import com.senla.api.model.Request;
 import com.senla.booksshop.dao.api.IRequestDao;
 import com.senla.booksshop.dao.realization.jdbc.MySqlRequestDao;
 import com.senla.booksshop.stores.IRequestStore;
-import com.senla.dependencyinjection.annotation.Injection;
+import dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

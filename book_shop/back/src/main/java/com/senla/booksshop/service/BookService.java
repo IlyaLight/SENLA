@@ -4,7 +4,7 @@ import com.senla.api.model.Book;
 import com.senla.booksshop.dao.api.IBookDao;
 import com.senla.booksshop.dao.realization.jdbc.MySqlBookDao;
 import com.senla.booksshop.stores.IBookStore;
-import com.senla.dependencyinjection.annotation.Injection;
+import dependencyinjection.annotation.Injection;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

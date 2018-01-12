@@ -2,9 +2,9 @@ package com.senla.ui.controller;
 
 
 import com.senla.client.IClientController;
-import com.senla.dependencyinjection.annotation.Injection;
 import com.senla.ui.menu.MenuBuilder;
 import com.senla.ui.menu.Navigator;
+import dependencyinjection.annotation.Injection;
 
 public class UIController implements IUIController {
 

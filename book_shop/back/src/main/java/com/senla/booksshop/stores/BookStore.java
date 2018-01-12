@@ -1,11 +1,8 @@
 package com.senla.booksshop.stores;
 
 import com.senla.api.model.Book;
-import com.senla.booksshop.dao.*;
 import com.senla.booksshop.dao.api.IBookDao;
-import com.senla.booksshop.dao.api.IDaoFactory;
-import com.senla.booksshop.dao.api.IGenericDao;
-import com.senla.dependencyinjection.annotation.Injection;
+import dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

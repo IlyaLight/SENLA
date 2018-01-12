@@ -6,8 +6,7 @@ import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Book;
 import com.senla.api.model.Order;
 import com.senla.api.model.Request;
-import com.senla.dependencyinjection.annotation.Injection;
-
+import dependencyinjection.annotation.Injection;
 
 import java.util.Date;
 import java.util.List;
@@ -20,7 +19,7 @@ public class Controller implements IClientController {
     public static Controller getInstance() {
         Controller localInstance = instance;
         if (localInstance == null) {
-            synchronized (Client.class) {
+            synchronized (Controller.class) {
                 localInstance = instance;
                 if (localInstance == null) {
                     instance = localInstance = new Controller();

@@ -3,19 +3,20 @@ package com.senla.dependencyinjection;
 
 import com.senla.dependencyinjection.annotation.AnnotationAnalyzer;
 import com.senla.properties.PropertiesUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public final class DIFactoriControllers {
+
+public final class DiControllers {
 
     private static Map<Class, Object> diMap = new HashMap<>();
-    private static final String FILE_PATH = "DIFactori.properties";
+    private static final String FILE_PATH = "Di.properties";
 
-    private static final String EXCEPTION = "Exception:";
-    private static Logger log = Logger.getLogger(DIFactoriControllers.class.getName());
+    private static final String EXCEPTION = "DiControllers Exception with an instance of ";
+    private static final Logger LOGGER  = LoggerFactory.getLogger(PropertiesUtil.class);
 
     public static Object getImplementation(Class interfaceClass){
         try {
@@ -26,7 +27,7 @@ public final class DIFactoriControllers {
             }
             return diMap.get(interfaceClass);
         } catch (Exception e) {
-            log.log(Level.SEVERE, EXCEPTION, e);
+            LOGGER.error(EXCEPTION + interfaceClass.getName(), e);
             throw new Error(e);
         }
     }

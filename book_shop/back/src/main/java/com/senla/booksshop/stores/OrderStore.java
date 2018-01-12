@@ -2,7 +2,7 @@ package com.senla.booksshop.stores;
 
 import com.senla.api.model.Order;
 import com.senla.booksshop.dao.api.IOrderDao;
-import com.senla.dependencyinjection.annotation.Injection;
+import dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -3,6 +3,7 @@ package com.senla.client;
 import com.google.gson.Gson;
 import com.senla.api.Command;
 import com.senla.api.Response;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
@@ -17,8 +18,9 @@ public class Client implements IClient {
 
     private static volatile Client instance;
 
-    private static final org.slf4j.Logger LOGGER  = LoggerFactory.getLogger(Client.class);
+    private static final Logger LOGGER  = LoggerFactory.getLogger(Client.class);
     private static final Gson GSON = new Gson();
+
 
     private Socket socket;
     private DataOutputStream out;
@@ -26,7 +28,6 @@ public class Client implements IClient {
 
 
     public Client() {
-        connect();
     }
 
     public static Client getInstance() {

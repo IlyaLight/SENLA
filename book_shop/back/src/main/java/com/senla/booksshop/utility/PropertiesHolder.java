@@ -1,7 +1,6 @@
 package com.senla.booksshop.utility;
 
-
-import com.senla.dependencyinjection.annotation.ConfigProperty;
+import dependencyinjection.annotation.ConfigProperty;
 
 public class PropertiesHolder
 {

@@ -1,8 +1,11 @@
 package com.senla.dependencyinjection.annotation;
 
-import com.senla.dependencyinjection.DIFactoriControllers;
+import com.senla.dependencyinjection.DiControllers;
 import com.senla.properties.PropertiesUtil;
 import com.senla.properties.PropertyNotFoundException;
+import dependencyinjection.annotation.ConfigProperty;
+import dependencyinjection.annotation.ContainsConfigProperty;
+import dependencyinjection.annotation.Injection;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -36,7 +39,7 @@ public class AnnotationAnalyzer {
         for (Field field : fields) {
             Injection injection = field.getAnnotation(Injection.class);
             if (injection != null){
-                setField(field, inputObject, DIFactoriControllers.getImplementation(field.getType()));    //recursion
+                setField(field, inputObject, DiControllers.getImplementation(field.getType()));    //recursion
             }
 
             ConfigProperty configProperty = field.getAnnotation(ConfigProperty.class);

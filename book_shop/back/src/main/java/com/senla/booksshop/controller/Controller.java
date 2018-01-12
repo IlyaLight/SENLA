@@ -12,8 +12,8 @@ import com.senla.booksshop.service.OrderService;
 import com.senla.booksshop.service.RequestService;
 import com.senla.booksshop.stores.*;
 import com.senla.booksshop.utility.*;
-import com.senla.dependencyinjection.annotation.ContainsConfigProperty;
-import com.senla.dependencyinjection.annotation.Injection;
+import dependencyinjection.annotation.ContainsConfigProperty;
+import dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

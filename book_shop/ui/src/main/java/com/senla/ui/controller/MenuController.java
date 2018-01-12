@@ -5,8 +5,9 @@ import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Book;
 import com.senla.api.model.Order;
 import com.senla.client.IClientController;
-import com.senla.dependencyinjection.annotation.Injection;
+
 import com.senla.ui.utility.Console;
+import dependencyinjection.annotation.Injection;
 
 import java.util.ArrayList;
 import java.util.List;
