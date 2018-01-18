@@ -5,7 +5,7 @@ import com.senla.api.model.Order;
 import java.util.Date;
 import java.util.List;
 
-public interface IOrderDao {
+public interface IOrderDao extends IGenericDao<Order, Integer> {
 
     public static final String ID               = "id";
     public static final String PRICE            = "price";
@@ -14,14 +14,6 @@ public interface IOrderDao {
     public static final String STATUS           = "status";
     public static final String COMPLETED        = "completed";
     public static final String TABLE            = "orders";
-
-    void create(Order order) ;
-
-    Order getByPK(int key) ;
-
-    void  update(Order order) ;
-
-    void delete(Order order) ;
 
     List<Order> getAll(String sortingColumn);
 

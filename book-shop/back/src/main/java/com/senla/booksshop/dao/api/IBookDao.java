@@ -5,7 +5,7 @@ import com.senla.api.model.Book;
 import java.util.Date;
 import java.util.List;
 
-public interface IBookDao {
+public interface IBookDao extends IGenericDao<Book, Integer>{
 
     public static final String ID               = "id";
     public static final String NAME             = "name";
@@ -20,15 +20,5 @@ public interface IBookDao {
     List<Book> booksReceivedLaterThan(Date data, String columnName);
 
     List<Book> getAll(String sortingColumn);
-
-    void create(Book t);
-
-    Book getByPK(int key);
-
-    void  update(Book t);
-
-    void delete(Book t);
-
-
 
 }

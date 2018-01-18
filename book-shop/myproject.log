@@ -962,3 +962,14 @@ java.net.BindException: Address already in use: JVM_Bind
 03:02:05,471  INFO main Server:runServer:43 - new client
 03:06:28,736  INFO main Server:runServer:43 - new client
 03:11:35,640  INFO main Server:runServer:43 - new client
+05:22:05,818  INFO main LogHelper:logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: PERSISTENCE
+	...]
+05:22:06,668  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+05:22:06,679  INFO main Environment:<clinit>:198 - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.username=root, hibernate.connection.password=****, hibernate.connection.url=jdbc:mysql://localhost:3306/bookshop, hibernate.bytecode.use_reflection_optimizer=false, hibernate.connection.driver_class=org.postgresql.Driver}
+05:22:07,015  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+05:22:07,930  WARN main pooling:configure:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+05:22:07,966  INFO main pooling:buildCreator:126 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bookshop?useLegacyDatetimeCode=false                                                             & serverTimezone=UTC                                                             & useSSL=false]
+05:22:07,969  INFO main pooling:buildCreator:135 - HHH10001001: Connection properties: {user=root, password=****}
+05:22:07,971  INFO main pooling:buildCreator:140 - HHH10001003: Autocommit mode: false
+05:22:07,981  INFO main DriverManagerConnectionProviderImpl:<init>:41 - HHH000115: Hibernate connection pool size: 20 (min=1)

@@ -64,24 +64,4 @@ public interface IController {
 
     Order getOrderById(Integer ip) throws ObjectAvailabilityException;
 
-    void writeSerializable();
-
-    void readSerializable();
-
-    void exportAllStores();
-
-    void exportBookStore();
-
-    void exportOrderStore();
-
-    void exportRequestStore();
-
-    void importAllStores();
-
-    void importBookStore();
-
-    void importOrderStore();
-
-    void importRequestStore();
-
 }

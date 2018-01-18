@@ -4,15 +4,12 @@ package com.senla.booksshop.controller;
 import com.senla.api.IController;
 import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Book;
-import com.senla.api.model.IModel;
 import com.senla.api.model.Order;
 import com.senla.api.model.Request;
-import com.senla.booksshop.service.BookService;
-import com.senla.booksshop.service.OrderService;
-import com.senla.booksshop.service.RequestService;
-import com.senla.booksshop.stores.*;
+import com.senla.booksshop.service.IBookService;
+import com.senla.booksshop.service.IOrderService;
+import com.senla.booksshop.service.IRequestService;
 import com.senla.booksshop.utility.*;
-import dependencyinjection.annotation.ContainsConfigProperty;
 import dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,20 +21,13 @@ import java.util.List;
 
 public class Controller implements IController {
 
-
     @Injection
-    IBookStore bookStore;
+    private IBookService bookService;
     @Injection
-    IOrderStore orderStore;
+    private IOrderService orderService;
     @Injection
-    IRequestStore requestStore;
-    @ContainsConfigProperty
-    private BookService bookService;
-    @ContainsConfigProperty
-    private OrderService orderService;
-    @ContainsConfigProperty
-    private RequestService requestService;
-    @ContainsConfigProperty
+    private IRequestService requestService;
+    @Injection
     private PropertiesHolder propertiesHolder;
 
     private static final Logger LOGGER          = LoggerFactory.getLogger(Controller.class);
@@ -189,7 +179,7 @@ public class Controller implements IController {
 
     @Override
     public String getBookDescription(String bookName) throws ObjectAvailabilityException {
-        synchronized (bookService) {
+        synchronized (requestService) {
             Book book = GetBookByName(bookName);
             return book.getDescription();
         }
@@ -242,7 +232,7 @@ public class Controller implements IController {
     @Override
     public void addOrder(Order order) {
         synchronized (orderService) {
-            orderStore.create(order);
+            orderService.create(order);
         }
     }
 
@@ -287,8 +277,8 @@ public class Controller implements IController {
 
     @Override
     public Book GetBookByName(String name) throws ObjectAvailabilityException {
-        List<Book> books = bookStore.getBookList();
-        synchronized (bookStore) {
+        List<Book> books = bookService.getBookList();
+        synchronized (bookService) {
             for (Book book : books) {
                 if (book.getName().equals(name)) {
                     return book;
@@ -300,15 +290,16 @@ public class Controller implements IController {
 
     @Override
     public Order getOrderById(Integer id) throws ObjectAvailabilityException {
-        List<Order> orders = orderStore.getOrderList();
-        synchronized (orderStore) {
-            for (Order order : orders) {
-                if (order.getId() == id) {
-                    return order;
-                }
-            }
-        }
-        throw new ObjectAvailabilityException();
+//        List<Order> orders = orderService.getOrderList();
+//        synchronized (orderService) {
+//            for (Order order : orders) {
+//                if (order.getId() == id) {
+//                    return order;
+//                }
+//            }
+//        }
+//        throw new ObjectAvailabilityException();
+        return null;
     }
 
     @Override
@@ -328,99 +319,12 @@ public class Controller implements IController {
     }
 
     @Override
-    synchronized public void writeSerializable() {
-        String filePath = propertiesHolder.getCsvPath();
-        SerializableUtil.writeBook(bookStore, filePath);
-        SerializableUtil.writeRequest(requestStore, filePath);
-        SerializableUtil.writeOrder(orderStore, filePath);
-    }
-
-    @Override
-    synchronized public void readSerializable() {
-        String filePath = propertiesHolder.getCsvPath();
-        bookStore = SerializableUtil.readBooks(filePath);
-        orderStore = SerializableUtil.readOrder(filePath);
-        requestStore = SerializableUtil.readRequest(filePath);
-    }
-
-    @Override
     public void exportAllStores() {
         exportBookStore();
         exportOrderStore();
         exportRequestStore();
     }
 
-    @Override
-    public void exportBookStore() {
-        String filePath = propertiesHolder.getCsvPath();
-        synchronized (bookStore) {
-            CsvUtil.exportBooks(bookStore.getBookList(), filePath);
-        }
-    }
-
-    @Override
-    public void exportOrderStore() {
-        String filePath = propertiesHolder.getCsvPath();
-        synchronized (requestStore) {
-            CsvUtil.exportRequests(requestStore.getRequestList(), filePath);
-        }
-    }
-
-    @Override
-    public void exportRequestStore() {
-        String filePath = propertiesHolder.getCsvPath();
-        synchronized (orderStore) {
-            CsvUtil.exportOrders(orderStore.getOrderList(), filePath);
-        }
-    }
-
-    @Override
-    public void importAllStores() {
-        importBookStore();
-        importOrderStore();
-        importRequestStore();
-    }
-
-    @Override
-    public void importBookStore() {
-        String filePath = propertiesHolder.getCsvPath();
-        synchronized (bookStore) {
-            updateListById(bookStore.getBookList(), CsvUtil.importBooks(filePath));
-        }
-    }
-
-    @Override
-    public void importOrderStore() {
-        String filePath = propertiesHolder.getCsvPath();
-        synchronized (orderStore) {
-            updateListById(orderStore.getOrderList(), CsvUtil.importOrder(filePath));
-        }
-    }
-
-    @Override
-    public void importRequestStore() {
-        String filePath = propertiesHolder.getCsvPath();
-        synchronized (requestStore) {
-            updateListById(requestStore.getRequestList(), CsvUtil.importRequest(filePath));
-        }
-    }
-
-    private <T extends IModel> void updateListById(List<T> setList, List<T> impList) {
-        if (setList.size()>0) {
-            for (T o1 : setList) {
-                for (T o2 : impList) {
-                    if (o1.getId() == o2.getId()) {
-                        o1 = o2;
-                    } else {
-                        setList.add(o2);
-                    }
-                }
-
-            }
-        }else {
-            setList.addAll(impList);
-        }
-    }
 
 }
 

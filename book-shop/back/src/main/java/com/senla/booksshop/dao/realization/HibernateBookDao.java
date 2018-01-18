@@ -12,7 +12,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import java.util.Date;
 import java.util.List;
 
-public class HibernateBookDao extends AbstractJpaHibernateDao<Book,Integer> implements IBookDao {
+public class HibernateBookDao extends AbstractJpaHibernateDao<Book, Integer> implements IBookDao {
 
     private static final String ENTITY              = Book.class.getSimpleName();
     private static final String SELECT_QUERY        = "FROM " + ENTITY ;

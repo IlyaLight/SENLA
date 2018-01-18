@@ -1,7 +1,7 @@
 package com.senla.booksshop.dao.realization;
 
-import com.senla.api.model.Order_;
 import com.senla.api.model.Order;
+import com.senla.api.model.Order_;
 import com.senla.booksshop.dao.api.IOrderDao;
 import com.senla.booksshop.utility.HibernateUtil;
 import org.slf4j.Logger;

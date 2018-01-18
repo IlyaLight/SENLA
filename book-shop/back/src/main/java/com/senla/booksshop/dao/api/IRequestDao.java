@@ -4,20 +4,12 @@ import com.senla.api.model.Request;
 
 import java.util.List;
 
-public interface IRequestDao {
+public interface IRequestDao extends IGenericDao<Request, Integer>{
 
     public static final String ID           = "id";
     public static final String BOOK_ID      = "book_id";
     public static final String QUANTITY     = "quantity";
     public static final String TABLE        = "request";
-
-    void create(Request t);
-
-    Request getByPK(int key);
-
-    void  update(Request t);
-
-    void delete(Request t);
 
     List<Request> getAll(String sortingColumn);
 }

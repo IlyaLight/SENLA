@@ -49,6 +49,10 @@ public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements I
     @Override
     public void update(T object) {
         EntityManager em = HibernateUtil.getEm();
+        if(em.getTransaction().isActive()){
+            em.merge(object);
+            return;
+        }
         em.getTransaction().begin();
         em.merge(object);
         em.getTransaction().commit();
@@ -56,10 +60,15 @@ public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements I
 
     @Override
     public void delete(T object) {
-        CriteriaBuilder builder = HibernateUtil.getEm().getCriteriaBuilder();
-        HibernateUtil.getEm().getTransaction().begin();
-        CriteriaDelete<T> criteria = builder.createCriteriaDelete( getClazz() );
-        Root<T> root = criteria.from( getClazz() );
+        EntityManager em = HibernateUtil.getEm();
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaDelete<T> criteria = builder.createCriteriaDelete(getClazz());
+        Root<T> root = criteria.from(getClazz());
+        if(em.getTransaction().isActive()) {
+            criteria.where(builder.equal(root.get(mmGetID()), object.getId()));
+            return;
+        }
+        em.getTransaction().begin();
         criteria.where(builder.equal(root.get(mmGetID()), object.getId()));
         HibernateUtil.getEm().getTransaction().commit();
     }
