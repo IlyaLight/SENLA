@@ -77,11 +77,93 @@ public class WebController {
         return GSON.toJson(bakControler.getOrderSortedById());
     }
 
-    Order getCloneOrderById(int id) throws ObjectAvailabilityException;
+    public String getCloneOrderById(int id){
+        try {
+            return GSON.toJson(bakControler.getCloneOrderById(id));
+        } catch (ObjectAvailabilityException e) {
+            return GSON.toJson(e);
+        }
+    }
 
-    List<Order> getCompletedOrder(Date from, Date to);
+    public String getCompletedOrder(Date from, Date to){
+        return GSON.toJson(bakControler.getCompletedOrder(from, to));
+    }
 
-    List<Order> getCompletedOrderSortedByPrice(Date from, Date to);
+    public String getCompletedOrderSortedByPrice(Date from, Date to){
+        return GSON.toJson(bakControler.getCompletedOrderSortedByPrice(from, to));
+    }
 
-    List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to);
+    public String getCompletedOrderSortedByCompletedData(Date from, Date to){
+        return GSON.toJson(bakControler.getCompletedOrderSortedByCompletedData(from, to));
+    }
+
+    public String getRequestSortedByBookName(){
+        return GSON.toJson(bakControler.getRequestSortedByBookName());
+    }
+
+    public String getRequestSortedOfQuantity(){
+        return GSON.toJson(bakControler.getRequestSortedOfQuantity());
+    }
+
+    public String getBookDescription(String bookName) {
+        try {
+            return GSON.toJson(bakControler.getBookDescription(bookName));
+        } catch (ObjectAvailabilityException e) {
+            return GSON.toJson(e);
+        }
+    }
+
+    public String getOrderDetails(Integer ip) {
+        try {
+            return GSON.toJson(bakControler.getOrderDetails(ip));
+        } catch (ObjectAvailabilityException e) {
+            return GSON.toJson(e);
+        }
+    }
+
+    public String setBookQuantity(String bookName, int quantity){
+        try {
+            bakControler.setBookQuantity(bookName, quantity);
+            return GSON.toJson(true);
+        } catch (ObjectAvailabilityException e) {
+            return GSON.toJson(e);
+        }
+    }
+
+    public String getIncome(Date from, Date to){
+        return GSON.toJson(bakControler.getIncome(from, to));
+    }
+
+    void addOrder(String orderJson){
+
+        bakControler.addOrder(GSON.fromJson(orderJson, Order.class));
+    }
+
+    void assembleOrder(Integer idOrder){
+        bakControler.addOrder(idOrder);
+    }
+
+    void cancelTheOrder(Integer idOrder){
+        bakControler.cancelTheOrder(idOrder);
+    }
+
+    void addRequest(Integer idBook){
+        bakControler.addRequest(idBook);
+    }
+
+    public String findRequestByBookName(String name){
+        return GSON.toJson(bakControler.findRequestByBookName(name));
+    }
+
+    public String GetBookByName(String name){
+        return GSON.toJson(bakControler.GetBookByName(name));
+    }
+
+    public String getOrderById(Integer ip){
+        try {
+            return GSON.toJson(bakControler.getOrderById(ip));
+        } catch (ObjectAvailabilityException e) {
+            return GSON.toJson(e);
+        }
+    }
 }
