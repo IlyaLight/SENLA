@@ -42,7 +42,7 @@ public interface IController {
 
     List<Request> getRequestSortedOfQuantity();
 
-    String getBookDescription(String bookName) throws ObjectAvailabilityException;
+    List<String> getBookDescription(String bookName) throws ObjectAvailabilityException;
 
     String getOrderDetails(Integer ip) throws ObjectAvailabilityException;
 
@@ -60,7 +60,7 @@ public interface IController {
 
     List<Request> findRequestByBookName(String name);
 
-    Book GetBookByName(String name) throws ObjectAvailabilityException;
+    List<Book> GetBookByName(String name);
 
     Order getOrderById(Integer ip) throws ObjectAvailabilityException;
 

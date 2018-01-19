@@ -51,7 +51,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public  String getOrderDetails(Integer id){
-        Order order = requestOrder.read(id);
+        Order order = orderDao.getByPK(id);
        if (order == null){
            return null;
        }else if(order.getDetails() == null){
@@ -63,11 +63,16 @@ public class OrderService implements IOrderService {
 
     @Override
     public  Order getOrderById(int id) {
-        return requestOrder.read(id);
+        return orderDao.getByPK(id);
     }
 
     @Override
     public List<Order> getOrderSortedById() {
         return orderDao.getAll(IOrderDao.ID);
+    }
+
+    @Override
+    public void create(Order order) {
+
     }
 }

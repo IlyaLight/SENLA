@@ -178,10 +178,14 @@ public class Controller implements IController {
     }
 
     @Override
-    public String getBookDescription(String bookName) throws ObjectAvailabilityException {
-        synchronized (requestService) {
-            Book book = GetBookByName(bookName);
-            return book.getDescription();
+    public List<String> getBookDescription(String bookName) throws ObjectAvailabilityException {
+        synchronized (bookService) {
+            List<Book> books = bookService.getBookByName(bookName);
+            List<String> descriptions = new ArrayList<>();
+            for (Book book : books) {
+                descriptions.add(book.getDescription());
+            }
+            return descriptions;
         }
 
     }
@@ -276,16 +280,8 @@ public class Controller implements IController {
     }
 
     @Override
-    public Book GetBookByName(String name) throws ObjectAvailabilityException {
-        List<Book> books = bookService.getBookList();
-        synchronized (bookService) {
-            for (Book book : books) {
-                if (book.getName().equals(name)) {
-                    return book;
-                }
-            }
-        }
-        throw new ObjectAvailabilityException();
+    public List<Book> GetBookByName(String name) {
+        return  bookService.getBookByName(name);
     }
 
     @Override
@@ -316,13 +312,6 @@ public class Controller implements IController {
             return null;
         }*/
         return requests;
-    }
-
-    @Override
-    public void exportAllStores() {
-        exportBookStore();
-        exportOrderStore();
-        exportRequestStore();
     }
 
 

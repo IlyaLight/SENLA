@@ -61,21 +61,17 @@ import java.util.List;
         return bookDao.getStaleBooks(date, IBookDao.PRICE);
     }
 
+    @Override
+    public List<Book> getBookByName(String name) {
+        return bookDao.getBookByName(name);
+    }
+
     private List<Book> booksReceivedLaterThan(Date date){
         return bookDao.booksReceivedLaterThan(date, IBookDao.NAME);
     }
 
     @Override
-    public String getBookDescription(int bookId){
-        Book book = bookStore.read(bookId);
-        if (book == null){
-            return null;
-        }
-        return book.getDescription();
-    }
-
-    @Override
     public Book getBookById(int bookId){
-        return bookStore.read(bookId);
+        return bookDao.getByPK(bookId);
     }
 }

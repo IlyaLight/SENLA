@@ -11,6 +11,7 @@ public interface IBookDao extends IGenericDao<Book, Integer>{
     public static final String NAME             = "name";
     public static final String DATE_PUBLICATION = "date_publication";
     public static final String DATE_ISSUE       = "date_issue";
+    public static final String DESCRIPTION      = "description";
     public static final String PRICE            = "price";
     public static final String IN_STOCK         = "in_stock";
     public static final String TABLE            = "book";
@@ -21,4 +22,5 @@ public interface IBookDao extends IGenericDao<Book, Integer>{
 
     List<Book> getAll(String sortingColumn);
 
+    List<Book> getBookByName(String name);
 }

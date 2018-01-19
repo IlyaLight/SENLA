@@ -1,6 +1,7 @@
 package com.senla.booksshop.dao.realization;
 
 import com.senla.api.model.Request;
+import com.senla.api.model.Request_;
 import com.senla.booksshop.dao.api.IRequestDao;
 
 import javax.persistence.metamodel.SingularAttribute;

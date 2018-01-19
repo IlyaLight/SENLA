@@ -973,3 +973,19 @@ java.net.BindException: Address already in use: JVM_Bind
 05:22:07,969  INFO main pooling:buildCreator:135 - HHH10001001: Connection properties: {user=root, password=****}
 05:22:07,971  INFO main pooling:buildCreator:140 - HHH10001003: Autocommit mode: false
 05:22:07,981  INFO main DriverManagerConnectionProviderImpl:<init>:41 - HHH000115: Hibernate connection pool size: 20 (min=1)
+13:33:07,119  INFO main LogHelper:logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: PERSISTENCE
+	...]
+13:33:07,241  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+13:33:07,247  INFO main Environment:<clinit>:198 - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.username=root, hibernate.connection.password=****, hibernate.connection.url=jdbc:mysql://localhost:3306/bookshop, hibernate.bytecode.use_reflection_optimizer=false, hibernate.connection.driver_class=org.postgresql.Driver}
+13:33:07,290  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+13:33:07,477  WARN main pooling:configure:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+13:33:07,535  INFO main pooling:buildCreator:126 - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/bookshop?useLegacyDatetimeCode=false                                                             & serverTimezone=UTC                                                             & useSSL=false]
+13:33:07,536  INFO main pooling:buildCreator:135 - HHH10001001: Connection properties: {user=root, password=****}
+13:33:07,536  INFO main pooling:buildCreator:140 - HHH10001003: Autocommit mode: false
+13:33:07,539  INFO main DriverManagerConnectionProviderImpl:<init>:41 - HHH000115: Hibernate connection pool size: 20 (min=1)
+13:33:07,815  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+13:33:08,348  INFO main access:getIsolatedConnection:47 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@61bcd567] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+13:33:08,405  INFO main HibernateUtil:getEntityManagerFactory:20 - create EntityManagerFactory
+13:33:08,502  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+13:33:08,632  INFO main pooling:stop:230 - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/bookshop?useLegacyDatetimeCode=false                                                             & serverTimezone=UTC                                                             & useSSL=false]

@@ -2,11 +2,14 @@ package com.senla.web;
 
 import com.google.gson.Gson;
 import com.senla.api.IController;
+import com.senla.api.exception.ObjectAvailabilityException;
+import com.senla.api.model.Order;
 import com.senla.dependencyinjection.DiController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Date;
+import java.util.List;
 
 
 public class WebController {
@@ -57,4 +60,28 @@ public class WebController {
     public String getStaleBooksPrice(Date date) {
         return GSON.toJson(bakControler.getStaleBooksPrice(date));
     }
+
+    public String getOrderSortedByPrice(){
+        return GSON.toJson(bakControler.getOrderSortedByPrice());
+    }
+
+    public String getOrderSortedByStatus(){
+        return GSON.toJson(bakControler.getOrderSortedByStatus());
+    }
+
+    public String getOrderSortedByDataCompletion(){
+        return GSON.toJson(bakControler.getOrderSortedByDataCompletion());
+    }
+
+    public String getOrderSortedById(){
+        return GSON.toJson(bakControler.getOrderSortedById());
+    }
+
+    Order getCloneOrderById(int id) throws ObjectAvailabilityException;
+
+    List<Order> getCompletedOrder(Date from, Date to);
+
+    List<Order> getCompletedOrderSortedByPrice(Date from, Date to);
+
+    List<Order> getCompletedOrderSortedByCompletedData(Date from, Date to);
 }

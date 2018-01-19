@@ -22,9 +22,8 @@ public interface IBookService {
 
     List<Book> getStaleBooksPrice(Date date);
 
-    String getBookDescription(int bookId);
+    List<Book> getBookByName(String name);
 
     Book getBookById(int bookId);
 
-    List<Book> getBookList();
 }
