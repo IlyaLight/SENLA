@@ -134,13 +134,13 @@ public class WebController {
         return GSON.toJson(bakControler.getIncome(from, to));
     }
 
-    void addOrder(String orderJson){
+    public void addOrder(String orderJson){
 
         bakControler.addOrder(GSON.fromJson(orderJson, Order.class));
     }
 
     void assembleOrder(Integer idOrder){
-        bakControler.addOrder(idOrder);
+        bakControler.assembleOrder(idOrder);
     }
 
     void cancelTheOrder(Integer idOrder){
@@ -155,15 +155,11 @@ public class WebController {
         return GSON.toJson(bakControler.findRequestByBookName(name));
     }
 
-    public String GetBookByName(String name){
+    public String getBookByName(String name){
         return GSON.toJson(bakControler.GetBookByName(name));
     }
 
-    public String getOrderById(Integer ip){
-        try {
+    public String getOrderById(Integer ip) throws ObjectAvailabilityException {
             return GSON.toJson(bakControler.getOrderById(ip));
-        } catch (ObjectAvailabilityException e) {
-            return GSON.toJson(e);
-        }
     }
 }

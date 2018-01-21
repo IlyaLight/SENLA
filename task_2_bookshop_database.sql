@@ -7,7 +7,7 @@ create table book(
 	name varchar(100) not null,
 	date_publication date,
 	date_issue date,
-	description varchar(255),
+	description varchar(1000),
 	price decimal(15,2),
 	in_stock int,
 	primary key(id)
