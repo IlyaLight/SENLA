@@ -2,6 +2,7 @@ package com.senla.web.servlets;
 
 import com.senla.booksshop.dao.api.IOrderDao;
 import com.senla.web.WebController;
+import com.senla.web.util.ResponseUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +35,8 @@ public class GetOrders extends HttpServlet {
             case IOrderDao.STATUS:
                 writer.println(WebController.getInstance().getOrderSortedByStatus());
                 break;
+            default:
+                ResponseUtil.error(resp, "order = " + order + ": неверный параметр", 400);
         }
         writer.close();
     }

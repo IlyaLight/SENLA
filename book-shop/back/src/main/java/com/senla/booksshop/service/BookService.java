@@ -1,5 +1,6 @@
 package com.senla.booksshop.service;
 
+import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Book;
 import com.senla.booksshop.dao.api.IBookDao;
 import dependencyinjection.annotation.Injection;
@@ -71,7 +72,7 @@ import java.util.List;
     }
 
     @Override
-    public Book getBookById(int bookId){
+    public Book getBookById(int bookId) throws ObjectAvailabilityException {
         return bookDao.getByPK(bookId);
     }
 }

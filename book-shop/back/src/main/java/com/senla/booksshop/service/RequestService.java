@@ -1,5 +1,6 @@
 package com.senla.booksshop.service;
 
+import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Request;
 import com.senla.booksshop.dao.api.IRequestDao;
 import dependencyinjection.annotation.Injection;
@@ -13,9 +14,14 @@ import java.util.*;
  */
 public class RequestService implements IRequestService {
 
-
     @Injection
     private IRequestDao requestDao;
+
+
+    @Override
+    public Request getRequestByBookId(Integer bookId) throws ObjectAvailabilityException{
+        return requestDao.getRequestByBookId(bookId);
+    }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RequestService.class);
 
@@ -27,5 +33,10 @@ public class RequestService implements IRequestService {
     @Override
     public List<Request> getRequestSortedOfQuantity() {
         return requestDao.getAll(IRequestDao.QUANTITY);
+    }
+
+    @Override
+    public void create(Request request) {
+        requestDao.create(request);
     }
 }

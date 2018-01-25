@@ -2,6 +2,7 @@ package com.senla.web.servlets;
 
 import com.senla.booksshop.dao.api.IBookDao;
 import com.senla.web.WebController;
+import com.senla.web.util.ResponseUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,23 +18,21 @@ public class GetBooks extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         String order = (String) req.getParameter("order");
-        resp.setContentType("text/html;charset=UTF-8");
-        resp.setContentType("application/json");
-        PrintWriter writer = resp.getWriter();
         switch(order){
             case IBookDao.NAME:
-                writer.println(WebController.getInstance().getBooksSortedByName());
+                ResponseUtil.allGoot(resp, WebController.getInstance().getBooksSortedByName());
                 break;
             case IBookDao.PRICE:
-                writer.println(WebController.getInstance().getBooksSortedByPrice());
+                ResponseUtil.allGoot(resp, WebController.getInstance().getBooksSortedByPrice());
                 break;
             case IBookDao.DATE_ISSUE:
-                writer.println(WebController.getInstance().getBooksSortedByDateIssue());
+                ResponseUtil.allGoot(resp, WebController.getInstance().getBooksSortedByDateIssue());
                 break;
             case IBookDao.IN_STOCK:
-                writer.println(WebController.getInstance().getBooksSortedByStockAvailability());
+                ResponseUtil.allGoot(resp, WebController.getInstance().getBooksSortedByStockAvailability());
                 break;
+            default:
+                ResponseUtil.error(resp, "order = " + order + ": неверный параметр", 400);
         }
-        writer.close();
     }
 }

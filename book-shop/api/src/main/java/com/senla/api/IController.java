@@ -52,13 +52,13 @@ public interface IController {
 
     void addOrder(Order order);
 
-    void assembleOrder(Order order);
+    void assembleOrder(Integer orderId);
 
-    void cancelTheOrder(Order order);
-
-    void addRequest(Book book);
+    void cancelTheOrder(Integer orderId);
 
     List<Request> findRequestByBookName(String name);
+
+    void addRequest(Integer bookId) throws ObjectAvailabilityException;
 
     List<Book> GetBookByName(String name);
 

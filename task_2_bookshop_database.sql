@@ -1,3 +1,5 @@
+
+
 DROP DATABASE bookshop;
 CREATE DATABASE bookshop;
 use bookshop;
@@ -25,9 +27,9 @@ create table orders(
     id int not null auto_increment,
     price decimal(15,2),
     data_completion date,
-    details varchar(100),
+    details varchar(1000),
     status varchar(100),
-    completed char(1),
+    completed BOOLEAN,
     primary key(id)
 );
 

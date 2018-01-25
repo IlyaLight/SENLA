@@ -112,7 +112,7 @@
     </column>
     <column id="34" parent="12" name="details">
       <Position>4</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>varchar(1000)|0</DataType>
     </column>
     <column id="35" parent="12" name="status">
       <Position>5</Position>
@@ -120,7 +120,7 @@
     </column>
     <column id="36" parent="12" name="completed">
       <Position>6</Position>
-      <DataType>char(1)|0</DataType>
+      <DataType>tinyint(1)|0</DataType>
     </column>
     <key id="37" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

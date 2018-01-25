@@ -1,5 +1,6 @@
 package com.senla.booksshop.service;
 
+import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Order;
 import com.senla.booksshop.dao.api.IOrderDao;
 import dependencyinjection.annotation.Injection;
@@ -50,7 +51,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public  String getOrderDetails(Integer id){
+    public  String getOrderDetails(Integer id) throws ObjectAvailabilityException {
         Order order = orderDao.getByPK(id);
        if (order == null){
            return null;
@@ -62,7 +63,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public  Order getOrderById(int id) {
+    public  Order getOrderById(int id) throws ObjectAvailabilityException {
         return orderDao.getByPK(id);
     }
 

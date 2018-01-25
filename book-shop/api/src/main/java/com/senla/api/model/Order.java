@@ -27,7 +27,7 @@ public class Order implements Cloneable, Serializable, IModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    //@Expose
+    @Expose
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "order_book_list", joinColumns = @JoinColumn(name = "orders_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> books;
@@ -42,7 +42,7 @@ public class Order implements Cloneable, Serializable, IModel {
     @Column(name = "details", length = 100)
     private String details;
 
-    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "completed")
@@ -60,9 +60,8 @@ public class Order implements Cloneable, Serializable, IModel {
         return clone;
     }
 
-    public Order(List<Book> books, Integer id){
+    public Order(List<Book> books){
         this.books = books;
-        this.id = id;
         updatePrice();
         status = Status.PROCESSED;
         Calendar from =Calendar.getInstance();
@@ -76,7 +75,6 @@ public class Order implements Cloneable, Serializable, IModel {
         this.price = price;
         this.dataCompletion = dataCompletion;
         this.details = details;
-
         this.status = status;
         this.completed = completed;
     }

@@ -1,5 +1,6 @@
 package com.senla.booksshop.service;
 
+import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Book;
 
 import java.util.Date;
@@ -24,6 +25,6 @@ public interface IBookService {
 
     List<Book> getBookByName(String name);
 
-    Book getBookById(int bookId);
+    Book getBookById(int bookId) throws ObjectAvailabilityException;
 
 }

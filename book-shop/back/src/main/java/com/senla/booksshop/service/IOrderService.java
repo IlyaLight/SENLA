@@ -1,5 +1,6 @@
 package com.senla.booksshop.service;
 
+import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Order;
 
 import java.util.Date;
@@ -18,9 +19,9 @@ public interface IOrderService {
 
     List<Order> getCompletedOrder(Date from, Date to);
 
-    String getOrderDetails(Integer id);
+    String getOrderDetails(Integer id) throws ObjectAvailabilityException;
 
-    Order getOrderById(int id);
+    Order getOrderById(int id) throws ObjectAvailabilityException;
 
     List<Order> getOrderSortedById();
 

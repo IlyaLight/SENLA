@@ -1,6 +1,8 @@
 package com.senla.web.servlets;
 
+import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.web.WebController;
+import com.senla.web.util.ResponseUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +20,10 @@ public class GetOrderDetails extends HttpServlet {
         Integer orderId = Integer.valueOf((String) req.getParameter("orderId"));
         resp.setContentType("text/html;charset=UTF-8");
         resp.setContentType("application/json");
-        Integer id = Integer.valueOf(req.getParameter("id"));
-        PrintWriter writer = resp.getWriter();
-        writer.println(WebController.getInstance().getOrderDetails(id));
-        writer.close();
+        try {
+            resp.getWriter().println(WebController.getInstance().getOrderDetails(orderId));
+        } catch (ObjectAvailabilityException e) {
+            ResponseUtil.error(resp, e.getMessage(), 404);
+        }
     }
 }

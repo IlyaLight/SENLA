@@ -16,7 +16,7 @@ public class Request implements Serializable, IModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    //@Expose
+    @Expose
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
 
@@ -25,6 +25,11 @@ public class Request implements Serializable, IModel {
     private static final String FORMAT_TO_STRING = "Book Name: %s, Quantity: %d";
 
     public Request() {
+    }
+
+    public Request(Book book) {
+        this.book = book;
+        this.quantity = 1;
     }
 
     @Override
@@ -42,10 +47,6 @@ public class Request implements Serializable, IModel {
 
     public void setBook(Book book) {
         this.book = book;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public String toString(){

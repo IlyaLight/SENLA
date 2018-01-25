@@ -23,11 +23,11 @@ public class Book implements Serializable, IModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    //@Expose
+    @Expose
     @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Order> orderArrayList;
 
-    //@Expose
+    @Expose
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Request> requests;
 

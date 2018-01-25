@@ -10,11 +10,11 @@ public class ResponseUtil {
 
     private static final Gson GSON = new Gson();
 
-    public static void error(HttpServletResponse resp, Exception e, Integer status) throws IOException {
+    public static void error(HttpServletResponse resp, String eMsg, Integer status) throws IOException {
         resp.setStatus(status);
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        resp.getWriter().write(e.getMessage());
+        resp.getWriter().write(eMsg);
     }
 
     public static void allGoot(HttpServletResponse resp, String json) throws IOException {

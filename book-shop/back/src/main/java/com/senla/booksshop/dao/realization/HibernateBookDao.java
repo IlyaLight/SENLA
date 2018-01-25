@@ -21,7 +21,7 @@ public class HibernateBookDao extends AbstractJpaHibernateDao<Book, Integer> imp
     private static final String ENTITY              = Book.class.getSimpleName();
     private static final String SELECT_QUERY        = "FROM " + ENTITY ;
 
-    private static final String STALE_BOOKS         = SELECT_QUERY + "WHERE date_issue > :pDate_issue ORDER BY :columnName";
+    private static final String STALE_BOOKS         = SELECT_QUERY + "WHERE date_issue < :pDate_issue ORDER BY :columnName";
     private static final String RECEIVED_LATER_THAN = SELECT_QUERY + "WHERE date_publication > :pDate_publication ORDER BY :columnName";
     private static final String BY_NAME             = SELECT_QUERY + "WHERE name = :name ORDER BY :columnName";
 

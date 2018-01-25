@@ -10,10 +10,12 @@ import com.senla.booksshop.service.IBookService;
 import com.senla.booksshop.service.IOrderService;
 import com.senla.booksshop.service.IRequestService;
 import com.senla.booksshop.utility.*;
+import dependencyinjection.annotation.ContainsConfigProperty;
 import dependencyinjection.annotation.Injection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,7 +29,7 @@ public class Controller implements IController {
     private IOrderService orderService;
     @Injection
     private IRequestService requestService;
-    @Injection
+    @ContainsConfigProperty
     private PropertiesHolder propertiesHolder;
 
     private static final Logger LOGGER          = LoggerFactory.getLogger(Controller.class);
@@ -241,7 +243,7 @@ public class Controller implements IController {
     }
 
     @Override
-    public void assembleOrder(Order order) {
+    public void assembleOrder(Integer orderId) {
 //        boolean i = true;
 //        for (Book book : order.getBooks()) {
 //            if (book.getInStock() == 0){
@@ -251,20 +253,31 @@ public class Controller implements IController {
 //        if (i){
 //            order.setStatus(Order.Status.ASSEMBLED);
 //        }
-        synchronized (orderService) {
-            order.setStatus(Order.Status.ASSEMBLED);
-        }
+        //synchronized (orderService) {
+          //  order.setStatus(Order.Status.ASSEMBLED);
+        //}
     }
 
     @Override
-    public void cancelTheOrder(Order order) {
-        synchronized (orderService) {
-            order.setStatus(Order.Status.CANCELED);
-        }
+    public void cancelTheOrder(Integer orderId) {
+//        synchronized (orderService) {
+//            order.setStatus(Order.Status.CANCELED);
+//        }
     }
 
     @Override
-    public void addRequest(Book book) {
+    public void addRequest(Integer bookId) throws ObjectAvailabilityException {
+        EntityManager em = HibernateUtil.getEm();
+        em.getTransaction().begin();
+        try {
+            Request request = requestService.getRequestByBookId(bookId);
+            request.setQuantity(request.getQuantity()+1);
+        }catch (ObjectAvailabilityException e){
+            Request request = new Request(bookService.getBookById(bookId));
+            requestService.create(request);
+        }
+        em.getTransaction().commit();
+        em.close();
           /*  boolean newRequest = true;
         synchronized (requestService) {
             for (Request request : requestStore.getRequestList()) {

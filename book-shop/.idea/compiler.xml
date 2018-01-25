@@ -12,7 +12,7 @@
         <module name="properties" />
         <module name="web" />
       </profile>
-      <profile name="Annotation profile for book_shop" enabled="true">
+      <profile name="Annotation profile for book_shop">
         <sourceOutputDir name="target/generated-sources/apt" />
         <sourceTestOutputDir name="target/generated-sources/apt-test" />
         <outputRelativeToContentRoot value="true" />
