@@ -32,12 +32,11 @@ public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements I
 
     @Override
     public void create(T object) {
-       EntityManager em = HibernateUtil.getEm();
-
-       // if (em.getTransaction().isActive()){
-         //   em.persist(object);
-           // return;
-       // }
+       EntityManager em = HibernateUtil.getEntityManager();
+       if (em.getTransaction().isActive()){
+           em.persist(object);
+           return;
+       }
         em.getTransaction().begin();
         em.persist(object);
         em.getTransaction().commit();
@@ -46,13 +45,13 @@ public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements I
     @Override
     public T getByPK(int key) throws ObjectAvailabilityException {
 
-        CriteriaBuilder builder = HibernateUtil.getEm().getCriteriaBuilder();
+        CriteriaBuilder builder = HibernateUtil.getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery( getClazz() );
         Root<T> root = criteria.from( getClazz() );
         criteria.select( root )
             .where(builder.equal(root.get(mmGetID()), key));
         try {
-        return HibernateUtil.getEm().createQuery(criteria).getSingleResult();
+        return HibernateUtil.getEntityManager().createQuery(criteria).getSingleResult();
         }catch (NoResultException e){
             throw  new ObjectAvailabilityException(ERROR_GET_BY_KEY + key);
         }
@@ -61,8 +60,8 @@ public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements I
 
     @Override
     public void update(T object) {
-        EntityManager em = HibernateUtil.getEm();
-        if(em.isOpen()){
+        EntityManager em = HibernateUtil.getEntityManager();
+        if(em.getTransaction().isActive()){
             em.merge(object);
             return;
         }
@@ -73,7 +72,7 @@ public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements I
 
     @Override
     public void delete(T object) {
-        EntityManager em = HibernateUtil.getEm();
+        EntityManager em = HibernateUtil.getEntityManager();
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaDelete<T> criteria = builder.createCriteriaDelete(getClazz());
         Root<T> root = criteria.from(getClazz());
@@ -83,18 +82,18 @@ public abstract class AbstractJpaHibernateDao<T extends IModel, PK> implements I
         }
         em.getTransaction().begin();
         criteria.where(builder.equal(root.get(mmGetID()), object.getId()));
-        HibernateUtil.getEm().getTransaction().commit();
+        HibernateUtil.getEntityManager().getTransaction().commit();
     }
 
     @Override
     public List getAll(String sortingColumn) {
 
-        CriteriaBuilder builder = HibernateUtil.getEm().getCriteriaBuilder();
+        CriteriaBuilder builder = HibernateUtil.getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery( getClazz() );
         Root<T> root = criteria.from( getClazz() );
         criteria.select( root )
             .groupBy(root.get(sortingColumn));
-        return HibernateUtil.getEm().createQuery(criteria).getResultList();
+        return HibernateUtil.getEntityManager().createQuery(criteria).getResultList();
 
     }
 }

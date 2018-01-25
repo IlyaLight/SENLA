@@ -32,7 +32,7 @@ public class HibernateRequestDao  extends AbstractJpaHibernateDao<Request,Intege
     @Override
     public Request getRequestByBookId(Integer bookId) throws ObjectAvailabilityException {
         try {
-            return (Request) HibernateUtil.getEm().createQuery(GET_BY_BOOK_ID)
+            return (Request) HibernateUtil.getEntityManager().createQuery(GET_BY_BOOK_ID)
                     .setParameter("pBook_id", bookId)
                     .getSingleResult();
         }catch (NoResultException e) {

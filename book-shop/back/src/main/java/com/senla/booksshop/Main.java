@@ -32,8 +32,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        EntityManagerFactory sessionFactory  = HibernateUtil.getEntityManagerFactory();
-        EntityManager entityManager = sessionFactory.createEntityManager();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2017, Calendar.FEBRUARY, 1);
@@ -78,7 +76,7 @@ public class Main {
         System.out.println(order.getDetails());
 
 
-        HibernateUtil.shutdownEntityManagerFactory();
+        HibernateUtil.closeEntityManagerFactory();
 
 
     }

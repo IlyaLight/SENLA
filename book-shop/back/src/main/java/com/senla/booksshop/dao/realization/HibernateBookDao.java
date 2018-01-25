@@ -59,7 +59,7 @@ public class HibernateBookDao extends AbstractJpaHibernateDao<Book, Integer> imp
     }
 
     private List<Book> getBooksList(String query, Map<String,Object> parametersMap){
-        Query query1 = HibernateUtil.getEm().createQuery(RECEIVED_LATER_THAN );
+        Query query1 = HibernateUtil.getEntityManager().createQuery(RECEIVED_LATER_THAN );
         for (Map.Entry<String, Object> entry : parametersMap.entrySet()) {
             query1.setParameter(entry.getKey(), entry.getValue());
         }

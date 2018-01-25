@@ -28,7 +28,7 @@ public class HibernateOrderDao extends AbstractJpaHibernateDao<Order, Integer> i
 
     @Override
     public List<Order> getCompletedOrder(Date from, Date to, String sortingColumn) {
-        return HibernateUtil.getEm().createQuery(COMPLETED_ORDER + sortingColumn)
+        return HibernateUtil.getEntityManager().createQuery(COMPLETED_ORDER + sortingColumn)
                 .setParameter("pFrom", from)
                 .setParameter("pTo", to)
                 .getResultList();

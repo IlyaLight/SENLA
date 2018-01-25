@@ -267,7 +267,7 @@ public class Controller implements IController {
 
     @Override
     public void addRequest(Integer bookId) throws ObjectAvailabilityException {
-        EntityManager em = HibernateUtil.getEm();
+        EntityManager em = HibernateUtil.getEntityManager();
         em.getTransaction().begin();
         try {
             Request request = requestService.getRequestByBookId(bookId);
@@ -278,18 +278,6 @@ public class Controller implements IController {
         }
         em.getTransaction().commit();
         em.close();
-          /*  boolean newRequest = true;
-        synchronized (requestService) {
-            for (Request request : requestStore.getRequestList()) {
-                if (request.getBookName().equals(book.getName())) {
-                    request.setQuantity(request.getQuantity() + 1);
-                    newRequest = false;
-                }
-            }
-            if (newRequest) {
-                requestStore.getRequestList().add(new Request(book));
-            }
-        }*/
     }
 
     @Override
