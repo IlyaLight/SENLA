@@ -2,8 +2,9 @@ package com.senla.back.service;
 
 import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.User;
+import com.senla.api.model.Validate;
 
 public interface IUserService {
 
-    User getUserByLoginPassword(String login, String pass) throws ObjectAvailabilityException;
+    User getUserByLoginPassword(Validate validate) throws ObjectAvailabilityException;
 }
