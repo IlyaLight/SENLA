@@ -1,7 +1,0 @@
-com\senla\api\model\User_.class
-com\senla\api\exception\ObjectAvailabilityException.class
-com\senla\api\model\Validate_.class
-com\senla\api\IController.class
-com\senla\api\model\IModel.class
-com\senla\api\model\User.class
-com\senla\api\model\Validate.class

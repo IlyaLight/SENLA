@@ -1,0 +1,71 @@
+package com.senla.web.controller.util;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
+import com.senla.api.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+
+public class TokenUtil {
+    private static final Integer EXPIRATION = 100;
+    private static final String KEY = "6FD3AD557E758A8B54BE1A676A5D6";
+    private static final String SECURITY = "security";
+    private static final String ID = "id";
+    private static final Logger LOGGER = LoggerFactory.getLogger(TokenUtil.class);
+
+    public static String  getToken(User user){
+        try {
+            JWSSigner signer  = new MACSigner(KEY);
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.HOUR, EXPIRATION);
+            JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
+                .subject(SECURITY)
+                .expirationTime(calendar.getTime())
+                .claim(ID, user.getId())
+                .build();
+            SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
+            signedJWT.sign(signer);
+            return signedJWT.serialize();
+        } catch (JOSEException e) {
+            LOGGER.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            String json = mapper.writeValueAsString(claimsSet);
+//            LOGGER.debug(json);
+//            json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(claimsSet);
+//            LOGGER.debug(json);
+//            return json;
+//        } catch (JsonProcessingException e) {
+//            LOGGER.error(e.getMessage());
+//            throw new RuntimeException(e);
+//        }
+
+    }
+
+    public static Long checkToken(String token) {
+        try {
+            SignedJWT signedJWT = SignedJWT.parse(token);
+            JWSVerifier verifier = new MACVerifier(KEY);
+            Boolean verify = signedJWT.verify(verifier);
+            Date date = (Date) signedJWT.getJWTClaimsSet().getExpirationTime();
+            if (date.after(new Date()) && verify.equals(true)) {
+                return (Long)signedJWT.getJWTClaimsSet().getClaim("id");
+            }
+        } catch (ParseException|JOSEException e) {
+            LOGGER.error(e.getMessage());
+        }
+        return null;
+    }
+}

@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 @Scope("request")
 public class UsertIdHandler implements IUsertIdHandler {
 
-    private Integer id;
+    private Long id;
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     @Override
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

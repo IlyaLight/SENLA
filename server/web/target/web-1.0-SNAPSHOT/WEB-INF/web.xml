@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--Данный элемент настраивает параметр contextConfigLocation в рамках контекста и задаёт путь к файлу с корневым контекстом-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spring/rootContext.xml
+            <!--classpath:Hibernate-context.xml-->
+        </param-value>
+
+    </context-param>
+    <!--<listener /> в свою очередь настраивает слушателя для загрузки соответствующего контекста.-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!--DelegatingFilterProxy – это специальный сервлет-фильтр, не имеющий самостоятельного значения, так как он просто делегирует фильтрацию реализации интерфейса javax.servlet.Filter-->
+    <filter>
+        <filter-name>SecurityFilterChain</filter-name>
+        <filter-class> com.senla.web.controller.TokenAuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilterChain</filter-name>
+        <url-pattern>/security</url-pattern>
+    </filter-mapping>
+
+
+    <!--DispatcherServlet будет пытаться загрузить контекст приложения -->
+    <!--из файла с именем dispatcher-servlet.xml (находящегося в ка- -->
+    <!--талоге WEB-INF приложения)-->
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/servletContext.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!--тэг <servlet-mapping> указывает, какие веб-адреса обрабатываются каким DispatcherServlet'ом.-->
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.form</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+        <!--является сервлетом по умолчанию, отвечающим за обработку всех запросов-->
+    </servlet-mapping>
+</web-app>

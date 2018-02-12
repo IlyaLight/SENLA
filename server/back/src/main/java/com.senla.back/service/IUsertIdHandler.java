@@ -1,7 +1,7 @@
 package com.senla.back.service;
 
 public interface IUsertIdHandler {
-    Integer getId();
+    Long getId();
 
-    void setId(Integer id);
+    void setId(Long id);
 }

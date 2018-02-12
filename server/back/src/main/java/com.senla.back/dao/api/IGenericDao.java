@@ -8,7 +8,7 @@ public interface IGenericDao<T> {
 
     public void create(T t) ;
 
-    public T getByPk(int key) throws ObjectAvailabilityException;
+    public T getByPk(Long key) throws ObjectAvailabilityException;
 
     public void  update(T t) ;
 
