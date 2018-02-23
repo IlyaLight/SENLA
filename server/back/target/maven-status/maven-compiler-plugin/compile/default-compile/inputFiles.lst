@@ -1,0 +1,9 @@
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\dao\api\IGenericDao.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\dao\api\IUserDao.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\dao\realization\AbstractJpaHibernateDao.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\dao\realization\UserDao.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\service\UsertIdHandler.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\service\IUsertIdHandler.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\Main.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\dao\util\HibernateUtil.java
+D:\OneDrive\Project\senla-16\server\back\src\main\java\com.senla.back\service\UserService.java

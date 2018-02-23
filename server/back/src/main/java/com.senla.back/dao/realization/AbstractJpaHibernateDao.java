@@ -3,10 +3,10 @@ package com.senla.back.dao.realization;
 import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.IModel;
 import com.senla.back.dao.api.IGenericDao;
-import com.senla.back.dao.util.HibernateUtil;
-
-
-import javax.persistence.EntityManager;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 
@@ -20,6 +20,15 @@ public abstract class AbstractJpaHibernateDao<T extends IModel> implements IGene
 
 
     private static final String ERROR_GET_BY_KEY = "не найден объект с key = ";
+
+    @Autowired
+    @Qualifier("sessionFactory")
+    private SessionFactory sessionFactory;
+
+    @Override
+    public Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
 
 
     @Override
@@ -35,20 +44,18 @@ public abstract class AbstractJpaHibernateDao<T extends IModel> implements IGene
     }
 
     @Override
-    public T getByPk(Long key) throws ObjectAvailabilityException {
+    public T getByPk(Integer key) throws ObjectAvailabilityException {
 
-//        CriteriaBuilder builder = HibernateUtil.getEntityManager().getCriteriaBuilder();
-//        CriteriaQuery<T> criteria = builder.createQuery( getClazz() );
-//        Root<T> root = criteria.from( getClazz() );
-//        criteria.select( root )
-//            .where(builder.equal(root.get(mmGetID()), key));
-//        try {
-//        return HibernateUtil.getEntityManager().createQuery(criteria).getSingleResult();
-//        }catch (NoResultException e){
-//            throw  new ObjectAvailabilityException(ERROR_GET_BY_KEY + key);
-//        }
-        return null;
-
+        CriteriaBuilder builder = getSession().getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery( getClazz() );
+        Root<T> root = criteria.from( getClazz() );
+        criteria.select( root )
+            .where(builder.equal(root.get(mmGetID()), key));
+        try {
+        return getSession().createQuery(criteria).getSingleResult();
+        }catch (NoResultException e){
+            throw  new ObjectAvailabilityException(ERROR_GET_BY_KEY + key);
+        }
     }
 
     @Override
@@ -80,4 +87,8 @@ public abstract class AbstractJpaHibernateDao<T extends IModel> implements IGene
         return null;
 
     }
+
+    protected abstract Class getClazz();
+
+    protected abstract SingularAttribute<T, Long> mmGetID();
 }

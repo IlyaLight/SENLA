@@ -3,7 +3,7 @@ package com.senla.api.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "uaer_detail")
+@Table(name = "user_detail")
 public class User implements IModel {
 
     public User() {
@@ -11,7 +11,7 @@ public class User implements IModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column(name = "user_name", length = 25)
     private String userName;
@@ -28,10 +28,18 @@ public class User implements IModel {
     }
 
     public Integer getId() {
-        return null;
+        return id;
     }
 
     public void setId(Integer id) {
+        this.id = id;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

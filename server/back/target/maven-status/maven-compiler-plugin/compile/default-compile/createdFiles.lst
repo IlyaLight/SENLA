@@ -1,0 +1,8 @@
+com\senla\back\dao\util\HibernateUtil.class
+com\senla\back\service\IUsertIdHandler.class
+com\senla\back\service\UserService.class
+com\senla\back\dao\api\IGenericDao.class
+com\senla\back\dao\api\IUserDao.class
+com\senla\back\dao\realization\AbstractJpaHibernateDao.class
+com\senla\back\dao\realization\UserDao.class
+com\senla\back\Main.class

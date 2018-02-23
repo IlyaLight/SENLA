@@ -8,6 +8,10 @@
     <!--включить режим автоматического определения компонентов-->
     <context:component-scan base-package="com.senla.web" />
     <context:component-scan base-package="com.senla.back" />
+    <context:component-scan base-package="com.senla.api" />
+
+    <import resource="dao.xml" />
+
 
 
 

@@ -1,0 +1,7 @@
+com\senla\api\model\User_.class
+com\senla\api\exception\ObjectAvailabilityException.class
+com\senla\api\service\IUserService.class
+com\senla\api\model\UserValidate.class
+com\senla\api\model\IModel.class
+com\senla\api\model\UserValidate_.class
+com\senla\api\model\User.class

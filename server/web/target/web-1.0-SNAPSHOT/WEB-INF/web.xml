@@ -25,7 +25,7 @@
     </filter>
     <filter-mapping>
         <filter-name>SecurityFilterChain</filter-name>
-        <url-pattern>/security</url-pattern>
+        <url-pattern>/security/*</url-pattern>
     </filter-mapping>
 
 

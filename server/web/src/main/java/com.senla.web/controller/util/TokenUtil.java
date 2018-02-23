@@ -17,7 +17,7 @@ import java.util.Date;
 
 public class TokenUtil {
     private static final Integer EXPIRATION = 100;
-    private static final String KEY = "6FD3AD557E758A8B54BE1A676A5D6";
+    private static final String KEY = "6FD3AD557E758A8B54BE1A676A5D66A5D6";
     private static final String SECURITY = "security";
     private static final String ID = "id";
     private static final Logger LOGGER = LoggerFactory.getLogger(TokenUtil.class);
@@ -34,7 +34,8 @@ public class TokenUtil {
                 .build();
             SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
             signedJWT.sign(signer);
-            return signedJWT.serialize();
+            String token = signedJWT.serialize();
+            return token;
         } catch (JOSEException e) {
             LOGGER.error(e.getMessage());
             throw new RuntimeException(e);
@@ -54,14 +55,14 @@ public class TokenUtil {
 
     }
 
-    public static Long checkToken(String token) {
+    public static Integer checkToken(String token) {
         try {
             SignedJWT signedJWT = SignedJWT.parse(token);
             JWSVerifier verifier = new MACVerifier(KEY);
             Boolean verify = signedJWT.verify(verifier);
             Date date = (Date) signedJWT.getJWTClaimsSet().getExpirationTime();
             if (date.after(new Date()) && verify.equals(true)) {
-                return (Long)signedJWT.getJWTClaimsSet().getClaim("id");
+                return ((Long)signedJWT.getJWTClaimsSet().getClaim(ID)).intValue();
             }
         } catch (ParseException|JOSEException e) {
             LOGGER.error(e.getMessage());

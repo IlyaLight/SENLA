@@ -16,7 +16,8 @@
     </modules>
 
     <properties>
-        <hibernate-version>4.1.9.Final</hibernate-version>
+        <!--<hibernate-version>4.1.9.Final</hibernate-version>-->
+        <hibernate-version>5.2.12.Final</hibernate-version>
         <spring-version>5.0.3.RELEASE</spring-version>
         <log4j-version>1.7.5</log4j-version>
         <jackson-version>2.9.4</jackson-version>

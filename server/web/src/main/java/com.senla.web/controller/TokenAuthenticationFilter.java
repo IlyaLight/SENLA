@@ -1,8 +1,12 @@
 package com.senla.web.controller;
 
-import com.senla.back.service.IUsertIdHandler;
-import com.senla.back.service.UsertIdHandler;
+import com.senla.api.exception.ObjectAvailabilityException;
+import com.senla.api.service.IUserService;
+import com.senla.back.service.IUsertHandler;
+import com.senla.back.service.UserHandler;
+import com.senla.back.service.UserService;
 import com.senla.web.controller.util.TokenUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -39,12 +43,18 @@ public class TokenAuthenticationFilter implements Filter {
             res.sendError(401); //Unauthorized
         }
         //>checkToken
-        IUsertIdHandler idHandler = context.getBean(UsertIdHandler.class);
-        Long userId = TokenUtil.checkToken(token);
+
+        Integer userId = TokenUtil.checkToken(token);
         if (userId == null){
             res.sendError(401); //Unauthorized
         }
-        idHandler.setId(userId);
+        IUsertHandler usertHandler = context.getBean(IUsertHandler.class);
+        IUserService userService = context.getBean(IUserService.class);
+        try {
+            usertHandler.setUser(userService.getByPk(userId));
+        } catch (ObjectAvailabilityException e) {
+            res.sendError(501);
+        }
         filterChain.doFilter(servletRequest, servletResponse);  // Разрешить request продвигаться дальше.
     }
 

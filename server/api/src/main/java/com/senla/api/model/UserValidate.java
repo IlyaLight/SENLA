@@ -15,7 +15,7 @@ public class UserValidate implements IModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column(name = "login", length = 25)
     private String login;
