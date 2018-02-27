@@ -1,5 +1,4 @@
 
-
 DROP DATABASE car_parts_shop;
 CREATE DATABASE car_parts_shop;
 use car_parts_shop;
@@ -31,11 +30,9 @@ create table car(
 );
 
 create table car_parson(
-	id int not null auto_increment,
-	vip int not null,
 	car_id int not null,
 	person_id int not null,
-	PRIMARY KEY(id),
+	PRIMARY KEY(car_id, person_id),
 	foreign key(car_id) references car(id),
 	foreign key(person_id) references person(id)
 );
@@ -43,6 +40,8 @@ create table car_parson(
 
 create table goods(
 	id int not null auto_increment,
+	img_link varchar(25),
+	category varchar(25),
 	name varchar(25) not null,
 	description varchar(225),
 	characteristics varchar(225),
@@ -51,7 +50,7 @@ create table goods(
 	primary key(id)
 );
 
-create table car_gods(
+create table car_goods(
 	car_id int not null,
 	goods_id int not null,
 	PRIMARY KEY(car_id, goods_id),
@@ -77,24 +76,31 @@ create table _order_(
 	addres_id int not null,
 	orderDate date not null,
 	orderDetails varchar(225),
+	status varchar(25),
 	primary key(id),
 	foreign key(person_id) references person(id),
 	foreign key(addres_id) references addres(id)
 );
 
+create table ordered_goods(
+	copy_id int not null,
+	img_link varchar(25),
+	name varchar(25) not null,
+	category varchar(25),
+	description varchar(225),
+	characteristics varchar(225),
+	price DECIMAL(10,2),
+	order_id int not null,
+	quantity int not null,
+	primary key(order_id, copy_id),
+	foreign key(order_id) references _order_(id)
+);
+
 create table cart(
-	person_id int not null not null,
-	goods_id int not null not null,
+	person_id int not null,
+	goods_id int not null,
+	quantity int not null,
 	primary key(person_id),
 	foreign key(person_id) references person(id),
-	foreign key(goods_id) references _order_(id)
-);
-
-create table order_goods(
-	order_id int not null,
-	goods_id int not null,
-	primary key(order_id, goods_id),
-	foreign key(order_id) references _order_(id),
 	foreign key(goods_id) references goods(id)
 );
-

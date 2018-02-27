@@ -5,18 +5,18 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Class {@code Goods} contains parameters describing the goods
+ * Class {@code OrderedGoods} contains description of ordered goods copied from {@code Goods}
+ * when making a order {@code Ordered}
  *
  * @author Ilya Hailov
  * @since 1.00
  */
 @Entity
-@Table(name = "goods")
-public class Goods {
+@Table(name = "ordered_goods")
+public class OrderedGoods {
 
     /** Id **/
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "copy_id")
     private Long id;
 
     /** Name **/
@@ -43,17 +43,8 @@ public class Goods {
     @Column(name = "price")
     private BigDecimal price;
 
-    /** Number of units available **/
-    @Column(name = "in_stock")
-    private Integer inStock;
-
-    /** Compatible car **/
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "car_goods",
-            joinColumns = { @JoinColumn(name = "goods_id") },
-            inverseJoinColumns = { @JoinColumn(name = "car_id") }
-    )
-    private List<Car> cars;
+    /** quantity of ordered goods **/
+    @Column(name = "quantity")
+    private Integer quantity;
 
 }
