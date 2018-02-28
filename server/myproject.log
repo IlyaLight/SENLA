@@ -1,0 +1,683 @@
+02:51:46,706  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 02:51:46 MSK 2018]; root of context hierarchy
+02:51:47,053  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+02:51:48,219  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+02:51:51,199  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+02:51:51,204  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+02:51:51,764  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+02:51:52,624  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+02:51:52,704  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+02:51:52,809  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+02:51:54,795  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: com.senla.api.model.OrderedGoods
+03:15:36,653  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 03:15:36 MSK 2018]; root of context hierarchy
+03:15:36,979  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+03:15:38,221  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+03:15:41,642  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+03:15:41,646  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+03:15:42,090  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+03:15:43,056  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+03:15:43,187  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+03:15:43,396  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+03:15:45,695  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: mappedBy reference an unknown target entity property: com.senla.api.model.OrderedGoods.order in com.senla.api.model.Order.goods
+03:36:00,125  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 03:36:00 MSK 2018]; root of context hierarchy
+03:36:00,526  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+03:36:01,886  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+03:36:05,606  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+03:36:05,609  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+03:36:06,093  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+03:36:07,185  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+03:36:07,310  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+03:36:07,524  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+03:36:09,419  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: com.senla.api.model.OrderedGoods
+04:02:40,850  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 04:02:40 MSK 2018]; root of context hierarchy
+04:02:41,079  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:02:42,161  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:02:45,785  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:02:45,788  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:02:46,226  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:02:46,736  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+04:02:46,792  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:02:46,868  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:02:48,611  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.Address column: addres (should be mapped with insert="false" update="false")
+04:05:11,682  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 04:05:11 MSK 2018]; root of context hierarchy
+04:05:11,930  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:05:13,036  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:05:16,629  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:05:16,632  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:05:17,283  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:05:18,174  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+04:05:18,259  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:05:18,381  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:05:20,237  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.OrderedGoods column: order_id (should be mapped with insert="false" update="false")
+04:08:04,974  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 04:08:04 MSK 2018]; root of context hierarchy
+04:08:05,264  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:08:06,384  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:08:10,159  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:08:10,162  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:08:10,740  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:08:11,769  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+04:08:11,815  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:08:11,898  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:08:13,618  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.OrderedGoods column: copy_id (should be mapped with insert="false" update="false")
+04:09:21,090  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 04:09:21 MSK 2018]; root of context hierarchy
+04:09:21,439  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:09:22,743  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:09:26,187  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:09:26,190  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:09:26,829  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:09:27,827  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+04:09:27,953  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:09:28,152  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:09:30,271  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.OrderedGoods column: copy_id (should be mapped with insert="false" update="false")
+04:10:52,369  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 04:10:52 MSK 2018]; root of context hierarchy
+04:10:52,898  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:10:54,226  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:10:56,632  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:10:56,636  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:10:57,031  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:10:57,809  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+04:10:57,943  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:10:58,146  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:11:00,908  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.Order column: orderDetails (should be mapped with insert="false" update="false")
+04:14:34,466  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 04:14:34 MSK 2018]; root of context hierarchy
+04:14:34,737  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:14:36,011  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:14:39,335  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:14:39,338  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:14:40,232  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:14:41,190  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+04:14:41,262  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:14:41,332  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:14:44,690  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.OrderedGoods_#copyId; this may or may not indicate a problem with the static metamodel
+04:14:44,723  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.OrderedGoods_#order; this may or may not indicate a problem with the static metamodel
+04:14:44,727  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.OrderedGoods_#goods; this may or may not indicate a problem with the static metamodel
+04:14:44,888  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 08001
+04:14:44,889 ERROR main SqlExceptionHelper:logExceptions:131 - No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
+04:14:44,897  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+04:18:47,886  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@59e5ddf: startup date [Wed Feb 28 04:18:47 MSK 2018]; root of context hierarchy
+04:18:48,606  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:18:50,521  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:18:53,385  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Cannot resolve reference to bean 'dataSource' while setting bean property 'dataSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [dao.xml]: Error setting property values; nested exception is org.springframework.beans.PropertyBatchUpdateException; nested PropertyAccessExceptions (1) are:
+PropertyAccessException 1: org.springframework.beans.MethodInvocationException: Property 'driverClassName' threw exception; nested exception is java.lang.IllegalStateException: Could not load JDBC driver class [com.mysql.jdbc.Driver]
+04:56:38,888  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 04:56:38 MSK 2018]; root of context hierarchy
+04:56:39,153  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:56:40,067  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:56:41,777  INFO main DriverManagerDataSource:setDriverClassName:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+04:56:43,384  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:56:43,394  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:56:44,048  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:56:50,427  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+04:56:50,465  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:56:50,650  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:56:54,310  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.OrderedGoods_#goods; this may or may not indicate a problem with the static metamodel
+04:56:54,311  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.OrderedGoods_#copyId; this may or may not indicate a problem with the static metamodel
+04:56:54,312  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.OrderedGoods_#order; this may or may not indicate a problem with the static metamodel
+04:56:58,495  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 08001
+04:56:58,495 ERROR main SqlExceptionHelper:logExceptions:131 - Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+04:56:58,501  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+04:58:41,306  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 04:58:41 MSK 2018]; root of context hierarchy
+04:58:41,626  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+04:58:42,707  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+04:58:44,435  INFO main DriverManagerDataSource:setDriverClassName:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+04:58:45,749  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+04:58:45,811  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+04:58:46,486  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+04:58:53,285  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+04:58:53,324  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+04:58:53,515  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+04:59:01,164  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 08001
+04:59:01,164 ERROR main SqlExceptionHelper:logExceptions:131 - Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+04:59:01,169  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+05:12:26,413  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 05:12:26 MSK 2018]; root of context hierarchy
+05:12:26,805  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+05:12:28,085  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+05:12:29,751  INFO main DriverManagerDataSource:setDriverClassName:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+05:12:30,707  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+05:12:30,712  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+05:12:31,319  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+05:12:37,281  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+05:12:37,333  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+05:12:37,421  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+05:12:44,569  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 08001
+05:12:44,570 ERROR main SqlExceptionHelper:logExceptions:131 - Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+05:12:44,578  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+05:23:42,238  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 05:23:42 MSK 2018]; root of context hierarchy
+05:23:42,522  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+05:23:43,732  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+05:23:45,511  INFO main DriverManagerDataSource:setDriverClassName:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+05:23:46,927  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+05:23:46,930  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+05:23:47,495  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+05:23:49,616  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : The server time zone value 'RTZ 2 (����)' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.
+05:23:49,648  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+05:23:49,819  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+05:23:53,238  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 01S00
+05:23:53,238 ERROR main SqlExceptionHelper:logExceptions:131 - The server time zone value 'RTZ 2 (����)' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.
+05:23:53,244  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution
+05:25:25,822  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 05:25:25 MSK 2018]; root of context hierarchy
+05:25:26,106  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+05:25:27,178  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+05:25:28,884  INFO main DriverManagerDataSource:setDriverClassName:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+05:25:30,323  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+05:25:30,383  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+05:25:30,820  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+05:25:36,722  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+05:25:36,862  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+05:25:36,925  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+05:25:43,915  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 08001
+05:25:43,915 ERROR main SqlExceptionHelper:logExceptions:131 - Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+05:25:43,915  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+05:26:33,611  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 05:26:33 MSK 2018]; root of context hierarchy
+05:26:33,960  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+05:26:35,464  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+05:26:39,284  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+05:26:39,287  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+05:26:39,962  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+05:26:46,362  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+05:26:46,387  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+05:26:46,533  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+05:26:52,832  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 08001
+05:26:52,832 ERROR main SqlExceptionHelper:logExceptions:131 - Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+05:26:52,832  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+06:05:25,829  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 06:05:25 MSK 2018]; root of context hierarchy
+06:05:26,194  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+06:05:27,434  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+06:05:31,022  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+06:05:31,026  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+06:05:31,752  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+06:05:37,727  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+06:05:37,770  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+06:05:37,953  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
+06:05:45,767  WARN main SqlExceptionHelper:logExceptions:129 - SQL Error: 0, SQLState: 08001
+06:05:45,767 ERROR main SqlExceptionHelper:logExceptions:131 - Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+06:05:45,773  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+06:14:23,471  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 06:14:23 MSK 2018]; root of context hierarchy
+06:14:23,935  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+06:14:25,405  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+06:14:28,800  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+06:14:28,803  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+06:14:29,407  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+06:14:33,499  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+06:14:39,926  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'type=MyISAM' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:536)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 41 more
+06:14:40,123  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'car_parts_shop.hibernate_sequence' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:536)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 41 more
+06:14:40,130  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'car_parts_shop.hibernate_sequence' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:536)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 41 more
+06:14:40,137  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'car_parts_shop.hibernate_sequence' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:536)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 41 more
+06:14:40,163  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'car_parts_shop.hibernate_sequence' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:536)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 41 more
+06:14:40,175  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'car_parts_shop.hibernate_sequence' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:536)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 41 more
+06:14:41,777  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+06:14:42,371  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+06:14:43,034  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+06:14:43,503  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1700915] of Hibernate SessionFactory for HibernateTransactionManager

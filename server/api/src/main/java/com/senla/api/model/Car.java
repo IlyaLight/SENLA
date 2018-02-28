@@ -48,4 +48,67 @@ public class Car {
     @ManyToMany(mappedBy = "cars")
     private List<Person> persons;
 
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public String getTypeOfFuel() {
+        return typeOfFuel;
+    }
+
+    public void setTypeOfFuel(String typeOfFuel) {
+        this.typeOfFuel = typeOfFuel;
+    }
+
+    public Integer getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public void setEngineCapacity(Integer engineCapacity) {
+        this.engineCapacity = engineCapacity;
+    }
+
+    public List<Goods> getSuitableGoods() {
+        return suitableGoods;
+    }
+
+    public void setSuitableGoods(List<Goods> suitableGoods) {
+        this.suitableGoods = suitableGoods;
+    }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
 }

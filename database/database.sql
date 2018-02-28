@@ -83,6 +83,7 @@ create table _order_(
 );
 
 create table ordered_goods(
+	id int not null auto_increment,
 	copy_id int not null,
 	img_link varchar(25),
 	name varchar(25) not null,
@@ -92,8 +93,9 @@ create table ordered_goods(
 	price DECIMAL(10,2),
 	order_id int not null,
 	quantity int not null,
-	primary key(order_id, copy_id),
-	foreign key(order_id) references _order_(id)
+	primary key(id),
+	foreign key(order_id) references _order_(id),
+	foreign key(copy_id) references goods(id)
 );
 
 create table cart(

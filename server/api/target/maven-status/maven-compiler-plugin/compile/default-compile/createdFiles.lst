@@ -1,0 +1,15 @@
+com\senla\api\model\Goods.class
+com\senla\api\model\Login.class
+com\senla\api\model\Goods_.class
+com\senla\api\model\OrderedGoods_.class
+com\senla\api\model\Order_.class
+com\senla\api\model\Car.class
+com\senla\api\model\Person.class
+com\senla\api\model\Order.class
+com\senla\api\exception\ObjectAvailabilityException.class
+com\senla\api\model\Address.class
+com\senla\api\model\Person_.class
+com\senla\api\model\Car_.class
+com\senla\api\model\Address_.class
+com\senla\api\model\Login_.class
+com\senla\api\model\OrderedGoods.class

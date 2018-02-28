@@ -1,6 +1,5 @@
 package com.senla.back.dao.api;
 
-
 import com.senla.api.exception.ObjectAvailabilityException;
 import org.hibernate.Session;
 
