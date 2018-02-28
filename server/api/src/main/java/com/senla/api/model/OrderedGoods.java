@@ -17,11 +17,8 @@ public class OrderedGoods {
 
     /** Id **/
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    /** Copy id **/
-    @Column(name = "copy_id")
-    private Long copyId;
 
     /** Name **/
     @Column(name = "name")
@@ -57,6 +54,8 @@ public class OrderedGoods {
 
     /** Original goods **/
     @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @JoinColumn(name = "copy_id")
     private Goods goods;
 
     public Long getId() {
@@ -121,5 +120,21 @@ public class OrderedGoods {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 }

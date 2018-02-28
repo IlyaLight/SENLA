@@ -37,7 +37,7 @@
 04:02:46,736  WARN main JdbcEnvironmentInitiator:initiateService:132 - HHH000342: Could not obtain connection to query metadata : No suitable driver found for jdbc:mysql://localhost:3306/car_parts_shop?autoReconnect=true&useSSL=false
 04:02:46,792  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
 04:02:46,868  INFO main LobCreatorBuilderImpl:makeLobCreatorBuilder:63 - HHH000422: Disabling contextual LOB creation as connection was null
-04:02:48,611  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.Address column: addres (should be mapped with insert="false" update="false")
+04:02:48,611  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.Address column: address (should be mapped with insert="false" update="false")
 04:05:11,682  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 04:05:11 MSK 2018]; root of context hierarchy
 04:05:11,930  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
 04:05:13,036  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
@@ -681,3 +681,533 @@ Caused by: java.sql.SQLException: Cannot add foreign key constraint
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
 	... 40 more
 06:14:43,503  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1700915] of Hibernate SessionFactory for HibernateTransactionManager
+07:03:23,890  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 07:03:23 MSK 2018]; root of context hierarchy
+07:03:24,199  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+07:03:25,389  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+07:03:30,039  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+07:03:30,043  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+07:03:30,896  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+07:03:33,076  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+07:03:39,580  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+07:03:40,346  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+07:03:40,585  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+07:03:40,935  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1700915] of Hibernate SessionFactory for HibernateTransactionManager
+07:14:10,431  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 07:14:10 MSK 2018]; root of context hierarchy
+07:14:10,749  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+07:14:11,695  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+07:14:14,545  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+07:14:14,549  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+07:14:15,190  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+07:14:17,230  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+07:14:24,566  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+07:14:25,613  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+07:14:26,135  WARN main ExceptionHandlerLoggedImpl:handleException:27 - GenerationTarget encountered exception accepting command : Error executing DDL via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:433)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:249)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:183)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:313)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:452)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:710)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:726)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:535)
+	at org.springframework.orm.hibernate5.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:519)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:144)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:85)
+	at com.senla.back.Test.main(Test.java:17)
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:545)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:513)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:115)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1983)
+	at com.mysql.cj.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:1936)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:891)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:795)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 40 more
+07:14:27,739  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1700915] of Hibernate SessionFactory for HibernateTransactionManager
+07:20:57,929  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 07:20:57 MSK 2018]; root of context hierarchy
+07:20:58,257  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+07:20:59,523  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+07:21:02,589  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+07:21:02,592  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+07:21:03,279  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+07:21:06,588  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+07:21:11,094  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [id] in table [_order_]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+07:26:15,308  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 07:26:15 MSK 2018]; root of context hierarchy
+07:26:15,592  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+07:26:16,712  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+07:26:20,089  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+07:26:20,093  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+07:26:20,784  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+07:26:22,942  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+07:26:27,107  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [address_id] in table [_order_]
+07:39:20,833  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Wed Feb 28 07:39:20 MSK 2018]; root of context hierarchy
+07:39:21,155  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+07:39:22,073  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+07:39:25,057  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+07:39:25,060  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+07:39:25,594  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+07:39:27,980  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+07:39:31,592  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [address_id] in table [_order_]
+17:25:57,300  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 17:25:57 MSK 2018]; root of context hierarchy
+17:25:57,369  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+17:25:57,615  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+17:25:58,291  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+17:25:58,292  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+17:25:58,361  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+17:25:58,653  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17:25:59,353  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [address_id] in table [_order_]
+17:28:38,736  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 17:28:38 MSK 2018]; root of context hierarchy
+17:28:38,789  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+17:28:38,991  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+17:28:39,639  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+17:28:39,640  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+17:28:39,782  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+17:28:40,116  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17:28:40,387  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: mappedBy reference an unknown target entity property: addresss in com.senla.api.model.Address.orders
+17:36:28,431  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 17:36:28 MSK 2018]; root of context hierarchy
+17:36:28,489  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+17:36:28,723  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+17:36:29,339  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+17:36:29,341  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+17:36:29,431  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+17:36:29,849  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17:36:30,137  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: mappedBy reference an unknown target entity property: com.senla.api.model.Order.address in com.senla.api.model.Address.orders
+19:05:05,901  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 19:05:05 MSK 2018]; root of context hierarchy
+19:05:05,952  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:05:06,157  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:05:06,910  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:05:06,911  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:05:07,012  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:05:07,631  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:05:08,288  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+19:05:08,289  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+19:05:08,351  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [address_id] in table [_order_]
+19:06:13,793  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 19:06:13 MSK 2018]; root of context hierarchy
+19:06:13,853  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:06:14,067  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:06:14,743  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:06:14,744  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:06:14,835  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:06:15,123  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:06:15,882  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+19:06:15,883  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+19:06:15,929  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [_order_]
+19:11:40,945  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3d04a311: startup date [Wed Feb 28 19:11:40 MSK 2018]; root of context hierarchy
+19:11:41,000  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:11:41,230  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:11:41,990  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:11:41,991  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:11:42,182  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:11:42,520  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:11:43,229  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+19:11:43,233  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+19:11:43,284  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [hibernate_sequence]
+00:26:25,043  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 00:26:25 MSK 2018]; root of context hierarchy
+00:26:25,472  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+00:26:26,912  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+00:26:30,389  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+00:26:30,393  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+00:26:30,844  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+00:26:33,282  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+00:26:37,155  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+00:26:37,157  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+00:26:37,356  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [hibernate_sequence]
+00:47:46,852  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 00:47:46 MSK 2018]; root of context hierarchy
+00:47:47,121  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+00:47:48,289  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+00:47:52,267  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+00:47:52,270  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+00:47:52,849  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+00:47:54,556  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+00:47:57,985  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+00:47:57,992  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+00:47:58,349  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [hibernate_sequence]
+01:22:01,361  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 01:22:01 MSK 2018]; root of context hierarchy
+01:22:01,722  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+01:22:03,173  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+01:22:05,845  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+01:22:05,850  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+01:22:06,393  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+01:22:08,245  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+01:22:12,698  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+01:22:12,714  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+01:22:13,226  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [person_id] in table [login]
+01:31:45,256  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 01:31:45 MSK 2018]; root of context hierarchy
+01:31:45,660  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+01:31:46,973  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+01:31:50,587  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+01:31:50,590  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+01:31:51,107  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+01:31:53,669  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+01:31:55,519  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Could not determine type for: java.util.List, at table: person, for columns: [org.hibernate.mapping.Column(cars)]
+01:33:51,759  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 01:33:51 MSK 2018]; root of context hierarchy
+01:33:52,045  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+01:33:53,124  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+01:33:55,890  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+01:33:55,894  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+01:33:56,536  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+01:33:59,186  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+01:34:03,203  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#login; this may or may not indicate a problem with the static metamodel
+01:34:03,203  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+01:34:03,206  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+01:34:03,603  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [person_id] in table [login]
+01:38:03,393  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 01:38:03 MSK 2018]; root of context hierarchy
+01:38:03,745  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+01:38:04,904  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+01:38:07,869  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+01:38:07,873  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+01:38:08,561  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+01:38:11,322  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+01:38:14,882  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#login; this may or may not indicate a problem with the static metamodel
+01:38:14,883  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+01:38:14,885  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+01:38:15,163  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [goods_id] in table [ordered_goods]
+01:39:49,778  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 01:39:49 MSK 2018]; root of context hierarchy
+01:39:50,170  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+01:39:51,319  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+01:39:54,595  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+01:39:54,599  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+01:39:55,221  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+01:39:57,881  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+01:39:59,924  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.OrderedGoods column: copy_id (should be mapped with insert="false" update="false")
+01:49:18,670  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 01:49:18 MSK 2018]; root of context hierarchy
+01:49:19,109  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+01:49:20,238  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+01:49:23,708  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+01:49:23,712  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+01:49:24,149  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+01:49:26,627  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+01:49:30,179  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#login; this may or may not indicate a problem with the static metamodel
+01:49:30,180  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+01:49:30,184  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+01:49:30,463  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [goods_id] in table [ordered_goods]
+02:06:10,598  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 02:06:10 MSK 2018]; root of context hierarchy
+02:06:10,903  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+02:06:11,848  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+02:06:14,600  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+02:06:14,604  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+02:06:15,063  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+02:06:17,385  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+02:06:19,775  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: com.senla.api.model.OrderedGoods column: copy_id (should be mapped with insert="false" update="false")
+02:12:50,744  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 02:12:50 MSK 2018]; root of context hierarchy
+02:12:51,094  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+02:12:52,098  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+02:12:54,712  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+02:12:54,715  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+02:12:55,266  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+02:12:57,130  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+02:13:00,271  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#login; this may or may not indicate a problem with the static metamodel
+02:13:00,271  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+02:13:00,275  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+02:13:00,455  WARN main ClassPathXmlApplicationContext:refresh:557 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personDao': Unsatisfied dependency expressed through field 'sessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [dao.xml]: Invocation of init method failed; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [login_id] in table [person]
+02:53:20,746  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 02:53:20 MSK 2018]; root of context hierarchy
+02:53:21,004  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+02:53:22,054  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+02:53:25,411  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+02:53:25,415  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+02:53:26,006  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+02:53:28,275  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+02:53:31,804  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+02:53:31,807  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+02:53:32,370  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1700915] of Hibernate SessionFactory for HibernateTransactionManager
+02:53:44,044  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5f205aa: startup date [Thu Mar 01 02:53:44 MSK 2018]; root of context hierarchy
+02:53:44,311  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+02:53:45,356  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+02:53:48,996  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+02:53:49,000  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+02:53:49,661  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+02:53:52,011  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+02:53:54,725  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#addres; this may or may not indicate a problem with the static metamodel
+02:53:54,728  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Address_#address; this may or may not indicate a problem with the static metamodel
+02:53:55,228  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1700915] of Hibernate SessionFactory for HibernateTransactionManager

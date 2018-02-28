@@ -16,7 +16,7 @@ public class Person {
 
     /** Id **/
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** Name **/
@@ -45,7 +45,7 @@ public class Person {
 
     /** Delivery address list **/
     @OneToMany(mappedBy = "person", fetch=FetchType.LAZY)
-    private List<Address> addresses;
+    private List<Address> addres;
 
     /** Cars **/
     @ManyToMany(fetch=FetchType.LAZY, cascade = { CascadeType.ALL })
@@ -104,12 +104,12 @@ public class Person {
         this.cart = cart;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
+    public List<Address> getAddres() {
+        return addres;
     }
 
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddres(List<Address> addres) {
+        this.addres = addres;
     }
 
     public List<Car> getCars() {

@@ -26,6 +26,7 @@ public class Login {
 
     /** Person**/
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "id")
     private Person person;
 
     public Long getId() {

@@ -11,12 +11,12 @@ import java.util.List;
  * @since 1.00
  */
 @Entity
-@Table(name = "addres")
+@Table(name = "address")
 public class Address {
 
     /** Id **/
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**  City **/
@@ -24,8 +24,8 @@ public class Address {
     private String city;
 
     /** Address (strit, house, flat) **/
-    @Column(name = "addres")
-    private String addres;
+    @Column(name = "address")
+    private String address;
 
     /** Post Code **/
     @Column(name = "postCode")
@@ -55,12 +55,12 @@ public class Address {
         this.city = city;
     }
 
-    public String getAddres() {
-        return addres;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddres(String addres) {
-        this.addres = addres;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getPostCode() {

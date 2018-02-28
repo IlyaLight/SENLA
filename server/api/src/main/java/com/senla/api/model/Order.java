@@ -17,7 +17,7 @@ public class Order {
 
     /** Id **/
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** Map of goods and their quantity **/

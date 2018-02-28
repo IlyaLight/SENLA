@@ -4,7 +4,7 @@ CREATE DATABASE car_parts_shop;
 use car_parts_shop;
 
 create table person(
-	id int not null auto_increment,
+	id BIGINT  not null auto_increment,
 	name varchar(25) not null,
 	email varchar(25) not null,
 	status varchar(25) not null,
@@ -12,7 +12,7 @@ create table person(
 );
 
 create table login(
-	id int not null auto_increment,
+	id BIGINT  not null,
 	login varchar(25) not null,
 	pass varchar(25) not null,
 	primary key(id),
@@ -20,7 +20,7 @@ create table login(
 );
 
 create table car(
-	id int not null auto_increment,
+	id BIGINT  not null auto_increment,
 	brand varchar(25) not null,
 	model varchar(25) not null,
 	year int not null,
@@ -30,8 +30,8 @@ create table car(
 );
 
 create table car_parson(
-	car_id int not null,
-	person_id int not null,
+	car_id BIGINT  not null,
+	person_id BIGINT  not null,
 	PRIMARY KEY(car_id, person_id),
 	foreign key(car_id) references car(id),
 	foreign key(person_id) references person(id)
@@ -39,7 +39,7 @@ create table car_parson(
 
 
 create table goods(
-	id int not null auto_increment,
+	id BIGINT  not null auto_increment,
 	img_link varchar(25),
 	category varchar(25),
 	name varchar(25) not null,
@@ -51,47 +51,47 @@ create table goods(
 );
 
 create table car_goods(
-	car_id int not null,
-	goods_id int not null,
+	car_id BIGINT  not null,
+	goods_id BIGINT  not null,
 	PRIMARY KEY(car_id, goods_id),
 	foreign key(car_id) references car(id),
 	foreign key(goods_id) references goods(id)
 
 );
 
-create table addres(
-	id int not null auto_increment,
+create table address(
+	id BIGINT  not null auto_increment,
+	person_id BIGINT not null,
 	city varchar(25) not null,
-	addres varchar(25) not null,
+	address varchar(25) not null,
 	postCode int not null,
-	person_id int not null,
 	primary key(id),
 	foreign key(person_id) references person(id)
 );
 
 create table _order_(
-	id int not null auto_increment,
+	id BIGINT not null auto_increment,
 	price decimal(10,2),
-	person_id int not null,
-	addres_id int not null,
+	person_id BIGINT not null,
+	address_id BIGINT not null,
 	orderDate date not null,
 	orderDetails varchar(225),
 	status varchar(25),
 	primary key(id),
 	foreign key(person_id) references person(id),
-	foreign key(addres_id) references addres(id)
+	foreign key(address_id) references address(id)
 );
 
 create table ordered_goods(
-	id int not null auto_increment,
-	copy_id int not null,
+	id BIGINT  not null auto_increment,
+	copy_id BIGINT  not null,
+	order_id BIGINT  not null,
 	img_link varchar(25),
 	name varchar(25) not null,
 	category varchar(25),
 	description varchar(225),
 	characteristics varchar(225),
 	price DECIMAL(10,2),
-	order_id int not null,
 	quantity int not null,
 	primary key(id),
 	foreign key(order_id) references _order_(id),
@@ -99,8 +99,8 @@ create table ordered_goods(
 );
 
 create table cart(
-	person_id int not null,
-	goods_id int not null,
+	person_id BIGINT not null,
+	goods_id BIGINT not null,
 	quantity int not null,
 	primary key(person_id),
 	foreign key(person_id) references person(id),
