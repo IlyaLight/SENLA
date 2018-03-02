@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -32,14 +33,7 @@ public abstract class AbstractJpaHibernateDao<T> implements IGenericDao<T> {
 
     @Override
     public void create(T object) {
-//       EntityManager em = HibernateUtil.getEntityManager();
-//       if (em.getTransaction().isActive()){
-//           em.persist(object);
-//           return;
-//       }
-//        em.getTransaction().begin();
-//        em.persist(object);
-//        em.getTransaction().commit();
+       getSession().save(object);
     }
 
     @Override

@@ -7,7 +7,6 @@ import com.senla.api.model.Person;
 import com.senla.api.model.Person_;
 import com.senla.back.dao.api.IPersonDao;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;

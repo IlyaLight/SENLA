@@ -15,6 +15,9 @@ import java.util.List;
 @Table(name = "_order_")
 public class Order {
 
+    /** Enum for order status **/
+    public enum Status {PROCESSING, SHIPPED, DELIVERED, CANCELED}
+
     /** Id **/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +40,7 @@ public class Order {
     private LocalDate orderDate;
 
     /** Order details **/
-    @Column(name = "orderDetails", length = 25)
+    @Column(name = "orderDetails")
     private String orderDetails;
 
     /** Delivery address **/
@@ -45,8 +48,9 @@ public class Order {
     private Address address;
 
     /** Status **/
-    @Column(name = "status", length = 25)
-    private String status;
+    @Column(name = "status", columnDefinition = "enum('PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELED')")
+    @Enumerated()
+    private Status status;
 
     public Long getId() {
         return id;
@@ -104,11 +108,11 @@ public class Order {
         this.address = address;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

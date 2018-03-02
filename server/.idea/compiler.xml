@@ -7,8 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="back" />
+        <module name="web" />
       </profile>
-      <profile name="Annotation profile for server">
+      <profile name="Annotation profile for server" enabled="true">
         <sourceOutputDir name="target/generated-sources/apt" />
         <sourceTestOutputDir name="target/generated-sources/apt-test" />
         <outputRelativeToContentRoot value="true" />
@@ -20,6 +21,7 @@
       <module name="api" target="1.8" />
       <module name="back" target="1.8" />
       <module name="server" target="1.8" />
+      <module name="web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

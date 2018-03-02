@@ -14,6 +14,7 @@ public class Login {
 
     /** Id **/
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** Login **/

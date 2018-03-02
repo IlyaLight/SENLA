@@ -13,9 +13,10 @@ create table person(
 );
 
 create table login(
-	id BIGINT  not null,
+	id BIGINT  not null auto_increment,
 	login varchar(25) not null,
 	pass varchar(25) not null,
+	UNIQUE(login),
 	primary key(id),
 	foreign key(id) references person(id)
 );
@@ -77,7 +78,7 @@ create table _order_(
 	address_id BIGINT not null,
 	orderDate date not null,
 	orderDetails varchar(225),
-	status varchar(25),
+	status ENUM('processing', 'shipped', 'delivered', 'canceled'),
 	primary key(id),
 	foreign key(person_id) references person(id),
 	foreign key(address_id) references address(id)

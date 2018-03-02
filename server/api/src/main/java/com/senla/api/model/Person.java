@@ -35,6 +35,10 @@ public class Person {
     @Column(name = "active")
     private Boolean active;
 
+    /** Login data **/
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    private Login login;
+
     /** Orders list **/
     @OneToMany(mappedBy = "person", fetch=FetchType.LAZY)
     private List<Order> orders;
@@ -59,6 +63,25 @@ public class Person {
             inverseJoinColumns = { @JoinColumn(name = "car_id") }
     )
     private List<Car> cars;
+
+    public Person() {
+    }
+
+    public Person(String name, String status, String email, Boolean active, Login login) {
+        this.name = name;
+        this.status = status;
+        this.email = email;
+        this.active = active;
+        this.login = login;
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
     public Boolean getActive() {
         return active;

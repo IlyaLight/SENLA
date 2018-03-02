@@ -1,6 +1,7 @@
 package com.senla.back.service;
 
 import com.senla.api.exception.AlreadyHaveThisLoginException;
+import com.senla.api.exception.IncompleteDataException;
 import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Login;
 import com.senla.api.model.Person;
@@ -22,9 +23,15 @@ public class PersonService implements IPersonService {
         return personDao.getPersonBuLogin(login);
     }
 
-    public void addPerson(Login login) throws AlreadyHaveThisLoginException{
-
+    @Override
+    public void addPerson(Person person) throws IncompleteDataException{
+        if (person.getLogin() == null){
+            throw new IncompleteDataException();
+        }
+        personDao.create(person);
     }
+
+
 
     public void updatePerson(Person person)throws AlreadyHaveThisLoginException {
 
