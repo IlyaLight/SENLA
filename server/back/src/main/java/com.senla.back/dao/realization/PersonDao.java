@@ -5,6 +5,7 @@ import com.senla.api.model.Login;
 import com.senla.api.model.Login_;
 import com.senla.api.model.Person;
 import com.senla.api.model.Person_;
+import com.senla.back.dao.api.IPersonDao;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,7 @@ import javax.persistence.metamodel.SingularAttribute;
 
 
 @Repository
-public class PersonDao  extends AbstractJpaHibernateDao<Person> {
+public class PersonDao  extends AbstractJpaHibernateDao<Person> implements IPersonDao {
 
     @Override
     protected Class getClazz() {
@@ -28,8 +29,8 @@ public class PersonDao  extends AbstractJpaHibernateDao<Person> {
         return Person_.id;
     }
 
-    @Transactional
-    private Person getPersonBuLogin(Login login) throws ObjectAvailabilityException {
+    @Override
+    public Person getPersonBuLogin(Login login) throws ObjectAvailabilityException {
         CriteriaBuilder builder = getSession().getCriteriaBuilder();
         CriteriaQuery<Login> criteria = builder.createQuery( Login.class );
         Root<Login> root = criteria.from( Login.class );

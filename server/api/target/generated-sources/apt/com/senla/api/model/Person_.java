@@ -11,8 +11,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Person_ {
 
 	public static volatile ListAttribute<Person, Car> cars;
-	public static volatile ListAttribute<Person, Address> addresses;
 	public static volatile SingularAttribute<Person, String> name;
+	public static volatile SingularAttribute<Person, Boolean> active;
+	public static volatile ListAttribute<Person, Address> addres;
 	public static volatile ListAttribute<Person, Order> orders;
 	public static volatile SingularAttribute<Person, Long> id;
 	public static volatile SingularAttribute<Person, String> email;

@@ -31,6 +31,10 @@ public class Person {
     @Column(name = "email")
     private String email;
 
+    /** Indicates whether the account is active **/
+    @Column(name = "active")
+    private Boolean active;
+
     /** Orders list **/
     @OneToMany(mappedBy = "person", fetch=FetchType.LAZY)
     private List<Order> orders;
@@ -55,6 +59,14 @@ public class Person {
             inverseJoinColumns = { @JoinColumn(name = "car_id") }
     )
     private List<Car> cars;
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 
     public Long getId() {
         return id;

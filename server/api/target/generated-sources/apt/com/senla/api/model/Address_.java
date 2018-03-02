@@ -9,9 +9,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Address.class)
 public abstract class Address_ {
 
+	public static volatile SingularAttribute<Address, String> address;
 	public static volatile SingularAttribute<Address, String> city;
 	public static volatile SingularAttribute<Address, Person> person;
-	public static volatile SingularAttribute<Address, String> addres;
 	public static volatile SingularAttribute<Address, Integer> postCode;
 	public static volatile ListAttribute<Address, Order> orders;
 	public static volatile SingularAttribute<Address, Long> id;

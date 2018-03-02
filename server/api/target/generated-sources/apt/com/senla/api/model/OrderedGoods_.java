@@ -9,7 +9,6 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(OrderedGoods.class)
 public abstract class OrderedGoods_ {
 
-	public static volatile SingularAttribute<OrderedGoods, Long> copyId;
 	public static volatile SingularAttribute<OrderedGoods, String> characteristics;
 	public static volatile SingularAttribute<OrderedGoods, String> imgLink;
 	public static volatile SingularAttribute<OrderedGoods, Integer> quantity;
