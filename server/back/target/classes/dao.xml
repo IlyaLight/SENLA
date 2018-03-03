@@ -35,7 +35,7 @@
         <property name="packagesToScan">
             <list>
                 <value>com.senla.api</value>
-               
+                <value>com.senla.back</value>
             </list>
         </property>
         <property name="hibernateProperties">

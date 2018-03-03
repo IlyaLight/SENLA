@@ -16,6 +16,7 @@ public abstract class Person_ {
 	public static volatile ListAttribute<Person, Address> addres;
 	public static volatile ListAttribute<Person, Order> orders;
 	public static volatile SingularAttribute<Person, Long> id;
+	public static volatile SingularAttribute<Person, Login> login;
 	public static volatile SingularAttribute<Person, String> email;
 	public static volatile MapAttribute<Person, Goods, Integer> cart;
 	public static volatile SingularAttribute<Person, String> status;

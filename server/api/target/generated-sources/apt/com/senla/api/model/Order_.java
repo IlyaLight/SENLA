@@ -1,5 +1,6 @@
 package com.senla.api.model;
 
+import com.senla.api.model.Order.Status;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.annotation.Generated;
@@ -18,7 +19,7 @@ public abstract class Order_ {
 	public static volatile ListAttribute<Order, OrderedGoods> goods;
 	public static volatile SingularAttribute<Order, Long> id;
 	public static volatile SingularAttribute<Order, LocalDate> orderDate;
-	public static volatile SingularAttribute<Order, String> status;
+	public static volatile SingularAttribute<Order, Status> status;
 
 }
 
