@@ -10,4 +10,6 @@ public interface IPersonService {
     Person getPersonBuLogin(Login login) throws ObjectAvailabilityException;
 
     void addPerson(Person person) throws AlreadyHaveThisLoginException, IncompleteDataException;
+
+    Person getByPk(Long id) throws ObjectAvailabilityException;
 }

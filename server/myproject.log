@@ -1536,3 +1536,31 @@ Caused by: java.sql.SQLException: Cannot add foreign key constraint
 02:26:21,704  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#login; this may or may not indicate a problem with the static metamodel
 02:26:21,874  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@188715b5] of Hibernate SessionFactory for HibernateTransactionManager
 02:26:22,061  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+19:32:47,635  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7a46a697: startup date [Sat Mar 03 19:32:47 MSK 2018]; root of context hierarchy
+19:32:47,742  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:32:48,090  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:32:49,008  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:32:49,009  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:32:49,066  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:32:49,431  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:32:50,192  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#login; this may or may not indicate a problem with the static metamodel
+19:32:50,472  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@188715b5] of Hibernate SessionFactory for HibernateTransactionManager
+19:32:50,672  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+19:33:01,786  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7a46a697: startup date [Sat Mar 03 19:33:01 MSK 2018]; root of context hierarchy
+19:33:01,849  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:33:02,125  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:33:02,897  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:33:02,900  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:33:02,947  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:33:03,278  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:33:03,861  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@188715b5] of Hibernate SessionFactory for HibernateTransactionManager
+19:34:08,249  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7a46a697: startup date [Sat Mar 03 19:34:08 MSK 2018]; root of context hierarchy
+19:34:08,311  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:34:08,566  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:34:09,442  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:34:09,443  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:34:09,519  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:34:09,851  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:34:10,596  WARN main MetadataContext:registerAttribute:471 - HHH015011: Unable to locate static metamodel field : com.senla.api.model.Person_#login; this may or may not indicate a problem with the static metamodel
+19:34:10,783  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@188715b5] of Hibernate SessionFactory for HibernateTransactionManager
+19:34:10,957  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory

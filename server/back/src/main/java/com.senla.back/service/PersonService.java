@@ -31,6 +31,11 @@ public class PersonService implements IPersonService {
         personDao.create(person);
     }
 
+    @Override
+    public Person getByPk(Long id) throws ObjectAvailabilityException {
+        return personDao.getByPk(id);
+    }
+
 
 
     public void updatePerson(Person person)throws AlreadyHaveThisLoginException {

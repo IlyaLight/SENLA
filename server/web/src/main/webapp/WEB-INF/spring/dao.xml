@@ -18,13 +18,13 @@
     <!-- Настройки бина dataSource будем хранить в отдельном файле -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="/jdbc.properties" />
+          p:location="/WEB-INF/jdbc.properties" />
 
-          <!--p:driverClassName="${jdbc.driverClassName}"-->
     <!-- Непосредственно бин dataSource -->
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           p:url="${jdbc.databaseurl}"
+          p:driverClassName="${jdbc.driverClassName}"
           p:username="${jdbc.username}"
           p:password="${jdbc.password}" />
 
@@ -35,13 +35,13 @@
         <property name="packagesToScan">
             <list>
                 <value>com.senla.api</value>
-               
+                <value>com.senla.back</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">${jdbc.dialect}</prop>
                 <prop key="hibernate.connection.charSet">UTF-8</prop>
             </props>

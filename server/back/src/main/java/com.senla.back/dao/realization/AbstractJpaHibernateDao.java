@@ -37,7 +37,7 @@ public abstract class AbstractJpaHibernateDao<T> implements IGenericDao<T> {
     }
 
     @Override
-    public T getByPk(Integer key) throws ObjectAvailabilityException {
+    public T getByPk(Long key) throws ObjectAvailabilityException {
 
         CriteriaBuilder builder = getSession().getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery( getClazz() );
