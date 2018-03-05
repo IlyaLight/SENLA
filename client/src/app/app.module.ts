@@ -39,20 +39,25 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 import {AuthenticationComponent} from './authentication/authentication.component';
+import {HomePageComponent} from './home-page/home-page.component';
+import {PersonPageComponent} from './person-page/person-page.component';
 
 const routes = [
-  { path: 'authentication', component: AuthenticationComponent }
-  // { path: 'user', component: UserPageComponent },
-  // { path: '', component: HomePageComponent }
+  { path: 'authentication', component: AuthenticationComponent },
+  { path: 'user', component: PersonPageComponent },
+  { path: '', component: HomePageComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent
-  ],
+    AuthenticationComponent,
+    HomePageComponent,
+    PersonPageComponent
+    ],
   imports: [
     FormsModule,
     BrowserModule,

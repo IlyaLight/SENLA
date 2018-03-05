@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {Account} from './account';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './authentication.component.html',
@@ -16,9 +15,10 @@ export class AuthenticationComponent {
   constructor(private http: HttpClient) {}
   login() {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/json'); // testing after
-    this.http.post('http://localhost:8080/login', JSON.stringify(this.account), {headers: myHeaders})
+    this.http.post('http://localhost:8080/login', JSON.stringify(this.account), { withCredentials: true, headers: myHeaders})
       .subscribe(value => {
         // value - результат
+        alert(value);
         this.massag = null;
         location.href = '/user';
       },
