@@ -1,5 +1,7 @@
 package com.senla.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.util.List;
@@ -41,10 +43,12 @@ public class Car {
     private Integer engineCapacity;
 
     /** Suitable goods **/
+    @JsonIgnore
     @ManyToMany(mappedBy = "cars", fetch = FetchType.LAZY)
     private List<Goods> suitableGoods;
 
     /** list of buyers with such a machine **/
+    @JsonIgnore
     @ManyToMany(mappedBy = "cars")
     private List<Person> persons;
 

@@ -2,6 +2,7 @@ package com.senla.web.controller;
 
 import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Login;
+import com.senla.api.model.Person;
 import com.senla.api.service.IPersonService;
 import com.senla.web.controller.util.TokenUtil;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     private static final String TOKEN = "token";
+    private static final String STATUS = "status";
 
     @Autowired
     IPersonService personService;
@@ -31,8 +33,14 @@ public class LoginController {
     public void login(@RequestBody Login login , HttpServletResponse res) {
         LOGGER.info("login_GET");
         try {
-            String token = TokenUtil.getToken(personService.getPersonBuLogin(login));
-            res.addCookie(new Cookie(TOKEN, token));
+            Person person = personService.getPersonBuLogin(login);
+            if (person.getActive()) {
+                String token = TokenUtil.getToken(person);
+                res.addCookie(new Cookie(TOKEN, token));
+                res.addCookie(new Cookie(STATUS, person.getStatus()));
+            }else {
+                res.setStatus(401);
+            }
         } catch (ObjectAvailabilityException e) {
             res.setStatus(401);
         }

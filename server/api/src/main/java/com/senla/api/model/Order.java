@@ -1,5 +1,7 @@
 package com.senla.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -24,6 +26,7 @@ public class Order {
     private Long id;
 
     /** Map of goods and their quantity **/
+    @JsonIgnore
     @OneToMany(mappedBy = "order", fetch= FetchType.LAZY)
     private List<OrderedGoods> goods;   //goods and quantity
 
@@ -32,6 +35,7 @@ public class Order {
     private BigDecimal totalPrice;
 
     /** Buyer **/
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Person person;
 
@@ -44,6 +48,7 @@ public class Order {
     private String orderDetails;
 
     /** Delivery address **/
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Address address;
 

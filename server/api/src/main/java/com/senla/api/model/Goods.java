@@ -1,5 +1,7 @@
 package com.senla.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
@@ -48,6 +50,7 @@ public class Goods {
     private Integer inStock;
 
     /** Compatible car **/
+    @JsonIgnore
     @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
     @JoinTable(
             name = "car_goods",

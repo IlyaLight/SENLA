@@ -5,7 +5,6 @@ use car_parts_shop;
 
 create table person(
 	id BIGINT  not null auto_increment,
-	name varchar(25) not null,
 	email varchar(25) not null,
 	status varchar(25) not null,
 	active BOOL not null,

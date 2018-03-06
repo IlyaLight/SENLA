@@ -32,7 +32,7 @@ public class Test {
         login.setPassword("root_1");
         try {
             Person person = personService.getPersonBuLogin(login);
-            System.out.println(person.getName());
+            System.out.println(person.getEmail());
         } catch (ObjectAvailabilityException e) {
             e.printStackTrace();
         }

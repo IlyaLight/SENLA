@@ -1,5 +1,7 @@
 package com.senla.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
@@ -49,10 +51,12 @@ public class OrderedGoods {
     private Integer quantity;
 
     /** Order **/
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Order order;
 
     /** Original goods **/
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "copy_id")

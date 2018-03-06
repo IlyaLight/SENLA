@@ -1,5 +1,7 @@
 package com.senla.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -26,6 +28,7 @@ public class Login {
     private String password;
 
     /** Person**/
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "id")
     private Person person;

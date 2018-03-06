@@ -1,5 +1,7 @@
 package com.senla.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +21,6 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** Name **/
-    @Column(name = "name")
-    private String name;
-
     /** Status **/
     @Column(name = "status")
     private String status;
@@ -36,14 +34,17 @@ public class Person {
     private Boolean active;
 
     /** Login data **/
+    @JsonIgnore
     @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
     private Login login;
 
     /** Orders list **/
+    @JsonIgnore
     @OneToMany(mappedBy = "person", fetch=FetchType.LAZY)
     private List<Order> orders;
 
     /** Cart **/
+    @JsonIgnore
     @ElementCollection
     @CollectionTable(name = "cart",
             joinColumns = @JoinColumn(name = "person_id"))
@@ -52,10 +53,12 @@ public class Person {
     private Map<Goods,Integer> cart;
 
     /** Delivery address list **/
+    @JsonIgnore
     @OneToMany(mappedBy = "person", fetch=FetchType.LAZY)
     private List<Address> addres;
 
     /** Cars **/
+    @JsonIgnore
     @ManyToMany(fetch=FetchType.LAZY, cascade = { CascadeType.ALL })
     @JoinTable(
             name = "car_parson",
@@ -67,8 +70,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, String status, String email, Boolean active, Login login) {
-        this.name = name;
+    public Person(String status, String email, Boolean active, Login login) {
         this.status = status;
         this.email = email;
         this.active = active;
@@ -97,14 +99,6 @@ public class Person {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getStatus() {

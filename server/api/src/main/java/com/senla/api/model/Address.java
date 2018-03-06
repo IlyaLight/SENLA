@@ -1,5 +1,7 @@
 package com.senla.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -32,10 +34,12 @@ public class Address {
     private Integer postCode;
 
     /** Person **/
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Person person;
 
     /** All orders from the buyer {@code person} at this address **/
+    @JsonIgnore
     @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
     private List<Order> orders;
 

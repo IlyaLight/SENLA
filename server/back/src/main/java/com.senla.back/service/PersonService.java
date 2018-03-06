@@ -18,6 +18,9 @@ public class PersonService implements IPersonService {
     @Autowired
     IPersonDao personDao;
 
+    @Autowired
+    IPersonHandler personHandler;
+
     @Override
     public Person getPersonBuLogin(Login login) throws ObjectAvailabilityException{
         return personDao.getPersonBuLogin(login);
@@ -36,6 +39,10 @@ public class PersonService implements IPersonService {
         return personDao.getByPk(id);
     }
 
+    @Override
+    public Person getPerson() {
+        return personHandler.getPerson();
+    }
 
 
     public void updatePerson(Person person)throws AlreadyHaveThisLoginException {
