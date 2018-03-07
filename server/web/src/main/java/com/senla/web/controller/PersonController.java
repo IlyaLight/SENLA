@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @Controller
 @RequestMapping
@@ -28,7 +29,7 @@ public class PersonController {
     public void createPerson(@RequestBody Person person, HttpServletResponse res) {
         try {
             personService.addPerson(person);
-        } catch (AlreadyHaveThisLoginException e) {
+        } catch (SQLIntegrityConstraintViolationException e) {
             res.setStatus(400);
             res.addHeader(ERROR, e.getClass().getSimpleName());
         } catch (IncompleteDataException e) {

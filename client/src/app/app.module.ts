@@ -41,15 +41,14 @@ import {RouterModule} from '@angular/router';
 
 
 import {AppComponent} from './app.component';
-import {AuthenticationComponent} from './authentication/authentication.component';
+import {AuthenticationPageComponent} from './authentication-page/authentication-page.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {PersonPageComponent} from './person-page/person-page.component';
-import { PersonCreatePageComponent } from './person-create-page/person-create-page.component';
 import { BuyerRegistrationPageComponent } from './buyer-registration-page/buyer-registration-page.component';
 import { CarRegistrationPageComponent } from './car-registration-page/car-registration-page.component';
 
 const routes = [
-  { path: 'authentication', component: AuthenticationComponent },
+  { path: 'authentication', component: AuthenticationPageComponent },
   { path: 'person', component: PersonPageComponent },
   { path: '', component: HomePageComponent },
   {path: 'buyerRegistration', component: BuyerRegistrationPageComponent}
@@ -58,10 +57,9 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent,
+    AuthenticationPageComponent,
     HomePageComponent,
     PersonPageComponent,
-    PersonCreatePageComponent,
     BuyerRegistrationPageComponent,
     CarRegistrationPageComponent
     ],

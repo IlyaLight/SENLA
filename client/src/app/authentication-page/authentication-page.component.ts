@@ -4,10 +4,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss']
+  templateUrl: './authentication-page.component.html',
+  styleUrls: ['./authentication-page.component.scss']
 })
-export class AuthenticationComponent {
+export class AuthenticationPageComponent {
   hide = true;       // for password input
   message: string = null;
 

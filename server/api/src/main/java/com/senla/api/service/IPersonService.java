@@ -9,7 +9,7 @@ import com.senla.api.model.Person;
 public interface IPersonService {
     Person getPersonBuLogin(Login login) throws ObjectAvailabilityException;
 
-    void addPerson(Person person) throws AlreadyHaveThisLoginException, IncompleteDataException;
+    void addPerson(Person person) throws IncompleteDataException;
 
     Person getByPk(Long id) throws ObjectAvailabilityException;
 
