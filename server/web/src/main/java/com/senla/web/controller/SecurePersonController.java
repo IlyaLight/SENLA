@@ -1,9 +1,7 @@
 package com.senla.web.controller;
 
-import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.api.model.Person;
 import com.senla.api.service.IPersonService;
-import com.senla.back.service.IPersonHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

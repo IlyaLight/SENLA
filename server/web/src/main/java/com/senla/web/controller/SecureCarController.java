@@ -1,11 +1,8 @@
 package com.senla.web.controller;
 
-import com.senla.api.exception.AlreadyHaveThisLoginException;
-import com.senla.api.exception.IncompleteDataException;
+import com.senla.api.exception.NotEnoughPermitsException;
 import com.senla.api.model.Car;
-import com.senla.api.model.Person;
-import com.senla.api.service.ICarServise;
-import com.senla.back.service.CarService;
+import com.senla.api.service.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,19 +15,18 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/security")
 public class SecureCarController {
 
+    private static final String ERROR = "Error";
+
     @Autowired
-    ICarServise carServise;
+    ICarService carServise;
 
     @PostMapping("/createCar")
     public void createCar(@RequestBody Car car, HttpServletResponse res) {
-//        try {
-//            carServise.(person);
-//        } catch (AlreadyHaveThisLoginException e) {
-//            res.setStatus(400);
-//            res.addHeader(ERROR, e.getClass().getSimpleName());
-//        } catch (IncompleteDataException e) {
-//            res.setStatus(400);
-//            res.addHeader(ERROR, e.getClass().getSimpleName());
-//        }
+        try {
+            carServise.createCar(car);
+        } catch (NotEnoughPermitsException e) {
+            res.setStatus(400);
+           res.addHeader(ERROR, e.getClass().getSimpleName());
+        }
     }
 }
