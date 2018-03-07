@@ -37,7 +37,7 @@ public class LoginController {
             if (person.getActive()) {
                 String token = TokenUtil.getToken(person);
                 res.addCookie(new Cookie(TOKEN, token));
-                res.addCookie(new Cookie(STATUS, person.getStatus()));
+                res.addCookie(new Cookie(STATUS, person.getStatus().toString()));
             }else {
                 res.setStatus(401);
             }

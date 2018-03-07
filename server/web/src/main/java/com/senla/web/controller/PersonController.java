@@ -18,20 +18,21 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping
 public class PersonController {
 
+    private static final String ERROR = "Error";
     @Autowired
     IPersonService personService;
 
 
     @PostMapping("/createPerson")
-    public void createPerson(@RequestBody Person person, @RequestBody Login login, HttpServletResponse res) {
-      person.setLogin(login);
+    public void createPerson(@RequestBody Person person, HttpServletResponse res) {
         try {
             personService.addPerson(person);
         } catch (AlreadyHaveThisLoginException e) {
             res.setStatus(400);
-            res.addHeader("Erro");
+            res.addHeader(ERROR, e.getClass().getSimpleName());
         } catch (IncompleteDataException e) {
-            e.printStackTrace();
+            res.setStatus(400);
+            res.addHeader(ERROR, e.getClass().getSimpleName());
         }
     }
 

@@ -36,19 +36,22 @@ import {MatInputModule,
   MatTooltipModule,
 } from '@angular/material';
 import {FormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {PersonPageComponent} from './person-page/person-page.component';
+import { PersonCreatePageComponent } from './person-create-page/person-create-page.component';
+import { BuyerRegistrationPageComponent } from './buyer-registration-page/buyer-registration-page.component';
 
 const routes = [
   { path: 'authentication', component: AuthenticationComponent },
-  { path: 'user', component: PersonPageComponent },
-  { path: '', component: HomePageComponent }
+  { path: 'person', component: PersonPageComponent },
+  { path: '', component: HomePageComponent },
+  {path: 'buyerRegistration', component: BuyerRegistrationPageComponent}
 ];
 
 @NgModule({
@@ -56,7 +59,9 @@ const routes = [
     AppComponent,
     AuthenticationComponent,
     HomePageComponent,
-    PersonPageComponent
+    PersonPageComponent,
+    PersonCreatePageComponent,
+    BuyerRegistrationPageComponent
     ],
   imports: [
     FormsModule,
@@ -68,6 +73,7 @@ const routes = [
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
+    MatDividerModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

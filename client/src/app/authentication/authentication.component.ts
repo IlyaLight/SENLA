@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Account} from './account';
+import {Login} from '../json-models/login';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
@@ -9,29 +9,29 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class AuthenticationComponent {
   hide = true;       // for password input
-  massag: string = null;
+  message: string = null;
 
-  account: Account = new Account();
+  login: Login = new Login();
   constructor(private http: HttpClient) {}
-  login() {
+  authentication() {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/json'); // testing after
-    this.http.post('http://localhost:8080/login', JSON.stringify(this.account), { withCredentials: true, headers: myHeaders})
-      .subscribe(value => {
-        // value - результат
-        alert(value);
-        this.massag = null;
-        location.href = '/user';
-      },
+    this.http.post('http://localhost:8080/authentication', JSON.stringify(this.login), { withCredentials: true, headers: myHeaders})
+      .subscribe(
+        value => {
+          // value - результат
+          alert(value);
+          this.message = null;
+          location.href = '/';
+        },
       error => {
-      if (error.status === 401) {
-        this.massag = 'could not find user with such data';
-        this.account.login = null;
-        this.account.pass = null;
-      }
-        // location.reload();
-        // error - объект ошибки
-      });
+          if (error.status === 401) {
+            this.message = 'could not find user with such data';
+          } else {
+            alert(error);
+          }
+            this.login.login = null;
+            this.login.password = null;
+        }
+      );
   }
-    // this.httpService.postData(this.account);
-       // }
 }

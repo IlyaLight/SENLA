@@ -54,7 +54,7 @@ public class Order {
 
     /** Status **/
     @Column(name = "status", columnDefinition = "enum('PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELED')")
-    @Enumerated()
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public Long getId() {

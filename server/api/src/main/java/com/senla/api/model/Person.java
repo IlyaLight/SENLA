@@ -16,14 +16,18 @@ import java.util.Map;
 @Table(name = "person")
 public class Person {
 
+    /** Enum for person status **/
+    public enum Status {ADMINISTRATOR, BUYER}
+
     /** Id **/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** Status **/
-    @Column(name = "status")
-    private String status;
+    @Column(name = "status", columnDefinition = "enum('ADMINISTRATOR', 'BUYER')")
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     /** Email **/
     @Column(name = "email")
@@ -34,7 +38,6 @@ public class Person {
     private Boolean active;
 
     /** Login data **/
-    @JsonIgnore
     @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
     private Login login;
 
@@ -70,7 +73,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(String status, String email, Boolean active, Login login) {
+    public Person(Status status, String email, Boolean active, Login login) {
         this.status = status;
         this.email = email;
         this.active = active;
@@ -101,11 +104,11 @@ public class Person {
         this.id = id;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
