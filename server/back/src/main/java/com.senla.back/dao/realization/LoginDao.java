@@ -28,12 +28,12 @@ public class LoginDao extends AbstractJpaHibernateDao<Login> implements ILoginDa
     }
 
     @Override
-    public boolean checkLoginDuplicate(String login){
+    public boolean checkLoginDuplicate(Login login){
         CriteriaBuilder builder = getSession().getCriteriaBuilder();
         CriteriaQuery<Login> criteria = builder.createQuery( Login.class );
         Root<Login> root = criteria.from( Login.class );
         criteria.select( root ).where(
-                        builder.equal(root.get(Login_.login), login));
+                        builder.equal(root.get(Login_.login), login.getLogin()));
         try {
             getSession().createQuery(criteria).getSingleResult();
             return true;

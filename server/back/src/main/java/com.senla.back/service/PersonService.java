@@ -21,32 +21,41 @@ public class PersonService implements IPersonService {
     @Autowired
     IPersonHandler personHandler;
 
+    @Transactional(readOnly=true)
     @Override
     public Person getPersonBuLogin(Login login) throws ObjectAvailabilityException{
         return personDao.getPersonBuLogin(login);
     }
 
+    /** adds a buyer **/
+
     @Override
-    public void addPerson(Person person) throws IncompleteDataException{
-        if (person.getLogin() == null){
-            throw new IncompleteDataException();
-        }
+    public void addBuyer(Person person){
+        person.setStatus(Person.Status.BUYER);
         personDao.create(person);
     }
 
+    @Transactional(readOnly=true)
     @Override
     public Person getByPk(Long id) throws ObjectAvailabilityException {
         return personDao.getByPk(id);
     }
 
+    @Transactional(readOnly=true)
     @Override
     public Person getPerson() {
         return personHandler.getPerson();
+    }
+
+    @Override
+    public void savePerson(Person person) {
+
     }
 
 
     public void updatePerson(Person person)throws AlreadyHaveThisLoginException {
 
     }
+
 
 }

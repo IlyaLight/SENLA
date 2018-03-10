@@ -1,5 +1,7 @@
 package com.senla.api.service;
 
+import com.senla.api.model.Login;
+
 public interface ILoginService {
-    boolean checkLoginDuplicate(String login);
+    boolean checkLoginDuplicate(Login login);
 }

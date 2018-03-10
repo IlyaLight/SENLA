@@ -37,13 +37,13 @@ public class Test {
             e.printStackTrace();
         }
 
-        System.out.println(loginService.checkLoginDuplicate("root"));
+//        System.out.println(loginService.checkLoginDuplicate("root"));
 
 //        login.setLogin("root_2");
 //        login.setPassword("root_2");
 //        Person person = new Person("person_2", "admin_2", "@email_2", true, login);
 //        try {
-//            personService.addPerson(person);
+//            personService.addBuyer(person);
 //        } catch (AlreadyHaveThisLoginException | IncompleteDataException e) {
 //            e.printStackTrace();
 //        }

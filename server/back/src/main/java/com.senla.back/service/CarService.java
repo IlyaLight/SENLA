@@ -26,4 +26,14 @@ public class CarService implements ICarService {
         }
         carDao.create(car);
     }
+
+    @Override
+    public void deleteCar(Long id) throws NotEnoughPermitsException {
+
+    }
+
+    @Override
+    public void updateCar(Car car) throws NotEnoughPermitsException {
+
+    }
 }

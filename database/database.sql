@@ -6,7 +6,7 @@ use car_parts_shop;
 create table person(
 	id BIGINT  not null auto_increment,
 	email varchar(25) not null,
-	status varchar(25) not null,
+	status ENUM('ADMINISTRATOR', 'BUYER'),
 	active BOOL not null,
 	primary key(id)
 );
@@ -26,7 +26,7 @@ create table car(
 	model varchar(25) not null,
 	year int not null,
 	type_of_fuel varchar(25) not null,
-	engine_capacity int not null,
+	engine_capacity int,
 	primary key(id)
 );
 
