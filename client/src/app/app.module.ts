@@ -46,12 +46,15 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {PersonPageComponent} from './person-page/person-page.component';
 import { BuyerRegistrationPageComponent } from './buyer-registration-page/buyer-registration-page.component';
 import { CarRegistrationPageComponent } from './car-registration-page/car-registration-page.component';
+import { GoodRegistrationPageComponent } from './good-registration-page/good-registration-page.component';
 
 const routes = [
   { path: 'authentication', component: AuthenticationPageComponent },
   { path: 'person', component: PersonPageComponent },
   { path: '', component: HomePageComponent },
-  {path: 'buyerRegistration', component: BuyerRegistrationPageComponent}
+  { path: 'buyerRegistration', component: BuyerRegistrationPageComponent },
+  { path: 'goodsRegistration', component: GoodRegistrationPageComponent },
+  { path: 'carRegistration', component: CarRegistrationPageComponent }
 ];
 
 @NgModule({
@@ -61,7 +64,8 @@ const routes = [
     HomePageComponent,
     PersonPageComponent,
     BuyerRegistrationPageComponent,
-    CarRegistrationPageComponent
+    CarRegistrationPageComponent,
+    GoodRegistrationPageComponent
     ],
   imports: [
     FormsModule,
