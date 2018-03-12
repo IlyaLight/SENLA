@@ -1,0 +1,42 @@
+
+.container{
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.moduleLeft{
+  text-align: right;
+  //margin-top: 20px;
+  //margin-bottom: 20px;
+  padding-right: 20px;
+  min-width: 170px;
+  //float: left;
+  button{
+   //margin-bottom: 10px;
+  }
+  img{
+    width: 150px;
+    height: 150px;
+  }
+}
+.moduleRight{
+  flex-basis: 300px;
+  flex-shrink: 2;
+  text-align: left;
+  //margin-top: 20px;
+  //margin-bottom: 20px;
+  //margin-left: 40px;
+  min-width: 170px;
+  max-width: 300px;
+  width: auto;
+  //float: left;
+  mat-form-field{
+    display: block;
+  }
+  button{
+    //margin-bottom: 10px;
+  }
+}
+
+
+

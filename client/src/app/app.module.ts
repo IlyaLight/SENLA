@@ -78,6 +78,7 @@ const routes = [
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    MatTableModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
