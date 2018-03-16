@@ -1,5 +1,6 @@
 package com.senla.web.controller;
 
+import com.senla.api.exception.NotEnoughPermitsException;
 import com.senla.api.model.Person;
 import com.senla.api.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class SecurePersonController {
     IPersonService personService;
 
     @GetMapping("/getPerson")
-    public @ResponseBody Person getCurrentPerson(HttpServletResponse res) {
+    public @ResponseBody Person getCurrentPerson(HttpServletResponse res)  throws NotEnoughPermitsException {
         Person person = personService.getPerson();
         if (person == null){
             res.setStatus(500);
@@ -26,7 +27,7 @@ public class SecurePersonController {
     }
 
     @PostMapping("/savePerson")
-    public void savePerson(@RequestBody Person person, HttpServletResponse res) {
+    public void savePerson(@RequestBody Person person, HttpServletResponse res)  throws NotEnoughPermitsException {
         personService.savePerson(person);
         //проверка ошибок
     }

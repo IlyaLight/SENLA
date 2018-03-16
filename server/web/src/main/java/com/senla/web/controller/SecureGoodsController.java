@@ -1,5 +1,6 @@
 package com.senla.web.controller;
 
+import com.senla.api.exception.NotEnoughPermitsException;
 import com.senla.api.service.IGoodsService;
 import com.senla.web.controller.util.CheckDataUtil;
 import com.senla.web.dto.GoodsDto;
@@ -21,7 +22,7 @@ public class SecureGoodsController {
     IGoodsService goodsService;
 
     @PostMapping("/createGoods")
-    public void createGoods(@RequestBody GoodsDto goodsDto, HttpServletResponse res) {
+    public void createGoods(@RequestBody GoodsDto goodsDto, HttpServletResponse res)  throws NotEnoughPermitsException {
         Set<ConstraintViolation<GoodsDto>> violations = CheckDataUtil.getValidator().validate(goodsDto);
 
     }
