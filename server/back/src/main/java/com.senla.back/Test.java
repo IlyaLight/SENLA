@@ -1,18 +1,19 @@
 package com.senla.back;
 
-import com.senla.api.exception.AlreadyHaveThisLoginException;
-import com.senla.api.exception.IncompleteDataException;
 import com.senla.api.exception.ObjectAvailabilityException;
+import com.senla.api.model.Car;
 import com.senla.api.model.Login;
 import com.senla.api.model.Person;
+import com.senla.api.service.ICarService;
 import com.senla.api.service.ILoginService;
 import com.senla.api.service.IPersonService;
-import com.senla.back.dao.api.IPersonDao;
-import com.senla.back.dao.realization.PersonDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Test {
@@ -26,6 +27,7 @@ public class Test {
         ApplicationContext context = new ClassPathXmlApplicationContext("rootContext.xml");
         IPersonService personService = context.getBean(IPersonService.class);
         ILoginService loginService = context.getBean(ILoginService.class);
+        ICarService carService = context.getBean(ICarService.class);
 
         Login login = new Login();
         login.setLogin("root_1");
@@ -48,7 +50,13 @@ public class Test {
 //            e.printStackTrace();
 //        }
 
+        List<Long> list= new ArrayList<>();
+        list.add(1L);
+        list.add(2L);
+        list.add(3L);
 
+        List<Car> cars= carService.getByIdList(list);
+        System.out.println(cars);
 
     }
 }

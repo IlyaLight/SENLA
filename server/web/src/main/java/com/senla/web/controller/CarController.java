@@ -27,4 +27,16 @@ public class CarController {
     public @ResponseBody List<Car> getAllCars(HttpServletResponse res) {
         return carService.getAll();
     }
+
+    @GetMapping("/getCarsByIdList")
+    public @ResponseBody List<Car> getCarsByIdList(@RequestBody List<Long> idList, HttpServletResponse res) {
+        return carService.getByIdList(idList);
+    }
+
+    @GetMapping("/getCarsById")
+    public @ResponseBody Car getCarsById(@RequestBody Long id, HttpServletResponse res) {
+        return carService.getById(id);
+    }
+
+
 }

@@ -5,9 +5,20 @@ import com.senla.api.model.Car;
 import com.senla.api.model.Login;
 import com.senla.api.model.Person;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
 /** checks and prepares data **/
 
 public class CheckDataUtil {
+
+    static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+    static Validator validator = factory.getValidator();
+
+    public static Validator getValidator(){
+        return validator;
+    }
 
     public static void createBuyerCheckData(Person person) throws IncompleteDataException{
         if ( person.getEmail() == null ||

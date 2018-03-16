@@ -3,6 +3,8 @@ package com.senla.api.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -23,18 +25,22 @@ public class Car {
     private Long Id;
 
     /** Brand **/
+    @NotEmpty
     @Column(name = "brand")
     private String brand;
 
     /** Model **/
+    @NotEmpty
     @Column(name = "model")
     private String model;
 
     /** Year **/
+    @NotEmpty
     @Column(name = "year")
     private Integer year;
 
     /** Type of fuel **/
+    @NotEmpty
     @Column(name = "type_of_fuel")
     private String typeOfFuel;
 

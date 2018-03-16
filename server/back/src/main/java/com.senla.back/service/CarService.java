@@ -30,17 +30,27 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public void delete(Long id) throws NotEnoughPermitsException {
-
+    public void delete(Car car) throws NotEnoughPermitsException {
+        carDao.delete(car);
     }
 
     @Override
     public void update(Car car) throws NotEnoughPermitsException {
-
+        carDao.update(car);
     }
 
     @Override
     public List<Car> getAll() {
         return carDao.getAll();
+    }
+
+    @Override
+    public Car getById(Long id) {
+        return carDao.getByPk(id);
+    }
+
+    @Override
+    public List<Car> getByIdList(List<Long> idList){
+        return carDao.getById(idList);
     }
 }

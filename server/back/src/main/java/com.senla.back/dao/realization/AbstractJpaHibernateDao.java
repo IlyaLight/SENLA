@@ -1,6 +1,5 @@
 package com.senla.back.dao.realization;
 
-import com.senla.api.exception.ObjectAvailabilityException;
 import com.senla.back.dao.api.IGenericDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,8 +7,6 @@ import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-
-import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -38,7 +35,7 @@ public abstract class AbstractJpaHibernateDao<T> implements IGenericDao<T> {
     }
 
     @Override
-    public T getByPk(Long key) throws ObjectAvailabilityException {
+    public T getByPk(Long key){
 
 //        CriteriaBuilder builder = getSession().getCriteriaBuilder();
 //        CriteriaQuery<T> criteria = builder.createQuery( getClazz() );

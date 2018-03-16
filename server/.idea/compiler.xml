@@ -9,7 +9,7 @@
         <module name="back" />
         <module name="web" />
       </profile>
-      <profile name="Annotation profile for server">
+      <profile name="Annotation profile for server" enabled="true">
         <sourceOutputDir name="target/generated-sources/apt" />
         <sourceTestOutputDir name="target/generated-sources/apt-test" />
         <outputRelativeToContentRoot value="true" />

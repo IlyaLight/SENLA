@@ -33,9 +33,9 @@ public class SecureCarController {
     }
 
     @DeleteMapping("/deleteCar")
-    public void deleteCar (@RequestBody Long id)  throws NotEnoughPermitsException {
+    public void deleteCar (@RequestBody Car car)  throws NotEnoughPermitsException {
         LOGGER.info("delete");
-        carService.delete(id);
+        carService.delete(car);
     }
 
     @PostMapping("/updateCar")

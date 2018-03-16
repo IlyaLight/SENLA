@@ -4,10 +4,15 @@ import com.senla.api.model.Car;
 import com.senla.back.dao.api.ICarDao;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Query;
 import javax.persistence.metamodel.SingularAttribute;
+import java.util.List;
 
 @Repository
 public class CarDao extends AbstractJpaHibernateDao<Car> implements ICarDao {
+    private static final String ID_LIST = "idList";
+    private static final String GET_BY_ID_QUERY = "from " +Car.class.getSimpleName() + " D where D.id in :" + ID_LIST;
+
     @Override
     protected Class getClazz() {
         return null;
@@ -17,4 +22,11 @@ public class CarDao extends AbstractJpaHibernateDao<Car> implements ICarDao {
     protected SingularAttribute<Car, Long> mmGetID() {
         return null;
     }
+
+    @Override
+    public List<Car> getById(List<Long> idList){
+       Query query = getSession().createQuery(GET_BY_ID_QUERY).setParameter(ID_LIST, idList);
+        return query.getResultList();
+    }
+
 }
