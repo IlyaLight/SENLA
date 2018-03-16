@@ -18,7 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("/authentication")
+@RequestMapping
 public class LoginController {
 
     private static final String TOKEN = "token";
@@ -30,7 +30,7 @@ public class LoginController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(new Throwable() .getStackTrace()[0].getClassName());
 
-    @PostMapping
+    @PostMapping("/authentication")
     public void authentication(@RequestBody Login login , HttpServletResponse res) throws ObjectAvailabilityException, IncompleteDataException {
         LOGGER.info("authentication");
         CheckDataUtil.authenticationCheakData(login);

@@ -17,6 +17,6 @@ public interface IGenericDao<T> {
 
     public void delete(T t) ;
 
-    public List<T> getAll(String sortingColumn);
+    public List<T> getAll();
 
 }

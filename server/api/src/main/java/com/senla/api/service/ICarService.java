@@ -3,10 +3,14 @@ package com.senla.api.service;
 import com.senla.api.exception.NotEnoughPermitsException;
 import com.senla.api.model.Car;
 
+import java.util.List;
+
 public interface ICarService {
-    void createCar(Car car) throws NotEnoughPermitsException;
+    void create(Car car) throws NotEnoughPermitsException;
 
-    void deleteCar(Long id) throws NotEnoughPermitsException;
+    void delete(Long id) throws NotEnoughPermitsException;
 
-    void updateCar(Car car) throws NotEnoughPermitsException;
+    void update(Car car) throws NotEnoughPermitsException;
+
+    List<Car> getAll();
 }

@@ -18,7 +18,7 @@ public class TokenUtil {
     private static final String KEY = "6FD3AD557E758A8B54BE1A676A5D66A5D6";
     private static final String SECURITY = "security";
     private static final String ID = "id";
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(TokenUtil.class);
 
     public static String  getToken(Person person){

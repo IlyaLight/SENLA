@@ -4,10 +4,15 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class HttpService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-  post( url: string, data: any) {
+  post(url: string, data: any) {
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(url, JSON.stringify(data) , { withCredentials: true, headers: myHeaders});
+    return this.http.post(url, JSON.stringify(data), {withCredentials: true, headers: myHeaders});
+  }
+
+  get(url: string) {
+    return this.http.get(url, {withCredentials: true});
   }
 }

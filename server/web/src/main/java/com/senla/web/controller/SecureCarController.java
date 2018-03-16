@@ -27,22 +27,22 @@ public class SecureCarController {
 
     @PostMapping("/createCar")
     public void createCar(@RequestBody Car car) throws NotEnoughPermitsException, IncompleteDataException {
-        LOGGER.info("createCar");
+        LOGGER.info("create");
         CheckDataUtil.createCarCheckData(car);
-        carService.createCar(car);
+        carService.create(car);
     }
 
     @DeleteMapping("/deleteCar")
     public void deleteCar (@RequestBody Long id)  throws NotEnoughPermitsException {
-        LOGGER.info("deleteCar");
-        carService.deleteCar(id);
+        LOGGER.info("delete");
+        carService.delete(id);
     }
 
     @PostMapping("/updateCar")
     public void updateCar (@RequestBody Car car)  throws NotEnoughPermitsException, IncompleteDataException {
-        LOGGER.info("updateCar");
+        LOGGER.info("update");
         CheckDataUtil.updateCarCheckData(car);
-        carService.updateCar(car);
+        carService.update(car);
     }
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)

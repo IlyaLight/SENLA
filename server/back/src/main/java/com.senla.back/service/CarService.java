@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CarService implements ICarService {
@@ -20,7 +22,7 @@ public class CarService implements ICarService {
     IPersonHandler personHandler;
 
     @Override
-    public void createCar(Car car) throws NotEnoughPermitsException {
+    public void create(Car car) throws NotEnoughPermitsException {
         if (personHandler.getPerson().getStatus()!= Person.Status.ADMINISTRATOR){
             throw new NotEnoughPermitsException();
         }
@@ -28,12 +30,17 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public void deleteCar(Long id) throws NotEnoughPermitsException {
+    public void delete(Long id) throws NotEnoughPermitsException {
 
     }
 
     @Override
-    public void updateCar(Car car) throws NotEnoughPermitsException {
+    public void update(Car car) throws NotEnoughPermitsException {
 
+    }
+
+    @Override
+    public List<Car> getAll() {
+        return carDao.getAll();
     }
 }

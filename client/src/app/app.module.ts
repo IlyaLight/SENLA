@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CookieService} from 'angular2-cookie/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule,
@@ -47,6 +48,7 @@ import {PersonPageComponent} from './person-page/person-page.component';
 import { BuyerRegistrationPageComponent } from './buyer-registration-page/buyer-registration-page.component';
 import { CarRegistrationPageComponent } from './car-registration-page/car-registration-page.component';
 import { GoodRegistrationPageComponent } from './good-registration-page/good-registration-page.component';
+import { CarSelectionPageComponent } from './car-selection-page/car-selection-page.component';
 
 const routes = [
   { path: 'authentication', component: AuthenticationPageComponent },
@@ -65,7 +67,8 @@ const routes = [
     PersonPageComponent,
     BuyerRegistrationPageComponent,
     CarRegistrationPageComponent,
-    GoodRegistrationPageComponent
+    GoodRegistrationPageComponent,
+    CarSelectionPageComponent
     ],
   imports: [
     FormsModule,
@@ -79,9 +82,10 @@ const routes = [
     MatButtonModule,
     MatDividerModule,
     MatTableModule,
+    MatCheckboxModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -64,13 +64,12 @@ public abstract class AbstractJpaHibernateDao<T> implements IGenericDao<T> {
     }
 
     @Override
-    public List getAll(String sortingColumn) {
+    public List getAll() {
 
         CriteriaBuilder builder = getSession().getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery( getClazz() );
         Root<T> root = criteria.from( getClazz() );
-        criteria.select( root )
-            .groupBy(root.get(sortingColumn));
+        criteria.select( root );
         return getSession().createQuery(criteria).getResultList();
 
 
