@@ -1,6 +1,7 @@
 package com.senla.back.dao.realization;
 
 import com.senla.api.model.Car;
+import com.senla.api.model.Car_;
 import com.senla.back.dao.api.ICarDao;
 import org.springframework.stereotype.Repository;
 
@@ -15,12 +16,12 @@ public class CarDao extends AbstractJpaHibernateDao<Car> implements ICarDao {
 
     @Override
     protected Class getClazz() {
-        return null;
+        return Car.class;
     }
 
     @Override
     protected SingularAttribute<Car, Long> mmGetID() {
-        return null;
+        return Car_.Id;
     }
 
     @Override

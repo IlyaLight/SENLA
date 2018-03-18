@@ -1659,3 +1659,49 @@ line 1:8: unexpected token: *
 12:06:46,140  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
 12:06:51,712  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@797b0699] of Hibernate SessionFactory for HibernateTransactionManager
 12:06:52,660  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+19:05:08,487  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4c3e4790: startup date [Sun Mar 18 19:05:08 MSK 2018]; root of context hierarchy
+19:05:08,542  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:05:08,774  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:05:09,630  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:05:09,631  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:05:09,693  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:05:10,050  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:05:10,657  INFO main Version:<clinit>:21 - HV000001: Hibernate Validator 6.0.8.Final
+19:05:11,309  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@43195e57] of Hibernate SessionFactory for HibernateTransactionManager
+19:05:11,434  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+19:06:58,665  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1877ab81: startup date [Sun Mar 18 19:06:58 MSK 2018]; root of context hierarchy
+19:06:58,738  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:06:58,992  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:07:00,162  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:07:00,165  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:07:00,265  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:07:00,749  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:07:01,253  INFO main Version:<clinit>:21 - HV000001: Hibernate Validator 6.0.8.Final
+19:07:02,212  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@60df60da] of Hibernate SessionFactory for HibernateTransactionManager
+19:07:02,443  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+19:09:47,411  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1877ab81: startup date [Sun Mar 18 19:09:47 MSK 2018]; root of context hierarchy
+19:09:47,480  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:09:47,810  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:09:48,868  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:09:48,870  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:09:48,948  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:09:49,437  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:09:50,066  INFO main Version:<clinit>:21 - HV000001: Hibernate Validator 6.0.8.Final
+19:09:51,096  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@60df60da] of Hibernate SessionFactory for HibernateTransactionManager
+19:09:51,399  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+19:11:18,561  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1877ab81: startup date [Sun Mar 18 19:11:18 MSK 2018]; root of context hierarchy
+19:11:18,656  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:11:18,995  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:11:20,153  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:11:20,156  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:11:20,278  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:11:20,920  INFO main Dialect:<init>:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:11:21,550  INFO main Version:<clinit>:21 - HV000001: Hibernate Validator 6.0.8.Final
+19:11:22,604  INFO main HibernateTransactionManager:afterPropertiesSet:378 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@60df60da] of Hibernate SessionFactory for HibernateTransactionManager
+19:11:22,861  INFO main QueryTranslatorFactoryInitiator:initiateService:47 - HHH000397: Using ASTQueryTranslatorFactory
+19:11:46,718  INFO main ClassPathXmlApplicationContext:prepareRefresh:589 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4c3e4790: startup date [Sun Mar 18 19:11:46 MSK 2018]; root of context hierarchy
+19:11:46,792  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [rootContext.xml]
+19:11:47,078  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:316 - Loading XML bean definitions from class path resource [dao.xml]
+19:11:48,067  INFO main Version:logVersion:45 - HHH000412: Hibernate Core {5.2.12.Final}
+19:11:48,069  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+19:11:48,133  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}

@@ -58,5 +58,8 @@ public class Test {
         List<Car> cars= carService.getByIdList(list);
         System.out.println(cars);
 
+        cars = carService.getAll();
+        System.out.println(cars);
+
     }
 }

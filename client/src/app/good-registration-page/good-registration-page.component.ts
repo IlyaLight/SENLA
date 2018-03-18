@@ -21,8 +21,8 @@ export class GoodRegistrationPageComponent implements OnInit {
   ];
   goods: Goods = new Goods();
 
-  setCookie(name: string, val: Goods) {
-    this.cookieService.putObject(name, val);
+  setCookie() {
+    this.cookieService.putObject('good', this.goods);
   }
 
   getCookie(name: string) {
@@ -30,7 +30,11 @@ export class GoodRegistrationPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.goods = <Goods>this.getCookie('good');
+    console.log(this.getCookie('good'));
+    const goods: Goods = <Goods>this.getCookie('good');
+    if (goods != null) {
+      this.goods = goods;
+    }
   }
 
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../service/http.service";
-import {Car} from "../json-models/car";
-import {ActivatedRoute} from "@angular/router";
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {HttpService} from '../service/http.service';
+import {Car} from '../json-models/car';
+import {ActivatedRoute} from '@angular/router';
+import {MatTableDataSource, MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-car-selection-page',
@@ -9,19 +10,30 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./car-selection-page.component.scss'],
   providers: [HttpService]
 })
-export class CarSelectionPageComponent implements OnInit {
+export class CarSelectionPageComponent implements AfterViewInit {
 
-  constructor(private httpService: HttpService, private activateRoute: ActivatedRoute) { }
+  constructor(private httpService: HttpService, private activateRoute: ActivatedRoute) {
+    this.httpService.get('http://localhost:8080/getAllCars')
+      .subscribe(
+       (data: Car[]) => this.dataSource = new MatTableDataSource(data)
+      );
+  }
 
   displayedColumns = ['brand', 'model', 'year', 'typeOfFuel', 'engineCapacity'];
+  dataSource: MatTableDataSource<Car> = new MatTableDataSource();
 
-  cars: Car[] = [
-    {id: 1, brand: 'brand', model: 'model', year: 10, engineCapacity: 10, typeOfFuel: 'gas'    }
-  ];
+  @ViewChild(MatSort)
+  sort: MatSort;
 
-  ngOnInit() {
-    this.httpService.get('http://localhost:8080/getAllCars')
-      .subscribe((data: Car[]) => this.cars = data);
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
+
+  // ngOnInit() {
+  //   this.httpService.get('http://localhost:8080/getAllCars')
+  //     .subscribe(
+  //       (data: Car[]) => this.dataSource = new MatTableDataSource(data)
+  //     );
+  // }
 
 }

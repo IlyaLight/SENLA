@@ -9,4 +9,5 @@ export class Goods {
   inStock: number;
   typeOfFuel: string;
   engineCapacity: number;
+  idCars: number[];
 }
