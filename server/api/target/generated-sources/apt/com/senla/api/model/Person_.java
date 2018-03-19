@@ -1,5 +1,6 @@
 package com.senla.api.model;
 
+import com.senla.api.model.Person.Status;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.MapAttribute;
@@ -11,7 +12,6 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Person_ {
 
 	public static volatile ListAttribute<Person, Car> cars;
-	public static volatile SingularAttribute<Person, String> name;
 	public static volatile SingularAttribute<Person, Boolean> active;
 	public static volatile ListAttribute<Person, Address> addres;
 	public static volatile ListAttribute<Person, Order> orders;
@@ -19,7 +19,7 @@ public abstract class Person_ {
 	public static volatile SingularAttribute<Person, Login> login;
 	public static volatile SingularAttribute<Person, String> email;
 	public static volatile MapAttribute<Person, Goods, Integer> cart;
-	public static volatile SingularAttribute<Person, String> status;
+	public static volatile SingularAttribute<Person, Status> status;
 
 }
 

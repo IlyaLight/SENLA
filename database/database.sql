@@ -26,7 +26,7 @@ create table car(
 	model varchar(25) not null,
 	year int not null,
 	type_of_fuel varchar(25) not null,
-	engine_capacity int,
+	engine_capacity FLOAT(5.2) ,
 	primary key(id)
 );
 

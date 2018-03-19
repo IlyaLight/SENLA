@@ -49,14 +49,18 @@ import { BuyerRegistrationPageComponent } from './buyer-registration-page/buyer-
 import { CarRegistrationPageComponent } from './car-registration-page/car-registration-page.component';
 import { GoodRegistrationPageComponent } from './good-registration-page/good-registration-page.component';
 import { CarSelectionPageComponent } from './car-selection-page/car-selection-page.component';
+import { TestComponent } from './test/test.component';
+import { AppFooterComponent } from './app-footer/app-footer.component';
 const routes = [
+  { path: '', component: HomePageComponent },
   { path: 'authentication', component: AuthenticationPageComponent },
   { path: 'person', component: PersonPageComponent },
-  { path: '', component: HomePageComponent },
   { path: 'buyerRegistration', component: BuyerRegistrationPageComponent },
   { path: 'goodsRegistration', component: GoodRegistrationPageComponent },
   { path: 'carRegistration', component: CarRegistrationPageComponent },
-  { path: 'CarSelectionPageComponent', component: CarSelectionPageComponent }
+  { path: 'CarSelectionPageComponent', component: CarSelectionPageComponent },
+  { path: 'TestComponent', component: TestComponent },
+
 ];
 
 @NgModule({
@@ -68,7 +72,9 @@ const routes = [
     BuyerRegistrationPageComponent,
     CarRegistrationPageComponent,
     GoodRegistrationPageComponent,
-    CarSelectionPageComponent
+    CarSelectionPageComponent,
+    TestComponent,
+    AppFooterComponent
     ],
   imports: [
     FormsModule,
@@ -100,15 +106,12 @@ const routes = [
     MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
     MatStepperModule,
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

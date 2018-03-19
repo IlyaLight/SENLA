@@ -46,7 +46,7 @@ public class Car {
 
     /** Engine capacity **/
     @Column(name = "engine_capacity")
-    private Integer engineCapacity;
+    private Float engineCapacity;
 
     /** Suitable goods **/
     @JsonIgnore
@@ -98,11 +98,11 @@ public class Car {
         this.typeOfFuel = typeOfFuel;
     }
 
-    public Integer getEngineCapacity() {
+    public Float getEngineCapacity() {
         return engineCapacity;
     }
 
-    public void setEngineCapacity(Integer engineCapacity) {
+    public void setEngineCapacity(Float engineCapacity) {
         this.engineCapacity = engineCapacity;
     }
 

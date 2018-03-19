@@ -9,6 +9,26 @@
   max-height: 500px;
 }
 
-.mat-header-cell.mat-sort-header-sorted {
+.mat-sort-header-sorted {
   color: black;
 }
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+//fix bug :Checkbox moves place when clicked
+mat-cell, .mat-header-cell{
+  overflow: visible;
+}
+

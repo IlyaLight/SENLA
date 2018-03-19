@@ -16,7 +16,7 @@ public abstract class Car_ {
 	public static volatile SingularAttribute<Car, String> model;
 	public static volatile SingularAttribute<Car, Long> Id;
 	public static volatile SingularAttribute<Car, String> brand;
-	public static volatile SingularAttribute<Car, Integer> engineCapacity;
+	public static volatile SingularAttribute<Car, Float> engineCapacity;
 
 }
 
